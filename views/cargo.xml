@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id='cargo_view_form' model='ir.ui.view'>
+            <field name="name">cargo.type.form</field>
+            <field name="model">cargo.type</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group col="2">
+                                <group string="    ">
+                                    <field name="Incoterm"/>
+                                    <field name="cargo_description"/>
+                                    <field name="cargo_references"/>
+                                </group>
+                                <group string="Total Value" col="2">   
+                                    
+                                    <group>
+                                    
+                                                    <div class="o_row" style="max-width: 200px; max-height: 100px">
+                                                        <field name="euro_value"/>
+                                                        <field name="currency_id" />
+                                                    </div> 
+                                    
+                                        <!--<group col="2"> 
+                                            <field name="euro_value" class="oe_inline"/>
+                                            <field name="currency_id" class="oe_inline"/>
+                                        </group>
+                                    </div> -->
+                                    
+                                    <!-- <div>
+                                    <group>
+                                    <field name="currency_unit" string="Currency"/>
+                                    </group>
+                                    <field name="euro_value" class="oe_inline" attrs="{'invisible': [('currency_unit','!=','euro')]}"/>
+                                    <span attrs="{'invisible': [('currency_unit','!=','euro')]}"> Euro </span>
+                                    <field name="usd_value" class="oe_inline" attrs="{'invisible': [('currency_unit','!=','usd')]}"/> 
+                                    <span attrs="{'invisible': [('currency_unit','!=','usd')]}"> USD</span>
+                                    <field name="mad_value" class="oe_inline" attrs="{'invisible': [('currency_unit','!=','mad')]}"/>
+                                    <span attrs="{'invisible': [('currency_unit','!=','mad')]}">  MAD</span>
+                                    </div> -->
+                                    </group>
+                                    <group>
+                                    <field name="v_incoterm"/>
+                                    <field name="Value_Class"/>
+                                    </group>
+                                </group>
+                                <group string="Gross weight">
+                                    <group>
+                                        <div>
+                                        <group>
+                                            <field name="weight_unit"/>
+                                        </group>
+                                        <field name="kg_value" class="oe_inline" attrs="{'invisible': [('weight_unit','!=','kg')]}"/>
+                                        <span attrs="{'invisible': [('weight_unit','!=','kg')]}"> Kg </span>
+                                        <field name="ton_value" class="oe_inline" attrs="{'invisible': [('weight_unit','!=','ton')]}"/>
+                                        <span attrs="{'invisible': [('weight_unit','!=','ton')]}"> Ton </span>
+                                        <field name="ibs_value" class="oe_inline" attrs="{'invisible': [('weight_unit','!=','ibs')]}"/>
+                                        <span attrs="{'invisible': [('weight_unit','!=','ibs')]}"> Ibs </span>
+                                        </div>
+                                        </group>
+                                        <group>
+                                        <field name="gross_weight_class"/>
+                                        </group>
+                                </group>
+                                <group string="Volume">
+                                    <group>
+                                        <div>
+                                        <group>
+                                            <field name="volume_unit"/>
+                                        </group>
+                                        <field name="ccm_value" class="oe_inline" attrs="{'invisible': [('volume_unit','!=','ccm')]}"/>
+                                         <span attrs="{'invisible': [('volume_unit','!=','ccm')]}">Ccm</span>
+                                        <field name="cbm_value" class="oe_inline" attrs="{'invisible': [('volume_unit','!=','cbm')]}"/>
+                                        <span attrs="{'invisible': [('volume_unit','!=','cbm')]}">Cbm</span>
+                                        <field name="cinch_value" class="oe_inline" attrs="{'invisible': [('volume_unit','!=','cinh')]}"/>
+                                         <span attrs="{'invisible': [('volume_unit','!=','cinh')]}">Cinh</span>
+                                        <field name="cfeet_value" class="oe_inline" attrs="{'invisible': [('volume_unit','!=','cfeet')]}"/> 
+                                        <span attrs="{'invisible': [('volume_unit','!=','cfeet')]}">Cfeet</span>
+                                        </div>
+                                    </group>
+                                        <group>
+                                        <field name="volume_class"/>
+                                        </group>
+                                    
+                                </group>
+                        </group>
+                        <notebook>
+                            <page name="public" string="Cargo requirments">
+                            <group col="2">
+                                <group>
+                                    <field name="new"/>
+                                    <field name="stackable"/>
+                                    <field name="forkliftable"/>
+                                    <field name="rolling_machine"/>
+                                    <field name="self_proppled"/>
+                                    <field name="Can_loaded"/>
+                                    <field name="keep_dry"/>
+                                </group>
+                                <group>
+                                    <field name="keep_sec"/>
+                                    <field name="delicate"/>
+                                    <field name="Vaulable"/>
+                                    <field name="humidity_sensitive"/>
+                                    <field name="temperature_sensitive"/>
+                                    <field name="dangereux"/>
+                                    <field name="flammable"/>
+                                </group>
+                                <group string="Perishable">
+                                    <h5><field name="perishable"/></h5>
+                                    <group>
+                                    </group>
+                                    <group col="1">
+                                        <field name="some" attrs="{'invisible': [('perishable','!=','all')]}"/>
+                                        <field name="all_selection" attrs="{'invisible': [('perishable','!=','some')]}"/>
+                                        
+                                        <group>
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">
+                                                        
+                                                        <field name="type_celsisu"  attrs="{'invisible': ['|','|',('perishable','=','no'),('perishable','=','na'), ('perishable','=','dk')]}"/>
+                                                        <field name="celsius" attrs="{'invisible': ['|','|',('perishable','=','no'),('perishable','=','na'), ('perishable','=','dk')]}"/><span attrs="{'invisible': ['|','|',('perishable','=','no'),('perishable','=','na'), ('perishable','=','dk')]}">C°</span>
+                                                    </div>
+                                        </group>
+                                        <!-- <field name="type_celsisu" attrs="{'invisible': [('perishable','!=','some')]}"/>
+                                        <field name="celsius" attrs="{'invisible': [('perishable','!=','some')]}"/> -->
+                                    </group>
+                                    <!-- <field name="no"/>
+                                    <field name="na"/>
+                                    <field name="dk"/> -->
+                                </group>
+                            </group>                           
+                            </page>
+                            <page name="public" string="Total Quantity">
+                                   
+                                        <group col="2">
+                                                <group>
+                                                    <field name="teus"/>
+                                                    <field name="unit"/>
+                                                    <field name="up"/>
+                                                    <field name="ft"/>
+                                                    <field name="fkg"/>
+                                                    <field name="cbm"/>
+                                                    <field name="wm"/>
+                                                </group>
+                                                <group>
+                                                    <field name="truck"/>
+                                                    <field name="mafi"/>
+                                                    <field name="trailer"/>
+                                                    <field name="file_id"/>
+                                                    <field name="shipment"/>
+                                                </group>
+                                                
+                                        </group>
+                                    
+                            </page> 
+                            <page name="public" string="Cargo indication">
+                                    <group col="3">
+                                        <group>
+                                            <field name="motor_vehicule"/>
+                                            <field name="steel_griders"/>
+                                            <field name="wood"/>
+                                            <field name="machines"/>
+                                            <field name="transformers"/>
+                                            <field name="animals"/>
+                                            <field name="spare_parts"/>
+                                            <field name="tools"/>
+                                            <field name="consumable"/>
+                                            <field name="medecine"/>
+                                            <field name="books"/>
+                                            <field name="cosmetics"/>
+                                            <field name="furinture"/>
+                                            <field name="electronic"/>
+                                            <field name="food"/>
+                                        </group>
+                                        <group>
+                                        
+                                        
+                                        <field name="textile"/>
+                                        <field name="agricultural_products"/>
+                                        <field name="agricultural_machines"/>
+                                        <field name="vegetables"/>
+                                        <field name="fruits"/>
+                                        <field name="health"/>
+                                        <field name="equipment"/>
+                                        <field name="it"/>
+                                        <field name="leather"/>
+                                        <field name="oil"/>
+                                        <field name="personal_effects"/>
+                                        <field name="plants"/>
+                                        <field name="pipes"/>
+                                        <field name="plastics"/>
+                                        <field name="gas"/>
+                                        </group>
+                                        <group>
+                                        
+                                        
+                                        
+                                        <field name="toys_and_games"/>
+                                        <field name="wires_and_cables"/>
+                                        <field name="sanitary"/>
+                                        <field name="industrial_products"/>
+                                        <field name="auto_parts"/>
+                                        <field name="cleaning_products"/>
+                                       
+                                        </group>
+                                       </group> 
+                                   
+                            </page>
+                             <page name="public" string="Shipping packaging">
+                                    <group col="2">
+                                        <group>
+                                            <field name="container"/>
+                                            <field name="house_removal"/>
+                                            <field name="enveloppe"/>
+                                            <field name="large_enveloppe"/>
+                                            <field name="passenger_luggage"/>
+                                            <field name="cardboard_boxes"/>
+                                            <field name="tube"/>
+                                            <field name="crates"/>
+                                            <field name="wooden_boxes"/>
+                                            <field name="metal_boxes"/>
+                                            <field name="barrels"/>
+                                        </group>
+                                        <group>
+                                            <field name="pallets"/>
+                                            <field name="big_bag"/>
+                                            <field name="bundle"/>
+                                            <field name="drums"/>
+                                            <field name="bales"/>
+                                            <field name="shipping_sacks"/>
+                                            <field name="Qty"/>
+                                        </group>
+                                    </group>
+                            </page>
+                            <page name="public" string="Cargo packaging">
+                                     <group col="2">
+                                        <group>
+                                            <field name="container_crg_packaging"/>
+                                            <field name="house_removal_crg_packaging"/>
+                                            <field name="passenger_luggage_crg_packaging"/>
+                                            <field name="cardboard_boxes_crg_packaging"/>
+                                            <field name="crates_crg_packaging"/>
+                                            <field name="large_enveloppe_crg_packaging"/>
+                                            <field name="wooden_boxes_crg_packaging"/>
+                                            <field name="metal_boxes_crg_packaging"/>
+                                        </group>
+                                        <group>
+                                            <field name="barrels_crg_packaging"/>
+                                            <field name="pallets_crg_packaging"/>
+                                            <field name="big_bag_crg_packaging"/>
+                                            <field name="bundle_crg_packaging"/>
+                                            <field name="drums_crg_packaging"/>
+                                            <field name="bales_crg_packaging"/>
+                                            <field name="shipping_sacks_crg_packaging"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page name="public" string="Cargo Payment">
+                            <group col="2">
+                                <group>
+                                <field name="cargo_payment"/>
+                                    <field name="with_payment" attrs="{'invisible': [('cargo_payment','!=','with')]}"/>
+                                    <field name="other_conditions" attrs="{'invisible': [('with_payment','!=','other_condition')]}"/>
+                                    
+                                    <!-- <field name="no_payment"/>
+                                    <field name="dk"/> -->
+                                </group>
+                                
+                            </group>                           
+                            </page>
+                    </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="cargo_view_tree" model="ir.ui.view">
+            <field name="name">cargo.type.tree</field>
+            <field name="model">cargo.type</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="cargo_references"/>
+                    <field name="cargo_description"/>
+                    <field name="Incoterm"/>
+                    <field name="v_incoterm"/>
+                    <field name="Value_Class"/>
+                    <field name="gross_weight_class"/>
+                    <field name="volume_class"/>
+                    <field name="with_payment"/>
+                   
+
+                    
+                </tree> 
+            </field>
+        </record>
+
+    <record model="ir.actions.act_window" id="cargo_action">
+            <field name="name">Cargo</field>
+            <field name="res_model">cargo.type</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                    <p class="oe_view_nocontent_smiling_face"> Cargo </p>
+            </field>
+        </record>
+
+    <menuitem name="Cargo"  
+    parent="menu_root" 
+    id="cargo_menu" 
+    sequence="2" 
+    action="cargo_action"
+    groups ="base.group_user"/>
+
+    </odoo>

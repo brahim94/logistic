@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id='forecast_view_form' model='ir.ui.view'>
+            <field name="name">forecast.type.form</field>
+            <field name="model">forecast.type</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group col="2">
+                                <group>
+                                    <field name="f_start"/>
+                                    <field name="f_pick_up"/>
+                                    <field name="f_terminal_input"/>
+                                    <field name="f_export_cleared"/>
+                                    <field name="f_etd"/>                                  
+                                </group>
+                                <group >
+                                    <field name="f_import_cleared"/>
+                                    <field name="f_terminal_exit"/>
+                                    <field name="f_delivery"/>
+                                    <field name="f_eta"/>
+                                </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="forecast_view_tree" model="ir.ui.view">
+            <field name="name">forecast.type.tree</field>
+            <field name="model">forecast.type</field>
+            <field name="arch" type="xml">
+                <tree>
+                   <field name="f_pick_up"/>
+                    <field name="f_terminal_input"/>
+                    <field name="f_export_cleared"/>
+                    <field name="f_etd"/> 
+                    <field name="f_import_cleared"/>
+                    <field name="f_terminal_exit"/>
+                    <field name="f_delivery"/>
+                    <field name="f_eta"/>           
+                </tree> 
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="forecast_action">
+            <field name="name">Forecast</field>
+            <field name="res_model">forecast.type</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                    <p class="oe_view_nocontent_smiling_face"> Forecast </p>
+            </field>
+        </record>
+
+    <menuitem name="Forecast"  
+    parent="menu_root" 
+    id="forecast_menu" 
+    sequence="22" 
+    action="forecast_action"
+    groups ="base.group_user"/>
+
+    </odoo>

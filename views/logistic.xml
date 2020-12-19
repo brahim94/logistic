@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id='logistic_view_form' model='ir.ui.view'>
+            <field name="name">logistic.type.form</field>
+            <field name="model">logistic</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group col="3">
+                                <group >
+                                    <field name="booking"/>
+                                    <field name="shipement"/>
+                                    <field name="vendor"/>
+                                    <field name="shipper"/>
+                                    <field name="consignee"/>
+                                    <field name="export_freight_forwarder"/>
+                                    <field name="export_freight_broker"/>
+                                </group>
+                                <group>
+                                    
+                                    <field name="shipping_line"/>
+                                    <field name="byer"/>
+                                    <field name="vessel_trailer_flight"/>
+                                    <field name="etd"/>
+                                    <field name="eta"/>
+                                    <field name="import_customs_broker"/>
+                                    <field name="import_freight_forwarder"/>         
+                                </group>
+                                <group>
+                                <field name="marks"/>
+                                 <field name="stc"/>
+                                     <field name="cargo_release"/>
+                                    <field name="cargo_release_conditions" attrs="{'invisible': [('cargo_release','!=','against_documents')]}"/>
+                                     <field name="other_instrcutions"/>
+                                    <field name="m_h"/>
+                                    <field name="number_of_original_bl"/>
+                                </group>
+                               
+                        </group>
+                        <notebook>
+                         <page name="public" string="Notifies">
+                             <group col="2">
+                                <group>
+                                    <field name="notify_one"/>
+                                    <field name="notify_two"/>
+                                    <field name="notify_three"/>
+                                </group>
+                            </group>
+                            </page>
+                         <page name="public" string="Adresses">
+                             <group col="2">
+                                <group>
+                                    <field name="country_id"/>
+                                    <field name="city_id"/>
+                                    <field name="provenance_id"/>
+                                    <field name="pol_id"/>
+                                    <field name="tol"/>
+                                </group>
+                                <group>
+                                   <field name="pod_id"/>
+                                    <field name="tod_id"/>
+                                    <field name="delivery_id"/>
+                                </group>
+                            </group>
+                            </page>
+                            
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="logistic_view_tree" model="ir.ui.view">
+            <field name="name">logistic.type.tree</field>
+            <field name="model">logistic</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="booking"/>
+                    <field name="shipement"/>
+                    <field name="vendor"/>
+                    <field name="shipper"/>
+                    <field name="consignee"/>
+                    <field name="byer"/>
+                    <field name="import_customs_broker"/>
+                    <field name="import_freight_forwarder"/>
+                    <field name="country_id"/>
+                    <field name="city_id"/>
+                    <field name="provenance_id"/>
+                    <field name="pol_id"/>
+                    <field name="tol"/>
+                    <field name="pod_id"/>
+                    <field name="tod_id"/>
+                    <field name="delivery_id"/>
+                    <field name="etd"/>
+                    <field name="eta"/>
+            
+                </tree> 
+            </field>
+        </record>
+
+    <record model="ir.actions.act_window" id="logistic_action">
+            <field name="name">Logistic</field>
+            <field name="res_model">logistic</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                    <p class="oe_view_nocontent_smiling_face"> Logistic </p>
+            </field>
+        </record>
+
+    <menuitem name="Logistic"  
+    parent="menu_root" 
+    id="logistic_menu" 
+    sequence="3" 
+    action="logistic_action"
+    groups ="base.group_user"/>
+
+    </odoo>

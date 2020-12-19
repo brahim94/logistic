@@ -1,0 +1,721 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id='scope_view_form' model='ir.ui.view'>
+            <field name="name">scope.type.form</field>
+            <field name="model">scope.type</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <notebook>
+                            <page string="Packaging">
+                                <group>
+                                   <group col="2">
+                                        <field name="packagin_division_id"/>
+                                        <field name="direction"/>
+                                        <field name="packagin_mode_transport_id"/>
+                                        <field name="scope"/>
+                                        <field name="service"/>
+                                        <field name="service_n"/>
+                                        <field name="service_detail"/>             
+                                    </group>
+                                    <group>
+                                        <field name="packagin_criteria_id"/>
+                                        <!-- <field name="packagin_section_id"/> -->
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="scope_view_tree" model="ir.ui.view">
+            <field name="name">scope.type.tree</field>
+            <field name="model">scope.type</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="packagin_division_id"/>
+                    <field name="direction"/>
+                    <field name="packagin_mode_transport_id"/>
+                    <field name="scope"/>
+                    <field name="service"/>
+                    <field name="service_n"/>
+                    <field name="service_detail"/>
+                </tree> 
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="scope_action">
+            <field name="name">Scope</field>
+            <field name="res_model">scope.type</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                    <p class="oe_view_nocontent_smiling_face"> Scope</p>
+            </field>
+        </record>
+
+    <menuitem name="Scope"  
+    parent="menu_root" 
+    id="scope_menu" 
+    sequence="22" 
+    action="scope_action"
+    groups ="base.group_user"/>
+
+
+        <record id='division_view_form' model='ir.ui.view'>
+            <field name="name">division.type.form</field>
+            <field name="model">packagin.division</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Division">
+                            <group col="2">
+                                <field name="packagin_department_id"/>
+                                <field name="division"/>
+                            </group>
+                            <group>
+                                <field name="division_n"/>
+                                <field name="division_tag"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="divsion_action">
+            <field name="name">Division</field>
+            <field name="res_model">packagin.division</field>
+            <field name="view_mode">form</field>
+            <field name="help" type="html">
+                    <p class="oe_view_nocontent_smiling_face"> Division</p>
+            </field>
+        </record>
+
+        <record id='criteria_view_form' model='ir.ui.view'>
+            <field name="name">criteria.type.form</field>
+            <field name="model">packagin.criteria</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group col="2">
+                                <field name="packagin_value_class_id"/>
+                                <field name="packagin_weight_class_id"/>
+                                <field name="packagin_incoterm_id"/>
+                                <field name="packagin_volume_class_id"/>
+                                <field name="packagin_cargo_indication_id"/>
+                                <field name="packagin_cargo_specification_id"/>
+                                <field name="packagin_shipping_id"/>
+                                <field name="packagin_cargo_payment_id"/>
+                            </group>
+                            <group>
+                                <field name="packagin_pod_id"/>
+                                <field name="packagin_pol_id"/>
+                                <field name="packagin_regime_id"/>
+                                <field name="packagin_regime_number_id"/>
+                                <field name="packagin_added_proceders_id"/>
+                                <field name="packagin_customs_desk_id"/>
+                                <!-- <field name="packagin_packaging_processes_id"/> -->
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="divsion_action">
+            <field name="name">Criteria</field>
+            <field name="res_model">packagin.criteria</field>
+            <field name="view_mode">form</field>
+            <field name="help" type="html">
+                    <p class="oe_view_nocontent_smiling_face"> Criteria</p>
+            </field>
+        </record>
+                            <!-- DEPARTMENT -->
+        <record id='department_view_form' model='ir.ui.view'>
+            <field name="name">department.type.form</field>
+            <field name="model">packagin.department</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Department">
+                            <group col="2">
+                                <field name="department"/>
+                                <field name="department_n"/>
+                            </group>
+                            <group>
+                                <field name="department_tag"/>
+                                <field name="pcl_office"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+                             <!-- Value Classe -->
+        <record id='vclasse_view_form' model='ir.ui.view'>
+            <field name="name">vclasse.type.form</field>
+            <field name="model">packagin.vclass</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Value Classe">
+                            <group col="2">
+                                <field name="class_numero"/>
+                                <field name="value_class"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>   
+
+        
+                             <!-- Weight Class -->
+        <record id='weightclass_view_form' model='ir.ui.view'>
+            <field name="name">weghitclass.type.form</field>
+            <field name="model">packagin.weghitclass</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Value Classe">
+                            <group col="2">
+                                <field name="class_numero"/>
+                                <field name="g_weight_class"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+                    <!-- Weight Class -->
+        <record id='incoterm_view_form' model='ir.ui.view'>
+            <field name="name">weghitclass.type.form</field>
+            <field name="model">packagin.incoterm</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Value Classe">
+                            <group col="2">
+                                 <field name="incoterm_numero"/>
+                                <field name="incoterm"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+                <!-- VOLUME CLASSE -->
+        <record id='vclass_view_form' model='ir.ui.view'>
+            <field name="name">vclass.type.form</field>
+            <field name="model">packagin.volume</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Valume Classe">
+                            <group col="2">
+                                <field name="volum_class_n"/>
+                                <field name="volum_class"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+         <!-- CARGO INDICATION -->
+        <record id='cargo_indication_view_form' model='ir.ui.view'>
+            <field name="name">cargo.indication.type.form</field>
+            <field name="model">packagin.cargo.indication</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Cargo indication">
+                            <group col="2">
+                                <field name="cargo_indication_n"/>
+                                <field name="cargo_indication"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+                  <!-- CARGO specification -->
+        <record id='cargo_specification_view_form' model='ir.ui.view'>
+            <field name="name">cargo.specification.type.form</field>
+            <field name="model">packagin.cargo.specification</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Cargo specification">
+                            <group col="2">
+                                <field name="cargo_specification_n"/>
+                                <field name="cargo_specification"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+                  <!-- packagin shipping -->
+        <record id='shipping_view_form' model='ir.ui.view'>
+            <field name="name">shipping.type.form</field>
+            <field name="model">packagin.shipping</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="packagin shipping">
+                            <group col="2">
+                                <field name="shippiing_n"/>
+                                <field name="shipping"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        
+                  <!-- cargo payment -->
+        <record id='cargo_payment_view_form' model='ir.ui.view'>
+            <field name="name">cargo.payment.type.form</field>
+            <field name="model">cargo.payment</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="cargo payment">
+                            <group col="2">
+                                <field name="cargo_payment_n"/>
+                                <field name="cargo_payment"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- packagin pod -->
+        <record id='packagin_pod_view_form' model='ir.ui.view'>
+            <field name="name">packagin.pod.type.form</field>
+            <field name="model">packagin.pod</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="packagin pod">
+                            <group col="2">
+                                <field name="port_n"/>
+                                <field name="port"/>
+                            </group>
+                            <group>
+                                <field name="country_id"/>
+                                <field name="city_id"/>                               
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+         <!-- packagin pol -->
+        <record id='packagin_pol_view_form' model='ir.ui.view'>
+            <field name="name">packagin.pol.type.form</field>
+            <field name="model">packagin.pol</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="packagin pol">
+                            <group col="2">
+                                <field name="port_n"/>
+                                <field name="port"/>
+                            </group>
+                            <group>
+                                <field name="country_id"/>
+                                <field name="city_id"/>                               
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        
+                  <!-- regime category -->
+        <record id='regime_category_view_form' model='ir.ui.view'>
+            <field name="name">regime.category.type.form</field>
+            <field name="model">regime.category</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="regime category">
+                            <group col="2">
+                                <field name="reg_category"/>
+                                <field name="regime_category_n"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+                  <!-- packagin regime -->
+        <record id='regime_packagin_view_form' model='ir.ui.view'>
+            <field name="name">regime.packagin.type.form</field>
+            <field name="model">packagin.regime</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="packagin regime">
+                            <group col="2">
+                                <field name="packagin_regime_category_id"/>
+                                <field name="regime_n"/>
+                                <field name="regime"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        
+                  <!-- number regime -->
+        <record id='regime_number_view_form' model='ir.ui.view'>
+            <field name="name">regime.number.type.form</field>
+            <field name="model">regime.number</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="regime number">
+                            <group col="2">
+                                <field name="reg_number"/>
+                                <field name="regime_description"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+                          <!-- ADDED PROCEDERS -->
+        <record id='added_proceders_view_form' model='ir.ui.view'>
+            <field name="name">added.proceders.type.form</field>
+            <field name="model">added.proceders</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Added Proceders">
+                            <group col="2">
+                                <field name="added_proceders"/>
+                                <field name="added_proceders_n"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- customs desk -->
+        <record id='customs_desk_view_form' model='ir.ui.view'>
+            <field name="name">customs.desk.type.form</field>
+            <field name="model">customs.desk</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Customs Desk">
+                            <group col="2">
+                                <field name="customs_desk"/>
+                                <field name="customs_desk_n"/>
+                            </group>
+                            <group>
+                                <field name="city_id"/>
+                                <field name="country_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+            <!-- Processes -->
+        <record id='processes_processes_view_form' model='ir.ui.view'>
+            <field name="name">processes.processes.type.form</field>
+            <field name="model">processes.processes</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Processes">
+                            <group col="2">
+                                <field name="processes_name"/>
+                                <field name="processes_n"/>
+                                <field name="review_n"/>
+                                <field name="date"/>
+                            </group>
+                            <group>
+                                <field name="review_n"/>
+                                <field name="pcl_office"/>
+                                <field name="department"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+       
+            <!-- Packaging Processes -->
+        <record id='packaging_processes_view_form' model='ir.ui.view'>
+            <field name="name">packaging.processes.type.form</field>
+            <field name="model">packaging.processes</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Packaging Processes">
+                            <group col="2">
+                                <field name="packagin_processes_id"/>
+                                <field name="procedure_name"/>
+                                <field name="procedure_n"/>
+                                <field name="review"/>
+                                 <field name="date"/>
+                                <field name="processes"/>
+                            </group>
+                            <group>
+                                <field name="instruction_name"/>
+                                <field name="instruction_n"/>
+                                <field name="date"/>
+                                <field name="instruction"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+            <!-- Packaging section -->
+          <record id='packaging_section_view_form' model='ir.ui.view'>
+            <field name="name">packaging.section.type.form</field>
+            <field name="model">packaging.section</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Packaging section">
+                            <group col="2">
+                                <field name="service_id"/>
+                                <field name="section_name"/>
+                                <field name="section_translation"/>
+                                <field name="section_code"/>
+                                 <field name="section_abreviation"/>
+                                <field name="accounting_number"/>
+
+                            </group>
+                            <group>
+                                <field name="note_section"/>
+                                <field name="at_cost"/>
+                                <field name="taxable"/>
+                                <field name="rt"/>
+                            
+                            </group>
+                            <group>
+                           <label for="adf_min" string="ADF"/>
+                                    <div class="o_row" style="max-width: 800px; max-height: 500px">                                    
+                                        <label for="adf_min"/>
+                                            <div class="o_row" style="max-width: 600px; max-height: 400px">
+                                                <field name="adf_min"/>
+                                                <field name="currency_id_adf_min" style="max-width: 2000px; max-height: 1000px"/>
+                                            </div>
+                            <label for="adf_max"/>
+                                            <div class="o_row" style="max-width: 800px; max-height: 500px">
+                                                <field name="adf_max"/>
+                                                <field name="currency_id_adf_max" style="max-width: 2000px; max-height: 1000px"/>
+                                            </div>
+                                    </div>
+                                        <field name="tarrif_id"/>
+
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>         
+   
+        <!-- Tarrif -->
+         <record id='packaging_tariff_view_form' model='ir.ui.view'>
+            <field name="name">packaging.tariff.form</field>
+            <field name="model">packaging.tariff</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                                <group string="Tarrif">
+                                    <group col="2">
+    
+                                        <label for="amount_tariff"/>
+                                            <div class="o_row" style="max-width: 600px; max-height: 400px">
+                                                <field name="amount_tariff"/>
+                                                <field name="currency_id_tariff" style="max-width: 2000px; max-height: 1000px"/>
+                                            </div>
+
+                                        <label for="tarrif_from"/>
+                                            <div class="o_row" style="max-width: 600px; max-height: 400px">
+                                                <field name="tarrif_from"/>
+                                                <field name="currency_id_tariff_from" style="max-width: 2000px; max-height: 1000px"/>
+                                            </div>
+                                        
+                                        <field name="tariff_name"/>
+                                        
+                                        <label for="per_name"/>
+                                            <div class="o_row" style="max-width: 600px; max-height: 400px">
+                                                <field name="per_name"/>
+                                                <field name="unite_id_tariff"/>
+                                            </div>
+
+                                         <label for="tarrif_to"/>
+                                            <div class="o_row" style="max-width: 600px; max-height: 400px">
+                                                <field name="tarrif_to"/>
+                                                <field name="currency_id_tariff_to" style="max-width: 2000px; max-height: 1000px"/>
+                                            </div>
+    
+                                    </group>
+                                    <group>
+                                         <label for="min_billing"/>
+                                            <div class="o_row" style="max-width: 600px; max-height: 400px">
+                                                <field name="min_billing"/>
+                                                <field name="currency_id_min_billing" style="max-width: 2000px; max-height: 1000px"/>
+                                            </div>
+                                            <label for="max_billing"/>
+                                            <div class="o_row" style="max-width: 600px; max-height: 400px">
+                                                <field name="max_billing"/>
+                                                <field name="currency_id_max_billing" style="max-width: 2000px; max-height: 1000px"/>
+                                            </div>
+                                        <label for="plus_fix"/>
+                                            <div class="o_row" style="max-width: 600px; max-height: 400px">
+                                                <field name="plus_fix"/>
+                                                <field name="currency_id_plus_fix" style="max-width: 2000px; max-height: 1000px"/>
+                                            </div>
+                                        <field name="comments_tarrif"/> 
+                                    </group>
+                                </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+          <!-- Unit -->
+        <!-- <record id='unit_packaging_view_form' model='ir.ui.view'>
+            <field name="name">unit.packaging.type.form</field>
+            <field name="model">packaging.unit</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Unit">
+                            <group col="2">
+                                <field name="name"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record> -->
+
+        
+          <!-- VAT -->
+        <!-- <record id='vat_packaging_view_form' model='ir.ui.view'>
+            <field name="name">vat.packaging.type.form</field>
+            <field name="model">packaging.vat</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="VAT">
+                            <group col="2">
+                                <field name="country_id"/>
+                            </group>
+                            <group>
+                            <label for="vat"/>
+                                <div class="o_row" style="max-width: 600px; max-height: 400px">
+                                    <field name="vat"/>
+                                    <span>%</span>
+                                </div>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record> -->
+        <!--<record model="ir.actions.act_window" id="regim_action">
+            <field name="name">Regim</field>
+            <field name="res_model">packagin.regime</field>
+            <field name="view_mode">form</field>
+            <field name="help" type="html">
+                    <p class="oe_view_nocontent_smiling_face"> Regim</p>
+            </field>
+        </record>
+        <record id='processes_view_form' model='ir.ui.view'>
+            <field name="name">processes.type.form</field>
+            <field name="model">packaging.processes</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                                <group string="processes">
+                                    <group col="2">
+                                        <field name="packagin_processes_id" widget="many2many_tags"/>
+                                        <field name="procedure_name"/>
+                                        <field name="procedure_n"/>
+                                        <field name="review"/>
+                                        <field name="date"/>
+                                        <field name="processes"/>
+                                        <field name="pcl_office"/>
+                                    </group>
+                                    <group>
+                                        <field name="department"/>    
+                                        <field name="instruction_name"/>
+                                        <field name="instruction_n"/>
+                                        <field name="date"/>
+                                        <field name="instruction"/>
+                                    </group>
+                                </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="processes_action">
+            <field name="name">processes</field>
+            <field name="res_model">packaging.processes</field>
+            <field name="view_mode">form</field>
+            <field name="help" type="html">
+                    <p class="oe_view_nocontent_smiling_face">Processes</p>
+            </field>
+        </record>
+
+        
+ -->
+
+</odoo>
+
+

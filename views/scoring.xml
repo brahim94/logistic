@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id='scoring_view_form' model='ir.ui.view'>
+            <field name="name">scoring.type.form</field>
+            <field name="model">scoring.type</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                                <group string="Before">
+                                    <field name="importance_before"/>
+                                    <field name="emergency_before"/>
+                                    <field name="complexity_before"/>
+                                    <field name="risk_before"/>
+                                    <field name="total_revenu_bf"/>
+                                    <field name="total_cost_bf"/>
+                                    <field name="profitability"/>
+                                    <field name="note_bef"/>
+                                </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="scoring_view_tree" model="ir.ui.view">
+            <field name="name">scoring.type.tree</field>
+            <field name="model">scoring.type</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="importance_before"/>
+                    <field name="emergency_before"/>
+                     <field name="complexity_before"/>
+                    <field name="risk_before"/>
+                    <field name="total_revenu_bf"/>
+                    <field name="total_cost_bf"/>
+                    <field name="profitability"/>      
+                </tree> 
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="scoring_action">
+            <field name="name">Scoring Before</field>
+            <field name="res_model">scoring.type</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                    <p class="oe_view_nocontent_smiling_face"> Scoring (Before)</p>
+            </field>
+        </record>
+
+    <menuitem name="Scoring"  
+    parent="menu_root" 
+    id="scoring_menu" 
+    sequence="19" 
+    groups ="base.group_user"/>
+
+    <menuitem name="Before"
+    id="scoring_before_menu"
+    parent="scoring_menu"
+    sequence="1"
+    action="scoring_action"
+    groups ="base.group_user"/>
+
+
+    <record id='scoring_after_view_form' model='ir.ui.view'>
+            <field name="name">scoring.type.after.form</field>
+            <field name="model">scoring.type.after</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>    
+                                <group string="After">
+                                    <field name="importance_after"/>
+                                    <field name="emergency_after"/>
+                                    <field name="complexity_after"/>
+                                    <field name="risk_after"/>
+                                    <field name="total_revenu_af"/>
+                                    <field name="total_cost_af"/>
+                                    <field name="profitability_aft"/>
+                                    <field name="note_af"/>
+                                </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+         <record id="scoring_view_after_tree" model="ir.ui.view">
+            <field name="name">scoring.type.after.tree</field>
+            <field name="model">scoring.type.after</field>
+            <field name="arch" type="xml">
+                <tree>
+                   <field name="importance_after"/>
+                    <field name="emergency_after"/>
+                    <field name="complexity_after"/>
+                    <field name="risk_after"/>
+                    <field name="total_revenu_af"/>
+                    <field name="total_cost_af"/>
+                    <field name="profitability_aft"/>
+                    <field name="note_af"/>        
+                </tree> 
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="scoring_after_action">
+            <field name="name">Scoring After</field>
+            <field name="res_model">scoring.type.after</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                    <p class="oe_view_nocontent_smiling_face"> Scoring (After)</p>
+            </field>
+        </record>
+
+    <menuitem name="After"
+    id="scoring_menu_after"
+    parent="scoring_menu"
+    sequence="12"
+    action="scoring_after_action"
+    groups="base.group_user"/>
+
+</odoo>

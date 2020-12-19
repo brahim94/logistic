@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="seq_section_code" model="ir.sequence">
+            <field name="name">Section Code</field>
+            <field name="code">section.code</field>
+            <field name="prefix">RUB</field>
+            <field name="padding" eval="4"/>
+        </record>
+
+        <record id="seq_as_transport" model="ir.sequence">
+            <field name="name">As transport</field>
+            <field name="code">transport.as</field>
+            <field name="prefix"></field>
+            <field name="padding" eval="6"/>
+        </record>
+        <record id="seq_lcl_transport" model="ir.sequence">
+            <field name="name">LCL transport</field>
+            <field name="code">transport.lcl</field>
+            <field name="prefix"></field>
+            <field name="padding" eval="6"/>
+        </record>
+        <record id="seq_ltl_transport" model="ir.sequence">
+            <field name="name">LTL transport</field>
+            <field name="code">transport.ltl</field>
+            <field name="prefix"></field>
+            <field name="padding" eval="6"/>
+        </record>
+
+        <record id="seq_res_partner" model="ir.sequence">
+            <field name="name">Res Partner</field>
+            <field name="code">res.partner</field>
+            <field name="prefix">BQ</field>
+            <field name="padding" eval="6"/>
+        </record>
+
+        <record id="seq_draft_order" model="ir.sequence">
+            <field name="name">Draft directory Order</field>
+            <field name="code">draft.order</field>
+            <field name="prefix">DR7</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        
+         <record id="seq_definitive_order" model="ir.sequence">
+            <field name="name">Definitive directory Order</field>
+            <field name="code">definitive.order</field>
+            <field name="prefix">PCF009</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+       
+
+
+ </data>
+</odoo>

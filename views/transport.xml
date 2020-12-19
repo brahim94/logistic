@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id='transport_mode_view_form' model='ir.ui.view'>
+            <field name="name">transport.mode.form</field>
+            <field name="model">transport.mode</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                                <group col="2">
+                                            <group>
+                                                <field name="directory_id"/>
+                                                <field name="transport_mode" invisible="1"/>
+                                             </group>
+                                            
+            
+                                        </group>
+
+                                    <notebook>
+                                        <page string="AS" attrs="{'invisible': [('transport_mode','!=','as')]}">
+
+                                        
+                                            <field name="mode_transport_as_line" nolabel="1">
+                                                <tree editable="bottom">
+                                                    <field name="pcl_item_n"/>
+                                                    <field name="packaging"/>
+                                                    <field name="customer_item_n"/>
+                                                    <field name="description"/>
+                                                    <field name="qty_as"/>
+                                                    <field name="l_as"/>
+                                                    <field name="w_as"/>
+                                                    <field name="h_as"/>
+                                                    <field name="gros_weight_as"/>
+                                                    <field name="volume_as_id"/>
+                                                    <field name="vsix"/>
+                                                    <field name="surface"/>
+                                                    <field name='s_total_v_six'/>
+                                                    <field name="s_total_gross_weight"/>
+                                                    <field name="s_total_volume"/>
+                                                    <field name="s_total_chargeable_weight"/>
+                                                </tree>
+                                            </field>
+                                        
+                                            <group class="oe_subtotal_footer oe_right" colspan="2" name="total_chargeable">
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="total_qty_as"/>
+                                                </div>
+                                                <field name="total_qty_as" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="total_surface"/>
+                                                </div>
+                                                <field name="total_surface" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                               
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="total_gross_weight"/>
+                                                </div>
+                                                <field name="total_gross_weight" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                               
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="total_volume_cbm"/>
+                                                </div>
+                                                <field name="total_volume_cbm" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                                
+
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="total_chargeable_weight"/>
+                                                </div>
+                                                <field name="total_chargeable_weight" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary"/>
+                                                
+                                                
+                                                
+                                                
+                                            </group>
+
+                                            
+                                        </page>
+                                        <page string="LTL" attrs="{'invisible': [('transport_mode','!=','ltl')]}">
+
+                                        
+                                            <field name="mode_transport_ltl_line" nolabel="1">
+                                                <tree editable="bottom">
+                                                    <field name="pcl_item_n_ltl"/>
+                                                    <field name="packaging_ltl"/>
+                                                    <field name="customer_item_n_ltl"/>
+                                                    <field name="description_ltl"/>
+                                                    <field name="qty_ltl"/>
+                                                    <field name="l_ltl"/>
+                                                    <field name="w_ltl"/>
+                                                    <field name="h_ltl"/>
+                                                    <field name="gros_weight_ltl"/>
+                                                    <field name="volume_ltl_id"/>
+                                                    <field name="vthree"/>
+                                                    <field name="surface_ltl"/>
+                                                    <field name='s_total_v_three'/>
+                                                    <field name="s_total_gross_weight_ltl"/>
+                                                    <field name="s_total_volume_ltl"/>
+                                                    <field name="s_total_chargeable_weight_ltl"/>
+                                                </tree>
+                                            </field>
+                                        
+                                            <group class="oe_subtotal_footer oe_right" colspan="2" name="total_chargeable_ltl">
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="total_qty_ltl"/>
+                                                </div>
+                                                <field name="total_qty_ltl" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                                
+                                                 <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="total_surface_ltl"/>
+                                                </div>
+                                                <field name="total_surface_ltl" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="total_gross_weight_ltl"/>
+                                                </div>
+                                                <field name="total_gross_weight_ltl" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="total_volume_cbm_ltl"/>
+                                                </div>
+                                                <field name="total_volume_cbm_ltl" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="total_chargeable_weight_ltl"/>
+                                                </div>
+                                                <field name="total_chargeable_weight_ltl" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary"/>
+                                               
+                                                
+                                                
+                                                
+                                                
+                                            </group>
+
+                                            
+                                        </page>
+                                         <page string="LCL" attrs="{'invisible': [('transport_mode','!=','lcl')]}">
+                                            <field name="mode_transport_lcl_line" nolabel="1">
+                                                <tree editable="bottom">
+                                                    <field name="pcl_item_n_lcl"/>
+                                                    <field name="packaging_lcl"/>
+                                                    <field name="customer_item_n_lcl"/>
+                                                    <field name="description_lcl"/>
+                                                    <field name="qty_lcl"/>
+                                                    <field name="l_lcl"/>
+                                                    <field name="w_lcl"/>
+                                                    <field name="h_lcl"/>
+                                                    <field name="gros_weight_lcl"/>
+                                                    <field name="volume_lcl_id"/>
+                                                    <field name="vone"/>
+                                                    <field name="surface_lcl"/>
+                                                    <field name='s_total_v_one'/>
+                                                    <field name="s_total_gross_weight_lcl"/>
+                                                    <field name="s_total_volume_lcl"/>
+                                                    <field name="s_total_chargeable_weight_lcl"/>
+                                                </tree>
+                                            </field>
+                                            <group class="oe_subtotal_footer oe_right" colspan="2" name="total_chargeable_lcl">
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                <label for="total_qty_lcl"/>
+                                                </div>
+                                                <field name="total_qty_lcl" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="total_surface_lcl"/>
+                                                </div>
+                                                <field name="total_surface_lcl" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="total_gross_weight_lcl"/>
+                                                </div>
+                                                <field name="total_gross_weight_lcl" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                                
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="total_volume_cbm_lcl"/>
+                                                </div>
+                                                <field name="total_volume_cbm_lcl" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="total_chargeable_weight_lcl"/>
+                                                </div>
+                                                <field name="total_chargeable_weight_lcl" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary"/>
+                                                
+                                                
+                                                
+                                                
+                                            </group>
+                        
+                                            </page>
+                                            <page string="FCL" attrs="{'invisible': [('transport_mode','!=','fcl')]}">
+                                            
+                                                <group  col="2">
+                                                    
+                                                        <group>
+                                                            <label for="tweenty_active" />
+                                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                                <field name="tweenty_active" />
+                                                                <field name="tweenty" attrs="{'invisible': [('tweenty_active','!=',True)]}"/>
+                                                            </div>
+                                                            
+                                                            <label for="fourty_active" />
+                                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                                <field name="fourty_active" />
+                                                                <field name="fourty" attrs="{'invisible': [('fourty_active','!=',True)]}"/>
+                                                            </div>
+                                                            
+                                                            <label for="fourty_hc_active" />
+                                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                                <field name="fourty_hc_active" />
+                                                                <field name="fourty_hc" attrs="{'invisible': [('fourty_hc_active','!=',True)]}"/>
+                                                            </div>
+                                                            
+                                                            <label for="fourty_five_active" />
+                                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                                <field name="fourty_five_active" />
+                                                                <field name="fourty_five" attrs="{'invisible': [('fourty_five_active','!=',True)]}"/>
+                                                            </div>
+                                                            
+                                                        </group>
+                                                        <group>
+                                                            <label for="fourty_pw_active" />
+                                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                                <field name="fourty_pw_active" />
+                                                                <field name="fourty_pw" attrs="{'invisible': [('fourty_pw_active','!=',True)]}"/>
+                                                            </div>
+                                                            
+                                                            <label for="fourty_hc_pw_active" />
+                                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                                <field name="fourty_hc_pw_active" />
+                                                                <field name="fourty_hc_pw" attrs="{'invisible': [('fourty_hc_pw_active','!=',True)]}"/>
+                                                            </div>
+                                                        </group>
+                                                        <group>
+                                                            <label for="tweenty_ot_active" />
+                                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                                <field name="tweenty_ot_active" />
+                                                                <field name="tweenty_ot" attrs="{'invisible': [('tweenty_ot_active','!=',True)]}"/>
+                                                            </div>
+                                                            
+                                                            <label for="fourty_ot_active" />
+                                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                                <field name="fourty_ot_active" />
+                                                                <field name="fourty_ot" attrs="{'invisible': [('fourty_ot_active','!=',True)]}"/>
+                                                            </div>
+                                                        
+                                                        </group>
+                                                        <group>
+                                                            <label for="tweenty_ot_oog_active" />
+                                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                                <field name="tweenty_ot_oog_active" />
+                                                                <field name="tweenty_ot_oog" attrs="{'invisible': [('tweenty_ot_oog_active','!=',True)]}"/>
+                                                            </div>
+                                                            
+                                                            <label for="fourty_ot_oog_active" />
+                                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                                <field name="fourty_ot_oog_active" />
+                                                                <field name="fourty_ot_oog" attrs="{'invisible': [('fourty_ot_oog_active','!=',True)]}"/>
+                                                            </div>
+                                                        
+                                                        </group>
+                                                        <group>
+                                                        
+                                                        <label for="tweenty_fr_active" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="tweenty_fr_active" />
+                                                            <field name="tweenty_fr" attrs="{'invisible': [('tweenty_fr_active','!=',True)]}"/>
+                                                        </div>
+                                                        
+                                                        <label for="fourty_fr_active" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="fourty_fr_active" />
+                                                            <field name="fourty_fr" attrs="{'invisible': [('fourty_fr_active','!=',True)]}"/>
+                                                        </div>
+                                                        
+                                                        </group>
+                                                        <group>
+                                                        
+                                                        <label for="tweenty_fr_og_active" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="tweenty_fr_og_active" />
+                                                            <field name="tweenty_fr_og" attrs="{'invisible': [('tweenty_fr_og_active','!=',True)]}"/>
+                                                        </div>
+                                                        
+                                                        <label for="fourty_fr_oog_active" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="fourty_fr_oog_active" />
+                                                            <field name="fourty_fr_oog" attrs="{'invisible': [('fourty_fr_oog_active','!=',True)]}"/>
+                                                        </div>
+                                                        
+                                                        </group>                                                     
+                                                </group>
+                                                <group>
+                                                        <group>
+                                                        
+                                                        <label for="tweenty_soc_active" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="tweenty_soc_active" />
+                                                            <field name="tweenty_soc" attrs="{'invisible': [('tweenty_soc_active','!=',True)]}"/>
+                                                        </div>
+                                                        
+                                                        <label for="fourty_soc_active" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="fourty_soc_active" />
+                                                            <field name="fourty_soc" attrs="{'invisible': [('fourty_soc_active','!=',True)]}"/>
+                                                        </div>
+                                                        
+                                                        <label for="fourty_hc_soc_active" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="fourty_hc_soc_active" />
+                                                            <field name="fourty_hc_soc" attrs="{'invisible': [('fourty_hc_soc_active','!=',True)]}"/>
+                                                        </div>
+                                                        
+                                                        <label for="fourty_five_soc_active" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="fourty_five_soc_active" />
+                                                            <field name="fourty_five_soc" attrs="{'invisible': [('fourty_five_soc_active','!=',True)]}"/>
+                                                        </div>
+                                                        
+                                                        </group>            
+                                                        <group>
+                                                        
+                                                        <label for="fourty_pw_soc_active" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="fourty_pw_soc_active" />
+                                                            <field name="fourty_pw_soc" attrs="{'invisible': [('fourty_pw_soc_active','!=',True)]}"/>
+                                                        </div>
+                                                        
+                                                        <label for="fourty_hc_pw_hoc_active" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="fourty_hc_pw_hoc_active" />
+                                                            <field name="fourty_hc_pw_hoc" attrs="{'invisible': [('fourty_hc_pw_hoc_active','!=',True)]}"/>
+                                                        </div>
+
+                                                        </group>
+                                                        <group>
+                                                        <label for="tweenty_ot_soc_active" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="tweenty_ot_soc_active" />
+                                                            <field name="tweenty_ot_soc" attrs="{'invisible': [('tweenty_ot_soc_active','!=',True)]}"/>
+                                                        </div>
+                                                        
+                                                        <label for="fourty_ot_soc_active" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="fourty_ot_soc_active" />
+                                                            <field name="fourty_ot_soc" attrs="{'invisible': [('fourty_ot_soc_active','!=',True)]}"/>
+                                                        </div>
+                                                        
+                                                        </group>
+                                                        <group>
+                                                        <label for="tweenty_ot_soc_oog_active" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="tweenty_ot_soc_oog_active" />
+                                                            <field name="tweenty_ot_soc_oog" attrs="{'invisible': [('tweenty_ot_soc_oog_active','!=',True)]}"/>
+                                                        </div>
+                                                        
+                                                        <label for="fourty_ot_soc_oog_active" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="fourty_ot_soc_oog_active" />
+                                                            <field name="fourty_ot_soc_oog" attrs="{'invisible': [('fourty_ot_soc_oog_active','!=',True)]}"/>
+                                                        </div>
+                                                        
+                                                        </group>
+                                                        <group>
+                                                        <label for="tweenty_fr_soc_active" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="tweenty_fr_soc_active" />
+                                                            <field name="tweenty_fr_soc" attrs="{'invisible': [('tweenty_fr_soc_active','!=',True)]}"/>
+                                                        </div>
+                                                        
+                                                        <label for="fourty_fr_soc_active" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="fourty_fr_soc_active" />
+                                                            <field name="fourty_fr_soc" attrs="{'invisible': [('fourty_fr_soc_active','!=',True)]}"/>
+                                                        </div>
+                                                        
+                                                        </group>
+                                                        <group>
+                                                        <label for="tweenty_fr_soc_oog_active" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="tweenty_fr_soc_oog_active" />
+                                                            <field name="tweenty_fr_soc_oog" attrs="{'invisible': [('tweenty_fr_soc_oog_active','!=',True)]}"/>
+                                                        </div>
+                                                        
+                                                        <label for="fourty_fr_soc_oog_active" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="fourty_fr_soc_oog_active" />
+                                                            <field name="fourty_fr_soc_oog" attrs="{'invisible': [('fourty_fr_soc_oog_active','!=',True)]}"/>
+                                                        </div>
+                                                        </group> 
+                                                </group>
+                                         
+                                            </page>
+                                            <page string="Reefer" attrs="{'invisible': [('transport_mode','!=','reefer')]}">
+                                                        
+                                                        <group  col="2">
+                                                        <group>
+                                                        <label for="tweenty_reefer" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="tweenty_reefer" />
+                                                            <field name="tweenty_reefer_qty" attrs="{'invisible': [('tweenty_reefer','!=',True)]}"/>
+                                                            <field name="tweenty_reefer_selec" attrs="{'invisible': [('tweenty_reefer','!=',True)]}"/>
+                                                            <field name="tweenty_reefer_qty" attrs="{'invisible': [('tweenty_reefer','!=',True)]}"/><span attrs="{'invisible': [('tweenty_reefer','!=',True)]}">C°</span>
+                                                        </div>
+                                                        
+                                                        <label for="fourty_reefer"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                         
+                                                            <field name="fourty_reefer" />
+                                                            <field name="fourty_reefer_qty" attrs="{'invisible': [('fourty_reefer','!=',True)]}" />
+                                                            <field name="fourty_reefer_selec" attrs="{'invisible': [('fourty_reefer','!=',True)]}"/>
+                                                            <field name="fourty_reefer_temperature" attrs="{'invisible': [('fourty_reefer','!=',True)]}"/><span attrs="{'invisible': [('fourty_reefer','!=',True)]}">C°</span>
+                                                        </div>
+
+                                                        <label for="fourty_five_reefer"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">    
+                                                            <field name="fourty_five_reefer" />
+                                                            <field name="fourty_five_reefer_qty" attrs="{'invisible': [('fourty_five_reefer','!=',True)]}"/>
+                                                            <field name="fourty_five_reefer_selec" attrs="{'invisible': [('fourty_five_reefer','!=',True)]}"/>
+                                                            <field name="fourty_five_reefer_temp"  attrs="{'invisible': [('fourty_five_reefer','!=',True)]}"/><span attrs="{'invisible': [('fourty_five_reefer','!=',True)]}">C°</span>
+                                                        </div>
+
+                                                        
+                                                        </group>
+                                                        <group>
+                                                        <label for="fourty_hc_reefer"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                            
+                                                            <field name="fourty_hc_reefer" />
+                                                            <field name="fourty_hc_reefer_qty" attrs="{'invisible': [('fourty_hc_reefer','!=',True)]}"/>
+                                                            <field name="fourty_hc_reefer_selec" attrs="{'invisible': [('fourty_hc_reefer','!=',True)]}"/>
+                                                            <field name="fourty_hc_reefer_temp"  attrs="{'invisible': [('fourty_hc_reefer','!=',True)]}"/><span attrs="{'invisible': [('fourty_hc_reefer','!=',True)]}">C°</span>
+                                                        </div>
+
+                                                        <label for="fourty_five_reefer_hc"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">    
+                                                            <field name="fourty_five_reefer_hc" />
+                                                            <field name="fourty_five_reefer_hc_qty" attrs="{'invisible': [('fourty_five_reefer_hc','!=',True)]}"/>
+                                                            <field name="fourty_five_reefer_hc_selec"  attrs="{'invisible': [('fourty_five_reefer_hc','!=',True)]}"/>
+                                                            <field name="fourty_five_reefer_hc_temp" attrs="{'invisible': [('fourty_five_reefer_hc','!=',True)]}"/><span attrs="{'invisible': [('fourty_five_reefer_hc','!=',True)]}">C°</span>
+                                                        </div> 
+
+                                                        
+                                                        </group>
+                                                        </group>
+                                                
+                                                <group col="2">
+                                                <group>
+                                                <label for="tweenty_reefer_soc" />
+                                                <div  class="o_row" style="max-width: 300px; max-height: 200px">            
+                                                            <field name="tweenty_reefer_soc"/>
+                                                            <field name="tweenty_reefer_soc_qty"  attrs="{'invisible': [('tweenty_reefer_soc','!=',True)]}"/>
+                                                            <field name="tweenty_reefer_soc_selec" attrs="{'invisible': [('tweenty_reefer_soc','!=',True)]}"/>
+                                                            <field name="tweenty_reefer_soc_temp" attrs="{'invisible': [('tweenty_reefer_soc','!=',True)]}"/><span attrs="{'invisible': [('tweenty_reefer_soc','!=',True)]}">C°</span>
+                                                        </div>
+                                                
+                                                <label for="fourty_reefer_soc"/>
+                                                <div  class="o_row" style="max-width: 300px; max-height: 200px">            
+                                                            <field name="fourty_reefer_soc" />
+                                                            <field name="fourty_reefer_soc_qty" attrs="{'invisible': [('fourty_reefer_soc','!=',True)]}"/>
+                                                            <field name="fourty_reefer_soc_selec"  attrs="{'invisible': [('fourty_reefer_soc','!=',True)]}"/>
+                                                            <field name="fourty_reefer_soc_temp"  attrs="{'invisible': [('fourty_reefer_soc','!=',True)]}"/><span  attrs="{'invisible': [('fourty_reefer_soc','!=',True)]}">C°</span>
+                                                        </div>
+
+                                                <label for="fourty_five_reefer_soc"/>
+                                                <div  class="o_row" style="max-width: 300px; max-height: 200px">            
+                                                             <field name="fourty_five_reefer_soc" />
+                                                            <field name="fourty_five_reefer_soc_qty"  attrs="{'invisible': [('fourty_five_reefer_soc','!=',True)]}"/>
+                                                            <field name="fourty_five_reefer_soc_selec" attrs="{'invisible': [('fourty_five_reefer_soc','!=',True)]}"/>
+                                                            <field name="fourty_five_reefer_soc_temp" attrs="{'invisible': [('fourty_five_reefer_soc','!=',True)]}"/><span attrs="{'invisible': [('fourty_five_reefer_soc','!=',True)]}">C°</span>
+                                                        </div>
+
+                                                
+                                                
+                                                </group>
+                                                <group>
+                                                <label for="fourty_reefer_hc_soc"/>
+                                                <div  class="o_row" style="max-width: 300px; max-height: 200px">
+                                                            <field name="fourty_reefer_hc_soc" />
+                                                            <field name="fourty_reefer_hc_soc_qty" attrs="{'invisible': [('fourty_reefer_hc_soc','!=',True)]}"/>
+                                                            <field name="fourty_reefer_hc_soc_selec" attrs="{'invisible': [('fourty_reefer_hc_soc','!=',True)]}"/>
+                                                            <field name="fourty_reefer_hc_soc_temp" attrs="{'invisible': [('fourty_reefer_hc_soc','!=',True)]}"/><span attrs="{'invisible': [('fourty_reefer_hc_soc','!=',True)]}">C°</span>    
+                                                        </div>
+                                                
+                                                <label for="fourty_five_reefer_hc_soc"/>
+                                                <div  class="o_row" style="max-width: 300px; max-height: 200px">           
+                                                            <field name="fourty_five_reefer_hc_soc" />
+                                                            <field name="fourty_five_reefer_hc_soc_qty" attrs="{'invisible': [('fourty_five_reefer_hc_soc','!=',True)]}"/>
+                                                            <field name="fourty_five_reefer_hc_soc_selec" attrs="{'invisible': [('fourty_five_reefer_hc_soc','!=',True)]}"/>
+                                                            <field name="fourty_five_reefer_hc_soc_temp" attrs="{'invisible': [('fourty_five_reefer_hc_soc','!=',True)]}"/><span attrs="{'invisible': [('fourty_five_reefer_hc_soc','!=',True)]}">C°</span>    
+                                                        </div>
+                                                
+                                                
+                                                </group>
+                                                </group>
+                                            </page>
+                                            <page string="FTL" attrs="{'invisible': [('transport_mode','!=','ftl')]}">
+                                            <group>
+                                            <group>
+                                                <label for="box"/>
+                                                <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                            <field name="box" />
+                                                            <field name="box_qty" attrs="{'invisible': [('box','!=',True)]}"/>
+                                                </div>
+
+                                                <label for="side_wall"/>
+                                                <div  class="o_row" style="max-width: 300px; max-height: 200px">            
+                                                            <field name="side_wall" />
+                                                            <field name="sid_wall_qty" attrs="{'invisible': [('side_wall','!=',True)]}"/>
+                                                </div>
+
+                                                <label for="curtain"/>
+                                                <div  class="o_row " style="max-width: 300px; max-height: 200px">            
+                                                            <field name="curtain" />
+                                                            <field name="curtain_qty" attrs="{'invisible': [('curtain','!=',True)]}"/>
+                                                </div>
+                                                </group>
+                                                <group>
+                                                <label for="flatbed"/>
+                                                <div  class="o_row" style="max-width: 300px; max-height: 200px">
+                                                            
+                                                            <field name="flatbed" />
+                                                            <field name="flatbed_qty" attrs="{'invisible': [('flatbed','!=',True)]}"/>
+                                                </div>
+                                                <label for="reefer"/>
+                                                <div  class="o_row" style="max-width: 300px; max-height: 200px">
+                                                            
+                                                            <field name="reefer" />
+                                                            <field name="reefer_qty" attrs="{'invisible': [('reefer','!=',True)]}"/>
+                                                </div>
+                                                <label for="oog_activ"/>
+                                                <div  class="o_row" style="max-width: 300px; max-height: 200px">
+                                                <field name="oog_activ"/>
+                                                </div>      
+                                                
+                                                            <label for="oog" attrs="{'invisible': [('oog_activ','!=',True)]}"/>
+                                                             <div class="o_row" style="max-width: 300px; max-height: 200px">
+                                                                <!-- <field name="oog" attrs="{'invisible': [('oog_activ','!=',True)]}"/> -->
+                                                                <field name="oog_qty" attrs="{'invisible': [('oog_activ','!=',True)]}"/>
+                                                            </div>
+                                                            
+                                                            <label for="top_leng" attrs="{'invisible': [('oog_activ','!=',True)]}"/>
+                                                            <div class="o_row" style="max-width: 300px; max-height: 200px">
+                                                            <field name="top_leng" attrs="{'invisible': [('oog_activ','!=',True)]}"/>
+                                                            </div>
+                                                            
+                                                            <label for="top_width" attrs="{'invisible': [('oog_activ','!=',True)]}"/>
+                                                            <div class="o_row" style="max-width: 300px; max-height: 200px">
+                                                            <field name="top_width" attrs="{'invisible': [('oog_activ','!=',True)]}"/>
+                                                            </div>
+                                                            
+                                                            <label for="top_heigh" attrs="{'invisible': [('oog_activ','!=',True)]}"/>
+                                                            <div class="o_row" style="max-width: 300px; max-height: 200px">
+                                                            <field name="top_heigh" attrs="{'invisible': [('oog_activ','!=',True)]}"/>
+                                                            </div>
+
+                                                            <label for="top_g_wei" attrs="{'invisible': [('oog_activ','!=',True)]}"/>
+                                                            <div class="o_row" style="max-width: 300px; max-height: 200px">                                                            
+                                                            <field name="top_g_wei" attrs="{'invisible': [('oog_activ','!=',True)]}"/>
+                                                            </div>
+                 
+                                                </group>
+                                            </group>
+                                            </page>
+                                            <page string="BB(LOLO)" attrs="{'invisible': [('transport_mode','!=','bb_lolo')]}">
+                                            <group col="2">
+                                                    <group>
+                                                        <field name="treus"/>
+                                                        <field name="top_leng_lolo"/>
+                                                        <field name="top_width_lolo"/>
+                                                                            
+                                                    </group>
+                                                    <group >
+                                                        <field name="top_heigh_lolo"/>
+                                                        <field name="top_g_wei_lolo"/>
+                                                        
+                                                    </group>
+                                            </group>
+                                            </page>
+                                            <page string="BB(RORO)" attrs="{'invisible': [('transport_mode','!=','bb_roro')]}"> 
+                                            <group col="2">
+                                                    <group>
+                                                        <field name="mafi"/>
+                                                        <field name="treus_mafi"/>
+                                                        <field name="top_leng_roro"/>
+                                                                            
+                                                    </group>
+                                                    <group >
+                                                        <field name="top_width_roro"/>
+                                                        <field name="top_heigh_roro"/>
+                                                        <field name="top_g_wei_roror"/>
+                                                    </group>
+                                            </group>
+                                            </page>
+                                            <page string="Chartered vessel" attrs="{'invisible': [('transport_mode','!=','vessel')]}">
+                                            <group col="2">
+                                                    <group>
+                                                        <field name="treus_charted"/>
+                                                        <field name="top_leng_charted"/>
+                                                        <field name="top_width_charted"/>
+                                                                            
+                                                    </group>
+                                                    <group >
+                                                        <field name="top_heigh_charted"/>
+                                                        <field name="top_g_wei_charted"/>
+                                                    </group>
+                                            </group>
+                                            </page>
+                                            <page string="Chartered Aircraft" attrs="{'invisible': [('transport_mode','!=','aircraft')]}">
+                                            <group col="2">
+                                                    <group>
+                                                        <field name="treus_aircraft"/>
+                                                        <field name="top_leng_aircraft"/>
+                                                        <field name="top_width_aircraft"/>
+                                                                            
+                                                    </group>
+                                                    <group >
+                                                        <field name="top_heigh_aircraft"/>
+                                                        <field name="top_g_wei_aircraft"/>
+                                                    </group>
+                                            </group>
+                                            </page>
+                                    </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="transport_mode_view_tree" model="ir.ui.view">
+            <field name="name">transport.mode.tree</field>
+            <field name="model">transport.mode</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="directory_id"/>
+                    <field name="transport_mode" invisible="1" readonly="1"/>
+                </tree> 
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="transport_mode_action">
+            <field name="name">Mode of Transport</field>
+            <field name="res_model">transport.mode</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                    <p class="oe_view_nocontent_smiling_face">Mode of transport</p>
+            </field>
+        </record>
+
+    <menuitem name="Mode of transport"  
+    parent="menu_root" 
+    id="mode_transport_menu" 
+    sequence="190" 
+    action ="transport_mode_action"
+    groups ="base.group_user"/>
+
+    </odoo>

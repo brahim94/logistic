@@ -1,0 +1,1549 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id='open_file_view_form' model='ir.ui.view'>
+            <field name="name">open.file.form</field>
+            <field name="model">directory.type</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class='oe_title'>
+                            <h1>
+                                <field name="name" readonly="1"  attrs="{'invisible': [('type_file','!=','draft')]}"/>
+                                <field name="name_id" readonly="1"  attrs="{'invisible': [('type_file','!=','definitive')]}"/>
+                            </h1>
+                        </div>
+                        <group col="2">
+                                <group>
+                                    <field name="type_file" />
+                                   <field name="direction"/>
+                                    <field name="company_detail"/>
+                                    <field name="at_glance"/>
+                                </group>
+                                <group>
+                                 <field name="how"/>
+                                    <!-- <field name="blank_form" attrs="{'invisible': [('how','!=','blank_form')]}"/> -->
+                                    <field name="pcf_number" attrs="{'invisible': [('how','!=','other_file')]}"/>
+                                    <field name="m_s" />
+                                    <field name="pcf_number" string="PCF N° master ?" attrs="{'invisible': [('m_s','!=','subfile')]}"/>
+                                    <field name="link"/>
+                                    <field name="transport_mode"/>
+                                 
+                                 
+                                    <field name="pcf_number" string="PCF N° link ?" attrs="{'invisible': [('link','!=','yes')]}"/>
+                                    
+                                    <!-- <field name="pcf_n" attrs="{'invisible': ['|','&amp;',('m_s','!=','subfile'),('link','!=','yes')]}"/> -->
+                                </group>
+                                <group string="References">
+                                <group>
+                                    <field name="customer_ref"/>
+                                    <field name="purchase_order"/>
+                                    <field name="sales_order"/>
+                                    <field name="shipment_reference"/>
+                                    <field name="vendor_reference"/>
+                                    <field name="consign_reference"/>
+                                    <field name="ticket_n"/>
+                                    <field name="rma_n"/>                                   
+                                </group>
+                                <group>
+                                    <field name="beyer_ref"/>
+                                    <field name="ref_two"/>
+                                    <field name="ref_thre"/>
+                                    <field name="ref_four"/>
+                                    <field name="ref_five"/>
+                                    <field name="ref_six"/>
+                                </group>
+                                </group>
+                                    <group>
+                                     <field name="year_frequency"/>
+                                    </group>
+                                </group>
+                        <notebook>
+                            <!-- <page name="public" string="Principal">
+                            <group col="2">
+                                <group>
+                                    <field name="name_principal"/>
+                                    <field name="rc"/>
+                                    <field name="ice"/>
+                                     </group>
+                                <group>
+                                    <field name="pic"/>
+                                    <field name="pic_detail"/>
+                                    <field name="sector_id"/>
+                                    </group>
+                            </group>                           
+                            </page> -->
+                             <!-- <page name="public" string="References">
+                                    <field name="reference_id" >
+                                    <tree editable="bottom">
+                                        <field name="name" invisibl="1"/>
+                                        <field name="customer_ref"/>
+                                        <field name="purchase_order"/>
+                                        <field name="sales_order"/>
+                                        <field name="shipment_reference"/>
+                                        <field name="vendor_reference"/>
+                                        <field name="consign_reference"/>
+                                        <field name="ticket_n"/>
+                                        <field name="rma_n"/>
+                                        <field name="beyer_ref"/>
+                                        <field name="ref_two"/>
+                                        <field name="ref_thre"/>
+                                        <field name="ref_four"/>
+                                        <field name="ref_five"/>
+                                        <field name="ref_six"/>
+                                    </tree>
+                                </field>
+                            </page> -->
+                             <!-- <page name="public" string="References">
+                             <group col="2">
+                                <group>
+                                     <field name="year_frequency"/>
+                                </group>
+                            </group>
+                            </page> -->
+                    </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="open_file_view_tree" model="ir.ui.view">
+            <field name="name">open.file.tree</field>
+            <field name="model">directory.type</field>
+            <field name="arch" type="xml">
+                <tree decoration-danger="type_file == 'draft'" >
+                    <field name="name"/>
+                    <field name="name_id"/>
+                    <field name="type_file"/>                
+                    <field name="m_s" />
+                    <field name="link"/>
+                    <field name="name_principal"/>
+                    <field name="pic"/>
+                    <field name="pic_detail"/>
+                    <field name="sector_id"/>
+                    <field name="year_frequency"/>
+                    
+                </tree> 
+            </field>
+        </record>
+         <record model="ir.ui.view" id="view_open_file_search">
+            <field name="name">open.file.search</field>
+            <field name="model">directory.type</field>
+            <field name="arch" type="xml">
+                <search string="type_file search">
+                    <field name="name" filter_domain="['|',('name', 'ilike', self),('type_file', 'ilike', self)]" />
+                    <field name="name_id" string="definitives files"
+                                filter_domain="[('name_id','ilike',self)]"/>
+                    <field name="customer_ref" string="References"
+                                filter_domain="['|',('customer_ref','ilike',self),('purchase_order', 'ilike', self)]"/>
+                </search>
+                <!-- <search string="name_id search">
+                    <field name="name_id" filter_domain="['|',('name', 'ilike', self),('name_id', 'ilike', self)]"/>
+                </search> -->
+                    <!-- <field name="type_file"/> 
+                    <field name="customer_ref"/>
+                    <field name="purchase_order"/>
+                    <field name="sales_order"/>
+                    <field name="shipment_reference"/>
+                    <field name="vendor_reference"/> 
+                </search> -->
+            </field>
+        </record>
+
+
+         <record model="ir.actions.act_window" id="open_file_action">
+            <field name="name">Open File</field>
+            <field name="res_model">directory.type</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                    <p class="oe_view_nocontent_smiling_face"> Tech-Logistic </p>
+            </field>
+        </record>
+
+        <menuitem name="Tech-Logistic" 
+    id="menu_root" 
+    sequence="115" 
+    groups="base.group_user" 
+    web_icon="tech_logistic,static/description/icon.png"/>
+
+    <menuitem name="Open File"  
+    parent="menu_root" 
+    id="tech_logistic_menu" 
+    sequence="1" 
+    action="open_file_action"
+    groups ="base.group_user"/>
+
+
+        <record id="view_partner_inherit" model="ir.ui.view">
+                        <field name="name">res.partner.inherit</field>
+                        <field name="model">res.partner</field>
+                        <field name="inherit_id" ref="base.view_partner_form"/>
+                        <field name="arch" type="xml">      
+                            <xpath expr="//field[@name='vat']" position="before">
+                                    <field name="ref" string="Account Number"/>
+                                    <field name="type_s"/>
+                                    <field name="activity_description"/>
+                                    <label for="capital"/>
+                                    <div class="o_row" style="max-width: 200px; max-height: 100px">
+                                                        <field name="capital"/>
+                                                        <field name="currency_unit" />
+                                                    </div> 
+                                    <field name="date_creation"/>
+                                    <field name="group_id"/>
+                                    <field name="network_id"/>
+                                    <field name="form"/>
+                                    <field name="rc"/>
+                                    <field name="ice"/>
+                                    <field name="legal_number"/>
+                                    <field name="company_size"/>
+                                     <field name="location"/>
+                                    
+                                                    <!-- <field name="date_creation"/>
+                                                    <field name="form"/>
+                                                     -->
+                                                   
+                            </xpath>
+                            <!-- <xpath expr="//field[@name='ref']" position="replace">
+                                <field name="ref" string="Account number"/>
+                            </xpath> -->
+                            <xpath expr="//field[@name='lang']" position="attributes">
+                                 <attribute name="attrs">{'invisible':1}</attribute>
+                            </xpath>
+                            <xpath expr="//field[@name='function']" position="attributes">
+                                 <attribute name="attrs">{'invisible':1}</attribute>
+                            </xpath>
+                            <!-- <xpath expr="//field[@name='title']" position="attributes">
+                                 <attribute name="attrs">{'invisible':1}</attribute>
+                            </xpath> -->
+                             <xpath expr="//field[@name='category_id']" position="before">
+                                <field name="language_type_ids"  widget="many2many_tags"/>
+                                <field name="commercial"/>
+                                <field name="csd"/>
+                                <field name="sector_type_ids" widget="many2many_tags"/>
+                                 <!-- <field name="language_type_ids"  widget="selection"/> -->
+
+                            </xpath>
+                            <xpath expr="//notebook[1]//page[1]//field[@name='child_ids']/form/sheet/group/group/field[@name='name']" position="after">
+                                 <!-- <field name="commercial" attrs="{'invisible': [('type','!=','contact')]}"/>
+                                <field name="csd"/> -->
+                                <!-- <attribute name="attrs">{'invisible':1}</attribute> -->
+                                <field name="sex"/>
+                                <field name="visit_card"/>
+                                                <field name="depar_tment_id"/>
+                                                <field name="title"/>
+
+                            </xpath>
+                            <xpath expr="//notebook[1]//page[1]//field[@name='child_ids']/form/sheet/group/group/field[@name='mobile']" position="after">
+                                <label for="direct_contact"/>
+                                                    <div class="o_row" style="max-width: 200px; max-height: 100px;">
+                                                        <field name="direct_prefix" placeholder="(+212)"/>
+                                                        <field name="direct_contact" />
+                                                    </div> 
+                                                <label for="fixe_contact"/>
+                                                    <div class="o_row" style="max-width: 200px; max-height: 100px;">
+                                                        <field name="fixe_prefix" placeholder="(0520)"/>
+                                                        <field name="fixe_contact" />
+                                                    </div>
+                                                <label for="extention"/>
+                                                    <div class="o_row" style="max-width: 200px; max-height: 100px;">
+                                                        <field name="extention" placeholder="(+212)"/>
+                                                        <field name="extention_suf" />
+                                                    </div>
+                                                <label for="phone_four" string="Fax"/>
+                                                        <div class="o_row" style="max-width: 200px; max-height: 100px;">
+                                                            <field name="pref_phone_four" placeholder="+ 212 (0)5"/>
+                                                            <field name="phone_four" />
+                                                        </div>
+                                 
+                            </xpath>
+                            <xpath expr="//notebook[1]//page[1]//field[@name='child_ids']/form/sheet/group/group/field[@name='function']" position="attributes">
+                                 <attribute name="attrs">{'invisible':1}</attribute>
+                            </xpath>
+                            <xpath expr="//notebook[1]//page[1]" position="inside">
+                                        <group col="2">
+                                            <group string="Other Adresse Informations">
+                                                    <field name="number"/>
+                                                    <field name="adress_compleme"/>
+                                                    <label for="phone_one"/>
+                                                            <div class="o_row" style="max-width: 200px; max-height: 60px;">
+                                                                <field name="pref_phone_one" placeholder="(+212)"/>
+                                                                <field name="phone_one" />
+                                                            </div>
+
+                                                        <label for="phone_two"/>
+                                                        <div class="o_row" style="max-width: 200px; max-height: 100px;">
+                                                            <field name="pref_phone_two" placeholder="(+212)"/>
+                                                            <field name="phone_two" />
+                                                        </div>
+
+                                                        <label for="phone_three"/>
+                                                        <div class="o_row" style="max-width: 200px; max-height: 100px;">
+                                                            <field name="pref_phone_three" placeholder="(+212)"/>
+                                                            <field name="phone_three" />
+                                                        </div>
+
+                                                        <label for="phone_four" string="Fax"/>
+                                                        <div class="o_row" style="max-width: 200px; max-height: 100px;">
+                                                            <field name="pref_phone_four" placeholder="+ 212 (0)5"/>
+                                                            <field name="phone_four" />
+                                                        </div>
+                                                        <label for="fixe"/>
+                                                        <div class="o_row" style="max-width: 200px; max-height: 100px;">
+                                                            <field name="fixe_prefix_ad" placeholder="(0520)"/>
+                                                            <field name="fixe" />
+                                                        </div> 
+                                                    <field name="delivrey_add"/>
+                                                    <field name="invoicing_add"/>
+                                                    <field name="other_add"/>
+                                                </group>
+                                                <group string="Other Contact Information">   
+                                                <field name="sex"/>
+                                                <field name="visit_card"/>
+                                                <label for="mobile_contact"/>
+                                                    <div class="o_row" style="max-width: 200px; max-height: 100px;">
+                                                        <field name="mobile_prefix" placeholder="(+212)"/>
+                                                        <field name="mobile_contact" />
+                                                    </div> 
+                                                <label for="direct_contact"/>
+                                                    <div class="o_row" style="max-width: 200px; max-height: 100px;">
+                                                        <field name="direct_prefix" placeholder="(+212)"/>
+                                                        <field name="direct_contact" />
+                                                    </div> 
+                                                <label for="fixe_contact"/>
+                                                    <div class="o_row" style="max-width: 200px; max-height: 100px;">
+                                                        <field name="fixe_prefix" placeholder="(0520)"/>
+                                                        <field name="fixe_contact" />
+                                                    </div>
+                                                <label for="extention"/>
+                                                    <div class="o_row" style="max-width: 200px; max-height: 100px;">
+                                                        <field name="extention" placeholder="(+212)"/>
+                                                        <field name="extention_suf" />
+                                                    </div>
+                                                <field name="title"/>
+                                                <field name="internal_note"/>
+                                              </group>
+                                              </group>
+                                           
+                            </xpath>
+                            <xpath expr="//notebook[1]//page[1]" position="before">
+                                    <!--<page string="Informations">
+                                        <group col="2">
+                                            <group>
+                                                
+                                                <field name="currency_unit"/>                
+                                                <field name="group_id"/>
+                                                <field name="network_id"/>
+                                                <field name="date_creation"/>
+                                                <field name="form"/>
+                                        -->        
+                                                <!-- <field name="sector_type_ids"  widget="selection"/> -->
+                                           <!-- </group>
+                                            <group> -->
+                                                 
+                                               
+                                               
+                                                <!-- <field name="directory_id"/> 
+                                                <field name="account_number_id" domain="[('directory_id', '=', directory_id)]"/> -->
+                                                                                   
+                                               <!--
+                                                <field name="type_s"/>
+                                                <field name="location"/>                
+                                               
+                                                     
+                                            </group>
+                                        </group>
+                                      </page>  -->
+                                      <page string="Partnership /Customer">
+                                        <group col="1" >
+                                             <group string="Customs Formalities">
+                                                    <field name="custom_formalities_ids"  nolabel="1">
+                                                        <tree editable="bottom">
+                                                        <field name="di_r"/>
+                                                        <field name="customs_type_ids" widget="many2many_tags"/>
+                                                        <field name="item_description_id" />
+                                                        <field name="hs_code"/>
+                                                        <field name="files_y"/>
+                                                        <field name="incoterm_id"/>
+                                                        <field name="destination" attrs="{'invisible': [('di_r','!=', 'e')]}"/>
+                                                        <field name="provenance" attrs="{'invisible': [('di_r','!=', 'i')]}"/>
+                                                        </tree>
+                                                    </field>
+                                                    </group>
+                                                     <group string="Air Shipment">
+                                                    <field name="air_shipment_ids"  nolabel="1">
+                                                        <tree editable="bottom">
+                                                        <field name="di_r_air"/>
+                                                        <field name="shipment_y"/>
+                                                        <field name="incoterm_id_air"/>
+                                                        <field name="destination_air" attrs="{'invisible': [('di_r_air','!=', 'e')]}"/>
+                                                        <field name="provenance_air" attrs="{'invisible': [('di_r_air','!=', 'i')]}"/>
+                                                        </tree>
+                                                        </field>
+                                                    </group>
+
+                                                <group string="Services">
+                                                   
+                                                    <group string="FCL">
+                                                    <field name="services_fcl_ids"  nolabel="1">
+                                                        <tree editable="bottom">
+                                                            <field name="di_r_fcl"/>
+                                                            <field name="teus_y"/>
+                                                            <field name="incoterm_id_fcl"/>
+                                                            <field name="destination_fcl" attrs="{'invisible': [('di_r_fcl','!=', 'e')]}"/>
+                                                            <field name="provenance_fcl" attrs="{'invisible': [('di_r_fcl','!=', 'i')]}"/>
+                                                        </tree>
+                                                    </field>
+                                                    </group>
+
+                                                    <group string="LCL">
+                                                    <field name="services_lcl_ids"  nolabel="1">
+                                                        <tree editable="bottom">
+                                                            <field name="di_r_lcl"/>
+                                                            <field name="wm_y"/>
+                                                            <field name="incoterm_id_lcl"/>
+                                                            <field name="destination_lcl" attrs="{'invisible': [('di_r_lcl','!=', 'e')]}"/>
+                                                            <field name="provenance_lcl" attrs="{'invisible': [('di_r_lcl','!=', 'i')]}"/>
+                                                            </tree>
+                                                    </field>
+                                                    </group>
+                                                    <group string="FTL">
+                                                    <field name="services_ftl_ids"  nolabel="1">
+                                                        <tree editable="bottom">
+                                                            <field name="di_r_ftl"/>
+                                                            <field name="trailer_y"/>
+                                                            <field name="incoterm_id_ftl"/>
+                                                            <field name="destination_ftl" attrs="{'invisible': [('di_r_ftl','!=', 'e')]}"/>
+                                                            <field name="provenance_ftl" attrs="{'invisible': [('di_r_ftl','!=', 'i')]}"/>
+                                                        </tree>
+                                                        </field>
+                                                    </group>
+                                                     
+                                                    <group string="LTL">
+                                                    <field name="services_ltl_ids"  nolabel="1">
+                                                        <tree editable="bottom">
+                                                            <field name="di_r_ltl"/>
+                                                            <field name="wm_y_ltl"/>
+                                                            <field name="incoterm_id_ltl"/>
+                                                            <field name="destination_ltl" attrs="{'invisible': [('di_r_ltl','!=', 'e')]}"/>
+                                                            <field name="provenance_ltl" attrs="{'invisible': [('di_r_ltl','!=', 'i')]}"/>
+                                                        </tree>
+                                                    </field>
+                                                    </group>
+                                                     
+                                                    <group string="Refeer">
+                                                    <field name="services_reefer_ids"  nolabel="1">
+                                                        <tree editable="bottom">
+                                                            <field name="di_r_refer"/>
+                                                            <field name="teus_y_refer"/>
+                                                            <field name="incoterm_id_refer"/>
+                                                            <field name="destination_refer" attrs="{'invisible': [('di_r_refer','!=', 'e')]}"/>
+                                                            <field name="provenance_refer" attrs="{'invisible': [('di_r_refer','!=', 'i')]}"/>
+                                                            </tree>
+                                                    </field>
+                                                    </group>
+
+                                                    <group string="Project cargo">
+                                                    <field name="services_cargo_ids"  nolabel="1">
+                                                        <tree editable="bottom">
+                                                            <field name="di_r_cargo"/>
+                                                            <field name="wm_y_cargo"/>
+                                                            <field name="incoterm_id_cargo"/>
+                                                            <field name="destination_cargo" attrs="{'invisible': [('di_r_cargo','!=', 'e')]}"/>
+                                                            <field name="provenance_cargo" attrs="{'invisible': [('di_r_cargo','!=', 'i')]}"/>
+                                                            </tree>
+                                                    </field>
+                                                    </group>
+                                                    <group string="Bulk">
+                                                    <field name="services_bulk_ids"  nolabel="1">
+                                                        <tree editable="bottom">
+                                                            <field name="di_r_bulk"/>
+                                                            <field name="wm_y_bulk"/>
+                                                            <field name="incoterm_id_bulk"/>
+                                                            <field name="destination_bulk" attrs="{'invisible': [('di_r_bulk','!=', 'e')]}"/>
+                                                            <field name="provenance_bulk" attrs="{'invisible': [('di_r_bulk','!=', 'i')]}"/>
+                                                            </tree>
+                                                    </field>
+                                                    </group>
+                                                    <group string="Bulk Liquid">
+                                                    <field name="services_liquid_ids"  nolabel="1">
+                                                        <tree editable="bottom">
+                                                            <field name="di_r_liquid"/>
+                                                            <field name="wm_y_liquid"/>
+                                                            <field name="incoterm_id_liquid"/>
+                                                            <field name="destination_liquid" attrs="{'invisible': [('di_r_liquid','!=', 'e')]}"/>
+                                                            <field name="provenance_liquid" attrs="{'invisible': [('di_r_liquid','!=', 'i')]}"/>
+                                                            </tree>
+                                                    </field>
+                                                    </group>
+                                                    <group string="Mead">
+                                                    <field name="services_mead_ids"  nolabel="1">
+                                                        <tree editable="bottom">
+                                                        <field name="di_r_mead"/>
+                                                        <field name="wm_y_mead"/>
+                                                        <field name="incoterm_id_mead"/>
+                                                        <field name="destination_mead" attrs="{'invisible': [('di_r_mead','!=', 'e')]}"/>
+                                                        <field name="provenance_mead" attrs="{'invisible': [('di_r_mead','!=', 'i')]}"/>
+                                                        </tree>
+                                                    </field>
+                                                    </group>
+                                                    <group string="Storage">
+                                                    <field name="services_storage_ids"  nolabel="1">
+                                                        <tree editable="bottom">
+                                                        <field name="di_r_storage"/>
+                                                        <field name="wm_y_storage"/>
+                                                        <field name="incoterm_id_storage"/>
+                                                        <field name="destination_storage" attrs="{'invisible': [('di_r_storage','!=', 'e')]}"/>
+                                                        <field name="provenance_storage" attrs="{'invisible': [('di_r_storage','!=', 'i')]}"/>
+                                                    </tree>
+                                                    </field> 
+                                                    </group>
+                                                    <group string="Port operations">
+                                                    <field name="services_port_ids"  nolabel="1">
+                                                        <tree editable="bottom">
+                                                        <field name="di_r_port"/>
+                                                        <field name="wm_y_port"/>
+                                                        <field name="incoterm_id_port"/>
+                                                        <field name="destination_port" attrs="{'invisible': [('di_r_port','!=', 'e')]}"/>
+                                                        <field name="provenance_port" attrs="{'invisible': [('di_r_port','!=', 'i')]}"/>
+                                                    </tree>
+                                                    </field>
+                                                    </group>
+                                                </group>
+                                                <group col ="2" string="">
+                                        
+                                                    <!-- <field name="fcl"/>
+                                                    <field name="lcl"/>
+                                                    <field name="project_cargo"/>
+                                                    <field name="ftl"/>
+                                                    <field name="ltl"/>
+                                                    <field name="med"/>
+                                                    <field name="storage"/>
+                                                    <field name="airline_ff"/>
+                                                    <field name="shipping_line"/>
+                                                    <field name="airline"/>
+                                                    <field name="port_operations"/>
+                                                    <field name="customs_formalities"/> -->
+                                                  <!--   -->
+                                                    <group>
+                                                    <label for="packaging" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="packaging" />
+                                                        </div>
+                                                    
+                                                    <label for="ship_chandler" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="ship_chandler"/>                                                        
+                                                        </div>
+                                                    
+                                                    <label for="shipping_expert" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                           <field name="shipping_expert"/>
+                                                        </div>
+
+                                                    <label for="studies" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="studies"/>
+                                                        </div>
+                                                    
+                                                    
+                                                    <label for="quality_control" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="quality_control"/>
+                                                        </div>
+
+                                                    <label for="customs_administration" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="customs_administration"/>
+                                                        </div>
+                                                    
+                                            
+                                                   
+                                                    </group>
+                                                    <group>
+
+                                                    <label for="it" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="it"/>
+                                                        </div>
+
+                                                    
+                                                    <label for="insurance" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="insurance"/>
+                                                        </div>
+
+
+                                                    <label for="administrations" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="administrations"/>
+                                                        </div>
+ 
+                                                    <label for="bank_c" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="bank_c"/>
+                                                        </div>
+
+                                                    
+                                                    <label for="civil_work" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="civil_work"/>
+                                                        </div>
+
+                                                    <label for="equipment_fourniture" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="equipment_fourniture"/>
+                                                        </div>
+                                                </group>
+                                                </group>
+                                            </group>
+                                            <group col="2" string="Equipements">
+                                                    <group>
+                                                    <label for="van" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="van"/>
+                                                            <field name="qty_van" attrs="{'invisible': [('van','!=', True)]}"/> 
+                                                        </div>
+
+                                                    <label for="pickup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="pickup"/>
+                                                            <field name="qty_pick" attrs="{'invisible': [('pickup','!=', True)]}"/>  
+                                                    </div>
+                                                    
+                                                    <label for="fourgon"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="fourgon"/>
+                                                            <field name="qty_forg" attrs="{'invisible': [('fourgon','!=', True)]}"/>   
+                                                    </div>
+                                                    
+                                                    <label for="camionnette"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="camionnette"/>
+                                                            <field name="qty_cami" attrs="{'invisible': [('camionnette','!=', True)]}"/>  
+                                                        </div>
+
+                                                    <label for="camion_sixm"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="camion_sixm"/>
+                                                            <field name="qty_six" attrs="{'invisible': [('camion_sixm','!=', True)]}"/>  
+                                                    </div>
+                                                    
+                                                    <label for="trailertweelvm"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="trailertweelvm"/>
+                                                            <field name="qty_tra" attrs="{'invisible': [('trailertweelvm','!=', True)]}"/>  
+                                                        </div>
+
+                                                    <label for="trailer_six_eigh"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="trailer_six_eigh"/>
+                                                            <field name="qty_tr_six" attrs="{'invisible': [('trailer_six_eigh','!=', True)]}"/>  
+                                                        </div>
+
+                                                    <label for="trailer_eight_twe"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="trailer_eight_twe"/>
+                                                            <field name="qty_eight" attrs="{'invisible': [('trailer_eight_twe','!=', True)]}"/>  
+                                                        </div>
+                                                    <label for="trailer_therte"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="trailer_therte"/>
+                                                            <field name="qty_there" attrs="{'invisible': [('trailer_therte','!=', True)]}"/>  
+                                                        </div>
+
+                                                    <label for="tralier_grat_ther"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="tralier_grat_ther"/>
+                                                            <field name="qty_grat" attrs="{'invisible': [('tralier_grat_ther','!=', True)]}"/>  
+                                                        </div>
+                                                    
+                                                    <label for="lowbed_smal_the"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="lowbed_smal_the"/>
+                                                            <field name="qty_low" attrs="{'invisible': [('lowbed_smal_the','!=', True)]}"/>  
+                                                        </div>
+                                                    
+                                                    <label for="lowbed_fort"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="lowbed_fort"/>
+                                                            <field name="qty_for" attrs="{'invisible': [('lowbed_fort','!=', True)]}"/>  
+                                                        </div>
+                                                    
+                                                    <label for="lowbed_smal_sev"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="lowbed_smal_sev"/>
+                                                            <field name="qty_smal" attrs="{'invisible': [('lowbed_smal_sev','!=', True)]}"/>
+                                                        </div>
+                                                    
+                                                    <label for="hydraulic_trailers_axles"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="hydraulic_trailers_axles"/>
+                                                            <field name="qty_hyd" attrs="{'invisible': [('hydraulic_trailers_axles','!=', True)]}"/>  
+                                                        </div>
+                                                    <!--  --> 
+                                            
+                                            </group>
+                                             <group >
+                                                    <label for="spmt_axles"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="spmt_axles"/>
+                                                            <field name="qty_axl" attrs="{'invisible': [('spmt_axles','!=', True)]}"/>  
+                                                        </div>
+                                                    
+                                                            <label for="gantry"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="gantry"/>
+                                                            <field name="qty_gant" attrs="{'invisible': [('gantry','!=', True)]}"/>  
+                                                        </div>
+                                            
+                                                            <label for="hydraulic_jacks"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="hydraulic_jacks"/>
+                                                            <field name="qty_jack" attrs="{'invisible': [('hydraulic_jacks','!=', True)]}"/>  
+                                                        </div>
+                                            
+                                                            <label for="cranes_smal_ther"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="cranes_smal_ther"/>
+                                                            <field name="qty_sma" attrs="{'invisible': [('cranes_smal_ther','!=', True)]}"/>  
+                                                        </div>
+                                            
+                                                    <label for="carnes_small_thre"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="carnes_small_thre"/>
+                                                            <field name="qty_sma_th" attrs="{'invisible': [('carnes_small_thre','!=', True)]}"/>  
+                                                        </div>
+                                            
+                                                    <label for="cranes_hundredt"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="cranes_hundredt"/>
+                                                            <field name="qty_cra" attrs="{'invisible': [('cranes_hundredt','!=', True)]}"/>  
+                                                        </div>
+                                            
+                                                    <label for="cranes_two_h"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="cranes_two_h"/>
+                                                            <field name="qty_two" attrs="{'invisible': [('cranes_two_h','!=', True)]}"/>  
+                                                        </div>
+                                            
+                                                    <label for="cranes_three"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="cranes_three"/>
+                                                            <field name="qty_cra_thr" attrs="{'invisible': [('cranes_three','!=', True)]}"/>  
+                                                        </div>
+                                            
+                                                    <label for="forklift_small_than_four"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="forklift_small_than_four"/>
+                                                            <field name="qty_fork_sm" attrs="{'invisible': [('forklift_small_than_four','!=', True)]}"/>  
+                                                        </div>
+                                            
+                                                    <label for="forklift_between"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="forklift_between"/>
+                                                            <field name="qty_fork_bet" attrs="{'invisible': [('forklift_between','!=', True)]}"/>  
+                                                        </div>
+                                            
+                                                    <label for="forklift_fift_twen"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="forklift_fift_twen"/>
+                                                            <field name="qty_fif" attrs="{'invisible': [('forklift_fift_twen','!=', True)]}"/>  
+                                                        </div>
+                                            
+                                                    <label for="forklift_biger_than"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="forklift_biger_than"/>
+                                                            <field name="qty_big" attrs="{'invisible': [('forklift_biger_than','!=', True)]}"/>  
+                                                        </div>
+                                            
+                                                    <label for="nacelles"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="nacelles"/>
+                                                            <field name="qty_nac" attrs="{'invisible': [('nacelles','!=', True)]}"/>  
+                                                        </div>
+                                            
+                                                </group>
+                                                
+                                    
+                                           </group>
+                                        
+                                      </page>
+                                      <page string="Partnership /Supplier">
+                                        <group col="2" string="Services">
+                                                    <group>        
+                                                    <label for="fcl_sup" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="fcl_sup"/>
+                                                        </div>
+
+                                                    <label for="lcl_sup" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="lcl_sup"/>
+                                                        </div>
+
+                                                    
+                                                    <label for="ftl_sup" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="ftl_sup"/>
+                                                        </div>
+
+                                                    
+                                                    <label for="ltl_sup" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="ltl_sup"/>
+                                                        </div>
+                                                    
+                                                    
+                                                    <label for="bulk_sup" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="bulk_sup"/>
+                                                        </div>
+                                                    
+                                                    
+                                                    <label for="bulk_liquid_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="bulk_liquid_sup"/>
+                                                        </div>
+
+                                                    
+                                                    <label for="project_cargo_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="project_cargo_sup"/>
+                                                        </div>
+                                                    
+                                                    <label for="med_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                    <field name="med_sup"/>
+                                                    <field name="qty_med_sup" attrs="{'invisible': [('med_sup','!=', True)]}"/>
+                                                        </div>
+                                                    <label for="storage_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="storage_sup"/>
+                                                            <field name="qty_storage_sup" attrs="{'invisible': [('storage_sup','!=', True)]}"/>
+                                                        </div>
+                                                   
+                                                    <label for="airline_ff_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="airline_ff_sup"/>
+                                                            
+                                                        </div>
+                                                    <label for="shipping_line_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="shipping_line_sup"/>
+                                                            
+                                                        </div>
+                                                    <label for="airline_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="airline_sup"/>
+                                                        </div>
+                                                    
+                                                    
+                                                    <label for="port_operations_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="port_operations_sup"/>
+                                                        </div>
+                                                    
+                                                     <label for="customs_administration_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                        <field name="customs_administration_sup"/>                                                                                                                                                                                                                                                                                            
+                                                        </div>
+                                                        
+                                                    </group>
+                                                    <group>
+                                                    
+                                                    <label for="customs_formalities_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="customs_formalities_sup"/>
+                                                        </div>
+                                                    
+                                                  <!--   -->
+                                                    <label for="packaging_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="packaging_sup"/>
+                                                        </div>
+                                                    
+                                                    <label for="ship_chandler_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="ship_chandler_sup"/>
+                                                        </div>
+                                                    
+                                                    <label for="shipping_expert_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="shipping_expert_sup"/>
+                                                        </div>
+                                                    
+                                                    <label for="studies_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="studies_sup"/>                                                            
+                                                        </div>
+                                                    
+                                                    <label for="quality_control_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="quality_control_sup"/>                                                                                                                        
+                                                        </div>
+                                                    
+                                                    <label for="insurance_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="insurance_sup"/>                                                                                                                                                                                 
+                                                        </div>
+                                                    
+                                                    <label for="it_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                         <field name="it_sup"/>                                                                                                                                                                                                                                       
+                                                        </div>
+                                                    
+                                                
+                                                    
+                                                    <label for="administrations_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="administrations_sup"/>                                                                                                                                                                                                                                                                                                                                                      
+                                                        </div>
+                                                    
+                                                    <label for="bank_c_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                             <field name="bank_c_sup"/>                                                                                                                                                                                                                                                                                                                                                                                                                    
+                                                        </div>
+                                                    
+                                                    
+                                                    <label for="civil_work_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                             <field name="civil_work_sup"/>                                                                                                                                                                                                                                                                                                                                                                                                         
+                                                        </div>
+                                                    
+                                                    <label for="equipment_fourniture_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="equipment_fourniture_sup"/>                                                          
+                                                        </div>
+                                                     
+                                                    
+                                        
+                                               </group>
+                                        
+                                            </group>
+
+                                            <group col="2" string="Equipements">
+                                                        <group>
+                                                    
+                                                        <label for="van_sup" />
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="van_sup"/>
+                                                            <field name="qty_van_sup" attrs="{'invisible': [('van_sup','!=', True)]}"/> 
+                                                        </div>
+
+                                                    <label for="pickup_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="pickup_sup"/>
+                                                            <field name="qty_pick_sup" attrs="{'invisible': [('pickup_sup','!=', True)]}"/>  
+                                                    </div>
+                                                    
+                                                    <label for="fourgon_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="fourgon_sup"/>
+                                                            <field name="qty_forg_sup" attrs="{'invisible': [('fourgon_sup','!=', True)]}"/>   
+                                                    </div>
+                                                    
+                                                    <label for="camionnette_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="camionnette_sup"/>
+                                                            <field name="qty_cami_sup" attrs="{'invisible': [('camionnette_sup','!=', True)]}"/>  
+                                                        </div>
+
+                                                    <label for="camion_sixm_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="camion_sixm_sup"/>
+                                                            <field name="qty_six_sup" attrs="{'invisible': [('camion_sixm_sup','!=', True)]}"/>  
+                                                    </div>
+                                                    
+                                                    <label for="trailertweelvm_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="trailertweelvm_sup"/>
+                                                            <field name="qty_tra_sup" attrs="{'invisible': [('trailertweelvm_sup','!=', True)]}"/>  
+                                                        </div>
+
+                                                    <label for="trailer_six_eigh_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="trailer_six_eigh_sup"/>
+                                                            <field name="qty_tr_six_sup" attrs="{'invisible': [('trailer_six_eigh_sup','!=', True)]}"/>  
+                                                        </div>
+
+                                                    <label for="trailer_eight_twe_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="trailer_eight_twe_sup"/>
+                                                            <field name="qty_eight_sup" attrs="{'invisible': [('trailer_eight_twe_sup','!=', True)]}"/>  
+                                                        </div>
+                                                    <label for="trailer_therte_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="trailer_therte_sup"/>
+                                                            <field name="qty_there_sup" attrs="{'invisible': [('trailer_therte_sup','!=', True)]}"/>  
+                                                        </div>
+
+                                                    </group>
+                                                    <group>
+                                                    <label for="tralier_grat_ther_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="tralier_grat_ther_sup"/>
+                                                            <field name="qty_grat_sup" attrs="{'invisible': [('tralier_grat_ther_sup','!=', True)]}"/>  
+                                                        </div>
+                                                    
+                                                    <label for="lowbed_smal_the_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="lowbed_smal_the_sup"/>
+                                                            <field name="qty_low_sup" attrs="{'invisible': [('lowbed_smal_the_sup','!=', True)]}"/>  
+                                                        </div>
+                                                    
+                                                    <label for="lowbed_fort_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="lowbed_fort_sup"/>
+                                                            <field name="qty_for_sup" attrs="{'invisible': [('lowbed_fort_sup','!=', True)]}"/>  
+                                                        </div>
+                                                    
+                                                    <label for="lowbed_smal_sev_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="lowbed_smal_sev_sup"/>
+                                                            <field name="qty_smal_sup" attrs="{'invisible': [('lowbed_smal_sev_sup','!=', True)]}"/>
+                                                        </div>
+                                                    
+                                                    <label for="hydraulic_trailers_axles_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="hydraulic_trailers_axles_sup"/>
+                                                            <field name="qty_hyd_sup" attrs="{'invisible': [('hydraulic_trailers_axles_sup','!=', True)]}"/>  
+                                                        </div>
+                                            
+                        
+                                                    <!--  --> 
+                                                </group>
+                                                
+                                                    <group>
+                                                    <label for="spmt_axles_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="spmt_axles_sup"/>
+                                                            <field name="qty_axl_sup" attrs="{'invisible': [('spmt_axles_sup','!=', True)]}"/>  
+                                                        </div>
+                                                    
+                                                            <label for="gantry_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="gantry_sup"/>
+                                                            <field name="qty_gant_sup" attrs="{'invisible': [('gantry_sup','!=', True)]}"/>  
+                                                        </div>
+                                            
+                                                            <label for="hydraulic_jacks_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="hydraulic_jacks_sup"/>
+                                                            <field name="qty_jack_sup" attrs="{'invisible': [('hydraulic_jacks_sup','!=', True)]}"/>  
+                                                        </div>
+                                            
+                                                            <label for="cranes_smal_ther_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="cranes_smal_ther_sup"/>
+                                                            <field name="qty_sma_sup" attrs="{'invisible': [('cranes_smal_ther_sup','!=', True)]}"/>  
+                                                        </div>
+                                            
+                                                    <label for="carnes_small_thre_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="carnes_small_thre_sup"/>
+                                                            <field name="qty_sma_th_sup" attrs="{'invisible': [('carnes_small_thre_sup','!=', True)]}"/>  
+                                                        </div>
+                                            
+                                                    <label for="cranes_hundredt_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="cranes_hundredt_sup"/>
+                                                            <field name="qty_cra_sup" attrs="{'invisible': [('cranes_hundredt_sup','!=', True)]}"/>  
+                                                        </div>
+                                            
+                                                    <label for="cranes_two_h_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="cranes_two_h_sup"/>
+                                                            <field name="qty_two_sup" attrs="{'invisible': [('cranes_two_h_sup','!=', True)]}"/>  
+                                                        </div>
+                                            </group>
+                                            <group>
+                                                    <label for="cranes_three_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="cranes_three_sup"/>
+                                                            <field name="qty_cra_thr_sup" attrs="{'invisible': [('cranes_three_sup','!=', True)]}"/>  
+                                                        </div>
+                                            
+                                                    <label for="forklift_small_than_four_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="forklift_small_than_four_sup"/>
+                                                            <field name="qty_fork_sm_sup" attrs="{'invisible': [('forklift_small_than_four_sup','!=', True)]}"/>  
+                                                        </div>
+                                            
+                                                    <label for="forklift_between_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="forklift_between_sup"/>
+                                                            <field name="qty_fork_bet_sup" attrs="{'invisible': [('forklift_between_sup','!=', True)]}"/>  
+                                                        </div>
+                                            
+                                                    <label for="forklift_fift_twen_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="forklift_fift_twen_sup"/>
+                                                            <field name="qty_fif_sup" attrs="{'invisible': [('forklift_fift_twen_sup','!=', True)]}"/>  
+                                                        </div>
+                                            
+                                                    <label for="forklift_biger_than_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="forklift_biger_than_sup"/>
+                                                            <field name="qty_big_sup" attrs="{'invisible': [('forklift_biger_than_sup','!=', True)]}"/>  
+                                                        </div>
+                                            
+                                                    <label for="nacelles_sup"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                            <field name="nacelles_sup"/>
+                                                            <field name="qty_nac_sup" attrs="{'invisible': [('nacelles_sup','!=', True)]}"/>  
+                                                        </div>
+                                             </group>
+                                            </group>
+                                        
+                                      </page>
+
+                            </xpath>
+
+                             <xpath expr="//notebook[1]//page[2]" position="after">
+                                    <page string="Financial conditions">
+                                        <group col="2" >            
+                                                <group string='Customer'>
+                                                    <field name='billing_section_id'/>
+                                                    <label for="terms"/>
+                                                            <div class="o_row" style="max-width: 200px; max-height: 40px;">
+                                                                <field name="terms"/> <span>Jour(s)</span>
+                                                            </div>                      
+                                                   <field name="payment_methode_id" string="Payment methode" widget="many2many_tags"/>
+                                                    <!-- <tree>
+                                                            <field name="payment_type"/>
+                                                            <field name="cheque_type" attrs="{'invisible': [('payment_type','!=','cheque')]}"/>
+                                                            <field name="ldc_type" attrs="{'invisible': [('payment_type','!=','ldc')]}"/>
+                                                        
+                                                    </tree> -->    
+                                                    <!-- <field name="service_type_ids" widget="many2many_tags"/>-->
+                                                    <label for="payment_cap"/>
+                                                    <div class="o_row" style="max-width: 200px; max-height: 100px">
+                                                            <field name="payment_cap"/>
+                                                            <field name="payment_cap_sel" />
+                                                        </div>
+                                                    <label for="total_paycap"/>
+                                                    <div class="o_row" style="max-width: 200px; max-height: 100px">
+                                                            <field name="total_paycap"/>
+                                                            <field name="payment_cap_sel" />
+                                                        </div> 
+                                                    <!-- <field name="payment_cap"/>
+                                                    <field name="total_payment_cap"/> -->
+                                                    <field name="discount_ids" widget="many2many_tags"/>
+                                                    <field name="bank_bank_id" widget="many2many_tags"/>  
+                                                
+                                                   <!--  <label for="before_starting"/>
+                                                        <div class="o_row" style="max-width: 200px; max-height: 40px;">
+                                                            <field name="before_starting"/> 
+                                                            <field name="before_str_prc" attrs="{'invisible': [('before_starting','!=', True)]}"/>
+                                                            <span attrs="{'invisible': [('before_starting','!=', True)]}">%</span>
+                                                        </div>
+
+                                                        <label for="before_finishing"/>
+                                                        <div class="o_row" style="max-width: 200px; max-height: 40px;">
+                                                            <field name="before_finishing"/> 
+                                                            <field name="before_fin_prc" attrs="{'invisible': [('before_finishing','!=', True)]}"/>
+                                                            <span attrs="{'invisible': [('before_finishing','!=', True)]}">%</span>
+                                                        </div>
+
+                                                        <label for="after_finishing"/>
+                                                        <div class="o_row" style="max-width: 200px; max-height: 40px;">
+                                                            <field name="after_finishing"/> 
+                                                            <field name="after_fini_prc" attrs="{'invisible': [('after_finishing','!=', True)]}"/>
+                                                            <span attrs="{'invisible': [('after_finishing','!=', True)]}">%</span>
+                                                        </div>
+                                                        
+                                                        <label for="after_billing"/>
+                                                        <div class="o_row" style="max-width: 200px; max-height: 40px;">
+                                                            <field name="after_billing"/> 
+                                                            <field name="after_billing_prc" attrs="{'invisible': [('after_billing','!=', True)]}"/>
+                                                            <span attrs="{'invisible': [('after_billing','!=', True)]}">%</span>
+                                                        </div>
+                                                         -->
+                                                </group> 
+                                                
+                                                <group string='Supplier'>
+                                                            <field name="billing_section_id_sup"/>
+                                                        <label for="terms_su"/>
+                                                                <div class="o_row" style="max-width: 200px; max-height: 40px;">
+                                                                    <field name="terms_su"/> <span>Jour(s)</span>
+                                                                </div>
+                                                            <field name="payment_methode_sup_id" widget="many2many_tags"/>
+                                                        
+                                                        <label for="payment_cap_sup"/>
+                                                    <div class="o_row" style="max-width: 200px; max-height: 100px">
+                                                            <field name="payment_cap_sup"/>
+                                                            <field name="payment_cap_sel_sup" />
+                                                        </div>
+                                                    <label for="total_paycap_sup"/>
+                                                    <div class="o_row" style="max-width: 200px; max-height: 100px">
+                                                            <field name="total_paycap_sup"/>
+                                                            <field name="total_spayment_cap" />
+                                                        </div> 
+
+                                                    <field name="discount_sup_ids" widget="many2many_tags"/>
+                                                    <field name="bank_bank_sup_id" widget="many2many_tags"/>  
+                                                        
+                                                </group>
+                                        </group>
+                                    </page>
+
+                                    <page string="Insurance">
+                                        <group col="2">
+                                            
+                                            <group col="2" string="Type"> 
+                                                <label for="liability_bo"/>
+                                                    <!-- <field name="type_insurance"/> 
+                                                    <field name="other_type" attrs="{'invisible': [('type_insurance','!=', 'other')]}"/> -->
+                                                    <div class="o_row" style="max-width: 200px; max-height: 100px">
+                                                                <field name="liability_bo"/>
+                                                                <field name="amount_li" attrs="{'invisible': [('liability_bo','!=',True)]}"/>
+                                                                <field name="currency_id_liab" attrs="{'invisible': [('liability_bo','!=',True)]}"/>
+                                                          
+                                                    </div>
+                                                <label for="cargo_bo"/>
+                                                    <div class="o_row" style="max-width: 200px; max-height: 100px">
+                                                                <field name="cargo_bo"/>
+                                                                <field name="amount_car" attrs="{'invisible': [('cargo_bo','!=',True)]}"/>
+                                                                <field name="currency_id_car" attrs="{'invisible': [('cargo_bo','!=',True)]}"/>
+                                                   
+                                                    </div>
+                                                <label for="Exploitation_bo"/>                                            
+                                                    <div class="o_row" style="max-width: 200px; max-height: 100px">
+                                                                <field name="Exploitation_bo"/>
+                                                                <field name="amount_exp" attrs="{'invisible': [('Exploitation_bo','!=',True)]}"/>
+                                                                <field name="currency_id_expl" attrs="{'invisible': [('Exploitation_bo','!=',True)]}"/>
+                                                   
+                                                    </div>
+                                                <label for="other_bool"/>                                                                                        
+                                                    <div class="o_row" style="max-width: 200px; max-height: 100px">
+                                                                <field name="other_bool"/>
+                                                                <field name="other_type" attrs="{'invisible': [('other_bool','!=',True)]}"/>
+                                                    </div>
+                                            </group>
+                                                
+                                            <!-- <group>
+                                                
+                                                    <div class="o_row" style="max-width: 200px; max-height: 100px">
+                                                                <field name="amount_li" attrs="{'invisible': [('liability_bo','!=',True)]}"/>
+                                                                <field name="currency_id_liab" attrs="{'invisible': [('liability_bo','!=',True)]}"/>
+                                                    </div>
+                                                
+                                                    <div class="o_row" style="max-width: 200px; max-height: 100px">
+                                                                <field name="amount_car" attrs="{'invisible': [('cargo_bo','!=',True)]}"/>
+                                                                <field name="currency_id_car" attrs="{'invisible': [('cargo_bo','!=',True)]}"/>
+                                                    </div>
+                                                                                        
+                                                    <div class="o_row" style="max-width: 200px; max-height: 100px">
+                                                                <field name="amount_exp" attrs="{'invisible': [('Exploitation_bo','!=',True)]}"/>
+                                                                <field name="currency_id_expl" attrs="{'invisible': [('Exploitation_bo','!=',True)]}"/>
+                                                    </div>
+                                                    <div class="o_row" style="max-width: 200px; max-height: 100px">
+                                                                
+                                                    </div> 
+                                            </group> -->
+                                        </group>
+                                            <!-- <field name="payment_type_ids" string="Payment type" widget="many2many_tags"/> -->   
+                                                     <!-- <group>
+                                                     <field name="billing_section_id_sup"/>
+                                                    <label for="terms_su"/>
+                                                            <div class="o_row" style="max-width: 200px; max-height: 40px;">
+                                                                <field name="terms_su"/> <span>Jour(s)</span>
+                                                            </div>
+                                                    <label for="before_starting_sup"/>
+                                                        <div class="o_row" style="max-width: 200px; max-height: 40px;">
+                                                            <field name="before_starting_sup"/> 
+                                                            <field name="before_str_prc_sup" attrs="{'invisible': [('before_starting_sup','!=', True)]}"/>
+                                                            <span attrs="{'invisible': [('before_starting_sup','!=', True)]}">%</span>
+                                                        </div>
+
+                                                        <label for="before_finishing_sup"/>
+                                                        <div class="o_row" style="max-width: 200px; max-height: 40px;">
+                                                            <field name="before_finishing_sup"/> 
+                                                            <field name="before_fin_prc_sup" attrs="{'invisible': [('before_finishing_sup','!=', True)]}"/>
+                                                            <span attrs="{'invisible': [('before_finishing_sup','!=', True)]}">%</span>
+                                                        </div>
+
+                                                        <label for="after_finishing_sup"/>
+                                                        <div class="o_row" style="max-width: 200px; max-height: 40px;">
+                                                            <field name="after_finishing_sup"/> 
+                                                            <field name="after_fini_prc_sup" attrs="{'invisible': [('after_finishing_sup','!=', True)]}"/>
+                                                            <span attrs="{'invisible': [('after_finishing_sup','!=', True)]}">%</span>
+                                                        </div>
+                                                        
+                                                        <label for="after_billing_sup"/>
+                                                        <div class="o_row" style="max-width: 200px; max-height: 40px;">
+                                                            <field name="after_billing_sup"/> 
+                                                            <field name="after_billing_prc_sup" attrs="{'invisible': [('after_billing_sup','!=', True)]}"/>
+                                                            <span attrs="{'invisible': [('after_billing_sup','!=', True)]}">%</span>
+                                                        </div>
+                                                        
+                                                </group> 
+                                             
+                                            <group>
+                                                 <field name="payment_type"/>
+                                                <field name="cheque_type" attrs="{'invisible': [('payment_type','!=','cheque')]}"/>
+                                                <field name="ldc_type" attrs="{'invisible': [('payment_type','!=','ldc')]}"/>
+                                                <field name="service_type_ids" widget="many2many_tags"/>
+                                                <field name="payment_cap_ids" widget="many2many_tags"/>
+                                                <field name="total_payment_cap"/>
+                                                <field name="discount_ids" widget="many2many_tags"/>              
+                                               
+                                                     
+                                            </group> -->
+                                        
+                                      </page>  
+                                      <page string="Performance">
+                                      <group col="2">
+                                            <group string="Customer">
+                                                <!-- <field name="rc_insurance"/>
+                                                <field name="amount_rc"/>                
+                                                <field name="cargo_insurance"/>
+                                                <field name="amount_cargo"/>
+                                                <field name="exploitation_insurance"/>
+                                                <field name="amount_exploitation"/>
+                                                <field name="other_insurance"/>
+                                                <field name="amount_amount"/> -->
+                                                <field name="Communication_level"/>
+                                                <field name="price_level" string="Payment level"/>
+                                                <field name="service_level" string="Incidents"/>
+                                                <field name="complexity_cons"/>
+                                                <field name="total_turnover"/>
+                                                <field name="total_at_cost"/>
+                                                <field name="profitability"/>
+                                                <field name="Risk"/>
+                                            </group>
+                                            <group string="Supplier">
+                                                
+                                                
+                                                <field name="Communication_level_sup"/>
+                                                <field name="equipment_availability" string="Payment credit level"/>
+                                                <field name="price_level_sup" />
+                                                <field name="service_level_sup" />
+                                                <field name="Risk_sup"/>
+                                                <field name="equipment_availability_sup"/>
+                                                <field name="incidents_sup"/>
+                                                <!-- <field name="internal_notes_sup"/>
+                                                <field name="file_upload"/>                               -->
+                                            </group>
+                                        </group>
+                                      </page>
+                                      <!-- <page string="Partnership /Customer">
+                                        <group col="1" >
+                                            <group string="Services" col="2">
+                                                    <group string="Customs Formalities">
+                                                        <field name="di_r"/>
+                                                        <field name="customs_type_ids" widget="many2many_tags"/>
+                                                        <field name="item_description_id" />
+                                                        <field name="hs_code"/>
+                                                        <field name="files_y"/>
+                                                        <field name="incoterm_id"/>
+                                                        <field name="destination" attrs="{'invisible': [('di_r','!=', 'e')]}"/>
+                                                        <field name="provenance" attrs="{'invisible': [('di_r','!=', 'i')]}"/>
+                                                    </group>
+                                                    <group string="Air Shipment">
+                                                        <field name="di_r_air"/>
+                                                        <field name="shipment_y"/>
+                                                        <field name="incoterm_id_air"/>
+                                                        <field name="destination_air" attrs="{'invisible': [('di_r_air','!=', 'e')]}"/>
+                                                        <field name="provenance_air" attrs="{'invisible': [('di_r_air','!=', 'i')]}"/>
+                                                    </group>
+                                                     <group string="FCL">
+                                                        <field name="di_r_fcl"/>
+                                                        <field name="teus_y"/>
+                                                        <field name="incoterm_id_fcl"/>
+                                                        <field name="destination_fcl" attrs="{'invisible': [('di_r_fcl','!=', 'e')]}"/>
+                                                        <field name="provenance_fcl" attrs="{'invisible': [('di_r_fcl','!=', 'i')]}"/>
+                                                    </group>
+                                                    <group string="LCL">
+                                                        <field name="di_r_lcl"/>
+                                                        <field name="wm_y"/>
+                                                        <field name="incoterm_id_lcl"/>
+                                                        <field name="destination_lcl" attrs="{'invisible': [('di_r_lcl','!=', 'e')]}"/>
+                                                        <field name="provenance_lcl" attrs="{'invisible': [('di_r_lcl','!=', 'i')]}"/>
+                                                    </group>
+                                                     <group string="FTL">
+                                                        <field name="di_r_ftl"/>
+                                                        <field name="trailer_y"/>
+                                                        <field name="incoterm_id_ftl"/>
+                                                        <field name="destination_ftl" attrs="{'invisible': [('di_r_ftl','!=', 'e')]}"/>
+                                                        <field name="provenance_ftl" attrs="{'invisible': [('di_r_ftl','!=', 'i')]}"/>
+                                                    </group>
+                                                     <group string="LTL">
+                                                        <field name="di_r_ltl"/>
+                                                        <field name="wm_y_ltl"/>
+                                                        <field name="incoterm_id_ltl"/>
+                                                        <field name="destination_ltl" attrs="{'invisible': [('di_r_ltl','!=', 'e')]}"/>
+                                                        <field name="provenance_ltl" attrs="{'invisible': [('di_r_ltl','!=', 'i')]}"/>
+                                                    </group>
+                                                     <group string="Refeer">
+                                                        <field name="di_r_refer"/>
+                                                        <field name="teus_y_refer"/>
+                                                        <field name="incoterm_id_refer"/>
+                                                        <field name="destination_refer" attrs="{'invisible': [('di_r_refer','!=', 'e')]}"/>
+                                                        <field name="provenance_refer" attrs="{'invisible': [('di_r_refer','!=', 'i')]}"/>
+                                                    </group>
+                                                     <group string="Project cargo">
+                                                        <field name="di_r_cargo"/>
+                                                        <field name="wm_y_cargo"/>
+                                                        <field name="incoterm_id_cargo"/>
+                                                        <field name="destination_cargo" attrs="{'invisible': [('di_r_cargo','!=', 'e')]}"/>
+                                                        <field name="provenance_cargo" attrs="{'invisible': [('di_r_cargo','!=', 'i')]}"/>
+                                                    </group>
+                                                    <group string="Bulk">
+                                                        <field name="di_r_bulk"/>
+                                                        <field name="wm_y_bulk"/>
+                                                        <field name="incoterm_id_bulk"/>
+                                                        <field name="destination_bulk" attrs="{'invisible': [('di_r_bulk','!=', 'e')]}"/>
+                                                        <field name="provenance_bulk" attrs="{'invisible': [('di_r_bulk','!=', 'i')]}"/>
+                                                    </group>
+                                                    <group string="Bulk Liquid">
+                                                        <field name="di_r_liquid"/>
+                                                        <field name="wm_y_liquid"/>
+                                                        <field name="incoterm_id_liquid"/>
+                                                        <field name="destination_liquid" attrs="{'invisible': [('di_r_liquid','!=', 'e')]}"/>
+                                                        <field name="provenance_liquid" attrs="{'invisible': [('di_r_liquid','!=', 'i')]}"/>
+                                                    </group>
+                                                     <group string="Mead">
+                                                        <field name="di_r_mead"/>
+                                                        <field name="wm_y_mead"/>
+                                                        <field name="incoterm_id_mead"/>
+                                                        <field name="destination_mead" attrs="{'invisible': [('di_r_mead','!=', 'e')]}"/>
+                                                        <field name="provenance_mead" attrs="{'invisible': [('di_r_mead','!=', 'i')]}"/>
+                                                    </group>
+                                                    <group string="Storage">
+                                                        <field name="di_r_storage"/>
+                                                        <field name="wm_y_storage"/>
+                                                        <field name="incoterm_id_storage"/>
+                                                        <field name="destination_storage" attrs="{'invisible': [('di_r_storage','!=', 'e')]}"/>
+                                                        <field name="provenance_storage" attrs="{'invisible': [('di_r_storage','!=', 'i')]}"/>
+                                                    </group>
+                                                    <group string="Port operations">
+                                                        <field name="di_r_port"/>
+                                                        <field name="wm_y_port"/>
+                                                        <field name="incoterm_id_port"/>
+                                                        <field name="destination_port" attrs="{'invisible': [('di_r_port','!=', 'e')]}"/>
+                                                        <field name="provenance_port" attrs="{'invisible': [('di_r_port','!=', 'i')]}"/>
+                                                    </group>
+                                                </group>
+                                            <field name="partnership_ids"  nolabel="1">
+                                                <tree editable="bottom"> -->
+                                                
+                                                    <!-- <field name="fcl"/>
+                                                    <field name="lcl"/>
+                                                    <field name="project_cargo"/>
+                                                    <field name="ftl"/>
+                                                    <field name="ltl"/>
+                                                    <field name="med"/>
+                                                    <field name="storage"/>
+                                                    <field name="airline_ff"/>
+                                                    <field name="shipping_line"/>
+                                                    <field name="airline"/>
+                                                    <field name="port_operations"/>
+                                                    <field name="customs_formalities"/> -->
+                                                  <!--   -->
+                                                    <!-- <field name="packaging"/>
+                                                    <field name="ship_chandler"/>
+                                                    <field name="shipping_expert"/>
+                                                    <field name="studies"/>
+                                                    <field name="quality_control"/>
+                                                    <field name="insurance"/>
+                                                    <field name="it"/>
+                                                    <field name="customs_administration"/>
+                                                    <field name="administrations"/>
+                                                    <field name="bank_c"/>
+                                                    <field name="civil_work"/>
+                                                    <field name="equipment_fourniture"/>
+                                                        
+                                                    
+                                                </tree>
+                                               
+                                            </field>
+                                            </group>
+                                            <group string="Equipements">
+                                            <field name="quantities_ids"  nolabel="1">
+                                                <tree editable="bottom">
+                                                    <field name="van"/>
+                                                    <field name="qty_van" attrs="{'invisible': [('van','!=', True)]}"/> 
+                                                    <field name="pickup"/>
+                                                    <field name="qty_pick" attrs="{'invisible': [('pickup','!=', True)]}"/>  
+                                                      <field name="fourgon"/>
+                                                    <field name="qty_forg" attrs="{'invisible': [('fourgon','!=', True)]}"/>   
+                                                    <field name="camionnette"/>
+                                                    <field name="qty_cami" attrs="{'invisible': [('camionnette','!=', True)]}"/>  
+                                                    <field name="camion_sixm"/>
+                                                    <field name="qty_six" attrs="{'invisible': [('camion_sixm','!=', True)]}"/>  
+                                                    <field name="trailertweelvm"/>
+                                                    <field name="qty_tra" attrs="{'invisible': [('trailertweelvm','!=', True)]}"/>  
+                                                   <field name="trailer_six_eigh"/>
+                                                    <field name="qty_tr_six" attrs="{'invisible': [('trailer_six_eigh','!=', True)]}"/>  
+                                                    <field name="trailer_eight_twe"/>
+                                                    <field name="qty_eight" attrs="{'invisible': [('trailer_eight_twe','!=', True)]}"/>  
+                                                    <field name="trailer_therte"/>
+                                                    <field name="qty_there" attrs="{'invisible': [('trailer_therte','!=', True)]}"/>  
+                                                    <field name="tralier_grat_ther"/>
+                                                    <field name="qty_grat" attrs="{'invisible': [('tralier_grat_ther','!=', True)]}"/>  
+                                                    <field name="lowbed_smal_the"/>
+                                                    <field name="qty_low" attrs="{'invisible': [('lowbed_smal_the','!=', True)]}"/>  
+                                                     <field name="lowbed_fort"/>
+                                                    <field name="qty_for" attrs="{'invisible': [('lowbed_fort','!=', True)]}"/>  
+                                                    <field name="lowbed_smal_sev"/>
+                                                    <field name="qty_smal" attrs="{'invisible': [('lowbed_smal_sev','!=', True)]}"/>
+                                                    <field name="hydraulic_trailers_axles"/>
+                                                    <field name="qty_hyd" attrs="{'invisible': [('hydraulic_trailers_axles','!=', True)]}"/>  
+                                                     
+                                                </tree>
+                                                </field>
+                                                
+                                            </group>
+                                             <group >
+                                            <field name="quantities_two_ids"  nolabel="1">
+                                                <tree editable="bottom">
+                                                     
+                                                    <field name="spmt_axles"/>
+                                                    <field name="qty_axl" attrs="{'invisible': [('spmt_axles','!=', True)]}"/> 
+                                                    <field name="gantry"/>
+                                                    <field name="qty_gant" attrs="{'invisible': [('gantry','!=', True)]}"/> 
+                                                    <field name="hydraulic_jacks"/>
+                                                    <field name="qty_jack" attrs="{'invisible': [('hydraulic_jacks','!=', True)]}"/> 
+                                                     <field name="cranes_smal_ther"/>
+                                                    <field name="qty_sma" attrs="{'invisible': [('cranes_smal_ther','!=', True)]}"/>   
+                                                    <field name="carnes_small_thre"/>
+                                                    <field name="qty_sma_th" attrs="{'invisible': [('carnes_small_thre','!=', True)]}"/>  
+                                                    <field name="cranes_hundredt"/>
+                                                    <field name="qty_cra" attrs="{'invisible': [('cranes_hundredt','!=', True)]}"/>  
+                                                    <field name="cranes_two_h"/>
+                                                    <field name="qty_two" attrs="{'invisible': [('cranes_two_h','!=', True)]}"/>  
+                                                     <field name="cranes_three"/>
+                                                    <field name="qty_cra_thr" attrs="{'invisible': [('cranes_three','!=', True)]}"/>  
+                                                     <field name="forklift_small_than_four"/>
+                                                    <field name="qty_fork_sm" attrs="{'invisible': [('forklift_small_than_four','!=', True)]}"/>  
+                                                     <field name="forklift_between"/>
+                                                    <field name="qty_fork_bet" attrs="{'invisible': [('forklift_between','!=', True)]}"/>  
+                                                     <field name="forklift_fift_twen"/>
+                                                    <field name="qty_fif" attrs="{'invisible': [('forklift_fift_twen','!=', True)]}"/> 
+                                                    <field name="forklift_biger_than"/>
+                                                    <field name="qty_big" attrs="{'invisible': [('forklift_biger_than','!=', True)]}"/>  
+                                                    <field name="nacelles"/>
+                                                    <field name="qty_nac" attrs="{'invisible': [('nacelles','!=', True)]}"/>
+                                                </tree>
+                                                </field>
+                                                </group>
+                                                
+                                    
+                                           
+                                        
+                                      </page> -->
+                                      
+                            </xpath>
+                            <!-- <xpath expr="//field[@name='ref']" position="after">
+                                <field name="bank_details"/>
+                                <field name="iban" />  
+                                <field name="code_swift"/>
+                            </xpath> -->
+                            <!-- <xpath expr="//field[@name='number']" position="after">
+                                <field name="ref" string="Account Number"/>
+                            </xpath> -->
+                        </field>
+        </record>
+
+</odoo>

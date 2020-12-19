@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id='payment_view_form' model='ir.ui.view'>
+            <field name="name">payment.type.form</field>
+            <field name="model">payment.type</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                    <group col="2">
+                                <group string="    ">
+                                    <field name="billing_section"/>
+                                    <field name="service_except_id" attrs="{'invisible': [('billing_section','!=','services_except')]}" widget="many2many_tags"/>
+                                    <field name="service_only_id" attrs="{'invisible': [('billing_section','!=','only_services')]}" widget="many2many_tags"/>
+                                    <field name="billing_party"/>
+                                    <field name="payment_moment" widget="many2many_tags">
+                                        
+                                       
+                                    
+                                    </field>
+                                </group>
+                                
+                                            <group>
+                                                 <field name="payment_type"/>
+                                                <field name="cheque_type" attrs="{'invisible': [('payment_type','!=','cheque')]}"/>
+                                                <field name="ldc_type" attrs="{'invisible': [('payment_type','!=','ldc')]}"/>
+                                                <field name="service_type_payment" widget="many2many_tags"/>
+                                                <field name="payment_cap_payment" widget="many2many_tags"/>
+                                                <field name="total_payment_cap"/>
+                                                <field name="discount_payment" widget="many2many_tags"/>              
+                                               
+                                                     
+                                            </group>
+                                
+                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="payment_view_tree" model="ir.ui.view">
+            <field name="name">payment.type.tree</field>
+            <field name="model">payment.type</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="billing_section"/>
+                    <!-- <field name="cargo_description"/>
+                    <field name="Incoterm"/>
+                    <field name="v_incoterm"/>
+                    <field name="Value_Class"/>
+                    <field name="gross_weight_class"/>
+                    <field name="volume_class"/>
+                    <field name="with_payment"/> -->
+                   
+
+                    
+                </tree> 
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="payment_action">
+            <field name="name">Payment</field>
+            <field name="res_model">payment.type</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                    <p class="oe_view_nocontent_smiling_face"> Payment </p>
+            </field>
+        </record>
+
+    <menuitem name="Payment"  
+    parent="menu_root" 
+    id="payment_menu" 
+    sequence="117" 
+    action="payment_action"
+    groups ="base.group_user"/>
+
+    <record id='moment_payment_view_form' model='ir.ui.view'>
+                    <field name="name">moment.payment.view.form</field>
+                    <field name="model">payment.moment</field>
+                    <field name="arch" type="xml">
+                    <form>
+                    <sheet>
+                                        <group>
+                                        <label for="number_of_days"/>
+                                                            <div class="o_row" style="max-width: 200px; max-height: 40px;">
+                                                                <field name="number_of_days"/> <span>Jour(s)</span>
+                                                            </div>
+                                        <label for="before_starting"/>
+                                                        <div class="o_row" style="max-width: 200px; max-height: 40px;">
+                                                            <field name="before_starting"/> 
+                                                            <field name="before_str" attrs="{'invisible': [('before_starting','!=', True)]}"/>
+                                                            <span attrs="{'invisible': [('before_starting','!=', True)]}">%</span>
+                                                        </div>
+
+                                                        <label for="after_starting"/>
+                                                        <div class="o_row" style="max-width: 200px; max-height: 40px;">
+                                                            <field name="after_starting"/> 
+                                                            <field name="after_str" attrs="{'invisible': [('after_starting','!=', True)]}"/>
+                                                            <span attrs="{'invisible': [('after_starting','!=', True)]}">%</span>
+                                                        </div>
+
+                                                        <label for="after_finishing"/>
+                                                        <div class="o_row" style="max-width: 200px; max-height: 40px;">
+                                                            <field name="after_finishing"/> 
+                                                            <field name="after_finish" attrs="{'invisible': [('after_finishing','!=', True)]}"/>
+                                                            <span attrs="{'invisible': [('after_finishing','!=', True)]}">%</span>
+                                                        </div>
+                                                        
+                                                        <label for="after_billing"/>
+                                                        <div class="o_row" style="max-width: 200px; max-height: 40px;">
+                                                            <field name="after_billing"/> 
+                                                            <field name="after_bili" attrs="{'invisible': [('after_billing','!=', True)]}"/>
+                                                            <span attrs="{'invisible': [('after_billing','!=', True)]}">%</span>
+                                                        </div>
+                                        </group>
+                            </sheet>
+                        </form>
+                    </field>
+        </record>
+
+        <record id="moment_payment_view_tree" model="ir.ui.view">
+                <field name="name">moment.payment.view.tree</field>
+                <field name="model">payment.moment</field>
+                <field name="arch" type="xml">
+                    <tree>
+                <field name="number_of_days"/>
+                <field name="before_starting"/>
+                <field name="after_starting"/>
+                    </tree>
+                </field>
+            </record>
+
+        <record id="action_moment_payment" model="ir.actions.act_window">
+            <field name="name">Moment of paiement</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">payment.moment</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id='bank_bank_view_form' model='ir.ui.view'>
+                    <field name="name">bank.bank.view.form</field>
+                    <field name="model">bank.bank</field>
+                    <field name="arch" type="xml">
+                    <form>
+                    <sheet>
+                            <group col="2">
+                                <group>
+                                    <field name="account_number"/>
+                                    <field name="bank_detail"/>
+                                </group>
+                                <group>
+                                    <field name="iban"/>
+                                    <field name="code_swift"/>
+                                </group>
+                            </group>
+                            </sheet>
+                        </form>
+                    </field>
+        </record>
+
+        <record id="bank_bank_view_tree" model="ir.ui.view">
+                <field name="name">bank.view.tree</field>
+                <field name="model">bank.bank</field>
+                <field name="arch" type="xml">
+                    <tree>
+                        <field name="account_number"/>
+                        <field name="bank_detail"/>
+                        <field name="iban"/>
+                        <field name="code_swift"/>
+                    </tree>
+                </field>
+            </record>
+
+        <record id="action_bank_bank" model="ir.actions.act_window">
+            <field name="name">Bank</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">bank.bank</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </odoo>
+
+
+
+                        
