@@ -66,6 +66,7 @@ class scope(models.Model):
     service_n = fields.Char('Service N°')
     service_detail = fields.Text('Detail')
     packagin_criteria_id = fields.Many2one('packagin.criteria', string='Criteria')
+    packagin_section_id = fields.Many2one('packaging.section', string='Section')
 
 class PackagingDivision(models.Model):
 
