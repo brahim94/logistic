@@ -17,7 +17,7 @@ class scope(models.Model):
             ('off', 'OffShore (Off)'),
             ('offon', 'OffOnShore (OffOn)'),
             ('offoncl', 'OffOnShore Cleared (OffOnCl)'),
-            ], setting='Direction', default='export')
+            ], string='Direction', default='export')
     packagin_mode_transport_id = fields.Many2one('transport.mode', string='Mode of Transport')
     scope = fields.Selection([
             ('packaging', 'Packaging'),
@@ -67,7 +67,28 @@ class scope(models.Model):
     service_detail = fields.Text('Detail')
     packagin_criteria_id = fields.Many2one('packagin.criteria', string='Criteria')
     packagin_section_id = fields.Many2one('packaging.section', string='Section')
+    atc = fields.Selection([
+            ('yes', 'Yes'),
+            ('no', 'No'),
+            ], string='ATC', default='yes')
+    cost_rate_ht_currency = fields.Many2one('res.currency', string='Currency')
+    cost_rate_ht_monet = fields.Float('Cost Rate HT')
+    suppliers = fields.Many2one('res.partner', string='Suppliers')
+    qty = fields.Float('Qty')
+    qty_unit = fields.Many2one('packaging.unit')
+    sale_rate_ht_currency = fields.Many2one('res.currency', string='Currency')
+    sale_rate_ht = fields.Float('Sale Rate HT')
+    discount = fields.Float('Discount ')
+    net_sale_rate = fields.Float('Net Sale Rate', compute='_net_sale')
+    net_sale_rate_ht_currency = fields.Many2one('res.currency', string='Currency')
+    profit_ht = fields.Float('Profit HT', compute='_net_sale')
+    profit_ht_currency = fields.Many2one('res.currency', string='Currency')
 
+
+    def _net_sale(self):
+        self.net_sale_rate = self.sale_rate_ht - (self.sale_rate_ht * self.discount)
+        return True
+    
 class PackagingDivision(models.Model):
 
     _name = 'packagin.division'
@@ -361,6 +382,8 @@ class PackagingSection(models.Model):
     currency_id_adf_max = fields.Many2one('res.currency', string='Currency')
     tarrif_id = fields.Many2one('packaging.tariff', string='Tarrif')
     vat_id = fields.Many2one('pack.vat', string='VAT')
+    maximum_discount = fields.Float('Maximum Discount')
+    validity_time = fields.Integer('Validity Time')
 
 class PackagingTariff(models.Model):
  
@@ -383,6 +406,6 @@ class PackagingTariff(models.Model):
     plus_fix = fields.Float('+Fix')    
     currency_id_plus_fix = fields.Many2one('res.currency', string='Currency')
     comments_tarrif = fields.Text('Comments')
-
+    
 
     

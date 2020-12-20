@@ -22,6 +22,37 @@
                                     <group>
                                         <field name="packagin_criteria_id"/>
                                         <field name="packagin_section_id"/>
+                                        <field name="atc"/>
+                                          <label for="cost_rate_ht_currency"/>
+                                            <div class="o_row" style="max-width: 800px; max-height: 500px">
+                                                <field name="cost_rate_ht_currency"/>
+                                                <field name="cost_rate_ht_monet"/>
+                                            </div>
+                                        <field name="suppliers"/>
+                                        <label for="qty"/>
+                                            <div class="o_row" style="max-width: 800px; max-height: 500px">
+                                                <field name="qty"/>
+                                                <field name="qty_unit"/>
+                                            </div>
+                                        <label for="sale_rate_ht"/>
+                                            <div class="o_row" style="max-width: 800px; max-height: 500px">
+                                                <field name="sale_rate_ht"/>
+                                                <field name="sale_rate_ht_currency"/>
+                                            </div>
+
+                                            
+                                       
+                                        <label for="discount"/>
+                                            <div class="o_row" style="max-width: 200px; max-height: 100px">
+                                                <field name="discount"/>
+                                                <span>%</span>
+                                            </div>
+
+                                        <label for="net_sale_rate"/>
+                                            <div class="o_row" style="max-width: 800px; max-height: 500px">
+                                                <field name="net_sale_rate" readonly="1"/>
+                                                <field name="net_sale_rate_ht_currency"/>
+                                            </div>
                                     </group>
                                 </group>
                             </page>
@@ -557,6 +588,19 @@
                                     </div>
                                         <field name="tarrif_id"/>
                                         <field name="vat_id"/>
+                                    
+                                     <label for="maximum_discount"/>
+                                        <div class="o_row" style="max-width: 600px; max-height: 400px">
+                                            <field name="maximum_discount"/>
+                                            <span>%</span>
+                                        </div>
+                                    <label for="validity_time"/>
+                                        <div class="o_row" style="max-width: 600px; max-height: 400px">
+                                            <field name="validity_time"/>
+                                            <span>Jours(s)</span>
+                                        </div>
+                                        <!-- <field name="maximum_discount"/>
+                                        <field name="validity_time"/> -->
                             </group>
                         </group>
                     </sheet>
