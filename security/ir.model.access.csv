@@ -65,7 +65,9 @@ access_added_proceders,access_added_proceders,model_added_proceders,base.group_u
 access_customs_desk,access_customs_desk,model_customs_desk,base.group_user,1,1,1,1
 access_packaging_processes,access_packaging_processes,model_packaging_processes,base.group_user,1,1,1,1
 access_processes_processes,access_processes_processes,model_processes_processes,base.group_user,1,1,1,1
-access_packaging_section,access_packaging_section,model_packaging_section,base.group_user,1,1,1,1
+
+
 access_packaging_tariff,access_packaging_tariff,model_packaging_tariff,base.group_user,1,1,1,1
-
-
+access_packaging_section,access_packaging_section,model_packaging_section,base.group_user,1,1,1,1
+access_pack_vat,access_pack_vat,model_pack_vat,base.group_user,1,1,1,1
+access_packaging_unit,access_packaging_unit,model_packaging_unit,base.group_user,1,1,1,1

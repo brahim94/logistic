@@ -556,7 +556,7 @@
                                             </div>
                                     </div>
                                         <field name="tarrif_id"/>
-
+                                        <field name="vat_id"/>
                             </group>
                         </group>
                     </sheet>
@@ -626,7 +626,7 @@
         </record>
 
           <!-- Unit -->
-        <!-- <record id='unit_packaging_view_form' model='ir.ui.view'>
+        <record id='unit_packaging_view_form' model='ir.ui.view'>
             <field name="name">unit.packaging.type.form</field>
             <field name="model">packaging.unit</field>
             <field name="arch" type="xml">
@@ -642,19 +642,21 @@
                     </sheet>
                 </form>
             </field>
-        </record> -->
+        </record>
 
         
           <!-- VAT -->
-        <!-- <record id='vat_packaging_view_form' model='ir.ui.view'>
+         <record id='vat_packaging_view_form' model='ir.ui.view'>
             <field name="name">vat.packaging.type.form</field>
-            <field name="model">packaging.vat</field>
+            <field name="model">pack.vat</field>
             <field name="arch" type="xml">
                 <form>
                     <sheet>
                         <group string="VAT">
-                            <group col="2">
-                                <field name="country_id"/>
+                         <group col="2">
+                                <field name="country_vat_id"/>
+                                <field name="city_vat_id"/>
+                                <field name="code_auto"/>
                             </group>
                             <group>
                             <label for="vat"/>
@@ -667,7 +669,7 @@
                     </sheet>
                 </form>
             </field>
-        </record> -->
+        </record> 
         <!--<record model="ir.actions.act_window" id="regim_action">
             <field name="name">Regim</field>
             <field name="res_model">packagin.regime</field>

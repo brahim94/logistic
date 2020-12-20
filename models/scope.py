@@ -303,6 +303,27 @@ class PackagingProcesses(models.Model):
     date = fields.Date('Date')
     instruction = fields.Binary('Instructions Internes')
     
+class PackagingUnit(models.Model):
+ 
+    _name = 'packaging.unit'
+
+    name = fields.Char('Unit')
+
+class PackagingVat(models.Model):
+ 
+    _name = 'pack.vat'
+    _rec_name = 'vat'
+
+    vat = fields.Float('VAT')
+    country_vat_id = fields.Many2one('res.country', string='Country')
+    city_vat_id = fields.Many2one('res.country.state', string='City')
+    code_auto = fields.Char('Code')
+
+    @api.model
+    def create(self, vals):
+        vals['code_auto'] = self.env['ir.sequence'].next_by_code('code.auto') or '/'
+        return super(PackagingVat, self).create(vals)
+
 class PackagingSection(models.Model):
  
     _name = 'packaging.section'
@@ -339,6 +360,7 @@ class PackagingSection(models.Model):
     adf_max = fields.Float('MAX')
     currency_id_adf_max = fields.Many2one('res.currency', string='Currency')
     tarrif_id = fields.Many2one('packaging.tariff', string='Tarrif')
+    vat_id = fields.Many2one('pack.vat', string='VAT')
 
 class PackagingTariff(models.Model):
  
@@ -348,12 +370,12 @@ class PackagingTariff(models.Model):
     amount_tariff = fields.Float('Amount Tarif')
     currency_id_tariff = fields.Many2one('res.currency', string='Currency tarrif')
     per_name = fields.Text('Per')
-    unite_id_tariff = fields.Many2one('packaging.unite', string='Currency')    
+    unite_id_tariff = fields.Many2one('packaging.unit', string='Currency')    
     tariff_name = fields.Text('Concern')
     tarrif_from = fields.Char('From')
-    currency_id_tariff_from = fields.Many2one('res.currency', string='Currency')    
+    currency_id_tariff_from = fields.Many2one('packaging.unit', string='Currency')    
     tarrif_to = fields.Char('To')
-    currency_id_tariff_to = fields.Many2one('res.currency', string='Currency')        
+    currency_id_tariff_to = fields.Many2one('packaging.unit', string='Currency')        
     min_billing = fields.Float('Minimum Billing')    
     currency_id_min_billing = fields.Many2one('res.currency', string='Currency')
     max_billing = fields.Float('Maximum Billing')    
@@ -361,5 +383,6 @@ class PackagingTariff(models.Model):
     plus_fix = fields.Float('+Fix')    
     currency_id_plus_fix = fields.Many2one('res.currency', string='Currency')
     comments_tarrif = fields.Text('Comments')
+
 
     
