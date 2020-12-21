@@ -8,13 +8,167 @@ class scope(models.Model):
     _name = 'scope.type'
     _rec_name = 'comments_type'
 
+    ############## PACKAGING ####################
     packagin_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type = fields.Text('Comments')
     forecast_from = fields.Date('Forecast From')
     forecast_unitl = fields.Date('Forecast Initl')
     packagin_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
     
+    ############## STUFFING ####################
+    stuffing_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_stuffing = fields.Text('Comments')
+    forecast_from_stuffing = fields.Date('Forecast From')
+    forecast_unitl_stuffing = fields.Date('Forecast Initl')
+    stuffing_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
     
+    ############## LSD ####################
+    lsd_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_lsd = fields.Text('Comments')
+    forecast_from_lsd = fields.Date('Forecast From')
+    forecast_unitl_lsd = fields.Date('Forecast Initl')
+    lsd_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+    
+   ############## Loading On Truck ####################
+    loading_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_loading = fields.Text('Comments')
+    forecast_from_loading = fields.Date('Forecast From')
+    forecast_unitl_loading = fields.Date('Forecast Initl')
+    loading_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+
+   ############## Export Formalities ####################
+    export_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_export = fields.Text('Comments')
+    forecast_from_export = fields.Date('Forecast From')
+    forecast_unitl_export = fields.Date('Forecast Initl')
+    export_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+   
+   ############## Terminal Entry Formalities ####################
+    terminal_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_terminal = fields.Text('Comments')
+    forecast_from_terminal = fields.Date('Forecast From')
+    forecast_unitl_terminal = fields.Date('Forecast Initl')
+    terminal_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+   
+    ############## Export Agency ####################
+    exp_agncy_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_exp_agency = fields.Text('Comments')
+    forecast_from_exp_agency = fields.Date('Forecast From')
+    forecast_unitl_exp_agency = fields.Date('Forecast Initl')
+    exp_agency_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+   
+   ############## Loading on Main Transport ####################
+    load_trans_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_load_trans = fields.Text('Comments')
+    forecast_from_load_trans = fields.Date('Forecast From')
+    forecast_unitl_load_trans = fields.Date('Forecast Initl')
+    load_trans_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+   
+   ############## Unloading From Main Transport ####################
+    upload_trans_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_upload_trans = fields.Text('Comments')
+    forecast_from_upload_trans = fields.Date('Forecast From')
+    forecast_unitl_upload_trans = fields.Date('Forecast Initl')
+    upload_trans_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+   
+    ############## Import Agency ####################
+    imp_agency_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_imp_agency = fields.Text('Comments')
+    forecast_from_imp_agency = fields.Date('Forecast From')
+    forecast_unitl_imp_agency = fields.Date('Forecast Initl')
+    imp_agency_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+   
+    ############## Import Formalities ####################
+    imp_form_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_imp_form = fields.Text('Comments')
+    forecast_from_imp_form = fields.Date('Forecast From')
+    forecast_unitl_imp_form = fields.Date('Forecast Initl')
+    imp_form_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+   
+   ############## Terminal Exit Formalities ####################
+    term_exit_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_term_exit = fields.Text('Comments')
+    forecast_from_term_exit = fields.Date('Forecast From')
+    forecast_unitl_term_exit = fields.Date('Forecast Initl')
+    term_exit_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+   
+   ############## Unlashing ####################
+    unlash_exit_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_unlash = fields.Text('Comments')
+    forecast_from_unlash = fields.Date('Forecast From')
+    forecast_unitl_unlash = fields.Date('Forecast Initl')
+    unlash_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+   
+   ############## Stripping ####################
+    strip_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_strip = fields.Text('Comments')
+    forecast_from_strip = fields.Date('Forecast From')
+    forecast_unitl_strip = fields.Date('Forecast Initl')
+    strip_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+   
+   ############## Unpackaging ####################
+    unpack_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_unpack = fields.Text('Comments')
+    forecast_from_unpack = fields.Date('Forecast From')
+    forecast_unitl_unpack = fields.Date('Forecast Initl')
+    unpack_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+
+   ############## Other Customs Formalities ####################
+    oth_cust_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_oth_cust = fields.Text('Comments')
+    forecast_from_oth_cust = fields.Date('Forecast From')
+    forecast_unitl_oth_cust = fields.Date('Forecast Initl')
+    oth_cust_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+  
+  ############## Other Requests ####################
+    oth_req_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_oth_req = fields.Text('Comments')
+    forecast_from_oth_req = fields.Date('Forecast From')
+    forecast_unitl_oth_req = fields.Date('Forecast Initl')
+    oth_req_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+  
+############## Trailer Traction ####################
+    trai_trac_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_trai_trac = fields.Text('Comments')
+    forecast_from_trai_trac = fields.Date('Forecast From')
+    forecast_unitl_trai_trac = fields.Date('Forecast Initl')
+    trai_trac_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+
+############## Storage ####################
+    storage_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_storage = fields.Text('Comments')
+    forecast_from_storage = fields.Date('Forecast From')
+    forecast_unitl_storage = fields.Date('Forecast Initl')
+    storage_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+
+############## Lifting ####################
+    lifting_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_lifting = fields.Text('Comments')
+    forecast_from_lifting = fields.Date('Forecast From')
+    forecast_unitl_lifting = fields.Date('Forecast Initl')
+    lifting_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+
+############## Consulting ####################
+    consult_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_consult = fields.Text('Comments')
+    forecast_from_consult = fields.Date('Forecast From')
+    forecast_unitl_consult = fields.Date('Forecast Initl')
+    consult_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+
+############## Studies ####################
+    studies_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_studies = fields.Text('Comments')
+    forecast_from_studies = fields.Date('Forecast From')
+    forecast_unitl_studies = fields.Date('Forecast Initl')
+    studies_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+
+############## Civil Work ####################
+    civil_work_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_civil_work = fields.Text('Comments')
+    forecast_from_civil_work = fields.Date('Forecast From')
+    forecast_unitl_civil_work = fields.Date('Forecast Initl')
+    civil_work_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+
 class PackagingSevice(models.Model):
 
     _name = 'packagin.service'
@@ -92,6 +246,7 @@ class PackagingDivision(models.Model):
 class PackagingProfitability(models.Model):
 
     _name = 'packagin.profitablity'
+    _rec_name = 'suppliers'
 
     atc = fields.Selection([
             ('yes', 'Yes'),

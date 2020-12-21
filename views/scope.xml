@@ -23,6 +23,304 @@
                                 </group>
                               
                             </page>
+                            <page string="Stuffing">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_stuffing"/>
+                                        <field name="forecast_from_stuffing"/>
+                                        <field name="forecast_unitl_stuffing"/>
+                                    </group>
+                                    <group>
+                                        <field name="stuffing_service_id"/>
+                                       <field name="stuffing_profitability_id"/>
+                                    </group>
+                              
+                                </group>
+                              
+                            </page>
+
+                            <page string="LSD">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_lsd"/>
+                                        <field name="forecast_from_lsd"/>
+                                        <field name="forecast_unitl_lsd"/>
+                                    </group>
+                                    <group>
+                                        <field name="lsd_service_id"/>
+                                       <field name="lsd_profitability_id"/>
+                                    </group>
+                              
+                                </group>
+                              
+                            </page>
+                            <page string="Loading On Truck">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_loading"/>
+                                        <field name="forecast_from_loading"/>
+                                        <field name="forecast_unitl_loading"/>
+                                    </group>
+                                    <group>
+                                        <field name="loading_service_id"/>
+                                       <field name="loading_profitability_id"/>
+                                    </group>
+                              
+                                </group>
+                              
+                            </page>
+                            <page string="Export Formalities">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_export"/>
+                                        <field name="forecast_from_export"/>
+                                        <field name="forecast_unitl_export"/>
+                                    </group>
+                                    <group>
+                                        <field name="export_service_id"/>
+                                       <field name="export_profitability_id"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Terminal Entry Formalities">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_terminal"/>
+                                        <field name="forecast_from_terminal"/>
+                                        <field name="forecast_unitl_terminal"/>
+                                    </group>
+                                    <group>
+                                        <field name="terminal_service_id"/>
+                                       <field name="terminal_profitability_id"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Export Agency">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_exp_agency"/>
+                                        <field name="forecast_from_exp_agency"/>
+                                        <field name="forecast_unitl_exp_agency"/>
+                                    </group>
+                                    <group>
+                                        <field name="exp_agncy_service_id"/>
+                                       <field name="exp_agency_profitability_id"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Loading on Main Transport">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_load_trans"/>
+                                        <field name="forecast_from_load_trans"/>
+                                        <field name="forecast_unitl_load_trans"/>
+                                    </group>
+                                    <group>
+                                        <field name="load_trans_service_id"/>
+                                       <field name="load_trans_profitability_id"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Unloading From Main Transport">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_upload_trans"/>
+                                        <field name="forecast_from_upload_trans"/>
+                                        <field name="forecast_unitl_upload_trans"/>
+                                    </group>
+                                    <group>
+                                        <field name="upload_trans_service_id"/>
+                                       <field name="upload_trans_profitability_id"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Import Agency">
+                                <group>
+                                <group col="2">
+                                        <field name="comments_type_imp_agency"/>
+                                        <field name="forecast_from_imp_agency"/>
+                                        <field name="forecast_unitl_imp_agency"/>
+                                    </group>
+                                    <group>
+                                        <field name="imp_agency_service_id"/>
+                                    <field name="imp_agency_profitability_id"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Import Formalities">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_imp_form"/>
+                                        <field name="forecast_from_imp_form"/>
+                                        <field name="forecast_unitl_imp_form"/>
+                                    </group>
+                                    <group>
+                                        <field name="imp_form_service_id"/>
+                                       <field name="imp_form_profitability_id"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Terminal Exit Formalities">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_term_exit"/>
+                                        <field name="forecast_from_term_exit"/>
+                                        <field name="forecast_unitl_term_exit"/>
+                                    </group>
+                                    <group>
+                                        <field name="term_exit_service_id"/>
+                                       <field name="term_exit_profitability_id"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Unlashing">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_unlash"/>
+                                        <field name="forecast_from_unlash"/>
+                                        <field name="forecast_unitl_unlash"/>
+                                    </group>
+                                    <group>
+                                        <field name="unlash_exit_service_id"/>
+                                       <field name="unlash_profitability_id"/>
+                                    </group>
+                                </group>
+                            </page>
+                             <page string="Stripping">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_strip"/>
+                                        <field name="forecast_from_strip"/>
+                                        <field name="forecast_unitl_strip"/>
+                                    </group>
+                                    <group>
+                                        <field name="strip_service_id"/>
+                                       <field name="strip_profitability_id"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Unpackaging">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_unpack"/>
+                                        <field name="forecast_from_unpack"/>
+                                        <field name="forecast_unitl_unpack"/>
+                                    </group>
+                                    <group>
+                                        <field name="unpack_service_id"/>
+                                       <field name="unpack_profitability_id"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Other Customs Formalities">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_oth_cust"/>
+                                        <field name="forecast_from_oth_cust"/>
+                                        <field name="forecast_unitl_oth_cust"/>
+                                    </group>
+                                    <group>
+                                        <field name="oth_cust_service_id"/>
+                                       <field name="oth_cust_profitability_id"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Other Requests">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_oth_req"/>
+                                        <field name="forecast_from_oth_req"/>
+                                        <field name="forecast_unitl_oth_req"/>
+                                    </group>
+                                    <group>
+                                        <field name="oth_req_service_id"/>
+                                       <field name="oth_req_profitability_id"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Trailer Traction">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_trai_trac"/>
+                                        <field name="forecast_from_trai_trac"/>
+                                        <field name="forecast_unitl_trai_trac"/>
+                                    </group>
+                                    <group>
+                                        <field name="trai_trac_service_id"/>
+                                       <field name="trai_trac_profitability_id"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Storage">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_storage"/>
+                                        <field name="forecast_from_storage"/>
+                                        <field name="forecast_unitl_storage"/>
+                                    </group>
+                                    <group>
+                                        <field name="storage_service_id"/>
+                                       <field name="storage_profitability_id"/>
+                                    </group>
+                                </group>
+                            </page>
+
+                             <page string="Lifting">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_lifting"/>
+                                        <field name="forecast_from_lifting"/>
+                                        <field name="forecast_unitl_lifting"/>
+                                    </group>
+                                    <group>
+                                        <field name="lifting_service_id"/>
+                                       <field name="lifting_profitability_id"/>
+                                    </group>
+                                </group>
+                            </page>
+
+                            <page string="Consulting">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_consult"/>
+                                        <field name="forecast_from_consult"/>
+                                        <field name="forecast_unitl_consult"/>
+                                    </group>
+                                    <group>
+                                        <field name="consult_service_id"/>
+                                       <field name="consult_profitability_id"/>
+                                    </group>
+                                </group>
+                            </page>
+
+                            <page string="Studies">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_studies"/>
+                                        <field name="forecast_from_studies"/>
+                                        <field name="forecast_unitl_studies"/>
+                                    </group>
+                                    <group>
+                                        <field name="studies_service_id"/>
+                                       <field name="studies_profitability_id"/>
+                                    </group>
+                                </group>
+                            </page>
+                            
+                            <page string="Civil Work">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_civil_work"/>
+                                        <field name="forecast_from_civil_work"/>
+                                        <field name="forecast_unitl_civil_work"/>
+                                    </group>
+                                    <group>
+                                        <field name="civil_work_service_id"/>
+                                       <field name="civil_work_profitability_id"/>
+                                    </group>
+                                </group>
+                            </page>
+
                         </notebook>
                     </sheet>
                 </form>
