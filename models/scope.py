@@ -6,10 +6,21 @@ from odoo import models, fields, api
 class scope(models.Model):
 
     _name = 'scope.type'
+    _rec_name = 'comments_type'
+
+    packagin_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type = fields.Text('Comments')
+    forecast_from = fields.Date('Forecast From')
+    forecast_unitl = fields.Date('Forecast Initl')
+    packagin_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+    
+    
+class PackagingSevice(models.Model):
+
+    _name = 'packagin.service'
     _rec_name = 'direction'
 
-    # packagin_division_id = fields.Many2many('packagin.division', 'division_user_rel', 'scope_id', 'division_id', string='Division')
-    packagin_division_id = fields.Many2one('packagin.division', string='Service')    
+    packagin_division_id = fields.Many2one('packagin.division', string='Division')    
     direction = fields.Selection([
             ('export', 'Export (E)'),
             ('import', 'Import (I)'),
@@ -61,12 +72,27 @@ class scope(models.Model):
             ('escort', 'Escort'),
             ('civil_work', 'Civil Work'),
             ], string='Scope', default='packaging')
-
+    
     service  = fields.Text('Service')
     service_n = fields.Char('Service N°')
     service_detail = fields.Text('Detail')
     packagin_criteria_id = fields.Many2one('packagin.criteria', string='Criteria')
-    packagin_section_id = fields.Many2one('packaging.section', string='Section')
+
+class PackagingDivision(models.Model):
+
+    _name = 'packagin.division'
+    _rec_name = 'division'
+
+    division  = fields.Text('Division')
+    division_n = fields.Char('Division N°')
+    division_tag = fields.Text('Division Tag')
+    packagin_department_id = fields.Many2one('packagin.department', string='Department')
+
+
+class PackagingProfitability(models.Model):
+
+    _name = 'packagin.profitablity'
+
     atc = fields.Selection([
             ('yes', 'Yes'),
             ('no', 'No'),
@@ -74,7 +100,7 @@ class scope(models.Model):
     cost_rate_ht_currency = fields.Many2one('res.currency', string='Currency')
     cost_rate_ht_monet = fields.Float('Cost Rate HT')
     suppliers = fields.Many2one('res.partner', string='Suppliers')
-    packaging_amount_id_line = fields.One2many('packaging.amount','packaging_amount_id', string="Packaging Amount")                    
+    packaging_amount_line = fields.One2many('packaging.amount','packaging_amount_id', string="Packaging Amount")                    
 
     total_cost_ht = fields.Float(string='Tot Cost HT', compute='_total_packaging_all')
     total_sales_ht = fields.Float(string='Tot Sales HT', compute='_total_packaging_all')
@@ -85,7 +111,7 @@ class scope(models.Model):
     def _total_packaging_all(self):
         for pack in self:
             total_cost_ht = total_sales_ht = total_net_sales_ht = total_profit_ht = profit  = 0.0
-            for line in pack.packaging_amount_id_line:
+            for line in pack.packaging_amount_line:
                 total_cost_ht += line.s_tot_cost_ht
                 total_sales_ht += line.s_tot_sales_ht
                 total_net_sales_ht += line.s_tot_net_sale_ht
@@ -102,70 +128,6 @@ class scope(models.Model):
                 'profit': pack.profit, 
 
             })
-
-    # qty = fields.Float('Qty')
-    # qty_unit = fields.Many2one('packaging.unit')
-    # sale_rate_ht_currency = fields.Many2one('res.currency', string='Currency')
-    # sale_rate_ht = fields.Float('Sale Rate HT')
-    # discount = fields.Float('Discount ')
-    # net_sale_rate = fields.Float('Net Sale Rate', compute='_net_sale')
-    # net_sale_rate_ht_currency = fields.Many2one('res.currency', string='Currency')
-    # profit_ht = fields.Float('Profit HT', compute='_prft_ht')
-    # profit_ht_currency = fields.Many2one('res.currency', string='Currency')
-    # s_tot_sales_ht = fields.Float('S/Tot Sales HT', compute='_tot_sales_ht')
-    # s_tot_sales_currency = fields.Many2one('res.currency', string='Currency')
-    # s_tot_cost_ht = fields.Float('S/Tot Cost HT', compute='_tot_cost_ht')
-    # s_tot_cost_currency = fields.Many2one('res.currency', string='Currency')
-    # s_tot_net_sale_ht = fields.Float('S/Tot Net Sale HT', compute='_tot_net_sale_ht')
-    # s_tot_net_sale_currency = fields.Many2one('res.currency', string='Currency')
-    # s_profit_ht = fields.Float('S/Tot Profit HT', compute='_tot_profit_ht')
-    # s_tot_profit_currency = fields.Many2one('res.currency', string='Currency')
-    
-
-    # def _net_sale(self):
-    #     self.net_sale_rate = self.sale_rate_ht - (self.sale_rate_ht * self.discount)
-    #     return True
-   
-    # def _prft_ht(self):
-    #     self.profit_ht = self.net_sale_rate - self.cost_rate_ht_monet  
-    #     return True
-
-    # def _tot_sales_ht(self):
-    #     self.s_tot_sales_ht = self.qty * self.sale_rate_ht  
-    #     return True    
-    
-    # def _tot_cost_ht(self):
-    #     self.s_tot_cost_ht = self.qty * self.cost_rate_ht_monet  
-    #     return True
-
-    # def _tot_net_sale_ht(self):
-    #     self.s_tot_net_sale_ht = self.qty * self.net_sale_rate  
-    #     return True
- 
-    # def _tot_profit_ht(self):
-    #     self.s_profit_ht = self.qty * self.profit_ht  
-    #     return True
-
-    # @api.onchange('sale_rate_ht_currency')
-    # def onchange_currency_id(self):
-    #     self.net_sale_rate_ht_currency = self.sale_rate_ht_currency
-    #     self.profit_ht_currency = self.sale_rate_ht_currency
-    #     self.s_tot_sales_currency = self.sale_rate_ht_currency
-    #     self.s_tot_cost_currency = self.sale_rate_ht_currency
-    #     self.s_tot_net_sale_currency = self.sale_rate_ht_currency
-    #     self.s_tot_profit_currency = self.sale_rate_ht_currency
-    
-
-class PackagingDivision(models.Model):
-
-    _name = 'packagin.division'
-    _rec_name = 'division'
-
-    division  = fields.Text('Division')
-    division_n = fields.Char('Division N°')
-    division_tag = fields.Text('Division Tag')
-    # packagin_department_id = fields.Many2many('packagin.department', 'department_user_rel', 'div_id', 'depart_id', string='Department')
-    packagin_department_id = fields.Many2one('packagin.department', string='Department')
 
 class PackagingDepartment(models.Model):
 
@@ -498,13 +460,13 @@ class PackagingAmount(models.Model):
     s_tot_net_sale_currency = fields.Many2one('res.currency', string='Currency')
     s_profit_ht = fields.Float('S/Tot Profit HT', compute='_amount_in_packaging_all')
     s_tot_profit_currency = fields.Many2one('res.currency', string='Currency')
-    packaging_amount_id = fields.Many2one('scope.type', string="Packaging Amount")
+    packaging_amount_id = fields.Many2one('packagin.profitablity', string="Packaging Amount")
     
 
     def _amount_in_packaging_all(self):
         for pack in self:
             cost_rate_ht_monet = qty = sale_rate_ht = net_sale_rate = profit_ht = s_tot_sales_ht = s_tot_cost_ht = s_tot_net_sale_ht = s_profit_ht = 0.0 
-            for line in pack.packaging_amount_id.packaging_amount_id_line:
+            for line in pack.packaging_amount_id.packaging_amount_line:
                 line.net_sale_rate = line.sale_rate_ht - (line.sale_rate_ht * line.discount)
                 line.profit_ht = line.net_sale_rate - line.cost_rate_ht_monet
                 line.s_tot_sales_ht = line.qty * line.sale_rate_ht

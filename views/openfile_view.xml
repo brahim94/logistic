@@ -224,9 +224,7 @@
 
                             </xpath>
                             <xpath expr="//notebook[1]//page[1]//field[@name='child_ids']/form/sheet/group/group/field[@name='name']" position="after">
-                                 <!-- <field name="commercial" attrs="{'invisible': [('type','!=','contact')]}"/>
-                                <field name="csd"/> -->
-                                <!-- <attribute name="attrs">{'invisible':1}</attribute> -->
+                                
                                 <field name="sex"/>
                                 <field name="visit_card"/>
                                                 <field name="depar_tment_id"/>

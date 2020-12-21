@@ -73,3 +73,8 @@ access_pack_vat,access_pack_vat,model_pack_vat,base.group_user,1,1,1,1
 access_packaging_unit,access_packaging_unit,model_packaging_unit,base.group_user,1,1,1,1
 
 access_packaging_amount,access_packaging_amount,model_packaging_amount,base.group_user,1,1,1,1
+
+access_packagin_service,access_packagin_service,model_packagin_service,base.group_user,1,1,1,1
+
+access_packagin_profitablity,access_packagin_profitablity,model_packagin_profitablity,base.group_user,1,1,1,1
+

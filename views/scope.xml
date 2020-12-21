@@ -11,135 +11,17 @@
                             <page string="Packaging">
                                 <group>
                                    <group col="2">
-                                        <field name="packagin_division_id"/>
-                                        <field name="direction"/>
-                                        <field name="packagin_mode_transport_id"/>
-                                        <field name="scope"/>
-                                        <field name="service"/>
-                                        <field name="service_n"/>
-                                        <field name="service_detail"/>             
+                                        <field name="comments_type"/>
+                                        <field name="forecast_from"/>
+                                        <field name="forecast_unitl"/>
                                     </group>
                                     <group>
-                                        <field name="packagin_criteria_id"/>
-                                        <field name="packagin_section_id"/>
-                                        <field name="atc"/>
-<!-- 
-                                          <label for="cost_rate_ht_monet"/>
-                                            <div class="o_row" style="max-width: 200px; max-height: 100px">
-                                                <field name="cost_rate_ht_monet"/>                                                
-                                                <field name="cost_rate_ht_currency"/>
-                                            </div> -->
-                                        <field name="suppliers"/>
-                                        <!-- <label for="qty"/>
-                                            <div class="o_row" style="max-width: 200px; max-height: 100px">
-                                                <field name="qty"/>
-                                                <field name="qty_unit"/>
-                                            </div>
-                                        <label for="sale_rate_ht"/>
-                                            <div class="o_row" style="max-width: 200px; max-height: 100px">
-                                                <field name="sale_rate_ht"/>
-                                                <field name="sale_rate_ht_currency"/>
-                                            </div>
-
-                                            
-                                       
-                                        <label for="discount"/>
-                                            <div class="o_row" style="max-width: 200px; max-height: 100px">
-                                                <field name="discount"/>
-                                                <span>%</span>
-                                            </div>
-
-                                        <label for="net_sale_rate"/>
-                                            <div class="o_row" style="max-width: 200px; max-height: 100px">
-                                                <field name="net_sale_rate" readonly="1"/>
-                                                <field name="net_sale_rate_ht_currency" readonly="1"/>
-                                            </div>
-
-                                        <label for="profit_ht"/>
-                                            <div class="o_row" style="max-width: 200px; max-height: 100px">
-                                                <field name="profit_ht" readonly="1"/>
-                                                <field name="profit_ht_currency" readonly="1"/>
-                                            </div>
-                                       
-                                        <label for="s_tot_sales_ht"/>
-                                            <div class="o_row" style="max-width: 200px; max-height: 100px">
-                                                <field name="s_tot_sales_ht" readonly="1"/>
-                                                <field name="s_tot_sales_currency" readonly="1"/>
-                                            </div>
-                                        
-                                        <label for="s_tot_cost_ht"/>
-                                            <div class="o_row" style="max-width: 200px; max-height: 100px">
-                                                <field name="s_tot_cost_ht" readonly="1"/>
-                                                <field name="s_tot_cost_currency"  readonly="1"/>
-                                            </div>
-                                        
-                                        <label for="s_tot_net_sale_ht"/>
-                                            <div class="o_row" style="max-width: 200px; max-height: 100px">
-                                                <field name="s_tot_net_sale_ht" readonly="1"/>
-                                                <field name="s_tot_net_sale_currency" readonly="1"/>
-                                            </div>
-                                        
-                                         <label for="s_profit_ht"/>
-                                            <div class="o_row" style="max-width: 200px; max-height: 100px">
-                                                <field name="s_profit_ht" readonly="1"/>
-                                                <field name="s_tot_profit_currency" readonly="1"/>
-                                            </div> -->
+                                        <field name="packagin_service_id"/>
+                                       <field name="packagin_profitability_id"/>
                                     </group>
-                                <field name="packaging_amount_id_line" nolabel="1">
-                                    <tree editable="bottom">
-                                                    <field name="qty"/>
-                                                    <field name="qty_unit"/>
-                                                    <field name="sale_rate_ht"/>
-                                                    <field name="sale_rate_ht_currency"/>
-                                                    <field name="discount"/>
-                                                    <field name="net_sale_rate"/>
-                                                    <field name="net_sale_rate_ht_currency" readonly="1"/>
-                                                    <field name="profit_ht"/>
-                                                    <field name="profit_ht_currency" readonly="1"/>
-                                                    <field name="s_tot_sales_ht"/>
-                                                    <field name="s_tot_sales_currency" readonly="1"/>
-                                                    <field name="s_tot_cost_ht"/>
-                                                    <field name='s_tot_cost_currency' readonly="1"/>
-                                                    <field name="s_tot_net_sale_ht"/>
-                                                    <field name="s_tot_net_sale_currency" readonly="1"/>
-                                                    <field name="s_profit_ht"/>
-                                                    <field name="s_tot_profit_currency" readonly="1"/>
-                                                </tree>
-                                            </field>
+                              
                                 </group>
-                                 <group class="oe_subtotal_footer oe_right" colspan="2" name="total_packaging">
-                                                
-                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
-                                                <label for="total_cost_ht"/>
-                                                </div>
-                                                <field name="total_cost_ht" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
-                                                
-                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
-                                                    <label for="total_sales_ht"/>
-                                                </div>
-                                                <field name="total_sales_ht" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
-                                                
-                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
-                                                    <label for="total_net_sales_ht"/>
-                                                </div>
-                                                <field name="total_net_sales_ht" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
-                                                
-                                                
-                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
-                                                    <label for="total_profit_ht"/>
-                                                </div>
-                                                <field name="total_profit_ht" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
-                                                
-                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
-                                                    <label for="profit"/>
-                                                </div>
-                                                <field name="profit" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary"/>
-                                                
-                                                
-                                                
-                                                
-                                            </group>
-                        
+                              
                             </page>
                         </notebook>
                     </sheet>
@@ -152,13 +34,9 @@
             <field name="model">scope.type</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="packagin_division_id"/>
-                    <field name="direction"/>
-                    <field name="packagin_mode_transport_id"/>
-                    <field name="scope"/>
-                    <field name="service"/>
-                    <field name="service_n"/>
-                    <field name="service_detail"/>
+                    <field name="comments_type"/>
+                    <field name="forecast_from"/>
+                    <field name="forecast_unitl"/>
                 </tree> 
             </field>
         </record>
@@ -233,7 +111,6 @@
                                 <field name="packagin_regime_number_id"/>
                                 <field name="packagin_added_proceders_id"/>
                                 <field name="packagin_customs_desk_id"/>
-                                <!-- <field name="packagin_packaging_processes_id"/> -->
                             </group>
                         </group>
                     </sheet>
@@ -248,6 +125,103 @@
                     <p class="oe_view_nocontent_smiling_face"> Criteria</p>
             </field>
         </record>
+
+                        <!-- packagin.service -->
+        <record id='packagin_service_view_form' model='ir.ui.view'>
+            <field name="name">packagin.service.type.form</field>
+            <field name="model">packagin.service</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Service">
+                            <group col="2">
+                                <field name="packagin_division_id"/>
+                                <field name="direction"/>
+                                <field name="packagin_mode_transport_id"/>
+                            </group>
+                            <group>
+                                <field name="service"/>
+                                <field name="service_n"/>
+                                <field name="service_detail"/>
+                                <field name="packagin_criteria_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- PROFITABILITY -->
+        <record id='packagin_profitability_view_form' model='ir.ui.view'>
+            <field name="name">packagin.profitablity.type.form</field>
+            <field name="model">packagin.profitablity</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Profitability">
+                            <group col="2">
+                                <field name="atc"/>
+                                <field name="suppliers"/>
+                            </group>
+                            <group>
+                            </group>
+                            <field name="packaging_amount_line" nolabel="1">
+                                <tree editable="bottom">
+                                    <field name="qty"/>
+                                    <field name="qty_unit"/>
+                                    <field name="sale_rate_ht"/>
+                                    <field name="sale_rate_ht_currency"/>
+                                    <field name="discount"/>
+                                    <field name="net_sale_rate"/>
+                                    <field name="net_sale_rate_ht_currency" readonly="1"/>
+                                    <field name="profit_ht"/>
+                                    <field name="profit_ht_currency" readonly="1"/>
+                                    <field name="s_tot_sales_ht"/>
+                                    <field name="s_tot_sales_currency" readonly="1"/>
+                                    <field name="s_tot_cost_ht"/>
+                                    <field name='s_tot_cost_currency' readonly="1"/>
+                                    <field name="s_tot_net_sale_ht"/>
+                                    <field name="s_tot_net_sale_currency" readonly="1"/>
+                                    <field name="s_profit_ht"/>
+                                    <field name="s_tot_profit_currency" readonly="1"/>
+                                </tree>
+                            </field>
+                        </group>
+                         <group class="oe_subtotal_footer oe_right" colspan="2" name="total_packaging">
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                <label for="total_cost_ht"/>
+                                                </div>
+                                                <field name="total_cost_ht" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="total_sales_ht"/>
+                                                </div>
+                                                <field name="total_sales_ht" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="total_net_sales_ht"/>
+                                                </div>
+                                                <field name="total_net_sales_ht" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                                
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="total_profit_ht"/>
+                                                </div>
+                                                <field name="total_profit_ht" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="profit"/>
+                                                </div>
+                                                <field name="profit" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary"/>
+                                                
+                        </group>
+                        
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
                             <!-- DEPARTMENT -->
         <record id='department_view_form' model='ir.ui.view'>
             <field name="name">department.type.form</field>
