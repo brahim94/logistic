@@ -23,19 +23,20 @@
                                         <field name="packagin_criteria_id"/>
                                         <field name="packagin_section_id"/>
                                         <field name="atc"/>
-                                          <label for="cost_rate_ht_currency"/>
-                                            <div class="o_row" style="max-width: 800px; max-height: 500px">
+<!-- 
+                                          <label for="cost_rate_ht_monet"/>
+                                            <div class="o_row" style="max-width: 200px; max-height: 100px">
+                                                <field name="cost_rate_ht_monet"/>                                                
                                                 <field name="cost_rate_ht_currency"/>
-                                                <field name="cost_rate_ht_monet"/>
-                                            </div>
+                                            </div> -->
                                         <field name="suppliers"/>
-                                        <label for="qty"/>
-                                            <div class="o_row" style="max-width: 800px; max-height: 500px">
+                                        <!-- <label for="qty"/>
+                                            <div class="o_row" style="max-width: 200px; max-height: 100px">
                                                 <field name="qty"/>
                                                 <field name="qty_unit"/>
                                             </div>
                                         <label for="sale_rate_ht"/>
-                                            <div class="o_row" style="max-width: 800px; max-height: 500px">
+                                            <div class="o_row" style="max-width: 200px; max-height: 100px">
                                                 <field name="sale_rate_ht"/>
                                                 <field name="sale_rate_ht_currency"/>
                                             </div>
@@ -49,12 +50,96 @@
                                             </div>
 
                                         <label for="net_sale_rate"/>
-                                            <div class="o_row" style="max-width: 800px; max-height: 500px">
+                                            <div class="o_row" style="max-width: 200px; max-height: 100px">
                                                 <field name="net_sale_rate" readonly="1"/>
-                                                <field name="net_sale_rate_ht_currency"/>
+                                                <field name="net_sale_rate_ht_currency" readonly="1"/>
                                             </div>
+
+                                        <label for="profit_ht"/>
+                                            <div class="o_row" style="max-width: 200px; max-height: 100px">
+                                                <field name="profit_ht" readonly="1"/>
+                                                <field name="profit_ht_currency" readonly="1"/>
+                                            </div>
+                                       
+                                        <label for="s_tot_sales_ht"/>
+                                            <div class="o_row" style="max-width: 200px; max-height: 100px">
+                                                <field name="s_tot_sales_ht" readonly="1"/>
+                                                <field name="s_tot_sales_currency" readonly="1"/>
+                                            </div>
+                                        
+                                        <label for="s_tot_cost_ht"/>
+                                            <div class="o_row" style="max-width: 200px; max-height: 100px">
+                                                <field name="s_tot_cost_ht" readonly="1"/>
+                                                <field name="s_tot_cost_currency"  readonly="1"/>
+                                            </div>
+                                        
+                                        <label for="s_tot_net_sale_ht"/>
+                                            <div class="o_row" style="max-width: 200px; max-height: 100px">
+                                                <field name="s_tot_net_sale_ht" readonly="1"/>
+                                                <field name="s_tot_net_sale_currency" readonly="1"/>
+                                            </div>
+                                        
+                                         <label for="s_profit_ht"/>
+                                            <div class="o_row" style="max-width: 200px; max-height: 100px">
+                                                <field name="s_profit_ht" readonly="1"/>
+                                                <field name="s_tot_profit_currency" readonly="1"/>
+                                            </div> -->
                                     </group>
+                                <field name="packaging_amount_id_line" nolabel="1">
+                                    <tree editable="bottom">
+                                                    <field name="qty"/>
+                                                    <field name="qty_unit"/>
+                                                    <field name="sale_rate_ht"/>
+                                                    <field name="sale_rate_ht_currency"/>
+                                                    <field name="discount"/>
+                                                    <field name="net_sale_rate"/>
+                                                    <field name="net_sale_rate_ht_currency" readonly="1"/>
+                                                    <field name="profit_ht"/>
+                                                    <field name="profit_ht_currency" readonly="1"/>
+                                                    <field name="s_tot_sales_ht"/>
+                                                    <field name="s_tot_sales_currency" readonly="1"/>
+                                                    <field name="s_tot_cost_ht"/>
+                                                    <field name='s_tot_cost_currency' readonly="1"/>
+                                                    <field name="s_tot_net_sale_ht"/>
+                                                    <field name="s_tot_net_sale_currency" readonly="1"/>
+                                                    <field name="s_profit_ht"/>
+                                                    <field name="s_tot_profit_currency" readonly="1"/>
+                                                </tree>
+                                            </field>
                                 </group>
+                                 <group class="oe_subtotal_footer oe_right" colspan="2" name="total_packaging">
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                <label for="total_cost_ht"/>
+                                                </div>
+                                                <field name="total_cost_ht" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="total_sales_ht"/>
+                                                </div>
+                                                <field name="total_sales_ht" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="total_net_sales_ht"/>
+                                                </div>
+                                                <field name="total_net_sales_ht" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                                
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="total_profit_ht"/>
+                                                </div>
+                                                <field name="total_profit_ht" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="profit"/>
+                                                </div>
+                                                <field name="profit" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary"/>
+                                                
+                                                
+                                                
+                                                
+                                            </group>
+                        
                             </page>
                         </notebook>
                     </sheet>

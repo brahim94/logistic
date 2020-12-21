@@ -71,3 +71,5 @@ access_packaging_tariff,access_packaging_tariff,model_packaging_tariff,base.grou
 access_packaging_section,access_packaging_section,model_packaging_section,base.group_user,1,1,1,1
 access_pack_vat,access_pack_vat,model_pack_vat,base.group_user,1,1,1,1
 access_packaging_unit,access_packaging_unit,model_packaging_unit,base.group_user,1,1,1,1
+
+access_packaging_amount,access_packaging_amount,model_packaging_amount,base.group_user,1,1,1,1

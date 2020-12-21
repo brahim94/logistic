@@ -74,21 +74,88 @@ class scope(models.Model):
     cost_rate_ht_currency = fields.Many2one('res.currency', string='Currency')
     cost_rate_ht_monet = fields.Float('Cost Rate HT')
     suppliers = fields.Many2one('res.partner', string='Suppliers')
-    qty = fields.Float('Qty')
-    qty_unit = fields.Many2one('packaging.unit')
-    sale_rate_ht_currency = fields.Many2one('res.currency', string='Currency')
-    sale_rate_ht = fields.Float('Sale Rate HT')
-    discount = fields.Float('Discount ')
-    net_sale_rate = fields.Float('Net Sale Rate', compute='_net_sale')
-    net_sale_rate_ht_currency = fields.Many2one('res.currency', string='Currency')
-    profit_ht = fields.Float('Profit HT', compute='_net_sale')
-    profit_ht_currency = fields.Many2one('res.currency', string='Currency')
+    packaging_amount_id_line = fields.One2many('packaging.amount','packaging_amount_id', string="Packaging Amount")                    
 
+    total_cost_ht = fields.Float(string='Tot Cost HT', compute='_total_packaging_all')
+    total_sales_ht = fields.Float(string='Tot Sales HT', compute='_total_packaging_all')
+    total_net_sales_ht = fields.Float(string='Tot Net Sales HT', compute='_total_packaging_all')
+    total_profit_ht = fields.Float(string='Tot Profit HT', compute='_total_packaging_all')
+    profit = fields.Float(string='%Profit', compute='_total_packaging_all')
 
-    def _net_sale(self):
-        self.net_sale_rate = self.sale_rate_ht - (self.sale_rate_ht * self.discount)
-        return True
+    def _total_packaging_all(self):
+        for pack in self:
+            total_cost_ht = total_sales_ht = total_net_sales_ht = total_profit_ht = profit  = 0.0
+            for line in pack.packaging_amount_id_line:
+                total_cost_ht += line.s_tot_cost_ht
+                total_sales_ht += line.s_tot_sales_ht
+                total_net_sales_ht += line.s_tot_net_sale_ht
+                total_profit_ht += line.s_profit_ht
+                if self.total_net_sales_ht != 0 and self.total_profit_ht != 0:
+                    self.profit = self.total_profit_ht / self.total_net_sales_ht
+                else:
+                    self.profit = 0
+            pack.update({
+                'total_cost_ht': total_cost_ht,
+                'total_sales_ht': total_sales_ht,
+                'total_net_sales_ht': total_net_sales_ht,
+                'total_profit_ht': total_profit_ht,
+                'profit': pack.profit, 
+
+            })
+
+    # qty = fields.Float('Qty')
+    # qty_unit = fields.Many2one('packaging.unit')
+    # sale_rate_ht_currency = fields.Many2one('res.currency', string='Currency')
+    # sale_rate_ht = fields.Float('Sale Rate HT')
+    # discount = fields.Float('Discount ')
+    # net_sale_rate = fields.Float('Net Sale Rate', compute='_net_sale')
+    # net_sale_rate_ht_currency = fields.Many2one('res.currency', string='Currency')
+    # profit_ht = fields.Float('Profit HT', compute='_prft_ht')
+    # profit_ht_currency = fields.Many2one('res.currency', string='Currency')
+    # s_tot_sales_ht = fields.Float('S/Tot Sales HT', compute='_tot_sales_ht')
+    # s_tot_sales_currency = fields.Many2one('res.currency', string='Currency')
+    # s_tot_cost_ht = fields.Float('S/Tot Cost HT', compute='_tot_cost_ht')
+    # s_tot_cost_currency = fields.Many2one('res.currency', string='Currency')
+    # s_tot_net_sale_ht = fields.Float('S/Tot Net Sale HT', compute='_tot_net_sale_ht')
+    # s_tot_net_sale_currency = fields.Many2one('res.currency', string='Currency')
+    # s_profit_ht = fields.Float('S/Tot Profit HT', compute='_tot_profit_ht')
+    # s_tot_profit_currency = fields.Many2one('res.currency', string='Currency')
     
+
+    # def _net_sale(self):
+    #     self.net_sale_rate = self.sale_rate_ht - (self.sale_rate_ht * self.discount)
+    #     return True
+   
+    # def _prft_ht(self):
+    #     self.profit_ht = self.net_sale_rate - self.cost_rate_ht_monet  
+    #     return True
+
+    # def _tot_sales_ht(self):
+    #     self.s_tot_sales_ht = self.qty * self.sale_rate_ht  
+    #     return True    
+    
+    # def _tot_cost_ht(self):
+    #     self.s_tot_cost_ht = self.qty * self.cost_rate_ht_monet  
+    #     return True
+
+    # def _tot_net_sale_ht(self):
+    #     self.s_tot_net_sale_ht = self.qty * self.net_sale_rate  
+    #     return True
+ 
+    # def _tot_profit_ht(self):
+    #     self.s_profit_ht = self.qty * self.profit_ht  
+    #     return True
+
+    # @api.onchange('sale_rate_ht_currency')
+    # def onchange_currency_id(self):
+    #     self.net_sale_rate_ht_currency = self.sale_rate_ht_currency
+    #     self.profit_ht_currency = self.sale_rate_ht_currency
+    #     self.s_tot_sales_currency = self.sale_rate_ht_currency
+    #     self.s_tot_cost_currency = self.sale_rate_ht_currency
+    #     self.s_tot_net_sale_currency = self.sale_rate_ht_currency
+    #     self.s_tot_profit_currency = self.sale_rate_ht_currency
+    
+
 class PackagingDivision(models.Model):
 
     _name = 'packagin.division'
@@ -408,4 +475,56 @@ class PackagingTariff(models.Model):
     comments_tarrif = fields.Text('Comments')
     
 
+class PackagingAmount(models.Model):
+
+    _name = 'packaging.amount'
+
+    cost_rate_ht_currency = fields.Many2one('res.currency', string='Currency')
+    cost_rate_ht_monet = fields.Float('Cost Rate HT')
+    qty = fields.Float('Qty')
+    qty_unit = fields.Many2one('packaging.unit')
+    sale_rate_ht_currency = fields.Many2one('res.currency', string='Currency')
+    sale_rate_ht = fields.Float('Sale Rate HT')
+    discount = fields.Float('Discount %')
+    net_sale_rate = fields.Float('Net Sale Rate', compute='_amount_in_packaging_all')
+    net_sale_rate_ht_currency = fields.Many2one('res.currency', string='Currency')
+    profit_ht = fields.Float('Profit HT', compute='_amount_in_packaging_all')
+    profit_ht_currency = fields.Many2one('res.currency', string='Currency')
+    s_tot_sales_ht = fields.Float('S/Tot Sales HT', compute='_amount_in_packaging_all')
+    s_tot_sales_currency = fields.Many2one('res.currency', string='Currency')
+    s_tot_cost_ht = fields.Float('S/Tot Cost HT', compute='_amount_in_packaging_all')
+    s_tot_cost_currency = fields.Many2one('res.currency', string='Currency')
+    s_tot_net_sale_ht = fields.Float('S/Tot Net Sale HT', compute='_amount_in_packaging_all')
+    s_tot_net_sale_currency = fields.Many2one('res.currency', string='Currency')
+    s_profit_ht = fields.Float('S/Tot Profit HT', compute='_amount_in_packaging_all')
+    s_tot_profit_currency = fields.Many2one('res.currency', string='Currency')
+    packaging_amount_id = fields.Many2one('scope.type', string="Packaging Amount")
+    
+
+    def _amount_in_packaging_all(self):
+        for pack in self:
+            cost_rate_ht_monet = qty = sale_rate_ht = net_sale_rate = profit_ht = s_tot_sales_ht = s_tot_cost_ht = s_tot_net_sale_ht = s_profit_ht = 0.0 
+            for line in pack.packaging_amount_id.packaging_amount_id_line:
+                line.net_sale_rate = line.sale_rate_ht - (line.sale_rate_ht * line.discount)
+                line.profit_ht = line.net_sale_rate - line.cost_rate_ht_monet
+                line.s_tot_sales_ht = line.qty * line.sale_rate_ht
+                line.s_tot_cost_ht = line.qty * line.cost_rate_ht_monet
+                line.s_tot_sales_ht = line.qty * line.sale_rate_ht
+                line.s_tot_net_sale_ht = line.qty * line.net_sale_rate
+                line.s_profit_ht = line.qty * line.profit_ht
+        pack.update({
+                'net_sale_rate': line.net_sale_rate,
+                'profit_ht': line.profit_ht,
+                's_tot_sales_ht': line.s_tot_sales_ht,
+                's_tot_cost_ht': line.s_tot_cost_ht,
+                's_tot_sales_ht': line.s_tot_sales_ht,
+                's_tot_net_sale_ht': line.s_tot_net_sale_ht,
+                's_profit_ht': line.s_profit_ht,
+                'net_sale_rate_ht_currency': line.sale_rate_ht_currency,
+                'profit_ht_currency': line.sale_rate_ht_currency,
+                's_tot_sales_currency': line.sale_rate_ht_currency,
+                's_tot_cost_currency': line.sale_rate_ht_currency,
+                's_tot_net_sale_currency': line.sale_rate_ht_currency,
+                's_tot_profit_currency': line.sale_rate_ht_currency,
+            })
     
