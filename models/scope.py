@@ -199,6 +199,28 @@ class scope(models.Model):
     payment_mode_customs_id = fields.Many2one('payment.mode.customs', striing='Payment Mode To Customs')
     customs_desk_id = fields.Many2one('customs.desk', striing='Customs Desk')
 
+############## Unloading On Terminal ####################
+    unload_termina_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_unload_termina = fields.Text('Comments')
+    forecast_from_unload_termina = fields.Date('Forecast From')
+    forecast_unitl_unload_termina = fields.Date('Forecast Initl')
+    unload_termina_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+    unload_terminaL_id = fields.Many2one('unloading.terminal', string='Terminal')
+
+
+############## Main Transport ####################
+    main_transport_service_id = fields.Many2one('packagin.service', string='Service')
+    packagin_pod_transport_id = fields.Many2one('packagin.pod', string='POD')
+    packagin_pol_transport_id = fields.Many2one('packagin.pol', string='POL')
+    comments_type_main_transport = fields.Text('Comments')
+    forecast_from_main_transport = fields.Date('Forecast From')
+    forecast_unitl_main_transport = fields.Date('Forecast Initl')
+    main_transport_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+    fret = fields.Selection([
+            ('prepaid', 'Prepaid'),
+            ('collect', 'Collect'),
+            ], string='Fret', default='prepaid')
+    requirement_id = fields.Many2one('packagin.requirement', string='Requirement')
 
 class PackagingSevice(models.Model):
 
@@ -312,6 +334,30 @@ class ItemLevels(models.Model):
     mode_transport_id = fields.Many2one('transport.mode', string='Mode Of Transport')
     items_level = fields.Text('Items Level')
     items_level_n = fields.Char('Items Level N°')
+
+class UnloadingTerminal(models.Model):
+
+    _name = 'unloading.terminal'
+    _rec_name = 'unloading_terminal'
+
+    unloading_terminal = fields.Text('Terminal')
+    unloading_terminal_n = fields.Char('Terminal N°')    
+    port_id = fields.Many2one('packagin.pod', string='Port')
+
+
+class Requirement(models.Model):
+
+    _name = 'packagin.requirement'
+    _rec_name = 'requirement'
+
+    requirement = fields.Text('Requirement')
+    requirement_n = fields.Char('Requirement N°')    
+    
+    @api.model
+    def create(self, vals):
+        vals['requirement_n'] = self.env['ir.sequence'].next_by_code('code.requirement') or '/'
+        return super(Requirement, self).create(vals)
+
 
 class PackagingProfitability(models.Model):
 
