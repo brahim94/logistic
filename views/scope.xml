@@ -338,6 +338,31 @@
                                 </group>
                             </page>
 
+                            <page string="Export Customs">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_pre_carriage"/>
+                                        <field name="forecast_from_pre_carriage"/>
+                                        <field name="forecast_unitl_pre_carriage"/>
+                                        <field name="pre_carriage_service_id"/>
+                                        <field name="pre_carriage_profitability_id"/>
+                                        <field name="exporter"/>
+                                        <field name="importer"/>
+                                        <field name="hs_position_id"/>
+                                    </group>
+                                    <group>
+                                        <field name="items_level_id"/>
+                                       <field name="regime_id"/>
+                                       <field name="regime_number_id"/>
+                                       <field name="added_proceders_id"/>
+                                       <field name="exemption_id"/>
+                                       <field name="duities_payment_id"/>
+                                       <field name="payment_mode_customs_id"/>
+                                       <field name="customs_desk_id"/>
+                                    </group>
+                                </group>
+                            </page>
+
                         </notebook>
                     </sheet>
                 </form>
@@ -559,6 +584,49 @@
             </field>
         </record>
 
+            <!-- HS Position -->
+        <record id='hs_position_view_form' model='ir.ui.view'>
+            <field name="name">hs.position.type.form</field>
+            <field name="model">hs.position</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="HS Position">
+                            <group col="2">
+                                <field name="sec"/>
+                                <field name="ch"/>
+                                <field name="position"/>
+                            </group>
+                            <group>
+                                <field name="hs_code"/>
+                                <field name="description"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Items Level -->
+        <record id='item_levels_view_form' model='ir.ui.view'>
+            <field name="name">item.levels.type.form</field>
+            <field name="model">item.levels</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Items Level">
+                            <group col="2">
+                                <field name="mode_transport_id"/>
+                                <field name="items_level"/>
+                                <field name="items_level_n"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
                              <!-- Value Classe -->
         <record id='vclasse_view_form' model='ir.ui.view'>
             <field name="name">vclasse.type.form</field>
@@ -839,6 +907,47 @@
                             <group col="2">
                                 <field name="added_proceders"/>
                                 <field name="added_proceders_n"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+            <!-- Exemption -->
+        <record id='exemption_view_form' model='ir.ui.view'>
+            <field name="name">packagin.exemption.type.form</field>
+            <field name="model">packagin.exemption</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Exemption">
+                            <group col="2">
+                                <field name="exemption"/>
+                                <field name="exemption_description"/>
+                                <field name="exemption_n"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+         <!-- Payment Mode To Customs -->
+        <record id='payment_mode_customs_view_form' model='ir.ui.view'>
+            <field name="name">payment.mode.customs.type.form</field>
+            <field name="model">payment.mode.customs</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Payment Mode To Customs">
+                            <group col="2">
+                                <field name="payment_mode_customs"/>
+                                <field name="payment_mode_customs_n"/>
                             </group>
                             <group>
                             </group>

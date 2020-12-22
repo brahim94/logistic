@@ -179,7 +179,27 @@ class scope(models.Model):
     pre_carriage_pickup_id = fields.Many2one('pickup.precarriage', string='Pick up Pre-carriage adress')
     pre_carriage_delivery_id = fields.Many2one('delivery.precarriage', string='Delivery Pre-carriage adress')
     distance = fields.Float('Distance Km')
-    
+
+
+############## Export Customs ####################
+    pre_carriage_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_pre_carriage = fields.Text('Comments')
+    forecast_from_pre_carriage = fields.Date('Forecast From')
+    forecast_unitl_pre_carriage = fields.Date('Forecast Initl')
+    pre_carriage_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+    exporter = fields.Many2one('res.partner', striing='Exporter')
+    importer = fields.Many2one('res.partner', striing='Importer')
+    hs_position_id = fields.Many2one('hs.position', striing='HS Position')
+    items_level_id = fields.Many2one('item.levels', striing='Items Level')
+    regime_id = fields.Many2one('packagin.regime', striing='Regime Type')
+    regime_number_id = fields.Many2one('regime.number', striing='Regime Number')
+    added_proceders_id = fields.Many2one('added.proceders', striing='Added Proceders')
+    exemption_id = fields.Many2one('packagin.exemption', striing='Exemption')
+    duities_payment_id = fields.Many2one('res.partner', striing='Duities Payment')
+    payment_mode_customs_id = fields.Many2one('payment.mode.customs', striing='Payment Mode To Customs')
+    customs_desk_id = fields.Many2one('customs.desk', striing='Customs Desk')
+
+
 class PackagingSevice(models.Model):
 
     _name = 'packagin.service'
@@ -271,6 +291,27 @@ class DeliveryPrecarriage(models.Model):
     delivery_preecarriage  = fields.Text('Delivery Pre-carriage adress')
     country_id = fields.Many2one('res.country', string='Country')
     city_id = fields.Many2one('res.country.state', string='City')
+
+class HsPosition(models.Model):
+
+    _name = 'hs.position'
+    _rec_name = 'description'
+
+    sec  = fields.Integer('SEC')
+    ch  = fields.Integer('CH')
+    position  = fields.Integer('Position')
+    hs_code  = fields.Integer('HS Code')
+    description  = fields.Text('Description')
+    
+
+class ItemLevels(models.Model):
+
+    _name = 'item.levels'
+    _rec_name = 'items_level'
+
+    mode_transport_id = fields.Many2one('transport.mode', string='Mode Of Transport')
+    items_level = fields.Text('Items Level')
+    items_level_n = fields.Char('Items Level N°')
 
 class PackagingProfitability(models.Model):
 
@@ -461,7 +502,25 @@ class PackagingAddedProceders(models.Model):
     _rec_name = 'added_proceders'
 
     added_proceders = fields.Text('Added Proceders')
-    added_proceders_n = fields.Char('Added Proceders N°')
+    added_proceders_n = fields.Char('Proceders N°')
+
+class PackagingExcemption(models.Model):
+ 
+    _name = 'packagin.exemption'
+    _rec_name = 'exemption'
+
+    exemption = fields.Text('Exemption')
+    exemption_description = fields.Text('Exemption Description')
+    exemption_n = fields.Char('Exemption N°')
+
+class PaymentMode(models.Model):
+ 
+    _name = 'payment.mode.customs'
+    _rec_name = 'payment_mode_customs'
+
+    payment_mode_customs = fields.Text('Payment Mode To Customs')
+    payment_mode_customs_n = fields.Char('Payment Mode To Customs N°')
+
 
 class PackagingCustomsDesk(models.Model):
  

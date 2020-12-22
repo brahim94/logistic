@@ -81,3 +81,11 @@ access_packagin_profitablity,access_packagin_profitablity,model_packagin_profita
 access_pickup_precarriage,access_pickup_precarriage,model_pickup_precarriage,base.group_user,1,1,1,1
 
 access_deliveyr_precarriage,access_deliveyr_precarriage,model_deliveyr_precarriage,base.group_user,1,1,1,1
+
+access_hs_position,access_hs_position,model_hs_position,base.group_user,1,1,1,1
+
+access_item_levels,access_item_levels,model_item_levels,base.group_user,1,1,1,1
+
+access_packagin_exemption,access_packagin_exemption,model_packagin_exemption,base.group_user,1,1,1,1
+
+access_payment_mode_customs,access_payment_mode_customs,model_payment_mode_customs,base.group_user,1,1,1,1
