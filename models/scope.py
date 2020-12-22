@@ -205,7 +205,7 @@ class scope(models.Model):
     forecast_from_unload_termina = fields.Date('Forecast From')
     forecast_unitl_unload_termina = fields.Date('Forecast Initl')
     unload_termina_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
-    unload_terminaL_id = fields.Many2one('unloading.terminal', string='Terminal')
+    unload_terminal_id = fields.Many2one('unloading.terminal', string='Terminal')
 
 
 ############## Main Transport ####################
@@ -221,6 +221,98 @@ class scope(models.Model):
             ('collect', 'Collect'),
             ], string='Fret', default='prepaid')
     requirement_id = fields.Many2one('packagin.requirement', string='Requirement')
+
+
+############## Import Customs ####################
+    import_customs_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_import_customs = fields.Text('Comments')
+    forecast_from_import_customs = fields.Date('Forecast From')
+    forecast_unitl_import_customs = fields.Date('Forecast Initl')
+    import_customs_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+    exporter_customs = fields.Many2one('res.partner', striing='Exporter')
+    importer_customs = fields.Many2one('res.partner', striing='Importer')
+    hs_position_customs_id = fields.Many2one('hs.position', striing='HS Position')
+    items_level_customs_id = fields.Many2one('item.levels', striing='Items Level')
+    regime_customs_id = fields.Many2one('packagin.regime', striing='Regime Type')
+    regime_number_customs_id = fields.Many2one('regime.number', striing='Regime Number')
+    added_proceders_customs_id = fields.Many2one('added.proceders', striing='Added Proceders')
+    exemption_customs_id = fields.Many2one('packagin.exemption', striing='Exemption')
+    duities_payment_customs_id = fields.Many2one('res.partner', striing='Duities Payment')
+    payment_mode_import_customs_id = fields.Many2one('payment.mode.customs', striing='Payment Mode To Customs')
+    customs_desk_customs_id = fields.Many2one('customs.desk', striing='Customs Desk')
+
+
+############## Loading From Terminal ####################
+    load_terminal_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_load_terminal = fields.Text('Comments')
+    forecast_from_load_terminal = fields.Date('Forecast From')
+    forecast_unitl_load_terminal = fields.Date('Forecast Initl')
+    load_terminal_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+    load_terminal_id = fields.Many2one('unloading.terminal', string='Terminal')
+
+
+############## Delivery ####################
+    delivery_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_delivery = fields.Text('Comments')
+    forecast_from_delivery = fields.Date('Forecast From')
+    forecast_unitl_delivery = fields.Date('Forecast Initl')
+    delivery_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+    delivery_pickup_id = fields.Many2one('pickup.precarriage', string='Pick up Pre-carriage adress')
+    delivery_delivery_id = fields.Many2one('delivery.precarriage', string='Delivery Pre-carriage adress')
+    delivery_distance = fields.Float('Distance Km')
+
+############## Unloading On Site ####################
+    unload_site_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_unload_site = fields.Text('Comments')
+    forecast_from_unload_site = fields.Date('Forecast From')
+    forecast_unitl_unload_site = fields.Date('Forecast Initl')
+    unload_site_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+    unload_site_id = fields.Many2one('unloading.site', string='Unloading On Site')
+
+############## Insurance Int ####################
+    insurance_int_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_insurance_int = fields.Text('Comments')
+    forecast_from_insurance_int = fields.Date('Forecast From')
+    forecast_unitl_insurance_int = fields.Date('Forecast Initl')
+    insurance_int_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+    insurance_int_id = fields.Many2one('insurance.int', string='Insurance Int')
+
+############## Insurance Dom ####################
+    insurance_dom_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_insurance_dom = fields.Text('Comments')
+    forecast_from_insurance_dom = fields.Date('Forecast From')
+    forecast_unitl_insurance_dom = fields.Date('Forecast Initl')
+    insurance_dom_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+    insurance_dom_id = fields.Many2one('insurance.int', string='Insurance Int')
+
+############## Domestic Customs ####################
+    domestic_customs_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_domestic_customs = fields.Text('Comments')
+    forecast_from_domestic_customs = fields.Date('Forecast From')
+    forecast_unitl_domestic_customs = fields.Date('Forecast Initl')
+    domestic_customs_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+    exporter_domestic = fields.Many2one('res.partner', striing='Exporter')
+    importer_domestic = fields.Many2one('res.partner', striing='Importer')
+    hs_position_domestic_id = fields.Many2one('hs.position', striing='HS Position')
+    items_level_domestic_id = fields.Many2one('item.levels', striing='Items Level')
+    regime_domestic_id = fields.Many2one('packagin.regime', striing='Regime Type')
+    regime_number_domestic_id = fields.Many2one('regime.number', striing='Regime Number')
+    added_proceders_domestic_id = fields.Many2one('added.proceders', striing='Added Proceders')
+    exemption_domestic_id = fields.Many2one('packagin.exemption', striing='Exemption')
+    duities_payment_domestic_id = fields.Many2one('res.partner', striing='Duities Payment')
+    payment_mode_import_domestic_id = fields.Many2one('payment.mode.customs', striing='Payment Mode To Customs')
+    customs_desk_domestic_id = fields.Many2one('customs.desk', striing='Customs Desk')
+
+############## Domestic Haulage ####################
+    domestic_haulage_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_domestic_haulage = fields.Text('Comments')
+    forecast_from_domestic_haulage = fields.Date('Forecast From')
+    forecast_unitl_domestic_haulage = fields.Date('Forecast Initl')
+    domestic_haulage_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+    domestic_haulage_pickup_id = fields.Many2one('pickup.precarriage', string='Pick up Pre-carriage adress')
+    domestic_haulage_delivery_id = fields.Many2one('delivery.precarriage', string='Delivery Pre-carriage adress')
+    domestic_haulage_distance = fields.Float('Distance Km')
+
 
 class PackagingSevice(models.Model):
 
@@ -344,6 +436,24 @@ class UnloadingTerminal(models.Model):
     unloading_terminal_n = fields.Char('Terminal N°')    
     port_id = fields.Many2one('packagin.pod', string='Port')
 
+
+class UnloadingOnSite(models.Model):
+
+    _name = 'unloading.site'
+    _rec_name = 'unloading_adress'
+
+    unloading_adress = fields.Text('Unloading Adress')
+    country_id = fields.Many2one('res.country', string='Country')
+    city_id = fields.Many2one('res.country.state', string='City')
+
+class InsuranceInt(models.Model):
+
+    _name = 'insurance.int'
+    _rec_name = 'description_insurance'
+
+    insurance_int = fields.Text('Insurance Int')
+    insurance_code  = fields.Char('Insurance Code')
+    description_insurance = fields.Text('Description')
 
 class Requirement(models.Model):
 

@@ -372,7 +372,7 @@
                                     <group>
                                         <field name="unload_termina_service_id"/>
                                        <field name="unload_termina_profitability_id"/>
-                                       <field name="unload_terminaL_id"/>
+                                       <field name="unload_terminal_id"/>
                                     </group>
                                 </group>
                             </page>
@@ -396,6 +396,134 @@
                                 </group>
                             </page>
 
+                            <page string="Import Customs">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_import_customs"/>
+                                        <field name="forecast_from_import_customs"/>
+                                        <field name="forecast_unitl_import_customs"/>
+                                        <field name="import_customs_service_id"/>
+                                        <field name="import_customs_profitability_id"/>
+                                        <field name="exporter_customs"/>
+                                        <field name="importer_customs"/>
+                                        <field name="hs_position_customs_id"/>
+                                    </group>
+                                    <group>
+                                        <field name="items_level_customs_id"/>
+                                       <field name="regime_customs_id"/>
+                                       <field name="regime_number_customs_id"/>
+                                       <field name="added_proceders_customs_id"/>
+                                       <field name="exemption_customs_id"/>
+                                       <field name="duities_payment_customs_id"/>
+                                       <field name="payment_mode_import_customs_id"/>
+                                       <field name="customs_desk_customs_id"/>
+                                    </group>
+                                </group>
+                            </page>
+                            
+                            <page string="Loading From Terminal">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_load_terminal"/>
+                                        <field name="forecast_from_load_terminal"/>
+                                        <field name="forecast_unitl_load_terminal"/>
+                                    </group>
+                                    <group>
+                                        <field name="load_terminal_service_id"/>
+                                       <field name="unload_termina_profitability_id"/>
+                                       <field name="load_terminal_id"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Delivery">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_delivery"/>
+                                        <field name="forecast_from_delivery"/>
+                                        <field name="forecast_unitl_delivery"/>
+                                        <field name="distance"/>
+                                    </group>
+                                    <group>
+                                        <field name="delivery_pickup_id"/>
+                                       <field name="delivery_profitability_id"/>
+                                       <field name="delivery_delivery_id"/>
+                                       <field name="delivery_distance"/>
+                                    </group>
+                                </group>
+                            </page>
+
+                            <page string="Unloading on site">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_unload_site"/>
+                                        <field name="forecast_from_unload_site"/>
+                                        <field name="forecast_unitl_unload_site"/>
+                                    </group>
+                                    <group>
+                                        <field name="unload_site_service_id"/>
+                                       <field name="unload_site_profitability_id"/>
+                                       <field name="unload_site_id"/>
+                                    </group>
+                                </group>
+                            </page>
+
+                            <page string="Insurance Int">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_insurance_int"/>
+                                        <field name="forecast_from_insurance_int"/>
+                                        <field name="forecast_unitl_insurance_int"/>
+                                    </group>
+                                    <group>
+                                        <field name="insurance_int_service_id"/>
+                                       <field name="insurance_int_profitability_id"/>
+                                       <field name="insurance_int_id"/>
+                                    </group>
+                                </group>
+                            </page>
+
+                            <page string="Domestic Customs">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_domestic_customs"/>
+                                        <field name="forecast_from_domestic_customs"/>
+                                        <field name="forecast_unitl_domestic_customs"/>
+                                        <field name="domestic_customs_service_id"/>
+                                        <field name="domestic_customs_profitability_id"/>
+                                        <field name="exporter_domestic"/>
+                                        <field name="importer_domestic"/>
+                                        <field name="hs_position_domestic_id"/>
+                                    </group>
+                                    <group>
+                                        <field name="items_level_domestic_id"/>
+                                       <field name="regime_domestic_id"/>
+                                       <field name="regime_number_domestic_id"/>
+                                       <field name="added_proceders_domestic_id"/>
+                                       <field name="exemption_domestic_id"/>
+                                       <field name="duities_payment_domestic_id"/>
+                                       <field name="payment_mode_import_domestic_id"/>
+                                       <field name="customs_desk_domestic_id"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Domestic Haulage">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_domestic_haulage"/>
+                                        <field name="forecast_from_domestic_haulage"/>
+                                        <field name="forecast_unitl_domestic_haulage"/>
+                                        <field name="domestic_haulage_distance"/>
+                                    </group>
+                                    <group>
+                                        <field name="domestic_haulage_service_id"/>
+                                       <field name="domestic_haulage_profitability_id"/>
+                                       <field name="domestic_haulage_delivery_id"/>
+                                       <field name="domestic_haulage_distance"/>
+                                    </group>
+                                </group>
+                            </page>
+
+                            
                         </notebook>
                     </sheet>
                 </form>
@@ -616,7 +744,27 @@
                 </form>
             </field>
         </record>
-
+        
+          <!-- Insurance Int -->
+        <record id='insurance_int_view_form' model='ir.ui.view'>
+            <field name="name">insurance.int.type.form</field>
+            <field name="model">insurance.int</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Insurance Int">
+                            <group col="2">
+                                <field name="insurance_int"/>
+                                <field name="insurance_code"/>
+                            </group>
+                            <group>
+                                <field name="description_insurance"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
 
                         <!-- Requirments  -->
         <record id='requirement_view_form' model='ir.ui.view'>
@@ -1290,7 +1438,29 @@
             </field>
         </record>
 
-          <!-- VAT -->
+        
+            <!-- Unloading On Site  -->
+        <record id='unloading_site_view_form' model='ir.ui.view'>
+            <field name="name">unloading.site.type.form</field>
+            <field name="model">unloading.site</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Unloading On Site">
+                            <group col="2">
+                                <field name="unloading_adress"/>
+                                <field name="country_id"/>
+                                <field name="city_id"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+         
+             <!-- VAT -->
          <record id='vat_packaging_view_form' model='ir.ui.view'>
             <field name="name">vat.packaging.type.form</field>
             <field name="model">pack.vat</field>

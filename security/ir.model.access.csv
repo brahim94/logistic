@@ -93,3 +93,7 @@ access_payment_mode_customs,access_payment_mode_customs,model_payment_mode_custo
 access_unloading_terminal,access_unloading_terminal,model_unloading_terminal,base.group_user,1,1,1,1
 
 access_packagin_requirement,access_packagin_requirement,model_packagin_requirement,base.group_user,1,1,1,1
+
+access_unloading_site,access_unloading_site,model_unloading_site,base.group_user,1,1,1,1
+
+access_insurance_int,access_insurance_int,model_insurance_int,base.group_user,1,1,1,1
