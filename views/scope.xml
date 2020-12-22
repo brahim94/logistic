@@ -321,6 +321,23 @@
                                 </group>
                             </page>
 
+                            <page string="Pre-Carriage">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_pre_carriage"/>
+                                        <field name="forecast_from_pre_carriage"/>
+                                        <field name="forecast_unitl_pre_carriage"/>
+                                        <field name="distance"/>
+                                    </group>
+                                    <group>
+                                        <field name="pre_carriage_service_id"/>
+                                       <field name="civil_work_profitability_id"/>
+                                       <field name="pre_carriage_pickup_id"/>
+                                       <field name="pre_carriage_delivery_id"/>
+                                    </group>
+                                </group>
+                            </page>
+
                         </notebook>
                     </sheet>
                 </form>
@@ -622,6 +639,7 @@
                 </form>
             </field>
         </record>
+
          <!-- CARGO INDICATION -->
         <record id='cargo_indication_view_form' model='ir.ui.view'>
             <field name="name">cargo.indication.type.form</field>
@@ -1045,7 +1063,48 @@
             </field>
         </record>
 
-        
+          <!-- Pick up Pre-carriage adress  -->
+        <record id='pick_up_pre_carriage_view_form' model='ir.ui.view'>
+            <field name="name">pickup.precarriage.type.form</field>
+            <field name="model">pickup.precarriage</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Pick up Pre-carriage">
+                            <group col="2">
+                                <field name="pick_up_preecarriage"/>
+                                <field name="country_id"/>
+                                <field name="city_id"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Delivery Pre-carriage  -->
+        <record id='delivery_pre_carriage_view_form' model='ir.ui.view'>
+            <field name="name">deliveyr.precarriage.type.form</field>
+            <field name="model">deliveyr.precarriage</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Delivery Pre-carriage">
+                            <group col="2">
+                                <field name="delivery_preecarriage"/>
+                                <field name="country_id"/>
+                                <field name="city_id"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
           <!-- VAT -->
          <record id='vat_packaging_view_form' model='ir.ui.view'>
             <field name="name">vat.packaging.type.form</field>

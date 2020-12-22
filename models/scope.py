@@ -169,6 +169,17 @@ class scope(models.Model):
     forecast_unitl_civil_work = fields.Date('Forecast Initl')
     civil_work_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
 
+
+############## Pre-Carriage ####################
+    pre_carriage_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_pre_carriage = fields.Text('Comments')
+    forecast_from_pre_carriage = fields.Date('Forecast From')
+    forecast_unitl_pre_carriage = fields.Date('Forecast Initl')
+    pre_carriage_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+    pre_carriage_pickup_id = fields.Many2one('pickup.precarriage', string='Pick up Pre-carriage adress')
+    pre_carriage_delivery_id = fields.Many2one('delivery.precarriage', string='Delivery Pre-carriage adress')
+    distance = fields.Float('Distance Km')
+    
 class PackagingSevice(models.Model):
 
     _name = 'packagin.service'
@@ -242,6 +253,24 @@ class PackagingDivision(models.Model):
     division_tag = fields.Text('Division Tag')
     packagin_department_id = fields.Many2one('packagin.department', string='Department')
 
+
+class PickupPrecarriage(models.Model):
+
+    _name = 'pickup.precarriage'
+    _rec_name = 'pick_up_preecarriage'
+
+    pick_up_preecarriage  = fields.Text('Pick up Pre-carriage adress')
+    country_id = fields.Many2one('res.country', string='Country')
+    city_id = fields.Many2one('res.country.state', string='City')
+
+class DeliveryPrecarriage(models.Model):
+
+    _name = 'deliveyr.precarriage'
+    _rec_name = 'delivery_preecarriage'
+
+    delivery_preecarriage  = fields.Text('Delivery Pre-carriage adress')
+    country_id = fields.Many2one('res.country', string='Country')
+    city_id = fields.Many2one('res.country.state', string='City')
 
 class PackagingProfitability(models.Model):
 

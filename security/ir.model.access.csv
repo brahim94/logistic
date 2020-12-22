@@ -78,3 +78,6 @@ access_packagin_service,access_packagin_service,model_packagin_service,base.grou
 
 access_packagin_profitablity,access_packagin_profitablity,model_packagin_profitablity,base.group_user,1,1,1,1
 
+access_pickup_precarriage,access_pickup_precarriage,model_pickup_precarriage,base.group_user,1,1,1,1
+
+access_deliveyr_precarriage,access_deliveyr_precarriage,model_deliveyr_precarriage,base.group_user,1,1,1,1
