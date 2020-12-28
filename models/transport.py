@@ -9,10 +9,6 @@ class ModeTransport(models.Model):
     _name = 'transport.mode'
     _rec_name = 'transport_mode'
 
-#     passenger_luggage = fields.Char('Passenger luggage')
-#     postal_parcel = fields.Char('Postal Parcel')
-#     bulk = fields.Char('Bulk')
-#     bulk_liquid = fields.Char('Bulk liquid')
     directory_id = fields.Many2one('directory.type', 'Directory ID')
     transport_mode = fields.Selection([
             ('as', 'AS'),
@@ -456,8 +452,6 @@ class ModeTransport(models.Model):
     fourty_ot_soc_oog_active = fields.Boolean("40' OT SOC OOG")
     fourty_fr_soc_oog_active = fields.Boolean("40' FR SOC OOG")
     fourty_fr_soc_oog = fields.Integer("40' FR SOC OOG")
-    
-
 
 
 class ASTransport(models.Model):

@@ -97,3 +97,9 @@ access_packagin_requirement,access_packagin_requirement,model_packagin_requireme
 access_unloading_site,access_unloading_site,model_unloading_site,base.group_user,1,1,1,1
 
 access_insurance_int,access_insurance_int,model_insurance_int,base.group_user,1,1,1,1
+
+access_packagin_equipement,access_packagin_equipement,model_packagin_equipement,base.group_user,1,1,1,1
+
+access_equipement_runting,access_equipement_runting,model_equipement_runting,base.group_user,1,1,1,1
+
+access_packagin_duration,access_packagin_duration,model_packagin_duration,base.group_user,1,1,1,1

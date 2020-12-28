@@ -314,6 +314,55 @@ class scope(models.Model):
     domestic_haulage_distance = fields.Float('Distance Km')
 
 
+############## Runting ####################
+    runting_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_runting = fields.Text('Comments')
+    forecast_from_runting = fields.Date('Forecast From')
+    forecast_unitl_runting = fields.Date('Forecast Initl')
+    runting_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+    equipement_id = fields.Many2one('equipement.runting', string='Equipment')
+    duration_id = fields.Many2one('packagin.duration', string='Duration')
+    country_id = fields.Many2one('res.country', string='Country')
+    city_id = fields.Many2one('res.country.state', string='City')
+
+############## Road survey ####################
+    road_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_road = fields.Text('Comments')
+    forecast_from_road = fields.Date('Forecast From')
+    forecast_unitl_road = fields.Date('Forecast Initl')
+    road_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+    from_road = fields.Text('From')
+    to_road = fields.Text('To')
+    distance_road = fields.Float('Distance (Km)')
+    top_length = fields.Float('Top Length (m)')
+    top_width = fields.Float('Top Width (m)')
+    top_height = fields.Float('Top Height (m)')
+    top_wieght = fields.Float('Top Top G Weight (tons)')
+
+
+############## Survey Report ####################
+    report_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_report = fields.Text('Comments')
+    forecast_from_report = fields.Date('Forecast From')
+    forecast_unitl_report = fields.Date('Forecast Initl')
+    report_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+    surevy_adress = fields.Text('Survey Adress')
+
+############## Escort ####################
+    escort_service_id = fields.Many2one('packagin.service', string='Service')
+    comments_type_escort = fields.Text('Comments')
+    forecast_from_escort = fields.Date('Forecast From')
+    forecast_unitl_escort = fields.Date('Forecast Initl')
+    escort_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
+    from_escort = fields.Text('From')
+    to_escort = fields.Text('To')
+    distance_escort = fields.Float('Distance (Km)')
+    top_length_escort = fields.Float('Top Length (m)')
+    top_width_escort = fields.Float('Top Width (m)')
+    top_height_escort = fields.Float('Top Height (m)')
+    top_wieght_escort = fields.Float('Top Top G Weight (tons)')
+
+
 class PackagingSevice(models.Model):
 
     _name = 'packagin.service'
@@ -454,6 +503,42 @@ class InsuranceInt(models.Model):
     insurance_int = fields.Text('Insurance Int')
     insurance_code  = fields.Char('Insurance Code')
     description_insurance = fields.Text('Description')
+
+class EquipementEquipement(models.Model):
+
+    _name = 'packagin.equipement'
+    _rec_name = 'equipement'
+
+    equipement = fields.Text('Equipment')
+    equipement_n = fields.Char('Equipment N°')    
+
+class EquipementRunting(models.Model):
+
+    _name = 'equipement.runting'
+    _rec_name = 'equipement_name'
+
+    equipement_name = fields.Text('Equipment Name')
+    capacity_eqp = fields.Text('Capacity')
+    specification_eqp = fields.Text('Specification')
+    equipement_code = fields.Char('Equipment Code')    
+    equipement_id = fields.Many2one('packagin.equipement', string='Equipment Type')
+
+class DurationDuration(models.Model):
+
+    _name = 'packagin.duration'
+    _rec_name = 'duration'
+
+    duration = fields.Selection([
+            ('day', 'Day(s)'),
+            ('week', 'Week(s)'),
+            ('month', 'Month(s)'),
+            ('year', 'Years(s)'),
+            ], string='Duration', default='day')
+    nb_days = fields.Integer('Number of days')
+    nb_weeks = fields.Integer('Number of weeks')
+    nb_months = fields.Integer('Number of months')
+    nb_years = fields.Integer('Number of years')
+
 
 class Requirement(models.Model):
 

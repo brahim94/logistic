@@ -523,7 +523,87 @@
                                 </group>
                             </page>
 
+                            <page string="Runting">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_runting"/>
+                                        <field name="forecast_from_runting"/>
+                                        <field name="forecast_unitl_runting"/>
+                                        <field name="runting_service_id"/>
+                                       <field name="runting_profitability_id"/>
+                                        
+                                    </group>
+                                    <group>
+                                       <field name="equipement_id"/>
+                                       <field name="duration_id"/>
+                                        <field name="country_id"/>
+                                        <field name="city_id"/>
+                                    </group>
+                                </group>
+                            </page>
+
+                             <page string="Road survey">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_road"/>
+                                        <field name="forecast_from_road"/>
+                                        <field name="forecast_unitl_road"/>
+                                        <field name="road_service_id"/>
+                                       <field name="road_profitability_id"/>
+                                        
+                                    </group>
+                                    <group>
+                                       <field name="from_road"/>
+                                       <field name="to_road"/>
+                                        <field name="distance_road"/>
+                                        <field name="top_length"/>
+                                        <field name="top_width"/>
+                                        <field name="top_height"/>
+                                        <field name="top_wieght"/>
+                                    </group>
+                                </group>
+                            </page>
+
+                            <page string="Survey Report">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_report"/>
+                                        <field name="forecast_from_report"/>
+                                        <field name="forecast_unitl_report"/>
+                                        
+                                    </group>
+                                    <group>
+                                        <field name="report_service_id"/>
+                                       <field name="report_profitability_id"/>
+                                       <field name="surevy_adress"/>
+                                       
+                                    </group>
+                                </group>
+                            </page>
                             
+                            <page string="Escort">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_escort"/>
+                                        <field name="forecast_from_escort"/>
+                                        <field name="forecast_unitl_escort"/>
+                                        <field name="from_escort"/>
+                                        <field name="to_escort"/>
+                                        
+                                    </group>
+                                    <group>
+                                        <field name="distance_escort"/>
+                                        <field name="escort_service_id"/>
+                                       <field name="escort_profitability_id"/>
+                                       <field name="top_length_escort"/>
+                                       <field name="top_width_escort"/>
+                                       <field name="top_height_escort"/>
+                                       <field name="top_wieght_escort"/>
+                                       
+                                    </group>
+                                </group>
+                            </page>
+
                         </notebook>
                     </sheet>
                 </form>
@@ -1479,6 +1559,73 @@
                                     <field name="vat"/>
                                     <span>%</span>
                                 </div>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Equipement -->
+        <record id='equipement_view_form' model='ir.ui.view'>
+            <field name="name">equipement.type.form</field>
+            <field name="model">packagin.equipement</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Equipement Type">
+                            <group col="2">
+                                <field name="equipement"/>
+                                <field name="equipement_n"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+         <!-- Equipement Runting-->
+        <record id='equipement_runting_view_form' model='ir.ui.view'>
+            <field name="name">equipement.runting.type.form</field>
+            <field name="model">equipement.runting</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Equipement">
+                            <group col="2">
+                                <field name="equipement_id"/>
+                                <field name="capacity_eqp"/>
+                               
+                            </group>
+                            <group>
+                                 <field name="equipement_code"/>
+                                <field name="equipement_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+         <!-- Duration -->
+        <record id='duration_runting_view_form' model='ir.ui.view'>
+            <field name="name">duration.runting.type.form</field>
+            <field name="model">packagin.duration</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Duration">
+                            <group col="2">
+                               <field name="duration"/>          
+                               <field name="nb_days" attrs="{'invisible': [('duration','!=','day')]}"/>          
+                               <field name="nb_weeks" attrs="{'invisible': [('duration','!=','week')]}"/>          
+                               <field name="nb_months" attrs="{'invisible': [('duration','!=','month')]}"/>          
+                               <field name="nb_years" attrs="{'invisible': [('duration','!=','year')]}"/>          
+                            </group>
+                            <group>                               
                             </group>
                         </group>
                     </sheet>
