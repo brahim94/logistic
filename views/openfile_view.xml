@@ -31,6 +31,7 @@
                                  
                                  
                                     <field name="pcf_number" string="PCF N° link ?" attrs="{'invisible': [('link','!=','yes')]}"/>
+                                     <field name="year_frequency"/>
                                     
                                     <!-- <field name="pcf_n" attrs="{'invisible': ['|','&amp;',('m_s','!=','subfile'),('link','!=','yes')]}"/> -->
                                 </group>
@@ -54,8 +55,208 @@
                                     <field name="ref_six"/>
                                 </group>
                                 </group>
-                                    <group>
-                                     <field name="year_frequency"/>
+                                    <group string="Scope" col="2">
+                                        <group>
+                                            <label for="packaging"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="packaging" />
+                                            </div>
+
+                                            <label for="stuffing"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="stuffing" />
+                                            </div>
+                                            <label for="lsd"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="lsd" />
+                                            </div>
+                                            <label for="loading_on_track"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="loading_on_track" />
+                                            </div>
+                                            <label for="export_formalities"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="export_formalities" />
+                                            </div>
+                                            <label for="pre_carriage"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="pre_carriage" />
+                                            </div>
+                                            
+                                            <label for="export_customs"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="export_customs" />
+                                            </div>
+                                            
+                                            <label for="entry_formalities"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="entry_formalities" />
+                                            </div>
+                                            
+                                            <label for="on_terminal"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="on_terminal" />
+                                            </div>
+                                            
+                                            <label for="export_agency"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="export_agency" />
+                                            </div>
+                                            
+                                            <label for="loading_main_transport"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="loading_main_transport" />
+                                            </div>
+                                            
+                                            <label for="main_transport"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="main_transport" />
+                                            </div>
+                                            
+                                            <label for="from_main_transport"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="from_main_transport" />
+                                            </div>
+                                            
+                                            <label for="import_agency"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="import_agency" />
+                                            </div>
+                                            
+                                            <label for="import_formalities"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="import_formalities" />
+                                            </div>
+                                            
+                                            <label for="import_customs"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="import_customs" />
+                                            </div>
+                                            
+                                            <label for="loading_from_term"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="loading_from_term" />
+                                            </div>
+                                            
+                                            <label for="terminal_exit"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="terminal_exit" />
+                                            </div>
+                                            
+                                            <label for="delivery"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="delivery" />
+                                            </div>
+                                            
+                                            
+                                            
+                                        </group>
+                                        <group>
+                                            
+                                            <label for="ulonading_site"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="ulonading_site" />
+                                            </div>
+                                            
+                                            <label for="unlashing"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="unlashing" />
+                                            </div>
+                                            
+                                            <label for="stripping"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="stripping" />
+                                            </div>
+                                            
+                                            <label for="unpackaging"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="unpackaging" />
+                                            </div>
+                                            
+                                            <label for="other"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="other" />
+                                            </div>
+                                            
+                                            <label for="other_requests"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="other_requests" />
+                                            </div>
+                                           
+                                           
+                                            <label for="insurance_int"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="insurance_int" />
+                                            </div>
+                                            
+                                            <label for="insurance_dom"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="insurance_dom" />
+                                            </div>
+                                            
+                                            <label for="domestic_customs"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="domestic_customs" />
+                                            </div>
+                                            
+                                            <label for="trailer_traction"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="trailer_traction" />
+                                            </div>
+                                            
+                                            <label for="storage"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="storage" />
+                                            </div>
+                                            
+                                            <label for="lifting"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="lifting" />
+                                            </div>
+                                            
+                                            <label for="domestic"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="domestic" />
+                                            </div>
+                                            
+                                            <label for="renting"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="renting" />
+                                            </div>
+                                            
+                                            <label for="consulting"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="consulting" />
+                                            </div>
+                                            
+                                            <label for="road_surevy"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="road_surevy" />
+                                            </div>
+                                            
+                                            <label for="studies"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="studies" />
+                                            </div>
+                                            
+                                            <label for="survey_report"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="survey_report" />
+                                            </div>
+                                            
+                                            <label for="escort"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="escort" />
+                                            </div>
+                                            
+                                            <label for="documents"/>
+                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                <field name="documents" />
+                                            </div>
+
+                                            
+                                            
+                                        </group>
                                     </group>
                                 </group>
                         <notebook>

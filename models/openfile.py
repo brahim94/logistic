@@ -91,6 +91,46 @@ class directoryorde(models.Model):
             ], setting='Mode of Transport', default='as')
 
 
+    packaging = fields.Boolean(string='Packaging')
+    stuffing = fields.Boolean(string='Stuffing')
+    lsd = fields.Boolean(string='LSD')
+    loading_on_track = fields.Boolean(string='Loading On Truck')
+    export_formalities = fields.Boolean(string='Export Formalities')
+    pre_carriage = fields.Boolean(string='Pre-Carriage')
+    export_customs = fields.Boolean(string='Export Customs')
+    entry_formalities = fields.Boolean(string='Terminal Entry Formalities')
+    on_terminal = fields.Boolean(string='Unloading On Terminal')
+    export_agency = fields.Boolean(string='Export Agency')
+    loading_main_transport = fields.Boolean(string='Loading on Main Transport')
+    main_transport = fields.Boolean(string='Main Transport')
+    from_main_transport = fields.Boolean(string='Unloading From Main Transport')
+    import_agency = fields.Boolean(string='Import Agency')
+    import_formalities = fields.Boolean(string='Import Formalities')
+    import_customs = fields.Boolean(string='Import Customs')
+    loading_from_term = fields.Boolean(string='Loading From Terminal')
+    terminal_exit = fields.Boolean(string='Terminal Exit Formalities')
+    delivery = fields.Boolean(string='Delivery')
+    ulonading_site = fields.Boolean(string='Unloading on site')
+    unlashing = fields.Boolean(string='Unlashing')
+    stripping = fields.Boolean(string='Stripping')
+    unpackaging = fields.Boolean(string='Unpackaging')
+    other = fields.Boolean(string='Other Customs Formalities')
+    other_requests = fields.Boolean(string='Other Requests')
+    insurance_int = fields.Boolean(string='Insurance Int')
+    insurance_dom = fields.Boolean(string='Insurance Dom')
+    domestic_customs = fields.Boolean(string='Domestic Customs')
+    trailer_traction = fields.Boolean(string='Trailer Traction')
+    storage = fields.Boolean(string='Storage')
+    lifting = fields.Boolean(string='Lifting')
+    domestic = fields.Boolean(string='Domestic Haulage')
+    renting = fields.Boolean(string='Renting')
+    consulting = fields.Boolean(string='Consulting')
+    road_surevy = fields.Boolean(string='Road survey')
+    studies = fields.Boolean(string='Studies')
+    survey_report = fields.Boolean(string='Survey Report')
+    escort = fields.Boolean(string='Escort')
+    civil_work = fields.Boolean(string='Civil Work')
+    documents = fields.Boolean(string='Documents')
     
     @api.model
     def create(self, vals):
@@ -869,7 +909,7 @@ class ResPartner(models.Model):
         vals['ref'] = self.env['ir.sequence'].next_by_code('res.partner') or '/'
         return super(ResPartner, self).create(vals)
         
-         
+    
     
 #     @api.onchange('directory_id')
 #     def onchange_employee_id(self):

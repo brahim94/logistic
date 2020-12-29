@@ -103,3 +103,5 @@ access_packagin_equipement,access_packagin_equipement,model_packagin_equipement,
 access_equipement_runting,access_equipement_runting,model_equipement_runting,base.group_user,1,1,1,1
 
 access_packagin_duration,access_packagin_duration,model_packagin_duration,base.group_user,1,1,1,1
+
+access_packagin_documents,access_packagin_documents,model_packagin_documents,base.group_user,1,1,1,1

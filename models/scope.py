@@ -1,12 +1,64 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from odoo import models, fields, api, _  
 
 
 class scope(models.Model):
 
     _name = 'scope.type'
     _rec_name = 'comments_type'
+
+    directory_scope_id = fields.Many2one('directory.type', 'Directory ID')
+    packaging_id = fields.Boolean(string='Packaging', related="directory_scope_id.packaging")
+    stuffing_id = fields.Boolean(string='Stuffing', related="directory_scope_id.stuffing")
+    lsd_id = fields.Boolean(string='LSD', related="directory_scope_id.lsd")
+    loading_on_track_id = fields.Boolean(string='Loading On Truck', related="directory_scope_id.loading_on_track")
+    export_formalities_id = fields.Boolean(string='Export Formalities', related="directory_scope_id.export_formalities")
+    pre_carriage_id = fields.Boolean(string='Pre-Carriage', related="directory_scope_id.pre_carriage")
+    export_customs_id = fields.Boolean(string='Export Customs', related="directory_scope_id.export_customs")
+    entry_formalities_id = fields.Boolean(string='Terminal Entry Formalities', related="directory_scope_id.entry_formalities")
+    on_terminal_id = fields.Boolean(string='Unloading On Terminal', related="directory_scope_id.on_terminal")
+    export_agency_id = fields.Boolean(string='Export Agency', related="directory_scope_id.export_agency")
+    loading_main_transport_id = fields.Boolean(string='Loading on Main Transport', related="directory_scope_id.loading_main_transport")
+    main_transport_id = fields.Boolean(string='Main Transport', related="directory_scope_id.main_transport")
+    from_main_transport_id = fields.Boolean(string='Unloading From Main Transport', related="directory_scope_id.from_main_transport")
+    import_agency_id = fields.Boolean(string='Import Agency', related="directory_scope_id.import_agency")
+    import_formalities_id = fields.Boolean(string='Import Formalities', related="directory_scope_id.import_formalities")
+    import_customs_id = fields.Boolean(string='Import Customs', related="directory_scope_id.import_customs")
+    loading_from_term_id = fields.Boolean(string='Loading From Terminal', related="directory_scope_id.loading_from_term")
+    terminal_exit_id = fields.Boolean(string='Terminal Exit Formalities', related="directory_scope_id.terminal_exit")
+    delivery_id = fields.Boolean(string='Delivery', related="directory_scope_id.delivery")
+    ulonading_site_id = fields.Boolean(string='Unloading on site', related="directory_scope_id.ulonading_site")
+    unlashing_id = fields.Boolean(string='Unlashing', related="directory_scope_id.unlashing")
+    stripping_id = fields.Boolean(string='Stripping', related="directory_scope_id.stripping")
+    unpackaging_id = fields.Boolean(string='Unpackaging', related="directory_scope_id.unpackaging")
+    other_id = fields.Boolean(string='Other Customs Formalities', related="directory_scope_id.other")
+    other_requests_id = fields.Boolean(string='Other Requests', related="directory_scope_id.other_requests")
+    insurance_int_id = fields.Boolean(string='Insurance Int', related="directory_scope_id.insurance_int")
+    insurance_dom_id = fields.Boolean(string='Insurance Dom', related="directory_scope_id.insurance_dom")
+    domestic_customs_id = fields.Boolean(string='Domestic Customs', related="directory_scope_id.domestic_customs")
+    trailer_traction_id = fields.Boolean(string='Trailer Traction', related="directory_scope_id.trailer_traction")
+    storage_id = fields.Boolean(string='Storage', related="directory_scope_id.storage")
+    lifting_id = fields.Boolean(string='Lifting', related="directory_scope_id.lifting")
+    domestic_id = fields.Boolean(string='Domestic Haulage', related="directory_scope_id.domestic")
+    renting_id = fields.Boolean(string='Renting', related="directory_scope_id.renting")
+    consulting_id = fields.Boolean(string='Consulting', related="directory_scope_id.consulting")
+    road_surevy_id = fields.Boolean(string='Road survey', related="directory_scope_id.road_surevy")
+    studies_id = fields.Boolean(string='Studies', related="directory_scope_id.studies")
+    survey_report_id = fields.Boolean(string='Survey Report', related="directory_scope_id.survey_report")
+    escort_id = fields.Boolean(string='Escort', related="directory_scope_id.escort")
+    civil_work_id = fields.Boolean(string='Civil Work', related="directory_scope_id.civil_work")
+    documents_id = fields.Boolean(string='Documents', related="directory_scope_id.documents")
+
+    def open_assignation_total(self):
+        return {
+            'name': _('Balance'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'packagin.profitablity',
+            'view_mode': 'tree',
+            'view_id': False,
+            'target': 'new',
+        }
 
     ############## PACKAGING ####################
     packagin_service_id = fields.Many2one('packagin.service', string='Service')
@@ -363,6 +415,11 @@ class scope(models.Model):
     top_wieght_escort = fields.Float('Top Top G Weight (tons)')
 
 
+############## Documents ####################
+    
+    packaging_documents_id = fields.Many2one('packagin.documents', string='Documents')
+    
+
 class PackagingSevice(models.Model):
 
     _name = 'packagin.service'
@@ -435,6 +492,15 @@ class PackagingDivision(models.Model):
     division_n = fields.Char('Division N°')
     division_tag = fields.Text('Division Tag')
     packagin_department_id = fields.Many2one('packagin.department', string='Department')
+
+
+class PackagingDocuments(models.Model):
+
+    _name = 'packagin.documents'
+    _rec_name = 'doc_name'
+
+    doc_name = fields.Char('Doc name')
+    doc = fields.Binary('Doc')
 
 
 class PickupPrecarriage(models.Model):
@@ -572,7 +638,7 @@ class PackagingProfitability(models.Model):
     total_sales_ht = fields.Float(string='Tot Sales HT', compute='_total_packaging_all')
     total_net_sales_ht = fields.Float(string='Tot Net Sales HT', compute='_total_packaging_all')
     total_profit_ht = fields.Float(string='Tot Profit HT', compute='_total_packaging_all')
-    profit = fields.Float(string='%Profit', compute='_total_packaging_all')
+    # profit = fields.Float(string='%Profit', compute='_total_packaging_all')
 
     def _total_packaging_all(self):
         for pack in self:
@@ -582,16 +648,16 @@ class PackagingProfitability(models.Model):
                 total_sales_ht += line.s_tot_sales_ht
                 total_net_sales_ht += line.s_tot_net_sale_ht
                 total_profit_ht += line.s_profit_ht
-                if self.total_net_sales_ht != 0 and self.total_profit_ht != 0:
-                    self.profit = self.total_profit_ht / self.total_net_sales_ht
-                else:
-                    self.profit = 0
+                # if self.total_net_sales_ht != 0 and self.total_profit_ht != 0:
+                #     self.profit = self.total_profit_ht / self.total_net_sales_ht
+                # else:
+                #     self.profit = 0
             pack.update({
                 'total_cost_ht': total_cost_ht,
                 'total_sales_ht': total_sales_ht,
                 'total_net_sales_ht': total_net_sales_ht,
                 'total_profit_ht': total_profit_ht,
-                'profit': pack.profit, 
+                # 'profit': pack.profit, 
 
             })
 
@@ -958,19 +1024,19 @@ class PackagingAmount(models.Model):
                 line.s_tot_sales_ht = line.qty * line.sale_rate_ht
                 line.s_tot_net_sale_ht = line.qty * line.net_sale_rate
                 line.s_profit_ht = line.qty * line.profit_ht
-        pack.update({
-                'net_sale_rate': line.net_sale_rate,
-                'profit_ht': line.profit_ht,
-                's_tot_sales_ht': line.s_tot_sales_ht,
-                's_tot_cost_ht': line.s_tot_cost_ht,
-                's_tot_sales_ht': line.s_tot_sales_ht,
-                's_tot_net_sale_ht': line.s_tot_net_sale_ht,
-                's_profit_ht': line.s_profit_ht,
-                'net_sale_rate_ht_currency': line.sale_rate_ht_currency,
-                'profit_ht_currency': line.sale_rate_ht_currency,
-                's_tot_sales_currency': line.sale_rate_ht_currency,
-                's_tot_cost_currency': line.sale_rate_ht_currency,
-                's_tot_net_sale_currency': line.sale_rate_ht_currency,
-                's_tot_profit_currency': line.sale_rate_ht_currency,
-            })
-    
+            pack.update({
+                    'net_sale_rate': line.net_sale_rate,
+                    'profit_ht': line.profit_ht,
+                    's_tot_sales_ht': line.s_tot_sales_ht,
+                    's_tot_cost_ht': line.s_tot_cost_ht,
+                    's_tot_sales_ht': line.s_tot_sales_ht,
+                    's_tot_net_sale_ht': line.s_tot_net_sale_ht,
+                    's_profit_ht': line.s_profit_ht,
+                    'net_sale_rate_ht_currency': line.sale_rate_ht_currency,
+                    'profit_ht_currency': line.sale_rate_ht_currency,
+                    's_tot_sales_currency': line.sale_rate_ht_currency,
+                    's_tot_cost_currency': line.sale_rate_ht_currency,
+                    's_tot_net_sale_currency': line.sale_rate_ht_currency,
+                    's_tot_profit_currency': line.sale_rate_ht_currency,
+                })
+        
