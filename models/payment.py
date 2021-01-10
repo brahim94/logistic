@@ -73,7 +73,8 @@ class BankBank(models.Model):
      bank_detail = fields.Text('Bank details')
      iban = fields.Char('IBAN')
      code_swift = fields.Integer('Code swift')
-
+     bank_details_id = fields.Many2one('bank.details', string="Bank Details")
+        
 
 
 #     name = fields.Char('Payment methode name')

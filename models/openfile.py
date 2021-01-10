@@ -38,7 +38,7 @@ class directoryorde(models.Model):
     pic = fields.Char(string='PIC')
     pic_detail = fields.Char(string='PIC details')
     sector_id = fields.Many2one('sector.type', string='Sector')
-    reference_id = fields.One2many('reference.type','ref_id', string='Reference')
+    reference_id = fields.Many2one('reference.type', string='Reference')
     year_frequency = fields.Selection([
             ('dk', 'DK'),
             ('one', 'VIII: 1'),
@@ -156,6 +156,79 @@ class sector(models.Model):
 
     name = fields.Char(string='Name')
 
+class RubriquesRubriques(models.Model):
+
+    _name = 'rubriques.type'
+
+    name = fields.Char(string='Rubriques')
+
+
+class MomentOfPayment(models.Model):
+
+    _name = 'moment.payment'
+
+    before_starting = fields.Boolean('Before Starting')
+    before_str_prc = fields.Integer('Prc')
+    before_finishing = fields.Boolean('Before Finishing')
+    before_fin_prc = fields.Integer('Prc')
+    after_finishing = fields.Boolean('After finishing')
+    after_fini_prc = fields.Integer('Prc')
+    after_billing = fields.Boolean('After Billing')
+    after_billing_prc = fields.Integer('Prc')
+
+class MethodeOfPayment(models.Model):
+
+    _name = 'payment.methode'
+
+    name = fields.Char('Payment Methode')
+    code = fields.Char('Payment Methode Code')
+    risk_level = fields.Selection([
+            ('one', '1'),
+            ('two', '2'),
+            ('three', '3'),
+            ('four', '4'),
+            ('five', '5'),
+            ('six', '6'),
+            ('seven', '7'),
+            ('eight', '8'),
+            ('nine', '9'),
+            ('teen', '10'),
+            ], setting='Risk level', default='one')
+
+
+class CapPayment(models.Model):
+        _name = 'cap.cap'
+
+        payment_c = fields.Float('Payment Cap: ')
+        cap_currency = fields.Many2one('res.currency', string='Currency')
+
+
+class CustomerPayment(models.Model):
+        _name = 'customer.payment'
+        
+        section_id = fields.Many2one('rubriques.type', string='Section')
+        terms = fields.Integer('Term')
+        moment_payment_id = fields.Many2one('moment.payment', string='Moment Of Payment')
+        methode_payment_id = fields.Many2one('payment.methode', string='Payment method')
+        payment_cap_id = fields.Many2one('cap.cap', string='Payment Cap')
+
+
+class Customerdiscount(models.Model):
+        
+        _name = 'customer.discount'
+
+        name = fields.Many2one('rubriques.type', string='Section')
+        discount = fields.Integer('Discount %')
+
+
+class BankDetails(models.Model):
+        
+        _name = 'bank.details'
+
+        bank_details_line = fields.One2many('bank.bank','bank_details_id', string="Bank Details")                    
+        
+
+        
 class references(models.Model):
 
     _name = 'reference.type'
@@ -189,10 +262,6 @@ class NetworkNetwork(models.Model):
 
     name = fields.Char(string='name')
 
-#     @api.model 
-#     def create(self, vals):
-#             vals['account_number'] =self.env['ir.sequence'].next_by_code('acount.number.test')
-#             return super(ResPartner, self).create(vals)
 
 class ResPartner(models.Model):
 
@@ -297,14 +366,14 @@ class ResPartner(models.Model):
     after_billing_prc = fields.Char('Prc')
     billing_section_id_sup = fields.Many2one('billing.section', 'Billing Section')
     terms_su = fields.Integer('Term')
-    before_starting_sup = fields.Boolean('Before Starting')
-    before_str_prc_sup = fields.Char('Prc')
-    before_finishing_sup = fields.Boolean('Before Finishing')
-    before_fin_prc_sup = fields.Char('Prc')
-    after_finishing_sup = fields.Boolean('After finishing')
-    after_fini_prc_sup = fields.Char('Prc')
-    after_billing_sup = fields.Boolean('After Billing')
-    after_billing_prc_sup = fields.Char('Prc')
+#     before_starting_sup = fields.Boolean('Before Starting')
+#     before_str_prc_sup = fields.Char('Prc')
+#     before_finishing_sup = fields.Boolean('Before Finishing')
+#     before_fin_prc_sup = fields.Char('Prc')
+#     after_finishing_sup = fields.Boolean('After finishing')
+#     after_fini_prc_sup = fields.Char('Prc')
+#     after_billing_sup = fields.Boolean('After Billing')
+#     after_billing_prc_sup = fields.Char('Prc')
      #payment_type = fields.Many2many
     payment_type = fields.Selection([
             ('cash', 'Cash'),
@@ -617,119 +686,18 @@ class ResPartner(models.Model):
 #     customs_type_ids = fields.Many2many('customs.type', 'custom_user_rel', 'us_id', 'custom_ty_id', string='Customs type')
     payment_methode_id = fields.Many2many('payment.type', 'paymentmet_us_rel', 'u_id', 'payment_meth_id', string='Payment Methode')
     payment_methode_sup_id = fields.Many2many('payment.type', 'paymentmet_sup_us_rel', 'su_id', 'payment_meth_sup_id', string='Payment Methode')      
-#     item_description_id = fields.Many2one('items.type', 'Item Description')
-#     hs_code = fields.Integer('HS code')
-#     files_y = fields.Integer('Files /Y')
-#     incoterm_id = fields.Many2one('incoterm.type', 'Incoterm')
-#     destination = fields.Many2one('destination.provenance', 'Destination')
-#     provenance = fields.Many2one('destination.provenance', 'Provenance')
-#     di_r_air = fields.Selection([
-#             ('e', 'E'),
-#             ('i', 'I'),
-#             ], setting='DIR', default='e')
-#     shipment_y = fields.Integer('Shipment /Y')
-#     incoterm_id_air = fields.Many2one('incoterm.type', 'Incoterm')
-#     destination_air = fields.Many2one('destination.provenance', 'Destination')
-#     provenance_air = fields.Many2one('destination.provenance', 'Provenance')
-
-#     di_r_fcl = fields.Selection([
-#             ('e', 'E'),
-#             ('i', 'I'),
-#             ], setting='DIR', default='e')
-#     teus_y = fields.Integer('TEUs /Y')
-#     incoterm_id_fcl = fields.Many2one('incoterm.type', 'Incoterm')
-#     destination_fcl = fields.Many2one('destination.provenance', 'Destination')
-#     provenance_fcl = fields.Many2one('destination.provenance', 'Provenance')
-    
-#     di_r_lcl = fields.Selection([
-#             ('e', 'E'),
-#             ('i', 'I'),
-#             ], setting='DIR', default='e')
-#     wm_y = fields.Integer('wm /Y')
-#     incoterm_id_lcl = fields.Many2one('incoterm.type', 'Incoterm')
-#     destination_lcl = fields.Many2one('destination.provenance', 'Destination')
-#     provenance_lcl = fields.Many2one('destination.provenance', 'Provenance')
-
-#     di_r_ftl = fields.Selection([
-#             ('e', 'E'),
-#             ('i', 'I'),
-#             ], setting='DIR', default='e')
-#     trailer_y = fields.Integer('wm /Y')
-#     incoterm_id_ftl = fields.Many2one('incoterm.type', 'Incoterm')
-#     destination_ftl = fields.Many2one('destination.provenance', 'Destination')
-#     provenance_ftl = fields.Many2one('destination.provenance', 'Provenance')
-
-#     di_r_ltl = fields.Selection([
-#             ('e', 'E'),
-#             ('i', 'I'),
-#             ], setting='DIR', default='e')
-#     wm_y_ltl = fields.Integer('wm /Y')
-#     incoterm_id_ltl = fields.Many2one('incoterm.type', 'Incoterm')
-#     destination_ltl = fields.Many2one('destination.provenance', 'Destination')
-#     provenance_ltl = fields.Many2one('destination.provenance', 'Provenance')
-
-#     di_r_refer = fields.Selection([
-#             ('e', 'E'),
-#             ('i', 'I'),
-#             ], setting='DIR', default='e')
-#     teus_y_refer = fields.Integer('TEUs /Y')
-#     incoterm_id_refer = fields.Many2one('incoterm.type', 'Incoterm')
-#     destination_refer = fields.Many2one('destination.provenance', 'Destination')
-#     provenance_refer = fields.Many2one('destination.provenance', 'Provenance')
-
-#     di_r_cargo = fields.Selection([
-#             ('e', 'E'),
-#             ('i', 'I'),
-#             ], setting='DIR', default='e')
-#     wm_y_cargo = fields.Integer('wm /Y')
-#     incoterm_id_cargo = fields.Many2one('incoterm.type', 'Incoterm')
-#     destination_cargo = fields.Many2one('destination.provenance', 'Destination')
-#     provenance_cargo = fields.Many2one('destination.provenance', 'Provenance')
-
-#     di_r_bulk = fields.Selection([
-#             ('e', 'E'),
-#             ('i', 'I'),
-#             ], setting='DIR', default='e')
-#     wm_y_bulk = fields.Integer('wm /Y')
-#     incoterm_id_bulk = fields.Many2one('incoterm.type', 'Incoterm')
-#     destination_bulk = fields.Many2one('destination.provenance', 'Destination')
-#     provenance_bulk = fields.Many2one('destination.provenance', 'Provenance')
-
-#     di_r_liquid = fields.Selection([
-#             ('e', 'E'),
-#             ('i', 'I'),
-#             ], setting='DIR', default='e')
-#     wm_y_liquid = fields.Integer('wm /Y')
-#     incoterm_id_liquid = fields.Many2one('incoterm.type', 'Incoterm')
-#     destination_liquid = fields.Many2one('destination.provenance', 'Destination')
-#     provenance_liquid = fields.Many2one('destination.provenance', 'Provenance')
-
-#     di_r_mead = fields.Selection([
-#             ('e', 'E'),
-#             ('i', 'I'),
-#             ], setting='DIR', default='e')
-#     wm_y_mead = fields.Integer('wm /Y')
-#     incoterm_id_mead = fields.Many2one('incoterm.type', 'Incoterm')
-#     destination_mead = fields.Many2one('destination.provenance', 'Destination')
-#     provenance_mead = fields.Many2one('destination.provenance', 'Provenance')
-
-#     di_r_storage = fields.Selection([
-#             ('e', 'E'),
-#             ('i', 'I'),
-#             ], setting='DIR', default='e')
-#     wm_y_storage = fields.Integer('wm /Y')
-#     incoterm_id_storage = fields.Many2one('incoterm.type', 'Incoterm')
-#     destination_storage = fields.Many2one('destination.provenance', 'Destination')
-#     provenance_storage = fields.Many2one('destination.provenance', 'Provenance')
-
-#     di_r_port = fields.Selection([
-#             ('e', 'E'),
-#             ('i', 'I'),
-#             ], setting='DIR', default='e')
-#     wm_y_port = fields.Integer('wm /Y')
-#     incoterm_id_port = fields.Many2one('incoterm.type', 'Incoterm')
-#     destination_port = fields.Many2one('destination.provenance', 'Destination')
-#     provenance_port = fields.Many2one('destination.provenance', 'Provenance')
+    type = fields.Selection(
+            [('contact', 'Contact'),
+            ('invoice', 'Billing Address'),
+            ('delivery', 'Shipping Address'),
+            ('other', 'Other Address'),
+            ("private", "Personal Address"),
+            ("main", "Main Address"),
+            ("head", "Headquarter Address"),
+            ], string='Address Type',
+            default='contact',
+            help="Invoice & Delivery addresses are used in sales orders. Private addresses are only visible by authorized users.")
+    fax = fields.Char(string='Fax')
 
     billing_section_id = fields.Many2one('billing.section', 'Billing Section')
     bank_details = fields.Text('Bank details')
@@ -750,9 +718,11 @@ class ResPartner(models.Model):
     currency_id_liab = fields.Many2one('res.currency', string='Currency')
     currency_id_car = fields.Many2one('res.currency', string='Currency')
     currency_id_expl = fields.Many2one('res.currency', string='Currency')
+    currency_id_oth = fields.Many2one('res.currency', string='Currency')
     amount_li = fields.Float('lib')
     amount_car = fields.Float('car')
     amount_exp = fields.Float('exp')
+    amount_oth = fields.Float('oth')
     amount_insurance_currency = fields.Selection([
             ('mad', 'MAD'),
             ('euro', 'Euro'),
@@ -896,7 +866,21 @@ class ResPartner(models.Model):
     bank_c_sup = fields.Boolean(string='Bank')
     civil_work_sup = fields.Boolean(string='Civil Work')
     equipment_fourniture_sup = fields.Boolean(string='Equipment & fourniture')
-    
+    currency_cap = fields.Many2one('res.currency', string='Currency')
+    customer_payment_id = fields.Many2one('customer.payment', string='Customer Payment term')
+    customer_discount_id = fields.Many2one('customer.discount', string='Customer Discount')
+    total_paym_cap = fields.Float('Total payement cap')
+    bank_bank_id = fields.Many2one('bank.details', string='Bank Details')
+    supliers_payment_id = fields.Many2one('customer.payment', string='Supliers Payment term')
+    supliers_discount_id = fields.Many2one('customer.discount', string='Supliers Discount')
+    total_paym_cap_sup = fields.Float('Total payement cap')
+    bank_bank_sup_id = fields.Many2one('bank.details', string='Bank Details')
+    currency_cap_sup = fields.Many2one('res.currency', string='Currency')
+
+#     total_cap_currency = fields.Many2one('res.currency', string='Currency')
+        
+
+
     @api.constrains('hs_code')
     def _check_my_field(self):
             hs_code = self.hs_code

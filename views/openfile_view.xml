@@ -16,26 +16,27 @@
                         <group col="2">
                                 <group>
                                     <field name="type_file" />
-                                   <field name="direction"/>
                                     <field name="company_detail"/>
+                                   <field name="direction"/>
+                                    <field name="transport_mode"/>
                                     <field name="at_glance"/>
                                 </group>
                                 <group>
-                                 <field name="how"/>
+                                    <field name="year_frequency"/>                                
+                                    <field name="how"/>
                                     <!-- <field name="blank_form" attrs="{'invisible': [('how','!=','blank_form')]}"/> -->
                                     <field name="pcf_number" attrs="{'invisible': [('how','!=','other_file')]}"/>
                                     <field name="m_s" />
                                     <field name="pcf_number" string="PCF N° master ?" attrs="{'invisible': [('m_s','!=','subfile')]}"/>
                                     <field name="link"/>
-                                    <field name="transport_mode"/>
-                                 
-                                 
                                     <field name="pcf_number" string="PCF N° link ?" attrs="{'invisible': [('link','!=','yes')]}"/>
-                                     <field name="year_frequency"/>
+                                    <field name="reference_id"/>                                
                                     
                                     <!-- <field name="pcf_n" attrs="{'invisible': ['|','&amp;',('m_s','!=','subfile'),('link','!=','yes')]}"/> -->
                                 </group>
-                                <group string="References">
+                                </group>
+
+                                <!-- <group string="References">
                                 <group>
                                     <field name="customer_ref"/>
                                     <field name="purchase_order"/>
@@ -54,210 +55,247 @@
                                     <field name="ref_five"/>
                                     <field name="ref_six"/>
                                 </group>
-                                </group>
-                                    <group string="Scope" col="2">
-                                        <group>
-                                            <label for="packaging"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="packaging" />
-                                            </div>
+                                </group> -->
+                                    <group string="Scope" col="3">
+                                        
+                                                <group>
+                                                    <label for="packaging"/>
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="packaging" />
+                                                    </div>
 
-                                            <label for="stuffing"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="stuffing" />
-                                            </div>
-                                            <label for="lsd"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="lsd" />
-                                            </div>
-                                            <label for="loading_on_track"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="loading_on_track" />
-                                            </div>
-                                            <label for="export_formalities"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="export_formalities" />
-                                            </div>
-                                            <label for="pre_carriage"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="pre_carriage" />
-                                            </div>
+                                                    <label for="stuffing"/>
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="stuffing" />
+                                                    </div>
+                                                
+                                                    <label for="lsd"/>
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="lsd" />
+                                                    </div>
+                                                </group>
+
+                                                <group>
+                                                    <label for="loading_on_track"/>
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="loading_on_track" />
+                                                    </div>
+
+                                                    <label for="pre_carriage"/>
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="pre_carriage" />
+                                                    </div>
+                                                    
+                                                    <label for="on_terminal"/>
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="on_terminal" />
+                                                    </div>
+            
+                                                    <label for="export_formalities"/>
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="export_formalities" />
+                                                    </div>
+                                                    
+                                                    <label for="export_customs"/>
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="export_customs" />
+                                                    </div>
+                                                    
+                                                    <label for="entry_formalities"/>
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="entry_formalities" />
+                                                    </div>
+    
+                                                </group>
+                                                <group>
+                                                    <label for="domestic"/>
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="domestic" />
+                                                    </div>
+                                                
+                                                    <label for="trailer_traction"/>
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="trailer_traction" />
+                                                    </div>
+                                                    
+                                                    <label for="storage"/>
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="storage" />
+                                                    </div>
+                                                    
+                                                    <label for="lifting"/>
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="lifting" />
+                                                    </div>
+                                                
+                                                    <label for="renting"/>
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="renting" />
+                                                    </div>
+
+                                                    <label for="escort"/>
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="escort" />
+                                                    </div>
+
+                                                    <label for="civil_work" />
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                         
+                                                        <field name="civil_work"/>
+                                                    </div>
+
+                                                </group>                                            
+
+                                                <group>
+                                                    <label for="insurance_int"/>
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="insurance_int" />
+                                                    </div>
+                                                </group>
+
+                                                                                            <group>
+                                                    <label for="export_agency"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="export_agency" />
+                                                        </div>
+
+                                                    <label for="loading_main_transport"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="loading_main_transport" />
+                                                        </div>
+
+                                                    <label for="main_transport"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="main_transport" />
+                                                        </div>
+
+                                                    <label for="from_main_transport"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="from_main_transport" />
+                                                        </div>
+
+                                                    <label for="import_agency"/>
+                                                        <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="import_agency" />
+                                                        </div>
+
+                                                </group>
+
+                                                            
+                                                <group>
+                                                    <label for="insurance_dom"/>
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="insurance_dom" />
+                                                    </div>
+                                                
+                                                </group>
+
+
+                                                <group>
+                                                    <label for="unlashing"/>
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="unlashing" />
+                                                    </div>
+                                                    
+                                                    <label for="stripping"/>
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="stripping" />
+                                                    </div>
+                                                    
+                                                    <label for="unpackaging"/>
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="unpackaging" />
+                                                    </div>
+                                                
+                                                </group>
+
                                             
-                                            <label for="export_customs"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="export_customs" />
-                                            </div>
+                                                <!-- <group>
+                                                
+                                                </group>
+                                             -->
+    
+                                                <group>
+                                                    <label for="import_formalities"/>
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="import_formalities" />
+                                                    </div>
+                                                    
+                                                    <label for="import_customs"/>
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="import_customs" />
+                                                    </div>
+                                                    
+                                                    <label for="terminal_exit"/>
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="terminal_exit" />
+                                                    </div>
+                                                    
+                                                     <label for="loading_from_term"/>
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="loading_from_term" />
+                                                    </div>
+                                                    
+                                                    
+                                                    <label for="delivery"/>
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="delivery" />
+                                                    </div>
+                                                    
+                                                    <label for="ulonading_site"/>
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="ulonading_site" />
+                                                    </div>
+                                                   
+                                                </group>
                                             
-                                            <label for="entry_formalities"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="entry_formalities" />
-                                            </div>
+                                                <!-- <group>
+                                                    
+                                                </group>
+                                             -->
+                                                <group>
+                                                
+                                                <label for="domestic_customs"/>
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="domestic_customs" />
+                                                    </div>
+                                                
+                                                <label for="other"/>
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="other" />
+                                                    </div>
+                                                    
+                                                <label for="consulting"/>
+                                                    <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                        <field name="consulting" />
+                                                    </div>
+                                                
+                                                <label for="studies"/>
+                                                <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                    <field name="studies" />
+                                                </div>
+                                                
+                                                <label for="survey_report"/>
+                                                <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                    <field name="survey_report" />
+                                                </div>
+                                                
+                                                <label for="road_surevy"/>
+                                                <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                    <field name="road_surevy" />
+                                                </div>
+                                                
+                                                <label for="other_requests"/>
+                                                <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
+                                                    <field name="other_requests" />
+                                                </div>
                                             
-                                            <label for="on_terminal"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="on_terminal" />
-                                            </div>
+                                                </group>                                            
+                                                
                                             
-                                            <label for="export_agency"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="export_agency" />
-                                            </div>
-                                            
-                                            <label for="loading_main_transport"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="loading_main_transport" />
-                                            </div>
-                                            
-                                            <label for="main_transport"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="main_transport" />
-                                            </div>
-                                            
-                                            <label for="from_main_transport"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="from_main_transport" />
-                                            </div>
-                                            
-                                            <label for="import_agency"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="import_agency" />
-                                            </div>
-                                            
-                                            <label for="import_formalities"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="import_formalities" />
-                                            </div>
-                                            
-                                            <label for="import_customs"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="import_customs" />
-                                            </div>
-                                            
-                                            <label for="loading_from_term"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="loading_from_term" />
-                                            </div>
-                                            
-                                            <label for="terminal_exit"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="terminal_exit" />
-                                            </div>
-                                            
-                                            <label for="delivery"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="delivery" />
-                                            </div>
-                                            
-                                            
-                                            
-                                        </group>
-                                        <group>
-                                            
-                                            <label for="ulonading_site"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="ulonading_site" />
-                                            </div>
-                                            
-                                            <label for="unlashing"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="unlashing" />
-                                            </div>
-                                            
-                                            <label for="stripping"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="stripping" />
-                                            </div>
-                                            
-                                            <label for="unpackaging"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="unpackaging" />
-                                            </div>
-                                            
-                                            <label for="other"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="other" />
-                                            </div>
-                                            
-                                            <label for="other_requests"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="other_requests" />
-                                            </div>
-                                           
-                                           
-                                            <label for="insurance_int"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="insurance_int" />
-                                            </div>
-                                            
-                                            <label for="insurance_dom"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="insurance_dom" />
-                                            </div>
-                                            
-                                            <label for="domestic_customs"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="domestic_customs" />
-                                            </div>
-                                            
-                                            <label for="trailer_traction"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="trailer_traction" />
-                                            </div>
-                                            
-                                            <label for="storage"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="storage" />
-                                            </div>
-                                            
-                                            <label for="lifting"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="lifting" />
-                                            </div>
-                                            
-                                            <label for="domestic"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="domestic" />
-                                            </div>
-                                            
-                                            <label for="renting"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="renting" />
-                                            </div>
-                                            
-                                            <label for="consulting"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="consulting" />
-                                            </div>
-                                            
-                                            <label for="road_surevy"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="road_surevy" />
-                                            </div>
-                                            
-                                            <label for="studies"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="studies" />
-                                            </div>
-                                            
-                                            <label for="survey_report"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="survey_report" />
-                                            </div>
-                                            
-                                            <label for="escort"/>
-                                            <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
-                                                <field name="escort" />
-                                            </div>
-                                            
-                                            <label for="documents"/>
+                                            <!-- <label for="documents"/>
                                             <div  class="o_row" style="max-width: 300px; max-height: 200px">                                                        
                                                 <field name="documents" />
-                                            </div>
-
-                                            
-                                            
-                                        </group>
-                                    </group>
+                                            </div> -->
                                 </group>
                         <notebook>
                             <!-- <page name="public" string="Principal">
@@ -375,6 +413,211 @@
     groups ="base.group_user"/>
 
 
+        <record id='refrences_open_file_view_form' model='ir.ui.view'>
+            <field name="name">refrences.open.file.type.form</field>
+            <field name="model">reference.type</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="References">
+                                <group>
+                                    <field name="customer_ref"/>
+                                    <field name="purchase_order"/>
+                                    <field name="sales_order"/>
+                                    <field name="shipment_reference"/>
+                                    <field name="vendor_reference"/>
+                                    <field name="consign_reference"/>
+                                    <field name="ticket_n"/>
+                                    <field name="rma_n"/>                                   
+                                </group>
+                                <group>
+                                    <field name="beyer_ref"/>
+                                    <field name="ref_two"/>
+                                    <field name="ref_thre"/>
+                                    <field name="ref_four"/>
+                                    <field name="ref_five"/>
+                                    <field name="ref_six"/>
+                                </group>
+                                </group>
+                               
+                    </sheet>
+                </form>
+            </field>
+        </record> 
+
+        <record id='rubriques_view_form' model='ir.ui.view'>
+            <field name="name">rubriques.type.form</field>
+            <field name="model">rubriques.type</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Rubriques">
+                                <group>
+                                    <field name="name"/>                                   
+                                </group>
+                                <group>
+                                    
+                                </group>
+                                </group>
+                               
+                    </sheet>
+                </form>
+            </field>
+        </record> 
+
+        <record id='moment_payment_payment_view_form' model='ir.ui.view'>
+            <field name="name">moment.payment..payment.form</field>
+            <field name="model">moment.payment</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Moment Of Payment">
+                                <group>
+                                    <label for="before_starting"/>
+                                        <div class="o_row" style="max-width: 200px; max-height: 40px;">
+                                            <field name="before_starting"/> 
+                                            <field name="before_str_prc" attrs="{'invisible': [('before_starting','!=', True)]}"/>
+                                            <span attrs="{'invisible': [('before_starting','!=', True)]}">%</span>
+                                        </div>
+
+                                     <label for="before_finishing"/>
+                                        <div class="o_row" style="max-width: 200px; max-height: 40px;">
+                                            <field name="before_finishing"/> 
+                                            <field name="before_fin_prc" attrs="{'invisible': [('before_finishing','!=', True)]}"/>
+                                            <span attrs="{'invisible': [('before_finishing','!=', True)]}">%</span>
+                                        </div>
+
+                                    <label for="after_finishing"/>
+                                        <div class="o_row" style="max-width: 200px; max-height: 40px;">
+                                            <field name="after_finishing"/> 
+                                            <field name="after_fini_prc" attrs="{'invisible': [('after_finishing','!=', True)]}"/>
+                                            <span attrs="{'invisible': [('after_finishing','!=', True)]}">%</span>
+                                        </div>
+                                        
+                                    <label for="after_billing"/>
+                                        <div class="o_row" style="max-width: 200px; max-height: 40px;">
+                                            <field name="after_billing"/> 
+                                            <field name="after_billing_prc" attrs="{'invisible': [('after_billing','!=', True)]}"/>
+                                            <span attrs="{'invisible': [('after_billing','!=', True)]}">%</span>
+                                        </div>
+                                </group>
+                                <group>
+                                    
+                                </group>
+                                </group>
+                               
+                    </sheet>
+                </form>
+            </field>
+        </record> 
+
+         <record id='payment_methode_view_form' model='ir.ui.view'>
+            <field name="name">payment.methode.form</field>
+            <field name="model">payment.methode</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Payment Methode">
+                                <field name="name"/>
+                                <field name="code"/>
+                                <field name="risk_level"/>
+                        </group>
+                               
+                    </sheet>
+                </form>
+            </field>
+        </record> 
+
+        <record id='payment_cap_view_form' model='ir.ui.view'>
+            <field name="name">payment.cap.form</field>
+            <field name="model">cap.cap</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Payment Cap">
+                                <group>
+                                    <label for="payment_c"/>
+                                            <div class="o_row" style="max-width: 600px; max-height: 400px">
+                                                <field name="payment_c"/>
+                                                <field name="cap_currency" style="max-width: 2000px; max-height: 1000px"/>
+                                            </div>                                   
+                                </group>
+                                <group>
+                                    
+                                </group>
+                                </group>
+                               
+                    </sheet>
+                </form>
+            </field>
+        </record> 
+
+        <record id='payment_customer_view_form' model='ir.ui.view'>
+            <field name="name">customer.payment.form</field>
+            <field name="model">customer.payment</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Payment Term">
+                                <group>
+                                    <field name="section_id"/>
+                                    <label for="terms"/>
+                                    <div class="o_row" style="max-width: 200px; max-height: 40px;">
+                                            <field name="terms"/> <span>Jour(s)</span>
+                                    </div>
+                                    <field name="moment_payment_id"/>                                  
+                                </group>
+                                <group>
+                                    <field name="methode_payment_id"/>
+                                    <field name="payment_cap_id"/>
+                                </group>
+                        </group>
+       
+                    </sheet>
+                </form>
+            </field>
+        </record> 
+
+        <record id='customer_discount_view_form' model='ir.ui.view'>
+            <field name="name">customer.discount.form</field>
+            <field name="model">customer.discount</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Discount">
+                                <field name="name"/>
+                                <field name="discount"/>
+                        </group>
+                               
+                    </sheet>
+                </form>
+            </field>
+        </record> 
+
+
+        <record id='bank_details_view_form' model='ir.ui.view'>
+            <field name="name">bank.details.form</field>
+            <field name="model">bank.details</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Bank Details">
+                                <field name="bank_details_line" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="account_number"/>
+                                        <field name="bank_detail"/>
+                                        <field name="iban"/>
+                                        <field name="code_swift"/>
+                                    
+                                    </tree>
+                                </field>
+                        </group>
+                               
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
         <record id="view_partner_inherit" model="ir.ui.view">
                         <field name="name">res.partner.inherit</field>
                         <field name="model">res.partner</field>
@@ -386,18 +629,19 @@
                                     <field name="activity_description"/>
                                     <label for="capital"/>
                                     <div class="o_row" style="max-width: 200px; max-height: 100px">
-                                                        <field name="capital"/>
-                                                        <field name="currency_unit" />
-                                                    </div> 
+                                        <field name="capital"/>
+                                        <field name="currency_cap" />
+                                    </div> 
                                     <field name="date_creation"/>
+                                    <field name="company_size"/>
+                                    <field name="sector_type_ids" widget="many2many_tags"/>
                                     <field name="group_id"/>
                                     <field name="network_id"/>
                                     <field name="form"/>
                                     <field name="rc"/>
                                     <field name="ice"/>
                                     <field name="legal_number"/>
-                                    <field name="company_size"/>
-                                     <field name="location"/>
+                                    <field name="location"/>
                                     
                                                     <!-- <field name="date_creation"/>
                                                     <field name="form"/>
@@ -413,24 +657,75 @@
                             <xpath expr="//field[@name='function']" position="attributes">
                                  <attribute name="attrs">{'invisible':1}</attribute>
                             </xpath>
+                            <xpath expr="//field[@name='title']" position="attributes">
+                                 <attribute name="attrs">{'invisible':1}</attribute>
+                            </xpath>
                             <!-- <xpath expr="//field[@name='title']" position="attributes">
                                  <attribute name="attrs">{'invisible':1}</attribute>
                             </xpath> -->
                              <xpath expr="//field[@name='category_id']" position="before">
+                                <field name="fax" string="Fax" widget="phone"/>
+                                
                                 <field name="language_type_ids"  widget="many2many_tags"/>
                                 <field name="commercial"/>
                                 <field name="csd"/>
-                                <field name="sector_type_ids" widget="many2many_tags"/>
                                  <!-- <field name="language_type_ids"  widget="selection"/> -->
 
                             </xpath>
+                            <xpath expr="//div[@class='o_address_format']" position="attributes">
+                                 <attribute name="attrs">{'invisible':1}</attribute>
+                            </xpath>
+                            
+                            <xpath expr="//field[@name='type_s']" position="attributes">
+                                 <attribute name="attrs">{'invisible':1}</attribute>
+                            </xpath>
+                            
+                            <xpath expr="//label[@name='address_name']" position="attributes">
+                                 <attribute name="attrs">{'invisible':1}</attribute>
+                            </xpath>
+<!--                             
+                            <xpath expr="//field[@name='email']" position="before">
+                                
+
+                            </xpath>
+                             -->
+                            
+                            <xpath expr="//field[@name='category_id']" position="after">
+                                
+                                <label for="" name="address_name">
+                                <b attrs="{'invisible': [('type', '!=', 'contact')]}">Company Address</b>
+                                <b attrs="{'invisible': [('type', '!=', 'invoice')]}">Invoice Address</b>
+                                <b attrs="{'invisible': [('type', '!=', 'delivery')]}">Delivery Address</b>
+                                <b attrs="{'invisible': [('type', '!=', 'other')]}">Other Address</b>
+                                <b attrs="{'invisible': [('type', '!=', 'private')]}">Private Address</b>
+                                <b attrs="{'invisible': [('type', '!=', False)]}">Address</b>
+                            </label>
+                            <div class="o_address_format">
+                                <field name="street" placeholder="Street..." class="o_address_street"
+                                    attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                                <field name="street2" placeholder="Street 2..." class="o_address_street"
+                                    attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                                <field name="city" placeholder="City" class="o_address_city"
+                                    attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                                <field name="state_id" class="o_address_state" placeholder="State" options='{"no_open": True}'
+                                    attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}" context="{'country_id': country_id, 'zip': zip}"/>
+                                <field name="zip" placeholder="ZIP" class="o_address_zip"
+                                    attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                                <field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}'
+                                    attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                            </div>
+                               
+                            </xpath>
+                            
+                            
+                             <xpath expr="//notebook[1]//page[1]//field[@name='child_ids']/form/sheet/field[@name='type']" position="replace">
+                              <field name="type" required="1" widget="radio" options="{'horizontal': true}"/>
+                            </xpath>
+                            
                             <xpath expr="//notebook[1]//page[1]//field[@name='child_ids']/form/sheet/group/group/field[@name='name']" position="after">
                                 
                                 <field name="sex"/>
-                                <field name="visit_card"/>
-                                                <field name="depar_tment_id"/>
-                                                <field name="title"/>
-
+                               
                             </xpath>
                             <xpath expr="//notebook[1]//page[1]//field[@name='child_ids']/form/sheet/group/group/field[@name='mobile']" position="after">
                                 <label for="direct_contact"/>
@@ -1300,88 +1595,29 @@
 
                              <xpath expr="//notebook[1]//page[2]" position="after">
                                     <page string="Financial conditions">
-                                        <group col="2" >            
+                                        <group  >            
                                                 <group string='Customer'>
-                                                    <field name='billing_section_id'/>
-                                                    <label for="terms"/>
+                                                    <field name='customer_payment_id'/>
+                                                    <field name='customer_discount_id'/>
+                                                     <label for="total_paym_cap"/>
                                                             <div class="o_row" style="max-width: 200px; max-height: 40px;">
-                                                                <field name="terms"/> <span>Jour(s)</span>
-                                                            </div>                      
-                                                   <field name="payment_methode_id" string="Payment methode" widget="many2many_tags"/>
-                                                    <!-- <tree>
-                                                            <field name="payment_type"/>
-                                                            <field name="cheque_type" attrs="{'invisible': [('payment_type','!=','cheque')]}"/>
-                                                            <field name="ldc_type" attrs="{'invisible': [('payment_type','!=','ldc')]}"/>
-                                                        
-                                                    </tree> -->    
-                                                    <!-- <field name="service_type_ids" widget="many2many_tags"/>-->
-                                                    <label for="payment_cap"/>
-                                                    <div class="o_row" style="max-width: 200px; max-height: 100px">
-                                                            <field name="payment_cap"/>
-                                                            <field name="payment_cap_sel" />
-                                                        </div>
-                                                    <label for="total_paycap"/>
-                                                    <div class="o_row" style="max-width: 200px; max-height: 100px">
-                                                            <field name="total_paycap"/>
-                                                            <field name="payment_cap_sel" />
-                                                        </div> 
-                                                    <!-- <field name="payment_cap"/>
-                                                    <field name="total_payment_cap"/> -->
-                                                    <field name="discount_ids" widget="many2many_tags"/>
-                                                    <field name="bank_bank_id" widget="many2many_tags"/>  
-                                                
-                                                   <!--  <label for="before_starting"/>
-                                                        <div class="o_row" style="max-width: 200px; max-height: 40px;">
-                                                            <field name="before_starting"/> 
-                                                            <field name="before_str_prc" attrs="{'invisible': [('before_starting','!=', True)]}"/>
-                                                            <span attrs="{'invisible': [('before_starting','!=', True)]}">%</span>
-                                                        </div>
-
-                                                        <label for="before_finishing"/>
-                                                        <div class="o_row" style="max-width: 200px; max-height: 40px;">
-                                                            <field name="before_finishing"/> 
-                                                            <field name="before_fin_prc" attrs="{'invisible': [('before_finishing','!=', True)]}"/>
-                                                            <span attrs="{'invisible': [('before_finishing','!=', True)]}">%</span>
-                                                        </div>
-
-                                                        <label for="after_finishing"/>
-                                                        <div class="o_row" style="max-width: 200px; max-height: 40px;">
-                                                            <field name="after_finishing"/> 
-                                                            <field name="after_fini_prc" attrs="{'invisible': [('after_finishing','!=', True)]}"/>
-                                                            <span attrs="{'invisible': [('after_finishing','!=', True)]}">%</span>
-                                                        </div>
-                                                        
-                                                        <label for="after_billing"/>
-                                                        <div class="o_row" style="max-width: 200px; max-height: 40px;">
-                                                            <field name="after_billing"/> 
-                                                            <field name="after_billing_prc" attrs="{'invisible': [('after_billing','!=', True)]}"/>
-                                                            <span attrs="{'invisible': [('after_billing','!=', True)]}">%</span>
-                                                        </div>
-                                                         -->
+                                                                <field name='total_paym_cap'/>
+                                                                <field name="currency_cap"/>
+                                                            </div>          
+                                                    
+                                                   <field name="bank_bank_id"/>
                                                 </group> 
                                                 
                                                 <group string='Supplier'>
-                                                            <field name="billing_section_id_sup"/>
-                                                        <label for="terms_su"/>
-                                                                <div class="o_row" style="max-width: 200px; max-height: 40px;">
-                                                                    <field name="terms_su"/> <span>Jour(s)</span>
-                                                                </div>
-                                                            <field name="payment_methode_sup_id" widget="many2many_tags"/>
-                                                        
-                                                        <label for="payment_cap_sup"/>
-                                                    <div class="o_row" style="max-width: 200px; max-height: 100px">
-                                                            <field name="payment_cap_sup"/>
-                                                            <field name="payment_cap_sel_sup" />
-                                                        </div>
-                                                    <label for="total_paycap_sup"/>
-                                                    <div class="o_row" style="max-width: 200px; max-height: 100px">
-                                                            <field name="total_paycap_sup"/>
-                                                            <field name="total_spayment_cap" />
-                                                        </div> 
-
-                                                    <field name="discount_sup_ids" widget="many2many_tags"/>
-                                                    <field name="bank_bank_sup_id" widget="many2many_tags"/>  
-                                                        
+                                                    <field name='supliers_payment_id'/>
+                                                    <field name='supliers_discount_id'/>
+                                                     <label for="total_paym_cap_sup"/>
+                                                            <div class="o_row" style="max-width: 200px; max-height: 40px;">
+                                                                <field name='total_paym_cap_sup'/>
+                                                                <field name="currency_cap_sup"/>
+                                                            </div>          
+                                                   <field name="bank_bank_sup_id"/>
+                                                    
                                                 </group>
                                         </group>
                                     </page>
@@ -1416,7 +1652,9 @@
                                                 <label for="other_bool"/>                                                                                        
                                                     <div class="o_row" style="max-width: 200px; max-height: 100px">
                                                                 <field name="other_bool"/>
-                                                                <field name="other_type" attrs="{'invisible': [('other_bool','!=',True)]}"/>
+                                                                <field name="amount_oth" attrs="{'invisible': [('other_bool','!=',True)]}"/>
+                                                                <field name="currency_id_oth" attrs="{'invisible': [('other_bool','!=',True)]}"/>
+
                                                     </div>
                                             </group>
                                                 

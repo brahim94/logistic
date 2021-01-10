@@ -190,7 +190,7 @@ class ModeTransport(models.Model):
             ('top_width', 'Top Width /u'),
             ('top_height', 'Top Height /u'),
             ('top_g_weight', 'Top G Weight /u'),
-            ], string='True')
+            ], string='TREUs')
     oog_qty = fields.Integer('OOG')
     top_leng = fields.Selection([
             ('bb', 'BB: =< 12m'),

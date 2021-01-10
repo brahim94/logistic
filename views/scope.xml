@@ -7,11 +7,13 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
-                
-                    <div class="oe_button_box" name="button_box">
-                        <button name="open_assignation_total" string="Balance" type="object" class="oe_stat_button" icon="fa-dashboard"/>
+                        
+                        <div class="oe_button_box" name="button_box">
+                            <button name="open_documents_total" string="Documents" type="object" class="oe_stat_button" icon="fa-book"/>
+                            <button name="open_assignation_total" string="Balance" type="object" class="oe_stat_button" icon="fa-dashboard"/>
+
                         </div>
-                
+
                         <group col="2">
                             <group>
                                 <field name="directory_scope_id"/>
@@ -67,6 +69,9 @@
                                         <field name="comments_type"/>
                                         <field name="forecast_from"/>
                                         <field name="forecast_unitl"/>
+                                        <field name="price_validity_f"/>
+                                        <field name="price_validity_u"/>
+                                        
                                     </group>
                                     <group>
                                         <field name="packagin_service_id"/>
@@ -82,6 +87,9 @@
                                         <field name="comments_type_stuffing"/>
                                         <field name="forecast_from_stuffing"/>
                                         <field name="forecast_unitl_stuffing"/>
+                                        <field name="price_validity_f_stuffing"/>
+                                        <field name="price_validity_u_stuffing"/>
+                                       
                                     </group>
                                     <group>
                                         <field name="stuffing_service_id"/>
@@ -97,7 +105,9 @@
                                    <group col="2">
                                         <field name="comments_type_lsd"/>
                                         <field name="forecast_from_lsd"/>
-                                        <field name="forecast_unitl_lsd"/>
+                                        <field name="price_validity_f_lsd"/>
+                                        <field name="price_validity_u_lsd"/>
+                                       <field name="forecast_unitl_lsd"/>
                                     </group>
                                     <group>
                                         <field name="lsd_service_id"/>
@@ -112,7 +122,9 @@
                                    <group col="2">
                                         <field name="comments_type_loading"/>
                                         <field name="forecast_from_loading"/>
-                                        <field name="forecast_unitl_loading"/>
+                                         <field name="price_validity_f_track"/>
+                                        <field name="price_validity_u_track"/>
+                                       <field name="forecast_unitl_loading"/>
                                     </group>
                                     <group>
                                         <field name="loading_service_id"/>
@@ -127,6 +139,8 @@
                                    <group col="2">
                                         <field name="comments_type_export"/>
                                         <field name="forecast_from_export"/>
+                                        <field name="price_validity_f_export"/>
+                                        <field name="price_validity_u_export"/>
                                         <field name="forecast_unitl_export"/>
                                     </group>
                                     <group>
@@ -140,6 +154,8 @@
                                    <group col="2">
                                         <field name="comments_type_terminal"/>
                                         <field name="forecast_from_terminal"/>
+                                        <field name="price_validity_f_terminal"/>
+                                        <field name="price_validity_u_terminal"/>
                                         <field name="forecast_unitl_terminal"/>
                                     </group>
                                     <group>
@@ -153,6 +169,8 @@
                                    <group col="2">
                                         <field name="comments_type_exp_agency"/>
                                         <field name="forecast_from_exp_agency"/>
+                                        <field name="price_validity_f_terminal"/>
+                                        <field name="price_validity_u_export"/>
                                         <field name="forecast_unitl_exp_agency"/>
                                     </group>
                                     <group>
@@ -167,6 +185,9 @@
                                         <field name="comments_type_load_trans"/>
                                         <field name="forecast_from_load_trans"/>
                                         <field name="forecast_unitl_load_trans"/>
+                                        <field name="price_validity_f_main"/>
+                                        <field name="price_validity_u_main"/>
+                                        
                                     </group>
                                     <group>
                                         <field name="load_trans_service_id"/>
@@ -180,6 +201,8 @@
                                         <field name="comments_type_upload_trans"/>
                                         <field name="forecast_from_upload_trans"/>
                                         <field name="forecast_unitl_upload_trans"/>
+                                        <field name="price_validity_f_unloading"/>
+                                        <field name="price_validity_u_unloading"/>
                                     </group>
                                     <group>
                                         <field name="upload_trans_service_id"/>
@@ -193,10 +216,29 @@
                                         <field name="comments_type_imp_agency"/>
                                         <field name="forecast_from_imp_agency"/>
                                         <field name="forecast_unitl_imp_agency"/>
+                                        <field name="price_validity_f_agency"/>
+                                        <field name="price_validity_u_agency"/>
                                     </group>
                                     <group>
                                         <field name="imp_agency_service_id"/>
                                     <field name="imp_agency_profitability_id"/>
+                                    </group>
+                                </group>
+                            </page>
+
+                            <page string="Insurance Dom" attrs="{'invisible': [('insurance_dom_id','!=',True)]}">
+                                <group>
+                                <group col="2">
+                                        <field name="comments_insurance_dom"/>
+                                        <field name="forecast_from_insurance_dom"/>
+                                        <field name="forecast_unitl_insurance_dom"/>
+                                        <field name="price_validity_f_ins_do"/>
+                                        <field name="price_validity_u_ins_do"/>
+                                    </group>
+                                    <group>
+                                        <field name="insurance_dom_service_id"/>
+                                        <field name="insurance_dom_profitability_id"/>
+                                        <field name="insurancedom_id"/>
                                     </group>
                                 </group>
                             </page>
@@ -206,6 +248,9 @@
                                         <field name="comments_type_imp_form"/>
                                         <field name="forecast_from_imp_form"/>
                                         <field name="forecast_unitl_imp_form"/>
+                                        <field name="price_validity_f_fomra"/>
+                                        <field name="price_validity_u_forma"/>
+                                    
                                     </group>
                                     <group>
                                         <field name="imp_form_service_id"/>
@@ -219,6 +264,9 @@
                                         <field name="comments_type_term_exit"/>
                                         <field name="forecast_from_term_exit"/>
                                         <field name="forecast_unitl_term_exit"/>
+                                        <field name="price_validity_f_exit"/>
+                                        <field name="price_validity_u_exit"/>
+                                    
                                     </group>
                                     <group>
                                         <field name="term_exit_service_id"/>
@@ -232,6 +280,8 @@
                                         <field name="comments_type_unlash"/>
                                         <field name="forecast_from_unlash"/>
                                         <field name="forecast_unitl_unlash"/>
+                                        <field name="price_validity_f_unlashing"/>
+                                        <field name="price_validity_u_unlashing"/>
                                     </group>
                                     <group>
                                         <field name="unlash_exit_service_id"/>
@@ -245,6 +295,8 @@
                                         <field name="comments_type_strip"/>
                                         <field name="forecast_from_strip"/>
                                         <field name="forecast_unitl_strip"/>
+                                        <field name="price_validity_f_strip"/>
+                                        <field name="price_validity_u_strip"/>
                                     </group>
                                     <group>
                                         <field name="strip_service_id"/>
@@ -258,6 +310,9 @@
                                         <field name="comments_type_unpack"/>
                                         <field name="forecast_from_unpack"/>
                                         <field name="forecast_unitl_unpack"/>
+                                        <field name="price_validity_f_unpack"/>
+                                        <field name="price_validity_u_unpack"/>
+                                    
                                     </group>
                                     <group>
                                         <field name="unpack_service_id"/>
@@ -271,6 +326,9 @@
                                         <field name="comments_type_oth_cust"/>
                                         <field name="forecast_from_oth_cust"/>
                                         <field name="forecast_unitl_oth_cust"/>
+                                        <field name="price_validity_f_cust"/>
+                                        <field name="price_validity_u_cust"/>
+                                    
                                     </group>
                                     <group>
                                         <field name="oth_cust_service_id"/>
@@ -284,6 +342,9 @@
                                         <field name="comments_type_oth_req"/>
                                         <field name="forecast_from_oth_req"/>
                                         <field name="forecast_unitl_oth_req"/>
+                                        <field name="price_validity_f_req"/>
+                                        <field name="price_validity_u_req"/>
+                                    
                                     </group>
                                     <group>
                                         <field name="oth_req_service_id"/>
@@ -297,6 +358,9 @@
                                         <field name="comments_type_trai_trac"/>
                                         <field name="forecast_from_trai_trac"/>
                                         <field name="forecast_unitl_trai_trac"/>
+                                        <field name="price_validity_f_trailer"/>
+                                        <field name="price_validity_u_trailer"/>
+                                    
                                     </group>
                                     <group>
                                         <field name="trai_trac_service_id"/>
@@ -310,6 +374,9 @@
                                         <field name="comments_type_storage"/>
                                         <field name="forecast_from_storage"/>
                                         <field name="forecast_unitl_storage"/>
+                                        <field name="price_validity_f_storage"/>
+                                        <field name="price_validity_u_storage"/>
+                                    
                                     </group>
                                     <group>
                                         <field name="storage_service_id"/>
@@ -324,6 +391,9 @@
                                         <field name="comments_type_lifting"/>
                                         <field name="forecast_from_lifting"/>
                                         <field name="forecast_unitl_lifting"/>
+                                        <field name="price_validity_f_lifting"/>
+                                        <field name="price_validity_u_lifting"/>
+                                    
                                     </group>
                                     <group>
                                         <field name="lifting_service_id"/>
@@ -338,6 +408,9 @@
                                         <field name="comments_type_consult"/>
                                         <field name="forecast_from_consult"/>
                                         <field name="forecast_unitl_consult"/>
+                                        <field name="price_validity_f_conss"/>
+                                        <field name="price_validity_u_conss"/>
+                                    
                                     </group>
                                     <group>
                                         <field name="consult_service_id"/>
@@ -352,6 +425,8 @@
                                         <field name="comments_type_studies"/>
                                         <field name="forecast_from_studies"/>
                                         <field name="forecast_unitl_studies"/>
+                                        <field name="price_validity_f_studies"/>
+                                        <field name="price_validity_u_studies"/>
                                     </group>
                                     <group>
                                         <field name="studies_service_id"/>
@@ -366,6 +441,9 @@
                                         <field name="comments_type_civil_work"/>
                                         <field name="forecast_from_civil_work"/>
                                         <field name="forecast_unitl_civil_work"/>
+                                        <field name="price_validity_f_civil"/>
+                                        <field name="price_validity_u_civil"/>
+                                    
                                     </group>
                                     <group>
                                         <field name="civil_work_service_id"/>
@@ -380,6 +458,8 @@
                                         <field name="comments_type_pre_carriage"/>
                                         <field name="forecast_from_pre_carriage"/>
                                         <field name="forecast_unitl_pre_carriage"/>
+                                        <field name="price_validity_f_carriage"/>
+                                        <field name="price_validity_u_carriage"/>
                                         <field name="distance"/>
                                     </group>
                                     <group>
@@ -397,6 +477,8 @@
                                         <field name="comments_type_pre_carriage"/>
                                         <field name="forecast_from_pre_carriage"/>
                                         <field name="forecast_unitl_pre_carriage"/>
+                                        <field name="price_validity_f_cus_ex"/>
+                                        <field name="price_validity_u_cus_ex"/>
                                         <field name="pre_carriage_service_id"/>
                                         <field name="pre_carriage_profitability_id"/>
                                         <field name="exporter"/>
@@ -421,6 +503,8 @@
                                         <field name="comments_type_unload_termina"/>
                                         <field name="forecast_from_unload_termina"/>
                                         <field name="forecast_unitl_unload_termina"/>
+                                        <field name="price_validity_f_un_ter"/>
+                                        <field name="price_validity_u_un_ter"/>
                                     </group>
                                     <group>
                                         <field name="unload_termina_service_id"/>
@@ -437,6 +521,9 @@
                                         <field name="comments_type_main_transport"/>
                                         <field name="forecast_from_main_transport"/>
                                         <field name="forecast_unitl_main_transport"/>
+                                        <field name="price_validity_f_m_tra"/>
+                                        <field name="price_validity_u_m_tra"/>
+                                        
                                         <field name="main_transport_service_id"/>
                                        <field name="main_transport_profitability_id"/>
                                     </group>
@@ -455,6 +542,8 @@
                                         <field name="comments_type_import_customs"/>
                                         <field name="forecast_from_import_customs"/>
                                         <field name="forecast_unitl_import_customs"/>
+                                        <field name="price_validityf_imp_cus"/>
+                                        <field name="price_validityu_imp_cus"/>
                                         <field name="import_customs_service_id"/>
                                         <field name="import_customs_profitability_id"/>
                                         <field name="exporter_customs"/>
@@ -480,6 +569,8 @@
                                         <field name="comments_type_load_terminal"/>
                                         <field name="forecast_from_load_terminal"/>
                                         <field name="forecast_unitl_load_terminal"/>
+                                        <field name="price_validity_f_f_ter"/>
+                                        <field name="price_validity_u_f_ter"/>
                                     </group>
                                     <group>
                                         <field name="load_terminal_service_id"/>
@@ -494,6 +585,9 @@
                                         <field name="comments_delivery"/>
                                         <field name="forecast_from_delivery"/>
                                         <field name="forecast_unitl_delivery"/>
+                                        <field name="price_validity_f_deli"/>
+                                        <field name="price_validity_u_deli"/>
+                                        
                                         <field name="distance"/>
                                     </group>
                                     <group>
@@ -511,6 +605,9 @@
                                         <field name="comments_type_unload_site"/>
                                         <field name="forecast_from_unload_site"/>
                                         <field name="forecast_unitl_unload_site"/>
+                                        <field name="price_validity_f_lo_si"/>
+                                        <field name="price_validity_u_lo_si"/>
+                                    
                                     </group>
                                     <group>
                                         <field name="unload_site_service_id"/>
@@ -526,11 +623,13 @@
                                         <field name="comments_insurance_int"/>
                                         <field name="forecast_from_insurance_int"/>
                                         <field name="forecast_unitl_insurance_int"/>
+                                        <field name="price_validity_f_insu_in"/>
+                                        <field name="price_validity_u_insu_in"/>
                                     </group>
                                     <group>
                                         <field name="insurance_int_service_id"/>
                                        <field name="insurance_int_profitability_id"/>
-                                       <field name="insurance_int_id"/>
+                                       <field name="insurance_intid"/>
                                     </group>
                                 </group>
                             </page>
@@ -541,6 +640,8 @@
                                         <field name="comments_type_domestic_customs"/>
                                         <field name="forecast_from_domestic_customs"/>
                                         <field name="forecast_unitl_domestic_customs"/>
+                                        <field name="price_validity_f_dom_cu"/>
+                                        <field name="price_validity_u_dom_cu"/>
                                         <field name="domestic_customs_service_id"/>
                                         <field name="domestic_customs_profitability_id"/>
                                         <field name="exporter_domestic"/>
@@ -565,6 +666,8 @@
                                         <field name="comments_domestic_haulage"/>
                                         <field name="forecast_from_domestic_haulage"/>
                                         <field name="forecast_unitl_domestic_haulage"/>
+                                        <field name="price_validity_f_dom_ho"/>
+                                        <field name="price_validity_u_dom_ho"/>
                                         <field name="domestic_haulage_distance"/>
                                     </group>
                                     <group>
@@ -576,12 +679,15 @@
                                 </group>
                             </page>
 
-                            <page string="Runting" attrs="{'invisible': [('renting_id','!=',True)]}">
+                            <page string="Renting" attrs="{'invisible': [('renting_id','!=',True)]}">
                                 <group>
                                    <group col="2">
                                         <field name="comments_type_runting"/>
                                         <field name="forecast_from_runting"/>
                                         <field name="forecast_unitl_runting"/>
+                                        <field name="price_validity_f_run"/>
+                                        <field name="price_validity_u_run"/>
+                                       
                                         <field name="runting_service_id"/>
                                        <field name="runting_profitability_id"/>
                                         
@@ -601,8 +707,11 @@
                                         <field name="comments_type_road"/>
                                         <field name="forecast_from_road"/>
                                         <field name="forecast_unitl_road"/>
+                                        <field name="price_validity_f_ro_su"/>
+                                        <field name="price_validity_u_ro_su"/>
+                                        
                                         <field name="road_service_id"/>
-                                       <field name="road_profitability_id"/>
+                                        <field name="road_profitability_id"/>
                                         
                                     </group>
                                     <group>
@@ -623,6 +732,8 @@
                                         <field name="comments_type_report"/>
                                         <field name="forecast_from_report"/>
                                         <field name="forecast_unitl_report"/>
+                                        <field name="price_validity_f_ro_re"/>
+                                        <field name="price_validity_u_ro_re"/>
                                         
                                     </group>
                                     <group>
@@ -640,6 +751,9 @@
                                         <field name="comments_type_escort"/>
                                         <field name="forecast_from_escort"/>
                                         <field name="forecast_unitl_escort"/>
+                                        <field name="price_validity_f_esc"/>
+                                        <field name="price_validity_u_esc"/>
+                                        
                                         <field name="from_escort"/>
                                         <field name="to_escort"/>
                                         
@@ -656,7 +770,7 @@
                                     </group>
                                 </group>
                             </page>
-                            <page string="Document" attrs="{'invisible': [('documents_id','!=',True)]}">
+                            <!-- <page string="Document" attrs="{'invisible': [('documents_id','!=',True)]}">
                                 <group>
                                    <group col="2">
                                         
@@ -667,7 +781,7 @@
                                         
                                     </group>
                                 </group>
-                            </page>
+                            </page> -->
 
                         </notebook>
                     </sheet>
@@ -783,13 +897,16 @@
                             <group col="2">
                                 <field name="packagin_division_id"/>
                                 <field name="direction"/>
-                                <field name="packagin_mode_transport_id"/>
+                                <field name="packagin_mode_transport_id" string="Mode of Transport"/>
+                                <field name="scope"/>
+
                             </group>
                             <group>
                                 <field name="service"/>
                                 <field name="service_n"/>
                                 <field name="service_detail"/>
                                 <field name="packagin_criteria_id"/>
+                                <field name="packagin_standrads_id"/>
                             </group>
                         </group>
                     </sheet>
@@ -1096,7 +1213,7 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
-                        <group string="packagin pod">
+                        <group string="POD">
                             <group col="2">
                                 <field name="port_n"/>
                                 <field name="port"/>
@@ -1118,7 +1235,7 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
-                        <group string="packagin pol">
+                        <group string="POL">
                             <group col="2">
                                 <field name="port_n"/>
                                 <field name="port"/>
@@ -1203,7 +1320,7 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
-                        <group string="Added Proceders">
+                        <group string="Added Procedurs">
                             <group col="2">
                                 <field name="added_proceders"/>
                                 <field name="added_proceders_n"/>
@@ -1295,8 +1412,11 @@
                             </group>
                             <group>
                                 <field name="review_n"/>
-                                <field name="pcl_office"/>
-                                <field name="department"/>
+                                <field name="processes"/>
+                                <field name="document_quality_id"/>
+                                <field name="print_quality_id"/>
+                                <field name="video_quality_id"/>
+                                <field name="packagin_div_id"/>
                             </group>
                         </group>
                     </sheet>
@@ -1305,7 +1425,7 @@
         </record>
        
             <!-- Packaging Processes -->
-        <record id='packaging_processes_view_form' model='ir.ui.view'>
+        <!-- <record id='packaging_processes_view_form' model='ir.ui.view'>
             <field name="name">packaging.processes.type.form</field>
             <field name="model">packaging.processes</field>
             <field name="arch" type="xml">
@@ -1317,8 +1437,8 @@
                                 <field name="procedure_name"/>
                                 <field name="procedure_n"/>
                                 <field name="review"/>
-                                 <field name="date"/>
-                                <field name="processes"/>
+                                <field name="date"/>
+                                <field name="procedures"/>
                             </group>
                             <group>
                                 <field name="instruction_name"/>
@@ -1330,7 +1450,7 @@
                     </sheet>
                 </form>
             </field>
-        </record>
+        </record> -->
 
             <!-- Packaging section -->
           <record id='packaging_section_view_form' model='ir.ui.view'>
@@ -1345,7 +1465,7 @@
                                 <field name="section_name"/>
                                 <field name="section_translation"/>
                                 <field name="section_code"/>
-                                 <field name="section_abreviation"/>
+                                <field name="section_abreviation"/>
                                 <field name="accounting_number"/>
 
                             </group>
@@ -1606,6 +1726,41 @@
         </record>
 
 
+        
+        
+         <!-- Documents -->
+        <record id='documents_view_form' model='ir.ui.view'>
+            <field name="name">documents.type.form</field>
+            <field name="model">packagin.documents</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Documents">
+                            <group col="2">
+                                <field name="doc_name"/>
+                                <field name="doc"/>
+                               
+                            </group>
+                            <group>
+                                 <!-- <field name="equipement_code"/>
+                                <field name="equipement_id"/> -->
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        
+        <record model="ir.actions.act_window" id="documents_action">
+            <field name="name">Documents</field>
+            <field name="res_model">packagin.documents</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                    <p class="oe_view_nocontent_smiling_face">Documents</p>
+            </field>
+        </record> 
+
          <!-- Duration -->
         <record id='duration_runting_view_form' model='ir.ui.view'>
             <field name="name">duration.runting.type.form</field>
@@ -1638,6 +1793,7 @@
                     <sheet>
                         <group string="Profitability">
                             <group col="2">
+                                <field name="packaging_section"/>
                                 <field name="atc"/>
                                 <field name="suppliers"/>
                             </group>
@@ -1725,8 +1881,102 @@
             </field>
         </record> 
 
+         <!-- Division Quality -->
+        <record id='division_quality_view_form' model='ir.ui.view'>
+            <field name="name">division.quality.type.form</field>
+            <field name="model">division.quality</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Division">
+                            <group col="2">
+                                <field name="division_n"/>
+                               
+                            </group>
+                            <group>
+                                 <!-- <field name="equipement_code"/>
+                                <field name="equipement_id"/> -->
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
 
+         <!-- Document Quality -->
+        <record id='document_quality_view_form' model='ir.ui.view'>
+            <field name="name">document.quality.type.form</field>
+            <field name="model">document.quality</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Document">
+                            <group col="2">
+                                <field name="div_id"/>
+                                <field name="document_n"/>
+                                <field name="document_name"/>
+                               
+                            </group>
+                            <group>
+                                 <field name="document_date"/>
+                                <field name="review_doc"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
         
+
+         <!-- Print Quality -->
+        <record id='print_quality_view_form' model='ir.ui.view'>
+            <field name="name">print.quality.type.form</field>
+            <field name="model">print.quality</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Print">
+                            <group col="2">
+                                <field name="div_id"/>
+                                <field name="print_n"/>
+                                <field name="print_name"/>
+                               
+                            </group>
+                            <group>
+                                <field name="print_date"/>
+                                <field name="review_print"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+          <!-- Video Quality -->
+        <record id='video_quality_view_form' model='ir.ui.view'>
+            <field name="name">video.quality.type.form</field>
+            <field name="model">video.quality</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Video">
+                            <group col="2">
+                                <field name="div_id"/>
+                                <field name="video_n"/>
+                                <field name="video_name"/>
+                               
+                            </group>
+                            <group>
+                                <field name="video_date"/>
+                                <field name="review_vid"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+       
         <!--<record model="ir.actions.act_window" id="regim_action">
             <field name="name">Regim</field>
             <field name="res_model">packagin.regime</field>
@@ -1734,46 +1984,97 @@
             <field name="help" type="html">
                     <p class="oe_view_nocontent_smiling_face"> Regim</p>
             </field>
-        </record>
-        <record id='processes_view_form' model='ir.ui.view'>
-            <field name="name">processes.type.form</field>
+        </record> -->
+
+         <record id='standards_view_form' model='ir.ui.view'>
+            <field name="name">standards.type.form</field>
+            <field name="model">standard.type</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                                <group string="Standars">
+                                    <group col="2">
+                                        <field name="procesees_id"/>
+                                        <field name="procedures_id"/>
+                                        <field name="instructions_id"/>
+                                        
+                                    </group>
+                                    <group>
+                                        
+                                    </group>
+                                </group>
+                    </sheet>
+                </form>
+            </field>
+        </record> 
+
+        <record id='procedures_view_form' model='ir.ui.view'>
+            <field name="name">procedures.type.form</field>
             <field name="model">packaging.processes</field>
             <field name="arch" type="xml">
                 <form>
                     <sheet>
-                                <group string="processes">
+                                <group string="Procedures">
                                     <group col="2">
-                                        <field name="packagin_processes_id" widget="many2many_tags"/>
+                                        <field name="packagin_processes_id"/>
                                         <field name="procedure_name"/>
                                         <field name="procedure_n"/>
                                         <field name="review"/>
                                         <field name="date"/>
-                                        <field name="processes"/>
-                                        <field name="pcl_office"/>
                                     </group>
                                     <group>
-                                        <field name="department"/>    
-                                        <field name="instruction_name"/>
-                                        <field name="instruction_n"/>
-                                        <field name="date"/>
-                                        <field name="instruction"/>
+                                        <field name="procedures"/>
+                                        <field name="document_quali_id"/>
+                                        <field name="print_quali_id"/>
+                                        <field name="video_quali_id"/>
+                                        <field name="packagin_dv_id"/>
+                                        
                                     </group>
                                 </group>
                     </sheet>
                 </form>
             </field>
         </record>
-        <record model="ir.actions.act_window" id="processes_action">
+
+        <record id='instruction_view_form' model='ir.ui.view'>
+            <field name="name">instructions.type.form</field>
+            <field name="model">packaging.instruction</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                                <group string="Instructions">
+                                    <group col="2">
+                                        <field name="procedures_id"/>
+                                        <field name="instruction_name"/>
+                                        <field name="instruction_n"/>
+                                        <field name="review"/>
+                                        <field name="date"/>
+                                    </group>
+                                    <group>
+                                        <field name="instruction"/>
+                                        <field name="document_quali_id"/>
+                                        <field name="print_quali_id"/>
+                                        <field name="video_quali_id"/>
+                                        <field name="packagin_dv_id"/>
+                                        
+                                    </group>
+                                </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <!-- <record model="ir.actions.act_window" id="processes_action">
             <field name="name">processes</field>
             <field name="res_model">packaging.processes</field>
             <field name="view_mode">form</field>
             <field name="help" type="html">
                     <p class="oe_view_nocontent_smiling_face">Processes</p>
             </field>
-        </record>
+        </record> -->
 
         
- -->
+ 
 
 </odoo>
 

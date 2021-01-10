@@ -60,165 +60,223 @@ class scope(models.Model):
             'target': 'new',
         }
 
+
+    def open_documents_total(self):
+        return {
+            'name': _('Documents'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'packagin.documents',
+            'view_type': 'form',
+            'view_mode': 'form,tree',
+            'view_id': False,
+            'target': 'new',
+        }
+
     ############## PACKAGING ####################
     packagin_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type = fields.Text('Comments')
     forecast_from = fields.Date('Forecast From')
-    forecast_unitl = fields.Date('Forecast Initl')
+    forecast_unitl = fields.Date('Forecast Initll')
+    price_validity_f = fields.Date('Price Validity From')
+    price_validity_u = fields.Date('Price Validity Initll')
     packagin_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
     
     ############## STUFFING ####################
     stuffing_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_stuffing = fields.Text('Comments')
     forecast_from_stuffing = fields.Date('Forecast From')
-    forecast_unitl_stuffing = fields.Date('Forecast Initl')
+    forecast_unitl_stuffing = fields.Date('Forecast Initll')
+    price_validity_f_stuffing = fields.Date('Price Validity From')
+    price_validity_u_stuffing = fields.Date('Price Validity Initll')
     stuffing_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
     
     ############## LSD ####################
     lsd_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_lsd = fields.Text('Comments')
     forecast_from_lsd = fields.Date('Forecast From')
-    forecast_unitl_lsd = fields.Date('Forecast Initl')
+    forecast_unitl_lsd = fields.Date('Forecast Initll')
+    price_validity_f_lsd = fields.Date('Price Validity From')
+    price_validity_u_lsd = fields.Date('Price Validity Initll')
     lsd_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
     
    ############## Loading On Truck ####################
     loading_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_loading = fields.Text('Comments')
     forecast_from_loading = fields.Date('Forecast From')
-    forecast_unitl_loading = fields.Date('Forecast Initl')
+    forecast_unitl_loading = fields.Date('Forecast Initll')
+    price_validity_f_track = fields.Date('Price Validity From')
+    price_validity_u_track = fields.Date('Price Validity Initll')
     loading_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
 
    ############## Export Formalities ####################
     export_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_export = fields.Text('Comments')
     forecast_from_export = fields.Date('Forecast From')
-    forecast_unitl_export = fields.Date('Forecast Initl')
+    forecast_unitl_export = fields.Date('Forecast Initll')
+    price_validity_f_export = fields.Date('Price Validity From')
+    price_validity_u_export = fields.Date('Price Validity Initll')
     export_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
    
    ############## Terminal Entry Formalities ####################
     terminal_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_terminal = fields.Text('Comments')
     forecast_from_terminal = fields.Date('Forecast From')
-    forecast_unitl_terminal = fields.Date('Forecast Initl')
+    forecast_unitl_terminal = fields.Date('Forecast Initll')
+    price_validity_f_terminal = fields.Date('Price Validity From')
+    price_validity_u_terminal = fields.Date('Price Validity Initll')
     terminal_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
    
     ############## Export Agency ####################
     exp_agncy_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_exp_agency = fields.Text('Comments')
     forecast_from_exp_agency = fields.Date('Forecast From')
-    forecast_unitl_exp_agency = fields.Date('Forecast Initl')
+    forecast_unitl_exp_agency = fields.Date('Forecast Initll')
+    price_validity_f_export = fields.Date('Price Validity From')
+    price_validity_u_export = fields.Date('Price Validity Initll')
     exp_agency_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
    
    ############## Loading on Main Transport ####################
     load_trans_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_load_trans = fields.Text('Comments')
     forecast_from_load_trans = fields.Date('Forecast From')
-    forecast_unitl_load_trans = fields.Date('Forecast Initl')
+    forecast_unitl_load_trans = fields.Date('Forecast Initll')
+    price_validity_f_main = fields.Date('Price Validity From')
+    price_validity_u_main = fields.Date('Price Validity Initll')
     load_trans_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
    
    ############## Unloading From Main Transport ####################
     upload_trans_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_upload_trans = fields.Text('Comments')
     forecast_from_upload_trans = fields.Date('Forecast From')
-    forecast_unitl_upload_trans = fields.Date('Forecast Initl')
+    forecast_unitl_upload_trans = fields.Date('Forecast Initll')
+    price_validity_f_unloading = fields.Date('Price Validity From')
+    price_validity_u_unloading = fields.Date('Price Validity Initll')
     upload_trans_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
    
     ############## Import Agency ####################
     imp_agency_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_imp_agency = fields.Text('Comments')
     forecast_from_imp_agency = fields.Date('Forecast From')
-    forecast_unitl_imp_agency = fields.Date('Forecast Initl')
+    forecast_unitl_imp_agency = fields.Date('Forecast Initll')
+    price_validity_f_agency = fields.Date('Price Validity From')
+    price_validity_u_agency = fields.Date('Price Validity Initll')
     imp_agency_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
    
     ############## Import Formalities ####################
     imp_form_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_imp_form = fields.Text('Comments')
     forecast_from_imp_form = fields.Date('Forecast From')
-    forecast_unitl_imp_form = fields.Date('Forecast Initl')
+    forecast_unitl_imp_form = fields.Date('Forecast Initll')
+    price_validity_f_fomra = fields.Date('Price Validity From')
+    price_validity_u_forma = fields.Date('Price Validity Initll')
     imp_form_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
    
    ############## Terminal Exit Formalities ####################
     term_exit_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_term_exit = fields.Text('Comments')
     forecast_from_term_exit = fields.Date('Forecast From')
-    forecast_unitl_term_exit = fields.Date('Forecast Initl')
+    forecast_unitl_term_exit = fields.Date('Forecast Initll')
+    price_validity_f_exit = fields.Date('Price Validity From')
+    price_validity_u_exit = fields.Date('Price Validity Initll')
     term_exit_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
    
    ############## Unlashing ####################
     unlash_exit_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_unlash = fields.Text('Comments')
     forecast_from_unlash = fields.Date('Forecast From')
-    forecast_unitl_unlash = fields.Date('Forecast Initl')
+    forecast_unitl_unlash = fields.Date('Forecast Initll')
+    price_validity_f_unlashing = fields.Date('Price Validity From')
+    price_validity_u_unlashing = fields.Date('Price Validity Initll')
     unlash_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
    
    ############## Stripping ####################
     strip_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_strip = fields.Text('Comments')
     forecast_from_strip = fields.Date('Forecast From')
-    forecast_unitl_strip = fields.Date('Forecast Initl')
+    forecast_unitl_strip = fields.Date('Forecast Initll')
+    price_validity_f_strip = fields.Date('Price Validity From')
+    price_validity_u_strip = fields.Date('Price Validity Initll')
     strip_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
    
    ############## Unpackaging ####################
     unpack_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_unpack = fields.Text('Comments')
     forecast_from_unpack = fields.Date('Forecast From')
-    forecast_unitl_unpack = fields.Date('Forecast Initl')
+    forecast_unitl_unpack = fields.Date('Forecast Initll')
+    price_validity_f_unpack = fields.Date('Price Validity From')
+    price_validity_u_unpack = fields.Date('Price Validity Initll')
     unpack_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
 
    ############## Other Customs Formalities ####################
     oth_cust_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_oth_cust = fields.Text('Comments')
     forecast_from_oth_cust = fields.Date('Forecast From')
-    forecast_unitl_oth_cust = fields.Date('Forecast Initl')
+    forecast_unitl_oth_cust = fields.Date('Forecast Initll')
+    price_validity_f_cust = fields.Date('Price Validity From')
+    price_validity_u_cust = fields.Date('Price Validity Initll')
     oth_cust_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
   
   ############## Other Requests ####################
     oth_req_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_oth_req = fields.Text('Comments')
     forecast_from_oth_req = fields.Date('Forecast From')
-    forecast_unitl_oth_req = fields.Date('Forecast Initl')
+    forecast_unitl_oth_req = fields.Date('Forecast Initll')
+    price_validity_f_req = fields.Date('Price Validity From')
+    price_validity_u_req = fields.Date('Price Validity Initll')
     oth_req_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
   
 ############## Trailer Traction ####################
     trai_trac_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_trai_trac = fields.Text('Comments')
     forecast_from_trai_trac = fields.Date('Forecast From')
-    forecast_unitl_trai_trac = fields.Date('Forecast Initl')
+    forecast_unitl_trai_trac = fields.Date('Forecast Initll')
+    price_validity_f_trailer = fields.Date('Price Validity From')
+    price_validity_u_trailer = fields.Date('Price Validity Initll')
     trai_trac_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
 
 ############## Storage ####################
     storage_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_storage = fields.Text('Comments')
     forecast_from_storage = fields.Date('Forecast From')
-    forecast_unitl_storage = fields.Date('Forecast Initl')
+    forecast_unitl_storage = fields.Date('Forecast Initll')
+    price_validity_f_storage = fields.Date('Price Validity From')
+    price_validity_u_storage = fields.Date('Price Validity Initll')
     storage_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
 
 ############## Lifting ####################
     lifting_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_lifting = fields.Text('Comments')
     forecast_from_lifting = fields.Date('Forecast From')
-    forecast_unitl_lifting = fields.Date('Forecast Initl')
+    forecast_unitl_lifting = fields.Date('Forecast Initll')
+    price_validity_f_lifting = fields.Date('Price Validity From')
+    price_validity_u_lifting = fields.Date('Price Validity Initll')
     lifting_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
 
 ############## Consulting ####################
     consult_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_consult = fields.Text('Comments')
     forecast_from_consult = fields.Date('Forecast From')
-    forecast_unitl_consult = fields.Date('Forecast Initl')
+    forecast_unitl_consult = fields.Date('Forecast Initll')
+    price_validity_f_conss = fields.Date('Price Validity From')
+    price_validity_u_conss = fields.Date('Price Validity Initll')
     consult_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
 
 ############## Studies ####################
     studies_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_studies = fields.Text('Comments')
     forecast_from_studies = fields.Date('Forecast From')
-    forecast_unitl_studies = fields.Date('Forecast Initl')
+    forecast_unitl_studies = fields.Date('Forecast Initll')
+    price_validity_f_studies = fields.Date('Price Validity From')
+    price_validity_u_studies = fields.Date('Price Validity Initll')
     studies_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
 
 ############## Civil Work ####################
     civil_work_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_civil_work = fields.Text('Comments')
     forecast_from_civil_work = fields.Date('Forecast From')
-    forecast_unitl_civil_work = fields.Date('Forecast Initl')
+    forecast_unitl_civil_work = fields.Date('Forecast Initll')
+    price_validity_f_civil = fields.Date('Price Validity From')
+    price_validity_u_civil = fields.Date('Price Validity Initll')
     civil_work_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
 
 
@@ -226,7 +284,9 @@ class scope(models.Model):
     pre_carriage_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_pre_carriage = fields.Text('Comments')
     forecast_from_pre_carriage = fields.Date('Forecast From')
-    forecast_unitl_pre_carriage = fields.Date('Forecast Initl')
+    forecast_unitl_pre_carriage = fields.Date('Forecast Initll')
+    price_validity_f_carriage = fields.Date('Price Validity From')
+    price_validity_u_carriage = fields.Date('Price Validity Initll')
     pre_carriage_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
     pre_carriage_pickup_id = fields.Many2one('pickup.precarriage', string='Pick up Pre-carriage adress')
     pre_carriage_delivery_id = fields.Many2one('delivery.precarriage', string='Delivery Pre-carriage adress')
@@ -237,7 +297,9 @@ class scope(models.Model):
     pre_carriage_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_pre_carriage = fields.Text('Comments')
     forecast_from_pre_carriage = fields.Date('Forecast From')
-    forecast_unitl_pre_carriage = fields.Date('Forecast Initl')
+    forecast_unitl_pre_carriage = fields.Date('Forecast Initll')
+    price_validity_f_cus_ex = fields.Date('Price Validity From')
+    price_validity_u_cus_ex = fields.Date('Price Validity Initll')
     pre_carriage_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
     exporter = fields.Many2one('res.partner', striing='Exporter')
     importer = fields.Many2one('res.partner', striing='Importer')
@@ -255,7 +317,9 @@ class scope(models.Model):
     unload_termina_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_unload_termina = fields.Text('Comments')
     forecast_from_unload_termina = fields.Date('Forecast From')
-    forecast_unitl_unload_termina = fields.Date('Forecast Initl')
+    forecast_unitl_unload_termina = fields.Date('Forecast Initll')
+    price_validity_f_un_ter = fields.Date('Price Validity From')
+    price_validity_u_un_ter = fields.Date('Price Validity Initll')
     unload_termina_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
     unload_terminal_id = fields.Many2one('unloading.terminal', string='Terminal')
 
@@ -266,7 +330,9 @@ class scope(models.Model):
     packagin_pol_transport_id = fields.Many2one('packagin.pol', string='POL')
     comments_type_main_transport = fields.Text('Comments')
     forecast_from_main_transport = fields.Date('Forecast From')
-    forecast_unitl_main_transport = fields.Date('Forecast Initl')
+    forecast_unitl_main_transport = fields.Date('Forecast Initll')
+    price_validity_f_m_tra = fields.Date('Price Validity From')
+    price_validity_u_m_tra = fields.Date('Price Validity Initll')
     main_transport_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
     fret = fields.Selection([
             ('prepaid', 'Prepaid'),
@@ -279,7 +345,9 @@ class scope(models.Model):
     import_customs_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_import_customs = fields.Text('Comments')
     forecast_from_import_customs = fields.Date('Forecast From')
-    forecast_unitl_import_customs = fields.Date('Forecast Initl')
+    forecast_unitl_import_customs = fields.Date('Forecast Initll')
+    price_validityf_imp_cus = fields.Date('Price Validity From')
+    price_validityu_imp_cus = fields.Date('Price Validity Initll')
     import_customs_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
     exporter_customs = fields.Many2one('res.partner', striing='Exporter')
     importer_customs = fields.Many2one('res.partner', striing='Importer')
@@ -298,7 +366,9 @@ class scope(models.Model):
     load_terminal_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_load_terminal = fields.Text('Comments')
     forecast_from_load_terminal = fields.Date('Forecast From')
-    forecast_unitl_load_terminal = fields.Date('Forecast Initl')
+    forecast_unitl_load_terminal = fields.Date('Forecast Initll')
+    price_validity_f_f_ter = fields.Date('Price Validity From')
+    price_validity_u_f_ter = fields.Date('Price Validity Initll')
     load_terminal_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
     load_terminal_id = fields.Many2one('unloading.terminal', string='Terminal')
 
@@ -307,7 +377,9 @@ class scope(models.Model):
     delivery_service_id = fields.Many2one('packagin.service', string='Service')
     comments_delivery = fields.Text('Comments')
     forecast_from_delivery = fields.Date('Forecast From')
-    forecast_unitl_delivery = fields.Date('Forecast Initl')
+    forecast_unitl_delivery = fields.Date('Forecast Initll')
+    price_validity_f_deli = fields.Date('Price Validity From')
+    price_validity_u_deli = fields.Date('Price Validity Initll')
     delivery_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
     delivery_pickup_id = fields.Many2one('pickup.precarriage', string='Pick up Pre-carriage adress')
     delivery_delivery_id = fields.Many2one('delivery.precarriage', string='Delivery Pre-carriage adress')
@@ -317,7 +389,9 @@ class scope(models.Model):
     unload_site_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_unload_site = fields.Text('Comments')
     forecast_from_unload_site = fields.Date('Forecast From')
-    forecast_unitl_unload_site = fields.Date('Forecast Initl')
+    forecast_unitl_unload_site = fields.Date('Forecast Initll')
+    price_validity_f_lo_si = fields.Date('Price Validity From')
+    price_validity_u_lo_si = fields.Date('Price Validity Initll')
     unload_site_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
     unload_site_id = fields.Many2one('unloading.site', string='Unloading On Site')
 
@@ -325,23 +399,29 @@ class scope(models.Model):
     insurance_int_service_id = fields.Many2one('packagin.service', string='Service')
     comments_insurance_int = fields.Text('Comments')
     forecast_from_insurance_int = fields.Date('Forecast From')
-    forecast_unitl_insurance_int = fields.Date('Forecast Initl')
+    forecast_unitl_insurance_int = fields.Date('Forecast Initll')
+    price_validity_f_insu_in = fields.Date('Price Validity From')
+    price_validity_u_insu_in = fields.Date('Price Validity Initll')
     insurance_int_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
-    insurance_int_id = fields.Many2one('insurance.int', string='Insurance Int')
+    insurance_intid = fields.Many2one('insurance.int', string='Insurance Int')
 
 ############## Insurance Dom ####################
     insurance_dom_service_id = fields.Many2one('packagin.service', string='Service')
     comments_insurance_dom = fields.Text('Comments')
     forecast_from_insurance_dom = fields.Date('Forecast From')
-    forecast_unitl_insurance_dom = fields.Date('Forecast Initl')
+    forecast_unitl_insurance_dom = fields.Date('Forecast Initll')
+    price_validity_f_ins_do = fields.Date('Price Validity From')
+    price_validity_u_ins_do = fields.Date('Price Validity Initll')
     insurance_dom_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
-    insurance_dom_id = fields.Many2one('insurance.int', string='Insurance Int')
+    insurancedom_id = fields.Many2one('insurance.int', string='Insurance Int')
 
 ############## Domestic Customs ####################
     domestic_customs_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_domestic_customs = fields.Text('Comments')
     forecast_from_domestic_customs = fields.Date('Forecast From')
-    forecast_unitl_domestic_customs = fields.Date('Forecast Initl')
+    forecast_unitl_domestic_customs = fields.Date('Forecast Initll')
+    price_validity_f_dom_cu = fields.Date('Price Validity From')
+    price_validity_u_dom_cu = fields.Date('Price Validity Initll')
     domestic_customs_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
     exporter_domestic = fields.Many2one('res.partner', striing='Exporter')
     importer_domestic = fields.Many2one('res.partner', striing='Importer')
@@ -359,7 +439,9 @@ class scope(models.Model):
     domestic_haulage_service_id = fields.Many2one('packagin.service', string='Service')
     comments_domestic_haulage = fields.Text('Comments')
     forecast_from_domestic_haulage = fields.Date('Forecast From')
-    forecast_unitl_domestic_haulage = fields.Date('Forecast Initl')
+    forecast_unitl_domestic_haulage = fields.Date('Forecast Initll')
+    price_validity_f_dom_ho = fields.Date('Price Validity From')
+    price_validity_u_dom_ho = fields.Date('Price Validity Initll')
     domestic_haulage_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
     domestic_haulage_pickup_id = fields.Many2one('pickup.precarriage', string='Pick up Pre-carriage adress')
     domestic_haulage_delivery_id = fields.Many2one('delivery.precarriage', string='Delivery Pre-carriage adress')
@@ -370,7 +452,9 @@ class scope(models.Model):
     runting_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_runting = fields.Text('Comments')
     forecast_from_runting = fields.Date('Forecast From')
-    forecast_unitl_runting = fields.Date('Forecast Initl')
+    forecast_unitl_runting = fields.Date('Forecast Initll')
+    price_validity_f_run = fields.Date('Price Validity From')
+    price_validity_u_run = fields.Date('Price Validity Initll')
     runting_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
     equipement_id = fields.Many2one('equipement.runting', string='Equipment')
     duration_id = fields.Many2one('packagin.duration', string='Duration')
@@ -381,7 +465,9 @@ class scope(models.Model):
     road_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_road = fields.Text('Comments')
     forecast_from_road = fields.Date('Forecast From')
-    forecast_unitl_road = fields.Date('Forecast Initl')
+    forecast_unitl_road = fields.Date('Forecast Initll')
+    price_validity_f_ro_su = fields.Date('Price Validity From')
+    price_validity_u_ro_su = fields.Date('Price Validity Initll')
     road_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
     from_road = fields.Text('From')
     to_road = fields.Text('To')
@@ -396,7 +482,9 @@ class scope(models.Model):
     report_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_report = fields.Text('Comments')
     forecast_from_report = fields.Date('Forecast From')
-    forecast_unitl_report = fields.Date('Forecast Initl')
+    forecast_unitl_report = fields.Date('Forecast Initll')
+    price_validity_f_ro_re = fields.Date('Price Validity From')
+    price_validity_u_ro_re = fields.Date('Price Validity Initll')
     report_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
     surevy_adress = fields.Text('Survey Adress')
 
@@ -404,7 +492,9 @@ class scope(models.Model):
     escort_service_id = fields.Many2one('packagin.service', string='Service')
     comments_type_escort = fields.Text('Comments')
     forecast_from_escort = fields.Date('Forecast From')
-    forecast_unitl_escort = fields.Date('Forecast Initl')
+    forecast_unitl_escort = fields.Date('Forecast Initll')
+    price_validity_f_esc = fields.Date('Price Validity From')
+    price_validity_u_esc = fields.Date('Price Validity Initll')
     escort_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
     from_escort = fields.Text('From')
     to_escort = fields.Text('To')
@@ -434,7 +524,24 @@ class PackagingSevice(models.Model):
             ('offon', 'OffOnShore (OffOn)'),
             ('offoncl', 'OffOnShore Cleared (OffOnCl)'),
             ], string='Direction', default='export')
-    packagin_mode_transport_id = fields.Many2one('transport.mode', string='Mode of Transport')
+    
+    packagin_mode_transport_id = fields.Selection([
+            ('as', 'AS'),
+            ('pessenger_luggage', 'Passenger luggage'),
+            ('postal_parcel', 'Postal Parcel'),
+            ('ltl', 'LTL'),
+            ('lcl', 'LCL'),
+            ('fcl', 'FCL'),
+            ('reefer', 'Reefer'),
+            ('ftl', 'FTL'),
+            ('bb_lolo', 'BB (Lolo)'),
+            ('bb_roro', 'BB (Roro)'),
+            ('bulk', 'Bulk'),
+            ('bulk_liquid', 'Bulk liquid'),
+            ('vessel', 'Chartered vessel'),
+            ('aircraft', 'Chartered Aircraft'),
+            ], setting='Mode of Transport', default='as')
+
     scope = fields.Selection([
             ('packaging', 'Packaging'),
             ('stuffing', 'Stuffing'),
@@ -482,6 +589,7 @@ class PackagingSevice(models.Model):
     service_n = fields.Char('Service N°')
     service_detail = fields.Text('Detail')
     packagin_criteria_id = fields.Many2one('packagin.criteria', string='Criteria')
+    packagin_standrads_id = fields.Many2one('standard.type', string='Standars')
 
 class PackagingDivision(models.Model):
 
@@ -628,12 +736,12 @@ class PackagingProfitability(models.Model):
     atc = fields.Selection([
             ('yes', 'Yes'),
             ('no', 'No'),
-            ], string='ATC', default='yes')
+            ], string='ATC', default='no')
     cost_rate_ht_currency = fields.Many2one('res.currency', string='Currency')
     cost_rate_ht_monet = fields.Float('Cost Rate HT')
     suppliers = fields.Many2one('res.partner', string='Suppliers')
     packaging_amount_line = fields.One2many('packaging.amount','packaging_amount_id', string="Packaging Amount")                    
-
+    packaging_section = fields.Many2one('packaging.section', string='Section')
     total_cost_ht = fields.Float(string='Tot Cost HT', compute='_total_packaging_all')
     total_sales_ht = fields.Float(string='Tot Sales HT', compute='_total_packaging_all')
     total_net_sales_ht = fields.Float(string='Tot Net Sales HT', compute='_total_packaging_all')
@@ -688,7 +796,7 @@ class PackagingCriteria(models.Model):
     packagin_pol_id = fields.Many2one('packagin.pol', string='POL')
     packagin_regime_id = fields.Many2one('packagin.regime', string='Regime Type')
     packagin_regime_number_id = fields.Many2one('regime.number', string='Regime Number')
-    packagin_added_proceders_id = fields.Many2one('added.proceders', string='Added Proceders')
+    packagin_added_proceders_id = fields.Many2one('added.proceders', string='Added Procedurs')
     packagin_customs_desk_id = fields.Many2one('customs.desk', string='Customs Desk')
     packagin_packaging_processes_id = fields.Many2one('packaging.processes', string='Processes')
 
@@ -839,6 +947,46 @@ class PackagingCustomsDesk(models.Model):
     city_id = fields.Many2one('res.country.state', string='City')
     country_id = fields.Many2one('res.country', string='Country')
 
+class DivisionQuality(models.Model):
+ 
+    _name = 'division.quality'
+    _rec_name = 'division_n'
+
+    division_n = fields.Char('Division')
+    
+class DocumentQuality(models.Model):
+ 
+    _name = 'document.quality'
+    _rec_name = 'document_name'
+
+    div_id = fields.Many2one('division.quality', string='Division')
+    document_n = fields.Char('Document N°')
+    document_name = fields.Char('Document name')
+    document_date = fields.Date('Document Date')
+    review_doc = fields.Integer('Review')
+
+class PrintQuality(models.Model):
+ 
+    _name = 'print.quality'
+    _rec_name = 'print_name'
+
+    div_id = fields.Many2one('division.quality', string='Division')
+    print_n = fields.Char('Print N°')
+    print_name = fields.Char('Print name')
+    print_date = fields.Date('Print Date')
+    review_print = fields.Integer('Review')
+
+class VideoQuality(models.Model):
+ 
+    _name = 'video.quality'
+    _rec_name = 'video_name'
+
+    div_id = fields.Many2one('division.quality', string='Division')
+    video_n = fields.Char('Document N°')
+    video_name = fields.Char('Document name')
+    video_date = fields.Date('Document Date')
+    review_vid = fields.Integer('Review')
+
 class ProcessesProcesses(models.Model):
  
     _name = 'processes.processes'
@@ -848,7 +996,7 @@ class ProcessesProcesses(models.Model):
     processes_n = fields.Char('Processes N°')
     review_n = fields.Integer('Review')
     date = fields.Date('Date')
-    processes = fields.Binary('Processes')
+    processes = fields.Char('Processes')
     pcl_office = fields.Many2one('res.partner', string="PCL Office")
     department = fields.Selection([
             ('managment', 'Managment'),
@@ -867,6 +1015,10 @@ class ProcessesProcesses(models.Model):
             ('infrastructure', 'Infrastructure'),
             ('tools', 'Tools'),
             ], string='Department', default='managment')
+    document_quality_id = fields.Many2one('document.quality', string='Documents')
+    print_quality_id = fields.Many2one('print.quality', string='Prints')
+    video_quality_id = fields.Many2one('video.quality', string='Videos')
+    packagin_div_id = fields.Many2one('division.quality', string='Division')    
     
 
 class PackagingProcesses(models.Model):
@@ -879,7 +1031,7 @@ class PackagingProcesses(models.Model):
     procedure_n = fields.Char('Procedure N°')
     review = fields.Integer('Review')
     date = fields.Date('Date')
-    processes = fields.Binary('Processes')
+    procedures = fields.Char('Procedures')
     pcl_office = fields.Many2one('res.partner', string="PCL Office")
     department = fields.Selection([
             ('managment', 'Managment'),
@@ -902,7 +1054,37 @@ class PackagingProcesses(models.Model):
     instruction_n = fields.Char('Instruction N°')
     date = fields.Date('Date')
     instruction = fields.Binary('Instructions Internes')
+    document_quali_id = fields.Many2one('document.quality', string='Documents')
+    print_quali_id = fields.Many2one('print.quality', string='Prints')
+    video_quali_id = fields.Many2one('video.quality', string='Videos')
+    packagin_dv_id = fields.Many2one('division.quality', string='Division')    
     
+class PackagingInstruction(models.Model):
+ 
+    _name = 'packaging.instruction'
+    _rec_name = 'instruction_name'
+
+    procedures_id = fields.Many2one('packaging.processes', string='Procedures')
+    instruction_name = fields.Text('Instruction Name')
+    instruction_n = fields.Char('Instruction N°')
+    review = fields.Integer('Review')
+    date = fields.Date('Date')
+    instruction = fields.Char('Instruction')
+    document_quali_id = fields.Many2one('document.quality', string='Documents')
+    print_quali_id = fields.Many2one('print.quality', string='Prints')
+    video_quali_id = fields.Many2one('video.quality', string='Videos')
+    packagin_dv_id = fields.Many2one('division.quality', string='Division')    
+
+class Standards(models.Model):
+ 
+    _name = 'standard.type'
+    # _rec_name = 'division_n'
+
+    procesees_id = fields.Many2one('processes.processes', string='Processes N°')
+    procedures_id = fields.Many2one('packaging.processes', string='Procedures N°')
+    instructions_id = fields.Many2one('packaging.instruction', string='Instructions N°')    
+
+
 class PackagingUnit(models.Model):
  
     _name = 'packaging.unit'
