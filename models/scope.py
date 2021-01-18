@@ -67,8 +67,8 @@ class scope(models.Model):
             'type': 'ir.actions.act_window',
             'res_model': 'packagin.documents',
             'view_type': 'form',
-            'view_mode': 'form,tree',
-            'view_id': False,
+            'view_mode': 'tree',
+            'view_id': self.env.ref('tech_logistic.documents_view_tree').id,
             'target': 'new',
         }
 
@@ -307,7 +307,7 @@ class scope(models.Model):
     items_level_id = fields.Many2one('item.levels', striing='Items Level')
     regime_id = fields.Many2one('packagin.regime', striing='Regime Type')
     regime_number_id = fields.Many2one('regime.number', striing='Regime Number')
-    added_proceders_id = fields.Many2one('added.proceders', striing='Added Proceders')
+    added_proceders_id = fields.Many2one('added.proceders', striing='Added Procedures')
     exemption_id = fields.Many2one('packagin.exemption', striing='Exemption')
     duities_payment_id = fields.Many2one('res.partner', striing='Duities Payment')
     payment_mode_customs_id = fields.Many2one('payment.mode.customs', striing='Payment Mode To Customs')
@@ -355,7 +355,7 @@ class scope(models.Model):
     items_level_customs_id = fields.Many2one('item.levels', striing='Items Level')
     regime_customs_id = fields.Many2one('packagin.regime', striing='Regime Type')
     regime_number_customs_id = fields.Many2one('regime.number', striing='Regime Number')
-    added_proceders_customs_id = fields.Many2one('added.proceders', striing='Added Proceders')
+    added_proceders_customs_id = fields.Many2one('added.proceders', striing='Added Procedures')
     exemption_customs_id = fields.Many2one('packagin.exemption', striing='Exemption')
     duities_payment_customs_id = fields.Many2one('res.partner', striing='Duities Payment')
     payment_mode_import_customs_id = fields.Many2one('payment.mode.customs', striing='Payment Mode To Customs')
@@ -429,7 +429,7 @@ class scope(models.Model):
     items_level_domestic_id = fields.Many2one('item.levels', striing='Items Level')
     regime_domestic_id = fields.Many2one('packagin.regime', striing='Regime Type')
     regime_number_domestic_id = fields.Many2one('regime.number', striing='Regime Number')
-    added_proceders_domestic_id = fields.Many2one('added.proceders', striing='Added Proceders')
+    added_proceders_domestic_id = fields.Many2one('added.proceders', striing='Added Procedures')
     exemption_domestic_id = fields.Many2one('packagin.exemption', striing='Exemption')
     duities_payment_domestic_id = fields.Many2one('res.partner', striing='Duities Payment')
     payment_mode_import_domestic_id = fields.Many2one('payment.mode.customs', striing='Payment Mode To Customs')
@@ -796,7 +796,7 @@ class PackagingCriteria(models.Model):
     packagin_pol_id = fields.Many2one('packagin.pol', string='POL')
     packagin_regime_id = fields.Many2one('packagin.regime', string='Regime Type')
     packagin_regime_number_id = fields.Many2one('regime.number', string='Regime Number')
-    packagin_added_proceders_id = fields.Many2one('added.proceders', string='Added Procedurs')
+    packagin_added_proceders_id = fields.Many2one('added.proceders', string='Added Procedures')
     packagin_customs_desk_id = fields.Many2one('customs.desk', string='Customs Desk')
     packagin_packaging_processes_id = fields.Many2one('packaging.processes', string='Processes')
 
@@ -916,8 +916,8 @@ class PackagingAddedProceders(models.Model):
     _name = 'added.proceders'
     _rec_name = 'added_proceders'
 
-    added_proceders = fields.Text('Added Proceders')
-    added_proceders_n = fields.Char('Proceders N°')
+    added_proceders = fields.Text('Added Procedures')
+    added_proceders_n = fields.Char('Procedures N°')
 
 class PackagingExcemption(models.Model):
  

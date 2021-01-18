@@ -722,11 +722,18 @@
                               <field name="type" required="1" widget="radio" options="{'horizontal': true}"/>
                             </xpath>
                             
-                            <xpath expr="//notebook[1]//page[1]//field[@name='child_ids']/form/sheet/group/group/field[@name='name']" position="after">
-                                
+
+                            <xpath expr="//notebook[1]//page[1]//field[@name='child_ids']/form/sheet/group/group/field[@name='name']" position="before">   
                                 <field name="sex"/>
-                               
+                             </xpath>
+
+
+                            <xpath expr="//notebook[1]//page[1]//field[@name='child_ids']/form/sheet/group/group/field[@name='title']" position="after">
+                                <field name="depar_tment_id"/>
+                                <field name="visit_card"/>
+                                   
                             </xpath>
+
                             <xpath expr="//notebook[1]//page[1]//field[@name='child_ids']/form/sheet/group/group/field[@name='mobile']" position="after">
                                 <label for="direct_contact"/>
                                                     <div class="o_row" style="max-width: 200px; max-height: 100px;">
@@ -753,7 +760,7 @@
                             <xpath expr="//notebook[1]//page[1]//field[@name='child_ids']/form/sheet/group/group/field[@name='function']" position="attributes">
                                  <attribute name="attrs">{'invisible':1}</attribute>
                             </xpath>
-                            <xpath expr="//notebook[1]//page[1]" position="inside">
+                            <!-- <xpath expr="//notebook[1]//page[1]" position="inside">
                                         <group col="2">
                                             <group string="Other Adresse Informations">
                                                     <field name="number"/>
@@ -814,11 +821,11 @@
                                                         <field name="extention_suf" />
                                                     </div>
                                                 <field name="title"/>
-                                                <field name="internal_note"/>
+                                               
                                               </group>
                                               </group>
                                            
-                            </xpath>
+                            </xpath> -->
                             <xpath expr="//notebook[1]//page[1]" position="before">
                                     <!--<page string="Informations">
                                         <group col="2">
@@ -1623,9 +1630,9 @@
                                     </page>
 
                                     <page string="Insurance">
-                                        <group col="2">
+                                        
                                             
-                                            <group col="2" string="Type"> 
+                                            <group  string="Type"> 
                                                 <label for="liability_bo"/>
                                                     <!-- <field name="type_insurance"/> 
                                                     <field name="other_type" attrs="{'invisible': [('type_insurance','!=', 'other')]}"/> -->
@@ -1652,6 +1659,7 @@
                                                 <label for="other_bool"/>                                                                                        
                                                     <div class="o_row" style="max-width: 200px; max-height: 100px">
                                                                 <field name="other_bool"/>
+                                                                <field name="other_type" attrs="{'invisible': [('other_bool','!=',True)]}"/>                                                                
                                                                 <field name="amount_oth" attrs="{'invisible': [('other_bool','!=',True)]}"/>
                                                                 <field name="currency_id_oth" attrs="{'invisible': [('other_bool','!=',True)]}"/>
 
@@ -1678,7 +1686,7 @@
                                                                 
                                                     </div> 
                                             </group> -->
-                                        </group>
+                                        
                                             <!-- <field name="payment_type_ids" string="Payment type" widget="many2many_tags"/> -->   
                                                      <!-- <group>
                                                      <field name="billing_section_id_sup"/>

@@ -711,7 +711,7 @@ class ResPartner(models.Model):
             ('other', 'Other'),
             ], string='Type')
     other_bool = fields.Boolean('Other')
-    other_type = fields.Text('Other')
+    other_type = fields.Char('Other')
     liability_bo = fields.Boolean('Liability')
     cargo_bo = fields.Boolean('Cargo')
     Exploitation_bo = fields.Boolean('Exploitation')

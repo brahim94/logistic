@@ -45,8 +45,8 @@
         <record id="seq_res_partner" model="ir.sequence">
             <field name="name">Res Partner</field>
             <field name="code">res.partner</field>
-            <field name="prefix">BQ</field>
-            <field name="padding" eval="6"/>
+            <field name="prefix">PCC</field>
+            <field name="padding" eval="9"/>
         </record>
 
         <record id="seq_draft_order" model="ir.sequence">

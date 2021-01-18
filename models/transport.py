@@ -42,7 +42,7 @@ class ModeTransport(models.Model):
             for line in order.mode_transport_as_line:
                 total_qty_as += line.qty_as
                 total_gross_weight += line.s_total_gross_weight
-                total_volume_cbm += line.volume_as_id
+                total_volume_cbm += line.s_total_volume
                 total_surface += line.surface
                 total_chargeable_weight += line.s_total_chargeable_weight
             order.update({
@@ -66,7 +66,7 @@ class ModeTransport(models.Model):
             for line in order.mode_transport_lcl_line:
                 total_qty_lcl += line.qty_lcl
                 total_gross_weight_lcl += line.s_total_gross_weight_lcl
-                total_volume_cbm_lcl += line.volume_lcl_id
+                total_volume_cbm_lcl += line.s_total_volume_lcl
                 total_surface_lcl += line.surface_lcl
                 total_chargeable_weight_lcl += line.s_total_chargeable_weight_lcl
             order.update({
@@ -90,7 +90,7 @@ class ModeTransport(models.Model):
             for line in order.mode_transport_ltl_line:
                 total_qty_ltl += line.qty_ltl
                 total_gross_weight_ltl += line.s_total_gross_weight_ltl
-                total_volume_cbm_ltl += line.volume_ltl_id
+                total_volume_cbm_ltl += line.s_total_volume_ltl
                 total_surface_ltl += line.surface_ltl
                 total_chargeable_weight_ltl += line.s_total_chargeable_weight_ltl
             order.update({

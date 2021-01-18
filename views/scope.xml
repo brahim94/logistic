@@ -1,6 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+         <!-- Documents -->
+        <record id='documents_view_form' model='ir.ui.view'>
+            <field name="name">documents.type.form</field>
+            <field name="model">packagin.documents</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Documents">
+                            <group col="2">
+                                <field name="doc_name"/>
+                                <field name="doc"/>
+                               
+                            </group>
+                            <group>
+                                 <!-- <field name="equipement_code"/>
+                                <field name="equipement_id"/> -->
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="documents_view_tree" model="ir.ui.view">
+            <field name="name">documents.type.tree</field>
+            <field name="model">packagin.documents</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="doc_name"/>
+                    
+                 </tree> 
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="documents_action">
+            <field name="name">Documents</field>
+            <field name="res_model">packagin.documents</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                    <p class="oe_view_nocontent_smiling_face">Documents</p>
+            </field>
+        </record> 
+
+
         <record id='scope_view_form' model='ir.ui.view'>
             <field name="name">scope.type.form</field>
             <field name="model">scope.type</field>
@@ -9,7 +53,7 @@
                     <sheet>
                         
                         <div class="oe_button_box" name="button_box">
-                            <button name="open_documents_total" string="Documents" type="object" class="oe_stat_button" icon="fa-book"/>
+                            <button name="%(documents_action)d" type="action" string="Documents"  class="oe_stat_button" icon="fa-book"/>
                             <button name="open_assignation_total" string="Balance" type="object" class="oe_stat_button" icon="fa-dashboard"/>
 
                         </div>
@@ -134,6 +178,44 @@
                                 </group>
                               
                             </page>
+                            <page string="Pre-Carriage" attrs="{'invisible': [('pre_carriage_id','!=',True)]}">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_pre_carriage"/>
+                                        <field name="forecast_from_pre_carriage"/>
+                                        <field name="forecast_unitl_pre_carriage"/>
+                                        <field name="price_validity_f_carriage"/>
+                                        <field name="price_validity_u_carriage"/>
+                                        <field name="distance"/>
+                                    </group>
+                                    <group>
+                                        <field name="pre_carriage_service_id"/>
+                                       <field name="civil_work_profitability_id"/>
+                                       <field name="pre_carriage_pickup_id"/>
+                                       <field name="pre_carriage_delivery_id"/>
+                                    </group>
+                                </group>
+                            </page>
+
+                        <page string="Unloading On Terminal" attrs="{'invisible': [('on_terminal_id','!=',True)]}">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_unload_termina"/>
+                                        <field name="forecast_from_unload_termina"/>
+                                        <field name="forecast_unitl_unload_termina"/>
+                                        <field name="price_validity_f_un_ter"/>
+                                        <field name="price_validity_u_un_ter"/>
+                                    </group>
+                                    <group>
+                                        <field name="unload_termina_service_id"/>
+                                       <field name="unload_termina_profitability_id"/>
+                                       <field name="unload_terminal_id"/>
+                                    </group>
+                                </group>
+                            </page>
+
+
+
                             <page string="Export Formalities" attrs="{'invisible': [('export_formalities_id','!=', True)]}">
                                 <group>
                                    <group col="2">
@@ -149,6 +231,33 @@
                                     </group>
                                 </group>
                             </page>
+                            <page string="Export Customs" attrs="{'invisible': [('export_customs_id','!=',True)]}">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_pre_carriage"/>
+                                        <field name="forecast_from_pre_carriage"/>
+                                        <field name="forecast_unitl_pre_carriage"/>
+                                        <field name="price_validity_f_cus_ex"/>
+                                        <field name="price_validity_u_cus_ex"/>
+                                        <field name="pre_carriage_service_id"/>
+                                        <field name="pre_carriage_profitability_id"/>
+                                        <field name="exporter"/>
+                                        <field name="importer"/>
+                                        <field name="hs_position_id"/>
+                                    </group>
+                                    <group>
+                                        <field name="items_level_id"/>
+                                       <field name="regime_id"/>
+                                       <field name="regime_number_id"/>
+                                       <field name="added_proceders_id"/>
+                                       <field name="exemption_id"/>
+                                       <field name="duities_payment_id"/>
+                                       <field name="payment_mode_customs_id"/>
+                                       <field name="customs_desk_id"/>
+                                    </group>
+                                </group>
+                            </page>
+
                             <page string="Terminal Entry Formalities" attrs="{'invisible': [('entry_formalities_id','!=',True)]}">
                                 <group>
                                    <group col="2">
@@ -195,6 +304,45 @@
                                     </group>
                                 </group>
                             </page>
+                            
+                            <page string="Insurance Int" attrs="{'invisible': [('insurance_int_id','!=',True)]}">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_insurance_int"/>
+                                        <field name="forecast_from_insurance_int"/>
+                                        <field name="forecast_unitl_insurance_int"/>
+                                        <field name="price_validity_f_insu_in"/>
+                                        <field name="price_validity_u_insu_in"/>
+                                    </group>
+                                    <group>
+                                        <field name="insurance_int_service_id"/>
+                                       <field name="insurance_int_profitability_id"/>
+                                       <field name="insurance_intid"/>
+                                    </group>
+                                </group>
+                            </page>
+
+                            <page string="Main Transport" attrs="{'invisible': [('main_transport_id','!=',True)]}">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_main_transport"/>
+                                        <field name="forecast_from_main_transport"/>
+                                        <field name="forecast_unitl_main_transport"/>
+                                        <field name="price_validity_f_m_tra"/>
+                                        <field name="price_validity_u_m_tra"/>
+                                        
+                                        <field name="main_transport_service_id"/>
+                                       <field name="main_transport_profitability_id"/>
+                                    </group>
+                                    <group>
+                                       <field name="packagin_pod_transport_id"/>
+                                       <field name="packagin_pol_transport_id"/>
+                                        <field name="fret"/>
+                                        <field name="requirement_id"/>
+                                    </group>
+                                </group>
+                            </page>
+
                             <page string="Unloading From Main Transport" attrs="{'invisible': [('from_main_transport_id','!=',True)]}">
                                 <group>
                                    <group col="2">
@@ -226,22 +374,6 @@
                                 </group>
                             </page>
 
-                            <page string="Insurance Dom" attrs="{'invisible': [('insurance_dom_id','!=',True)]}">
-                                <group>
-                                <group col="2">
-                                        <field name="comments_insurance_dom"/>
-                                        <field name="forecast_from_insurance_dom"/>
-                                        <field name="forecast_unitl_insurance_dom"/>
-                                        <field name="price_validity_f_ins_do"/>
-                                        <field name="price_validity_u_ins_do"/>
-                                    </group>
-                                    <group>
-                                        <field name="insurance_dom_service_id"/>
-                                        <field name="insurance_dom_profitability_id"/>
-                                        <field name="insurancedom_id"/>
-                                    </group>
-                                </group>
-                            </page>
                             <page string="Import Formalities" attrs="{'invisible': [('import_formalities_id','!=',True)]}">
                                 <group>
                                    <group col="2">
@@ -258,285 +390,8 @@
                                     </group>
                                 </group>
                             </page>
-                            <page string="Terminal Exit Formalities" attrs="{'invisible': [('terminal_exit_id','!=',True)]}">
-                                <group>
-                                   <group col="2">
-                                        <field name="comments_type_term_exit"/>
-                                        <field name="forecast_from_term_exit"/>
-                                        <field name="forecast_unitl_term_exit"/>
-                                        <field name="price_validity_f_exit"/>
-                                        <field name="price_validity_u_exit"/>
-                                    
-                                    </group>
-                                    <group>
-                                        <field name="term_exit_service_id"/>
-                                       <field name="term_exit_profitability_id"/>
-                                    </group>
-                                </group>
-                            </page>
-                            <page string="Unlashing" attrs="{'invisible': [('unlashing_id','!=',True)]}">
-                                <group>
-                                   <group col="2">
-                                        <field name="comments_type_unlash"/>
-                                        <field name="forecast_from_unlash"/>
-                                        <field name="forecast_unitl_unlash"/>
-                                        <field name="price_validity_f_unlashing"/>
-                                        <field name="price_validity_u_unlashing"/>
-                                    </group>
-                                    <group>
-                                        <field name="unlash_exit_service_id"/>
-                                       <field name="unlash_profitability_id"/>
-                                    </group>
-                                </group>
-                            </page>
-                             <page string="Stripping" attrs="{'invisible': [('stripping_id','!=',True)]}">
-                                <group>
-                                   <group col="2">
-                                        <field name="comments_type_strip"/>
-                                        <field name="forecast_from_strip"/>
-                                        <field name="forecast_unitl_strip"/>
-                                        <field name="price_validity_f_strip"/>
-                                        <field name="price_validity_u_strip"/>
-                                    </group>
-                                    <group>
-                                        <field name="strip_service_id"/>
-                                       <field name="strip_profitability_id"/>
-                                    </group>
-                                </group>
-                            </page>
-                            <page string="Unpackaging" attrs="{'invisible': [('unpackaging_id','!=',True)]}">
-                                <group>
-                                   <group col="2">
-                                        <field name="comments_type_unpack"/>
-                                        <field name="forecast_from_unpack"/>
-                                        <field name="forecast_unitl_unpack"/>
-                                        <field name="price_validity_f_unpack"/>
-                                        <field name="price_validity_u_unpack"/>
-                                    
-                                    </group>
-                                    <group>
-                                        <field name="unpack_service_id"/>
-                                       <field name="unpack_profitability_id"/>
-                                    </group>
-                                </group>
-                            </page>
-                            <page string="Other Customs Formalities" attrs="{'invisible': [('other_id','!=',True)]}">
-                                <group>
-                                   <group col="2">
-                                        <field name="comments_type_oth_cust"/>
-                                        <field name="forecast_from_oth_cust"/>
-                                        <field name="forecast_unitl_oth_cust"/>
-                                        <field name="price_validity_f_cust"/>
-                                        <field name="price_validity_u_cust"/>
-                                    
-                                    </group>
-                                    <group>
-                                        <field name="oth_cust_service_id"/>
-                                       <field name="oth_cust_profitability_id"/>
-                                    </group>
-                                </group>
-                            </page>
-                            <page string="Other Requests" attrs="{'invisible': [('other_requests_id','!=',True)]}">
-                                <group>
-                                   <group col="2">
-                                        <field name="comments_type_oth_req"/>
-                                        <field name="forecast_from_oth_req"/>
-                                        <field name="forecast_unitl_oth_req"/>
-                                        <field name="price_validity_f_req"/>
-                                        <field name="price_validity_u_req"/>
-                                    
-                                    </group>
-                                    <group>
-                                        <field name="oth_req_service_id"/>
-                                       <field name="oth_req_profitability_id"/>
-                                    </group>
-                                </group>
-                            </page>
-                            <page string="Trailer Traction" attrs="{'invisible': [('trailer_traction_id','!=',True)]}">
-                                <group>
-                                   <group col="2">
-                                        <field name="comments_type_trai_trac"/>
-                                        <field name="forecast_from_trai_trac"/>
-                                        <field name="forecast_unitl_trai_trac"/>
-                                        <field name="price_validity_f_trailer"/>
-                                        <field name="price_validity_u_trailer"/>
-                                    
-                                    </group>
-                                    <group>
-                                        <field name="trai_trac_service_id"/>
-                                       <field name="trai_trac_profitability_id"/>
-                                    </group>
-                                </group>
-                            </page>
-                            <page string="Storage" attrs="{'invisible': [('storage_id','!=',True)]}">
-                                <group>
-                                   <group col="2">
-                                        <field name="comments_type_storage"/>
-                                        <field name="forecast_from_storage"/>
-                                        <field name="forecast_unitl_storage"/>
-                                        <field name="price_validity_f_storage"/>
-                                        <field name="price_validity_u_storage"/>
-                                    
-                                    </group>
-                                    <group>
-                                        <field name="storage_service_id"/>
-                                       <field name="storage_profitability_id"/>
-                                    </group>
-                                </group>
-                            </page>
 
-                             <page string="Lifting" attrs="{'invisible': [('lifting_id','!=',True)]}">
-                                <group>
-                                   <group col="2">
-                                        <field name="comments_type_lifting"/>
-                                        <field name="forecast_from_lifting"/>
-                                        <field name="forecast_unitl_lifting"/>
-                                        <field name="price_validity_f_lifting"/>
-                                        <field name="price_validity_u_lifting"/>
-                                    
-                                    </group>
-                                    <group>
-                                        <field name="lifting_service_id"/>
-                                       <field name="lifting_profitability_id"/>
-                                    </group>
-                                </group>
-                            </page>
-
-                            <page string="Consulting" attrs="{'invisible': [('consulting_id','!=',True)]}">
-                                <group>
-                                   <group col="2">
-                                        <field name="comments_type_consult"/>
-                                        <field name="forecast_from_consult"/>
-                                        <field name="forecast_unitl_consult"/>
-                                        <field name="price_validity_f_conss"/>
-                                        <field name="price_validity_u_conss"/>
-                                    
-                                    </group>
-                                    <group>
-                                        <field name="consult_service_id"/>
-                                       <field name="consult_profitability_id"/>
-                                    </group>
-                                </group>
-                            </page>
-
-                            <page string="Studies" attrs="{'invisible': [('studies_id','!=',True)]}">
-                                <group>
-                                   <group col="2">
-                                        <field name="comments_type_studies"/>
-                                        <field name="forecast_from_studies"/>
-                                        <field name="forecast_unitl_studies"/>
-                                        <field name="price_validity_f_studies"/>
-                                        <field name="price_validity_u_studies"/>
-                                    </group>
-                                    <group>
-                                        <field name="studies_service_id"/>
-                                       <field name="studies_profitability_id"/>
-                                    </group>
-                                </group>
-                            </page>
-                            
-                            <page string="Civil Work" attrs="{'invisible': [('civil_work_id','!=',True)]}">
-                                <group>
-                                   <group col="2">
-                                        <field name="comments_type_civil_work"/>
-                                        <field name="forecast_from_civil_work"/>
-                                        <field name="forecast_unitl_civil_work"/>
-                                        <field name="price_validity_f_civil"/>
-                                        <field name="price_validity_u_civil"/>
-                                    
-                                    </group>
-                                    <group>
-                                        <field name="civil_work_service_id"/>
-                                       <field name="civil_work_profitability_id"/>
-                                    </group>
-                                </group>
-                            </page>
-
-                            <page string="Pre-Carriage" attrs="{'invisible': [('pre_carriage_id','!=',True)]}">
-                                <group>
-                                   <group col="2">
-                                        <field name="comments_type_pre_carriage"/>
-                                        <field name="forecast_from_pre_carriage"/>
-                                        <field name="forecast_unitl_pre_carriage"/>
-                                        <field name="price_validity_f_carriage"/>
-                                        <field name="price_validity_u_carriage"/>
-                                        <field name="distance"/>
-                                    </group>
-                                    <group>
-                                        <field name="pre_carriage_service_id"/>
-                                       <field name="civil_work_profitability_id"/>
-                                       <field name="pre_carriage_pickup_id"/>
-                                       <field name="pre_carriage_delivery_id"/>
-                                    </group>
-                                </group>
-                            </page>
-
-                            <page string="Export Customs" attrs="{'invisible': [('export_customs_id','!=',True)]}">
-                                <group>
-                                   <group col="2">
-                                        <field name="comments_type_pre_carriage"/>
-                                        <field name="forecast_from_pre_carriage"/>
-                                        <field name="forecast_unitl_pre_carriage"/>
-                                        <field name="price_validity_f_cus_ex"/>
-                                        <field name="price_validity_u_cus_ex"/>
-                                        <field name="pre_carriage_service_id"/>
-                                        <field name="pre_carriage_profitability_id"/>
-                                        <field name="exporter"/>
-                                        <field name="importer"/>
-                                        <field name="hs_position_id"/>
-                                    </group>
-                                    <group>
-                                        <field name="items_level_id"/>
-                                       <field name="regime_id"/>
-                                       <field name="regime_number_id"/>
-                                       <field name="added_proceders_id"/>
-                                       <field name="exemption_id"/>
-                                       <field name="duities_payment_id"/>
-                                       <field name="payment_mode_customs_id"/>
-                                       <field name="customs_desk_id"/>
-                                    </group>
-                                </group>
-                            </page>
-                            <page string="Unloading On Terminal" attrs="{'invisible': [('on_terminal_id','!=',True)]}">
-                                <group>
-                                   <group col="2">
-                                        <field name="comments_type_unload_termina"/>
-                                        <field name="forecast_from_unload_termina"/>
-                                        <field name="forecast_unitl_unload_termina"/>
-                                        <field name="price_validity_f_un_ter"/>
-                                        <field name="price_validity_u_un_ter"/>
-                                    </group>
-                                    <group>
-                                        <field name="unload_termina_service_id"/>
-                                       <field name="unload_termina_profitability_id"/>
-                                       <field name="unload_terminal_id"/>
-                                    </group>
-                                </group>
-                            </page>
-
-
-                            <page string="Main Transport" attrs="{'invisible': [('main_transport_id','!=',True)]}">
-                                <group>
-                                   <group col="2">
-                                        <field name="comments_type_main_transport"/>
-                                        <field name="forecast_from_main_transport"/>
-                                        <field name="forecast_unitl_main_transport"/>
-                                        <field name="price_validity_f_m_tra"/>
-                                        <field name="price_validity_u_m_tra"/>
-                                        
-                                        <field name="main_transport_service_id"/>
-                                       <field name="main_transport_profitability_id"/>
-                                    </group>
-                                    <group>
-                                       <field name="packagin_pod_transport_id"/>
-                                       <field name="packagin_pol_transport_id"/>
-                                        <field name="fret"/>
-                                        <field name="requirement_id"/>
-                                    </group>
-                                </group>
-                            </page>
-
-                            <page string="Import Customs" attrs="{'invisible': [('import_customs_id','!=',True)]}">
+                             <page string="Import Customs" attrs="{'invisible': [('import_customs_id','!=',True)]}">
                                 <group>
                                    <group col="2">
                                         <field name="comments_type_import_customs"/>
@@ -562,7 +417,24 @@
                                     </group>
                                 </group>
                             </page>
-                            
+                           
+                            <page string="Terminal Exit Formalities" attrs="{'invisible': [('terminal_exit_id','!=',True)]}">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_term_exit"/>
+                                        <field name="forecast_from_term_exit"/>
+                                        <field name="forecast_unitl_term_exit"/>
+                                        <field name="price_validity_f_exit"/>
+                                        <field name="price_validity_u_exit"/>
+                                    
+                                    </group>
+                                    <group>
+                                        <field name="term_exit_service_id"/>
+                                       <field name="term_exit_profitability_id"/>
+                                    </group>
+                                </group>
+                            </page>
+
                             <page string="Loading From Terminal" attrs="{'invisible': [('loading_from_term_id','!=',True)]}">
                                 <group>
                                    <group col="2">
@@ -579,6 +451,7 @@
                                     </group>
                                 </group>
                             </page>
+
                             <page string="Delivery" attrs="{'invisible': [('delivery_id','!=',True)]}">
                                 <group>
                                    <group col="2">
@@ -617,49 +490,71 @@
                                 </group>
                             </page>
 
-                            <page string="Insurance Int" attrs="{'invisible': [('insurance_int_id','!=',True)]}">
+                            <page string="Unlashing" attrs="{'invisible': [('unlashing_id','!=',True)]}">
                                 <group>
                                    <group col="2">
-                                        <field name="comments_insurance_int"/>
-                                        <field name="forecast_from_insurance_int"/>
-                                        <field name="forecast_unitl_insurance_int"/>
-                                        <field name="price_validity_f_insu_in"/>
-                                        <field name="price_validity_u_insu_in"/>
+                                        <field name="comments_type_unlash"/>
+                                        <field name="forecast_from_unlash"/>
+                                        <field name="forecast_unitl_unlash"/>
+                                        <field name="price_validity_f_unlashing"/>
+                                        <field name="price_validity_u_unlashing"/>
                                     </group>
                                     <group>
-                                        <field name="insurance_int_service_id"/>
-                                       <field name="insurance_int_profitability_id"/>
-                                       <field name="insurance_intid"/>
+                                        <field name="unlash_exit_service_id"/>
+                                       <field name="unlash_profitability_id"/>
                                     </group>
                                 </group>
                             </page>
 
-                            <page string="Domestic Customs" attrs="{'invisible': [('domestic_customs_id','!=',True)]}">
+                            
+                             <page string="Stripping" attrs="{'invisible': [('stripping_id','!=',True)]}">
                                 <group>
                                    <group col="2">
-                                        <field name="comments_type_domestic_customs"/>
-                                        <field name="forecast_from_domestic_customs"/>
-                                        <field name="forecast_unitl_domestic_customs"/>
-                                        <field name="price_validity_f_dom_cu"/>
-                                        <field name="price_validity_u_dom_cu"/>
-                                        <field name="domestic_customs_service_id"/>
-                                        <field name="domestic_customs_profitability_id"/>
-                                        <field name="exporter_domestic"/>
-                                        <field name="importer_domestic"/>
-                                        <field name="hs_position_domestic_id"/>
+                                        <field name="comments_type_strip"/>
+                                        <field name="forecast_from_strip"/>
+                                        <field name="forecast_unitl_strip"/>
+                                        <field name="price_validity_f_strip"/>
+                                        <field name="price_validity_u_strip"/>
                                     </group>
                                     <group>
-                                        <field name="items_level_domestic_id"/>
-                                       <field name="regime_domestic_id"/>
-                                       <field name="regime_number_domestic_id"/>
-                                       <field name="added_proceders_domestic_id"/>
-                                       <field name="exemption_domestic_id"/>
-                                       <field name="duities_payment_domestic_id"/>
-                                       <field name="payment_mode_import_domestic_id"/>
-                                       <field name="customs_desk_domestic_id"/>
+                                        <field name="strip_service_id"/>
+                                       <field name="strip_profitability_id"/>
                                     </group>
                                 </group>
                             </page>
+                             <page string="Unpackaging" attrs="{'invisible': [('unpackaging_id','!=',True)]}">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_unpack"/>
+                                        <field name="forecast_from_unpack"/>
+                                        <field name="forecast_unitl_unpack"/>
+                                        <field name="price_validity_f_unpack"/>
+                                        <field name="price_validity_u_unpack"/>
+                                    
+                                    </group>
+                                    <group>
+                                        <field name="unpack_service_id"/>
+                                       <field name="unpack_profitability_id"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Insurance Dom" attrs="{'invisible': [('insurance_dom_id','!=',True)]}">
+                                <group>
+                                <group col="2">
+                                        <field name="comments_insurance_dom"/>
+                                        <field name="forecast_from_insurance_dom"/>
+                                        <field name="forecast_unitl_insurance_dom"/>
+                                        <field name="price_validity_f_ins_do"/>
+                                        <field name="price_validity_u_ins_do"/>
+                                    </group>
+                                    <group>
+                                        <field name="insurance_dom_service_id"/>
+                                        <field name="insurance_dom_profitability_id"/>
+                                        <field name="insurancedom_id"/>
+                                    </group>
+                                </group>
+                            </page>
+                            
                             <page string="Domestic Haulage" attrs="{'invisible': [('domestic_id','!=',True)]}">
                                 <group>
                                    <group col="2">
@@ -675,6 +570,57 @@
                                        <field name="domestic_haulage_profitability_id"/>
                                        <field name="domestic_haulage_delivery_id"/>
                                        <field name="domestic_haulage_distance"/>
+                                    </group>
+                                </group>
+                            </page>
+
+                            <page string="Trailer Traction" attrs="{'invisible': [('trailer_traction_id','!=',True)]}">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_trai_trac"/>
+                                        <field name="forecast_from_trai_trac"/>
+                                        <field name="forecast_unitl_trai_trac"/>
+                                        <field name="price_validity_f_trailer"/>
+                                        <field name="price_validity_u_trailer"/>
+                                    
+                                    </group>
+                                    <group>
+                                        <field name="trai_trac_service_id"/>
+                                       <field name="trai_trac_profitability_id"/>
+                                    </group>
+                                </group>
+                            </page>
+
+                            <page string="Storage" attrs="{'invisible': [('storage_id','!=',True)]}">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_storage"/>
+                                        <field name="forecast_from_storage"/>
+                                        <field name="forecast_unitl_storage"/>
+                                        <field name="price_validity_f_storage"/>
+                                        <field name="price_validity_u_storage"/>
+                                    
+                                    </group>
+                                    <group>
+                                        <field name="storage_service_id"/>
+                                       <field name="storage_profitability_id"/>
+                                    </group>
+                                </group>
+                            </page>
+
+                             <page string="Lifting" attrs="{'invisible': [('lifting_id','!=',True)]}">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_lifting"/>
+                                        <field name="forecast_from_lifting"/>
+                                        <field name="forecast_unitl_lifting"/>
+                                        <field name="price_validity_f_lifting"/>
+                                        <field name="price_validity_u_lifting"/>
+                                    
+                                    </group>
+                                    <group>
+                                        <field name="lifting_service_id"/>
+                                       <field name="lifting_profitability_id"/>
                                     </group>
                                 </group>
                             </page>
@@ -701,7 +647,130 @@
                                 </group>
                             </page>
 
-                             <page string="Road survey" attrs="{'invisible': [('road_surevy_id','!=',True)]}">
+                            <page string="Escort" attrs="{'invisible': [('escort_id','!=',True)]}">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_escort"/>
+                                        <field name="forecast_from_escort"/>
+                                        <field name="forecast_unitl_escort"/>
+                                        <field name="price_validity_f_esc"/>
+                                        <field name="price_validity_u_esc"/>
+                                        
+                                        <field name="from_escort"/>
+                                        <field name="to_escort"/>
+                                        
+                                    </group>
+                                    <group>
+                                        <field name="distance_escort"/>
+                                        <field name="escort_service_id"/>
+                                       <field name="escort_profitability_id"/>
+                                       <field name="top_length_escort"/>
+                                       <field name="top_width_escort"/>
+                                       <field name="top_height_escort"/>
+                                       <field name="top_wieght_escort"/>
+                                       
+                                    </group>
+                                </group>
+                            </page>
+
+                             <page string="Civil Work" attrs="{'invisible': [('civil_work_id','!=',True)]}">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_civil_work"/>
+                                        <field name="forecast_from_civil_work"/>
+                                        <field name="forecast_unitl_civil_work"/>
+                                        <field name="price_validity_f_civil"/>
+                                        <field name="price_validity_u_civil"/>
+                                    
+                                    </group>
+                                    <group>
+                                        <field name="civil_work_service_id"/>
+                                       <field name="civil_work_profitability_id"/>
+                                    </group>
+                                </group>
+                            </page>
+
+                           
+                            <page string="Domestic Customs" attrs="{'invisible': [('domestic_customs_id','!=',True)]}">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_domestic_customs"/>
+                                        <field name="forecast_from_domestic_customs"/>
+                                        <field name="forecast_unitl_domestic_customs"/>
+                                        <field name="price_validity_f_dom_cu"/>
+                                        <field name="price_validity_u_dom_cu"/>
+                                        <field name="domestic_customs_service_id"/>
+                                        <field name="domestic_customs_profitability_id"/>
+                                        <field name="exporter_domestic"/>
+                                        <field name="importer_domestic"/>
+                                        <field name="hs_position_domestic_id"/>
+                                    </group>
+                                    <group>
+                                        <field name="items_level_domestic_id"/>
+                                       <field name="regime_domestic_id"/>
+                                       <field name="regime_number_domestic_id"/>
+                                       <field name="added_proceders_domestic_id"/>
+                                       <field name="exemption_domestic_id"/>
+                                       <field name="duities_payment_domestic_id"/>
+                                       <field name="payment_mode_import_domestic_id"/>
+                                       <field name="customs_desk_domestic_id"/>
+                                    </group>
+                                </group>
+                            </page>
+                            
+                            
+                            <page string="Other Customs Formalities" attrs="{'invisible': [('other_id','!=',True)]}">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_oth_cust"/>
+                                        <field name="forecast_from_oth_cust"/>
+                                        <field name="forecast_unitl_oth_cust"/>
+                                        <field name="price_validity_f_cust"/>
+                                        <field name="price_validity_u_cust"/>
+                                    
+                                    </group>
+                                    <group>
+                                        <field name="oth_cust_service_id"/>
+                                       <field name="oth_cust_profitability_id"/>
+                                    </group>
+                                </group>
+                            </page>
+
+                            <page string="Consulting" attrs="{'invisible': [('consulting_id','!=',True)]}">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_consult"/>
+                                        <field name="forecast_from_consult"/>
+                                        <field name="forecast_unitl_consult"/>
+                                        <field name="price_validity_f_conss"/>
+                                        <field name="price_validity_u_conss"/>
+                                    
+                                    </group>
+                                    <group>
+                                        <field name="consult_service_id"/>
+                                       <field name="consult_profitability_id"/>
+                                    </group>
+                                </group>
+                            </page>
+
+                             <page string="Studies" attrs="{'invisible': [('studies_id','!=',True)]}">
+                                <group>
+                                   <group col="2">
+                                        <field name="comments_type_studies"/>
+                                        <field name="forecast_from_studies"/>
+                                        <field name="forecast_unitl_studies"/>
+                                        <field name="price_validity_f_studies"/>
+                                        <field name="price_validity_u_studies"/>
+                                    </group>
+                                    <group>
+                                        <field name="studies_service_id"/>
+                                       <field name="studies_profitability_id"/>
+                                    </group>
+                                </group>
+                            </page>
+                            
+                            
+                            <page string="Road survey" attrs="{'invisible': [('road_surevy_id','!=',True)]}">
                                 <group>
                                    <group col="2">
                                         <field name="comments_type_road"/>
@@ -744,32 +813,29 @@
                                     </group>
                                 </group>
                             </page>
-                            
-                            <page string="Escort" attrs="{'invisible': [('escort_id','!=',True)]}">
+
+                            <page string="Other Requests" attrs="{'invisible': [('other_requests_id','!=',True)]}">
                                 <group>
                                    <group col="2">
-                                        <field name="comments_type_escort"/>
-                                        <field name="forecast_from_escort"/>
-                                        <field name="forecast_unitl_escort"/>
-                                        <field name="price_validity_f_esc"/>
-                                        <field name="price_validity_u_esc"/>
-                                        
-                                        <field name="from_escort"/>
-                                        <field name="to_escort"/>
-                                        
+                                        <field name="comments_type_oth_req"/>
+                                        <field name="forecast_from_oth_req"/>
+                                        <field name="forecast_unitl_oth_req"/>
+                                        <field name="price_validity_f_req"/>
+                                        <field name="price_validity_u_req"/>
+                                    
                                     </group>
                                     <group>
-                                        <field name="distance_escort"/>
-                                        <field name="escort_service_id"/>
-                                       <field name="escort_profitability_id"/>
-                                       <field name="top_length_escort"/>
-                                       <field name="top_width_escort"/>
-                                       <field name="top_height_escort"/>
-                                       <field name="top_wieght_escort"/>
-                                       
+                                        <field name="oth_req_service_id"/>
+                                       <field name="oth_req_profitability_id"/>
                                     </group>
                                 </group>
                             </page>
+                            
+                            
+                            
+                            
+                            
+                            
                             <!-- <page string="Document" attrs="{'invisible': [('documents_id','!=',True)]}">
                                 <group>
                                    <group col="2">
@@ -1320,7 +1386,7 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
-                        <group string="Added Procedurs">
+                        <group string="Added Procedures">
                             <group col="2">
                                 <field name="added_proceders"/>
                                 <field name="added_proceders_n"/>
@@ -1728,39 +1794,7 @@
 
         
         
-         <!-- Documents -->
-        <record id='documents_view_form' model='ir.ui.view'>
-            <field name="name">documents.type.form</field>
-            <field name="model">packagin.documents</field>
-            <field name="arch" type="xml">
-                <form>
-                    <sheet>
-                        <group string="Documents">
-                            <group col="2">
-                                <field name="doc_name"/>
-                                <field name="doc"/>
-                               
-                            </group>
-                            <group>
-                                 <!-- <field name="equipement_code"/>
-                                <field name="equipement_id"/> -->
-                            </group>
-                        </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
-
         
-        <record model="ir.actions.act_window" id="documents_action">
-            <field name="name">Documents</field>
-            <field name="res_model">packagin.documents</field>
-            <field name="view_mode">tree,form</field>
-            <field name="help" type="html">
-                    <p class="oe_view_nocontent_smiling_face">Documents</p>
-            </field>
-        </record> 
-
          <!-- Duration -->
         <record id='duration_runting_view_form' model='ir.ui.view'>
             <field name="name">duration.runting.type.form</field>
