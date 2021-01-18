@@ -1827,14 +1827,17 @@
                     <sheet>
                         <group string="Profitability">
                             <group col="2">
-                                <field name="packaging_section"/>
-                                <field name="atc"/>
-                                <field name="suppliers"/>
+                                
                             </group>
                             <group>
                             </group>
                             <field name="packaging_amount_line" nolabel="1">
                                 <tree editable="bottom">
+                                    <field name="packaging_section"/>
+                                    <field name="atc"/>
+                                    <field name="cost_rate_ht_monet"/>
+                                    <field name="cost_rate_ht_currency"/>
+                                    <field name="suppliers"/>
                                     <field name="qty"/>
                                     <field name="qty_unit"/>
                                     <field name="sale_rate_ht"/>
@@ -1842,7 +1845,7 @@
                                     <field name="discount"/>
                                     <field name="net_sale_rate"/>
                                     <field name="net_sale_rate_ht_currency" readonly="1"/> 
-                                    <!-- <field name="profit_ht"/> -->
+                                    <field name="profit_ht"/>
                                     <field name="profit_ht_currency" readonly="1"/>
                                     <field name="s_tot_sales_ht"/>
                                     <field name="s_tot_sales_currency" readonly="1"/>
@@ -1895,7 +1898,7 @@
             <field name="model">packagin.profitablity</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="suppliers"/>
+                    <!-- <field name="suppliers"/> -->
                     <field name="total_cost_ht" sum="Total Cost HT" string="Total Cost HT" widget="monetary"/>
                     <field name="total_sales_ht" sum="Total Sales HT" string="Total Sales HT" widget="monetary"/>
                     <field name="total_net_sales_ht" sum="Total Net Sales HT" string="Total Net Sales HT" widget="monetary"/>

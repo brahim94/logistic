@@ -731,21 +731,22 @@ class Requirement(models.Model):
 class PackagingProfitability(models.Model):
 
     _name = 'packagin.profitablity'
-    _rec_name = 'suppliers'
+    # _rec_name = 'suppliers'
 
-    atc = fields.Selection([
-            ('yes', 'Yes'),
-            ('no', 'No'),
-            ], string='ATC', default='no')
-    cost_rate_ht_currency = fields.Many2one('res.currency', string='Currency')
-    cost_rate_ht_monet = fields.Float('Cost Rate HT')
-    suppliers = fields.Many2one('res.partner', string='Suppliers')
+    # atc = fields.Selection([
+    #         ('yes', 'Yes'),
+    #         ('no', 'No'),
+    #         ], string='ATC', default='no')
+    # cost_rate_ht_currency = fields.Many2one('res.currency', string='Currency')
+    # cost_rate_ht_monet = fields.Float('Cost Rate HT')
+    # suppliers = fields.Many2one('res.partner', string='Suppliers')
     packaging_amount_line = fields.One2many('packaging.amount','packaging_amount_id', string="Packaging Amount")                    
-    packaging_section = fields.Many2one('packaging.section', string='Section')
+    # packaging_section = fields.Many2one('packaging.section', string='Section')
     total_cost_ht = fields.Float(string='Tot Cost HT', compute='_total_packaging_all')
     total_sales_ht = fields.Float(string='Tot Sales HT', compute='_total_packaging_all')
     total_net_sales_ht = fields.Float(string='Tot Net Sales HT', compute='_total_packaging_all')
     total_profit_ht = fields.Float(string='Tot Profit HT', compute='_total_packaging_all')
+    
     # profit = fields.Float(string='%Profit', compute='_total_packaging_all')
 
     def _total_packaging_all(self):
@@ -1193,7 +1194,12 @@ class PackagingAmount(models.Model):
     s_profit_ht = fields.Float('S/Tot Profit HT', compute='_amount_in_packaging_all')
     s_tot_profit_currency = fields.Many2one('res.currency', string='Currency')
     packaging_amount_id = fields.Many2one('packagin.profitablity', string="Packaging Amount")
-    
+    atc = fields.Selection([
+            ('yes', 'Yes'),
+            ('no', 'No'),
+            ], string='ATC', default='no')
+    packaging_section = fields.Many2one('packaging.section', string='Section')
+    suppliers = fields.Many2one('res.partner', string='Suppliers')
 
     def _amount_in_packaging_all(self):
         for pack in self:

@@ -232,6 +232,7 @@ class BankDetails(models.Model):
 class references(models.Model):
 
     _name = 'reference.type'
+    _rec_name = 'customer_ref'
 
     name = fields.Char(string='Ref name')
     customer_ref = fields.Char(string="Customer's Ref")
