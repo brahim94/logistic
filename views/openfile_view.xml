@@ -683,6 +683,11 @@
                             <xpath expr="//label[@name='address_name']" position="attributes">
                                  <attribute name="attrs">{'invisible':1}</attribute>
                             </xpath>
+                            
+                            <xpath expr="//field[@name='parent_id']" position="attributes">
+                                 <attribute name="attrs">{'invisible':1}</attribute>
+                            </xpath>
+                            
 <!--                             
                             <xpath expr="//field[@name='email']" position="before">
                                 

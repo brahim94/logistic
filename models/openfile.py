@@ -235,7 +235,7 @@ class references(models.Model):
     _rec_name = 'customer_ref'
 
     name = fields.Char(string='Ref name')
-    customer_ref = fields.Char(string="Customer's Ref")
+    customer_ref = fields.Char(string="Customer's Ref", required=True)
     purchase_order = fields.Char(string="Purchase Order (PO)")
     sales_order = fields.Char(string='Sales Order (SO)')
     shipment_reference = fields.Char(string='Shipment Ref')
@@ -704,7 +704,7 @@ class ResPartner(models.Model):
     bank_details = fields.Text('Bank details')
     iban = fields.Char('IBAN')
     code_swift = fields.Char('Code swift')
-    visit_card = fields.Binary('Télécharger carte de visite')
+    visit_card = fields.Binary('Visit card')
     type_insurance = fields.Selection([
             ('liability', 'Liability'),
             ('cargo', 'Cargo'),

@@ -301,17 +301,17 @@ class scope(models.Model):
     price_validity_f_cus_ex = fields.Date('Price Validity From')
     price_validity_u_cus_ex = fields.Date('Price Validity Initll')
     pre_carriage_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
-    exporter = fields.Many2one('res.partner', striing='Exporter')
-    importer = fields.Many2one('res.partner', striing='Importer')
-    hs_position_id = fields.Many2one('hs.position', striing='HS Position')
-    items_level_id = fields.Many2one('item.levels', striing='Items Level')
-    regime_id = fields.Many2one('packagin.regime', striing='Regime Type')
-    regime_number_id = fields.Many2one('regime.number', striing='Regime Number')
-    added_proceders_id = fields.Many2one('added.proceders', striing='Added Procedures')
-    exemption_id = fields.Many2one('packagin.exemption', striing='Exemption')
-    duities_payment_id = fields.Many2one('res.partner', striing='Duities Payment')
-    payment_mode_customs_id = fields.Many2one('payment.mode.customs', striing='Payment Mode To Customs')
-    customs_desk_id = fields.Many2one('customs.desk', striing='Customs Desk')
+    exporter = fields.Many2one('res.partner', string='Exporter')
+    importer = fields.Many2one('res.partner', string='Importer')
+    hs_position_id = fields.Many2one('hs.position', string='HS Position')
+    items_level_id = fields.Many2one('item.levels', string='Items Level')
+    regime_id = fields.Many2one('packagin.regime', string='Regime Type')
+    regime_number_id = fields.Many2one('regime.number', string='Regime Number')
+    added_proceders_id = fields.Many2one('added.proceders', string='Added Procedures')
+    exemption_id = fields.Many2one('packagin.exemption', string='Exemption')
+    duities_payment_id = fields.Many2one('res.partner', string='Duities Payment')
+    payment_mode_customs_id = fields.Many2one('payment.mode.customs', string='Payment Mode To Customs')
+    customs_desk_id = fields.Many2one('customs.desk', string='Customs Desk')
 
 ############## Unloading On Terminal ####################
     unload_termina_service_id = fields.Many2one('packagin.service', string='Service')
@@ -349,17 +349,17 @@ class scope(models.Model):
     price_validityf_imp_cus = fields.Date('Price Validity From')
     price_validityu_imp_cus = fields.Date('Price Validity Initll')
     import_customs_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
-    exporter_customs = fields.Many2one('res.partner', striing='Exporter')
-    importer_customs = fields.Many2one('res.partner', striing='Importer')
-    hs_position_customs_id = fields.Many2one('hs.position', striing='HS Position')
-    items_level_customs_id = fields.Many2one('item.levels', striing='Items Level')
-    regime_customs_id = fields.Many2one('packagin.regime', striing='Regime Type')
-    regime_number_customs_id = fields.Many2one('regime.number', striing='Regime Number')
-    added_proceders_customs_id = fields.Many2one('added.proceders', striing='Added Procedures')
-    exemption_customs_id = fields.Many2one('packagin.exemption', striing='Exemption')
-    duities_payment_customs_id = fields.Many2one('res.partner', striing='Duities Payment')
-    payment_mode_import_customs_id = fields.Many2one('payment.mode.customs', striing='Payment Mode To Customs')
-    customs_desk_customs_id = fields.Many2one('customs.desk', striing='Customs Desk')
+    exporter_customs = fields.Many2one('res.partner', string='Exporter')
+    importer_customs = fields.Many2one('res.partner', string='Importer')
+    hs_position_customs_id = fields.Many2one('hs.position', string='HS Position')
+    items_level_customs_id = fields.Many2one('item.levels', string='Items Level')
+    regime_customs_id = fields.Many2one('packagin.regime', string='Regime Type')
+    regime_number_customs_id = fields.Many2one('regime.number', string='Regime Number')
+    added_proceders_customs_id = fields.Many2one('added.proceders', string='Added Procedures')
+    exemption_customs_id = fields.Many2one('packagin.exemption', string='Exemption')
+    duities_payment_customs_id = fields.Many2one('res.partner', string='Duities Payment')
+    payment_mode_import_customs_id = fields.Many2one('payment.mode.customs', string='Payment Mode To Customs')
+    customs_desk_customs_id = fields.Many2one('customs.desk', string='Customs Desk')
 
 
 ############## Loading From Terminal ####################
@@ -423,17 +423,17 @@ class scope(models.Model):
     price_validity_f_dom_cu = fields.Date('Price Validity From')
     price_validity_u_dom_cu = fields.Date('Price Validity Initll')
     domestic_customs_profitability_id = fields.Many2one('packagin.profitablity', string='Profitability')
-    exporter_domestic = fields.Many2one('res.partner', striing='Exporter')
-    importer_domestic = fields.Many2one('res.partner', striing='Importer')
-    hs_position_domestic_id = fields.Many2one('hs.position', striing='HS Position')
-    items_level_domestic_id = fields.Many2one('item.levels', striing='Items Level')
-    regime_domestic_id = fields.Many2one('packagin.regime', striing='Regime Type')
-    regime_number_domestic_id = fields.Many2one('regime.number', striing='Regime Number')
-    added_proceders_domestic_id = fields.Many2one('added.proceders', striing='Added Procedures')
-    exemption_domestic_id = fields.Many2one('packagin.exemption', striing='Exemption')
-    duities_payment_domestic_id = fields.Many2one('res.partner', striing='Duities Payment')
-    payment_mode_import_domestic_id = fields.Many2one('payment.mode.customs', striing='Payment Mode To Customs')
-    customs_desk_domestic_id = fields.Many2one('customs.desk', striing='Customs Desk')
+    exporter_domestic = fields.Many2one('res.partner', string='Exporter')
+    importer_domestic = fields.Many2one('res.partner', string='Importer')
+    hs_position_domestic_id = fields.Many2one('hs.position', string='HS Position')
+    items_level_domestic_id = fields.Many2one('item.levels', string='Items Level')
+    regime_domestic_id = fields.Many2one('packagin.regime', string='Regime Type')
+    regime_number_domestic_id = fields.Many2one('regime.number', string='Regime Number')
+    added_proceders_domestic_id = fields.Many2one('added.proceders', string='Added Procedures')
+    exemption_domestic_id = fields.Many2one('packagin.exemption', string='Exemption')
+    duities_payment_domestic_id = fields.Many2one('res.partner', string='Duities Payment')
+    payment_mode_import_domestic_id = fields.Many2one('payment.mode.customs', string='Payment Mode To Customs')
+    customs_desk_domestic_id = fields.Many2one('customs.desk', string='Customs Desk')
 
 ############## Domestic Haulage ####################
     domestic_haulage_service_id = fields.Many2one('packagin.service', string='Service')
@@ -737,7 +737,14 @@ class PackagingProfitability(models.Model):
     #         ('yes', 'Yes'),
     #         ('no', 'No'),
     #         ], string='ATC', default='no')
-    # cost_rate_ht_currency = fields.Many2one('res.currency', string='Currency')
+    currency_id = fields.Many2one('res.currency', string='Currency')
+    
+    @api.onchange('packaging_amount_line')
+    def onchange_currency_id(self):
+        for pack in self:
+            currency_id = ''
+            for line in pack.packaging_amount_line:
+                self.currency_id = line.cost_rate_ht_currency
     # cost_rate_ht_monet = fields.Float('Cost Rate HT')
     # suppliers = fields.Many2one('res.partner', string='Suppliers')
     packaging_amount_line = fields.One2many('packaging.amount','packaging_amount_id', string="Packaging Amount")                    
@@ -1112,7 +1119,7 @@ class PackagingSection(models.Model):
     _name = 'packaging.section'
     _rec_name = 'section_name'
 
-    service_id = fields.Many2one('scope.type', string='Service')
+    service_id = fields.Many2one('packagin.service', string='Service')
     section_name = fields.Text('Section Name')
     section_translation = fields.Text('Translation')
     section_code = fields.Char('Section Code')
@@ -1205,7 +1212,7 @@ class PackagingAmount(models.Model):
         for pack in self:
             cost_rate_ht_monet = qty = sale_rate_ht = net_sale_rate = profit_ht = s_tot_sales_ht = s_tot_cost_ht = s_tot_net_sale_ht = s_profit_ht = 0.0 
             for line in pack.packaging_amount_id.packaging_amount_line:
-                line.net_sale_rate = line.sale_rate_ht - (line.sale_rate_ht * line.discount)
+                line.net_sale_rate = line.sale_rate_ht - (line.sale_rate_ht * (line.discount / 100))
                 line.profit_ht = line.net_sale_rate - line.cost_rate_ht_monet
                 line.s_tot_sales_ht = line.qty * line.sale_rate_ht
                 line.s_tot_cost_ht = line.qty * line.cost_rate_ht_monet

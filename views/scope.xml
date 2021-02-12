@@ -249,7 +249,7 @@
                                         <field name="items_level_id"/>
                                        <field name="regime_id"/>
                                        <field name="regime_number_id"/>
-                                       <field name="added_proceders_id"/>
+                                       <field name="added_proceders_id" />
                                        <field name="exemption_id"/>
                                        <field name="duities_payment_id"/>
                                        <field name="payment_mode_customs_id"/>
@@ -1841,25 +1841,26 @@
                                     <field name="qty"/>
                                     <field name="qty_unit"/>
                                     <field name="sale_rate_ht"/>
-                                    <field name="sale_rate_ht_currency"/>
+                                    <!-- <field name="sale_rate_ht_currency"/> -->
                                     <field name="discount"/>
                                     <field name="net_sale_rate"/>
-                                    <field name="net_sale_rate_ht_currency" readonly="1"/> 
+                                    <!-- <field name="net_sale_rate_ht_currency" readonly="1"/>  -->
                                     <field name="profit_ht"/>
-                                    <field name="profit_ht_currency" readonly="1"/>
+                                    <!-- <field name="profit_ht_currency" readonly="1"/> -->
                                     <field name="s_tot_sales_ht"/>
-                                    <field name="s_tot_sales_currency" readonly="1"/>
+                                    <!-- <field name="s_tot_sales_currency" readonly="1"/> -->
                                     <field name="s_tot_cost_ht"/>
-                                    <field name='s_tot_cost_currency' readonly="1"/>
+                                    <!-- <field name='s_tot_cost_currency' readonly="1"/> -->
                                     <field name="s_tot_net_sale_ht"/>
-                                    <field name="s_tot_net_sale_currency" readonly="1"/>
+                                    <!-- <field name="s_tot_net_sale_currency" readonly="1"/> -->
                                     <field name="s_profit_ht"/>
-                                    <field name="s_tot_profit_currency" readonly="1"/>
+                                    <!-- <field name="s_tot_profit_currency" readonly="1"/> -->
                                 </tree>
                             </field>
                         </group>
                          <group class="oe_subtotal_footer oe_right" colspan="2" name="total_packaging">
                                                 
+                                                <field name="currency_id" invisible="1"/>
                                                 <div class="oe_subtotal_footer_separator oe_inline o_td_label">
                                                 <label for="total_cost_ht"/>
                                                 </div>
