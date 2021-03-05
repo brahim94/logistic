@@ -134,20 +134,13 @@ class directoryorde(models.Model):
     
     @api.model
     def create(self, vals):
-        if vals.get('name', ('New')) == ('New'):
-                vals['name'] = self.env['ir.sequence'].next_by_code('draft.order') or ('New')
-        if vals.get('name_id', ('New')) == ('New'):
+        if vals.get('name', ('New')) == ('New') and vals.get('name_id', ('New')) == ('New'):
+                if vals.get('type_file') == 'draft':
+                        vals['name'] = self.env['ir.sequence'].next_by_code('draft.order') or ('New')
+                        vals['name_id'] = self.env['ir.sequence'].next_by_code('definitive.order') or ('New')
+        if vals.get('name', ('New')) == ('New') and vals.get('type_file') == 'definitive':
                 vals['name_id'] = self.env['ir.sequence'].next_by_code('definitive.order') or ('New')
-        # if vals.get('account_number', ('New')) == ('New'):
-        #         vals['account_number'] = self.env['ir.sequence'].next_by_code('acount.number.test') or ('New')
         return super(directoryorde, self).create(vals)
-
-#     @api.appends('type_file')
-#     def write(self, vals):
-#         if any('type_file' == '' for state in set(self.mapped('state'))):
-#             raise UserError(_("No edit in done state"))
-#         else:
-#             return super().write(vals)
 
 
 class sector(models.Model):

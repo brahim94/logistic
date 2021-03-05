@@ -1858,37 +1858,106 @@
                                 </tree>
                             </field>
                         </group>
+                        <notebook>
+                            <page string="Total MAD">
+                               
                          <group class="oe_subtotal_footer oe_right" colspan="2" name="total_packaging">
                                                 
                                                 <field name="currency_id" invisible="1"/>
                                                 <div class="oe_subtotal_footer_separator oe_inline o_td_label">
-                                                <label for="total_cost_ht"/>
+                                                <label for="total_cost_ht_dh"/>
                                                 </div>
-                                                <field name="total_cost_ht" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                                <field name="total_cost_ht_dh" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
                                                 
                                                 <div class="oe_subtotal_footer_separator oe_inline o_td_label">
-                                                    <label for="total_sales_ht"/>
+                                                    <label for="total_sales_ht_dh"/>
                                                 </div>
-                                                <field name="total_sales_ht" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                                <field name="total_sales_ht_dh" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
                                                 
                                                 <div class="oe_subtotal_footer_separator oe_inline o_td_label">
-                                                    <label for="total_net_sales_ht"/>
+                                                    <label for="total_net_sales_ht_dh"/>
                                                 </div>
-                                                <field name="total_net_sales_ht" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                                <field name="total_net_sales_ht_dh" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
                                                 
                                                 
                                                 <div class="oe_subtotal_footer_separator oe_inline o_td_label">
-                                                    <label for="total_profit_ht"/>
+                                                    <label for="total_profit_ht_dh"/>
                                                 </div>
-                                                <field name="total_profit_ht" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/> 
+                                                <field name="total_profit_ht_dh" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/> 
                                                 
-                                                <!-- <div class="oe_subtotal_footer_separator oe_inline o_td_label">
-                                                    <label for="profit"/>
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="profit_dh"/>
                                                 </div>
-                                                <field name="profit" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary"/>
-                                                 -->
+                                                <field name="profit_dh" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary"/>
+                                                
                         </group>
+                        </page>
+                        <page string="Total EURO">
+                             <group class="oe_subtotal_footer oe_right" colspan="2" name="total_packaging_euro">
+                                                
+                                                <field name="currency_id" invisible="1"/>
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                <label for="total_cost_ht_euro"/>
+                                                </div>
+                                                <field name="total_cost_ht_euro" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="total_sales_ht_euro"/>
+                                                </div>
+                                                <field name="total_sales_ht_euro" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="total_net_sales_ht_euro"/>
+                                                </div>
+                                                <field name="total_net_sales_ht_euro" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                                
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="total_profit_ht_euro"/>
+                                                </div>
+                                                <field name="total_profit_ht_euro" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/> 
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="profit_euro"/>
+                                                </div>
+                                                <field name="profit_euro" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary"/>
+                                                
+                        </group>
+                        </page>
+                        <page string="Total USD">
+                         <group class="oe_subtotal_footer oe_right" colspan="2" name="total_packaging_usd">
+                                                
+                                                <field name="currency_id" invisible="1"/>
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                <label for="total_cost_ht_usd"/>
+                                                </div>
+                                                <field name="total_cost_ht_usd" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="total_sales_ht_usd"/>
+                                                </div>
+                                                <field name="total_sales_ht_usd" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="total_net_sales_ht_usd"/>
+                                                </div>
+                                                <field name="total_net_sales_ht_usd" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                                
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="total_profit_ht_usd"/>
+                                                </div>
+                                                <field name="total_profit_ht_usd" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/> 
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="profit_usd"/>
+                                                </div>
+                                                <field name="profit_usd" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary"/>
+                                                
+                        </group>
+                        </page>
                         
+                        </notebook>
                     </sheet>
                 </form>
             </field>
@@ -1900,11 +1969,23 @@
             <field name="arch" type="xml">
                 <tree>
                     <!-- <field name="suppliers"/> -->
-                    <field name="total_cost_ht" sum="Total Cost HT" string="Total Cost HT" widget="monetary"/>
-                    <field name="total_sales_ht" sum="Total Sales HT" string="Total Sales HT" widget="monetary"/>
-                    <field name="total_net_sales_ht" sum="Total Net Sales HT" string="Total Net Sales HT" widget="monetary"/>
-                    <field name="total_profit_ht" sum="Total Profit HT" string="Total Profit HT" /> 
-                    <!-- <field name="profit" sum="Total Profit" string="Total Profit" /> -->
+                    <field name="total_cost_ht_dh" sum="Total Cost HT" string="Total Cost HT (MAD)" widget="monetary"/>
+                    <field name="total_sales_ht_dh" sum="Total Sales HT" string="Total Sales HT (MAD)" widget="monetary"/>
+                    <field name="total_net_sales_ht_dh" sum="Total Net Sales HT" string="Total Net Sales HT (MAD)" widget="monetary"/>
+                    <field name="total_profit_ht_dh" sum="Total Profit HT" string="Total Profit HT (MAD)" /> 
+                    <field name="profit_dh" sum="Total Profit" string="Total Profit %" />
+                    
+                    <field name="total_cost_ht_euro" sum="Total Cost HT" string="Total Cost HT (EURO)" widget="monetary"/>
+                    <field name="total_sales_ht_euro" sum="Total Sales HT" string="Total Sales HT (EURO)" widget="monetary"/>
+                    <field name="total_net_sales_ht_euro" sum="Total Net Sales HT" string="Total Net Sales HT (EURO)" widget="monetary"/>
+                    <field name="total_profit_ht_euro" sum="Total Profit HT" string="Total Profit HT (EURO)" /> 
+                    <field name="profit_euro" sum="Total Profit" string="Total Profit %" />
+                    
+                    <field name="total_cost_ht_usd" sum="Total Cost HT" string="Total Cost HT (USD)" widget="monetary"/>
+                    <field name="total_sales_ht_usd" sum="Total Sales HT" string="Total Sales HT (USD)" widget="monetary"/>
+                    <field name="total_net_sales_ht_usd" sum="Total Net Sales HT" string="Total Net Sales HT (USD)" widget="monetary"/>
+                    <field name="total_profit_ht_usd" sum="Total Profit HT" string="Total Profit HT (USD)" /> 
+                    <field name="profit_usd" sum="Total Profit" string="Total Profit %" />
                     
                  </tree> 
             </field>

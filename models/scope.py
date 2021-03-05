@@ -737,46 +737,108 @@ class PackagingProfitability(models.Model):
     #         ('yes', 'Yes'),
     #         ('no', 'No'),
     #         ], string='ATC', default='no')
-    currency_id = fields.Many2one('res.currency', string='Currency')
+    currency_id = fields.Selection([
+            ('mad', 'MAD'),
+            ('euro', 'EURO'),
+            ('usd', 'USD'),
+            ], string='Currency', default='mad')
     
-    @api.onchange('packaging_amount_line')
-    def onchange_currency_id(self):
-        for pack in self:
-            currency_id = ''
-            for line in pack.packaging_amount_line:
-                self.currency_id = line.cost_rate_ht_currency
-    # cost_rate_ht_monet = fields.Float('Cost Rate HT')
+    # @api.onchange('packaging_amount_line')
+    # def onchange_currency_id(self):
+    #     for pack in self:
+    #         currency_id = ''
+    #         for line in pack.packaging_amount_line:
+    #             self.currency_id = line.cost_rate_ht_currency
+    
+    # # cost_rate_ht_monet = fields.Float('Cost Rate HT')
     # suppliers = fields.Many2one('res.partner', string='Suppliers')
     packaging_amount_line = fields.One2many('packaging.amount','packaging_amount_id', string="Packaging Amount")                    
     # packaging_section = fields.Many2one('packaging.section', string='Section')
-    total_cost_ht = fields.Float(string='Tot Cost HT', compute='_total_packaging_all')
-    total_sales_ht = fields.Float(string='Tot Sales HT', compute='_total_packaging_all')
-    total_net_sales_ht = fields.Float(string='Tot Net Sales HT', compute='_total_packaging_all')
-    total_profit_ht = fields.Float(string='Tot Profit HT', compute='_total_packaging_all')
+    total_cost_ht_dh = fields.Float(string='Tot Cost HT', compute='_total_packaging_all')
+    total_sales_ht_dh = fields.Float(string='Tot Sales HT', compute='_total_packaging_all')
+    total_net_sales_ht_dh = fields.Float(string='Tot Net Sales HT', compute='_total_packaging_all')
+    total_profit_ht_dh = fields.Float(string='Tot Profit HT', compute='_total_packaging_all')
+    ### EURO ###
+    total_cost_ht_euro = fields.Float(string='Tot Cost HT', compute='_total_packaging_all')
+    total_sales_ht_euro = fields.Float(string='Tot Sales HT', compute='_total_packaging_all')
+    total_net_sales_ht_euro = fields.Float(string='Tot Net Sales HT', compute='_total_packaging_all')
+    total_profit_ht_euro = fields.Float(string='Tot Profit HT', compute='_total_packaging_all')
+    ### USD ###
+    total_cost_ht_usd = fields.Float(string='Tot Cost HT', compute='_total_packaging_all')
+    total_sales_ht_usd = fields.Float(string='Tot Sales HT', compute='_total_packaging_all')
+    total_net_sales_ht_usd = fields.Float(string='Tot Net Sales HT', compute='_total_packaging_all')
+    total_profit_ht_usd = fields.Float(string='Tot Profit HT', compute='_total_packaging_all')
     
-    # profit = fields.Float(string='%Profit', compute='_total_packaging_all')
+
+    profit_dh = fields.Float(string='Profit en %', compute='_profit_dh_all')
+    profit_euro = fields.Float(string='Profit en %', compute='_profit_euro_all')
+    profit_usd = fields.Float(string='Profit en %', compute='_profit_usd_all')
 
     def _total_packaging_all(self):
         for pack in self:
-            total_cost_ht = total_sales_ht = total_net_sales_ht = total_profit_ht = profit  = 0.0
+            total_cost_ht_dh = total_sales_ht_dh = total_net_sales_ht_dh = total_profit_ht_dh = profit_dh  = total_cost_ht_euro = total_sales_ht_euro = total_net_sales_ht_euro = total_profit_ht_euro = profit_euro  = total_cost_ht_usd = total_sales_ht_usd = total_net_sales_ht_usd = total_profit_ht_usd = profit_usd  = 0.0
             for line in pack.packaging_amount_line:
-                total_cost_ht += line.s_tot_cost_ht
-                total_sales_ht += line.s_tot_sales_ht
-                total_net_sales_ht += line.s_tot_net_sale_ht
-                total_profit_ht += line.s_profit_ht
+                if line.cost_rate_ht_currency == 'mad':
+                    total_cost_ht_dh += line.s_tot_cost_ht
+                    total_sales_ht_dh += line.s_tot_sales_ht
+                    total_net_sales_ht_dh += line.s_tot_net_sale_ht
+                    total_profit_ht_dh += line.s_profit_ht
+                if line.cost_rate_ht_currency == 'euro':
+                    total_cost_ht_euro += line.s_tot_cost_ht
+                    total_sales_ht_euro += line.s_tot_sales_ht
+                    total_net_sales_ht_euro += line.s_tot_net_sale_ht
+                    total_profit_ht_euro += line.s_profit_ht
+                if line.cost_rate_ht_currency == 'usd':
+                    total_cost_ht_usd += line.s_tot_cost_ht
+                    total_sales_ht_usd += line.s_tot_sales_ht
+                    total_net_sales_ht_usd += line.s_tot_net_sale_ht
+                    total_profit_ht_usd += line.s_profit_ht
                 # if self.total_net_sales_ht != 0 and self.total_profit_ht != 0:
                 #     self.profit = self.total_profit_ht / self.total_net_sales_ht
                 # else:
                 #     self.profit = 0
             pack.update({
-                'total_cost_ht': total_cost_ht,
-                'total_sales_ht': total_sales_ht,
-                'total_net_sales_ht': total_net_sales_ht,
-                'total_profit_ht': total_profit_ht,
+                'total_cost_ht_dh': total_cost_ht_dh,
+                'total_sales_ht_dh': total_sales_ht_dh,
+                'total_net_sales_ht_dh': total_net_sales_ht_dh,
+                'total_profit_ht_dh': total_profit_ht_dh,
+                'total_cost_ht_euro': total_cost_ht_euro,
+                'total_sales_ht_euro': total_sales_ht_euro,
+                'total_net_sales_ht_euro': total_net_sales_ht_euro,
+                'total_profit_ht_euro': total_profit_ht_euro,
+                'total_cost_ht_usd': total_cost_ht_usd,
+                'total_sales_ht_usd': total_sales_ht_usd,
+                'total_net_sales_ht_usd': total_net_sales_ht_usd,
+                'total_profit_ht_usd': total_profit_ht_usd,
+                
                 # 'profit': pack.profit, 
 
             })
 
+    @api.depends('total_net_sales_ht_dh', 'total_profit_ht_dh')
+    def _profit_dh_all(self):
+        for record in self:
+            if record.total_net_sales_ht_dh > 0 and record.total_profit_ht_dh > 0:
+                record.profit_dh = record.total_profit_ht_dh / record.total_net_sales_ht_dh
+            else:
+                record.profit_dh = 0
+    
+    @api.depends('total_net_sales_ht_euro', 'total_profit_ht_euro')
+    def _profit_euro_all(self):
+        for record in self:
+            if record.total_net_sales_ht_euro > 0 and record.total_profit_ht_euro > 0:
+                record.profit_euro = record.total_profit_ht_euro / record.total_net_sales_ht_euro
+            else:
+                record.profit_euro = 0
+    
+    @api.depends('total_net_sales_ht_usd', 'total_profit_ht_usd')
+    def _profit_usd_all(self):
+        for record in self:
+            if record.total_net_sales_ht_usd > 0 and record.total_profit_ht_usd > 0:
+                record.profit_usd = record.total_profit_ht_usd / record.total_net_sales_ht_usd
+            else:
+                record.profit_usd = 0
+    
 class PackagingDepartment(models.Model):
 
     _name = 'packagin.department'
@@ -1181,7 +1243,12 @@ class PackagingAmount(models.Model):
 
     _name = 'packaging.amount'
 
-    cost_rate_ht_currency = fields.Many2one('res.currency', string='Currency')
+    # cost_rate_ht_currency = fields.Many2one('res.currency', string='Currency')
+    cost_rate_ht_currency = fields.Selection([
+            ('mad', 'MAD'),
+            ('euro', 'EURO'),
+            ('usd', 'USD'),
+            ], string='Currency', default='mad')
     cost_rate_ht_monet = fields.Float('Cost Rate HT')
     qty = fields.Float('Qty')
     qty_unit = fields.Many2one('packaging.unit')
