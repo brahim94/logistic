@@ -115,11 +115,11 @@
                                         <field name="forecast_unitl"/>
                                         <field name="price_validity_f"/>
                                         <field name="price_validity_u"/>
+                                        <field name="packagin_service_id"/>
+                                       <field name="packagin_profitability_id"/>
                                         
                                     </group>
                                     <group>
-                                        <field name="packagin_service_id"/>
-                                       <field name="packagin_profitability_id"/>
                                     </group>
                               
                                 </group>
@@ -133,11 +133,11 @@
                                         <field name="forecast_unitl_stuffing"/>
                                         <field name="price_validity_f_stuffing"/>
                                         <field name="price_validity_u_stuffing"/>
+                                        <field name="stuffing_service_id"/>
+                                       <field name="stuffing_profitability_id"/>
                                        
                                     </group>
                                     <group>
-                                        <field name="stuffing_service_id"/>
-                                       <field name="stuffing_profitability_id"/>
                                     </group>
                               
                                 </group>
@@ -152,10 +152,10 @@
                                         <field name="price_validity_f_lsd"/>
                                         <field name="price_validity_u_lsd"/>
                                        <field name="forecast_unitl_lsd"/>
-                                    </group>
-                                    <group>
                                         <field name="lsd_service_id"/>
                                        <field name="lsd_profitability_id"/>
+                                    </group>
+                                    <group>
                                     </group>
                               
                                 </group>
@@ -169,10 +169,10 @@
                                          <field name="price_validity_f_track"/>
                                         <field name="price_validity_u_track"/>
                                        <field name="forecast_unitl_loading"/>
-                                    </group>
-                                    <group>
                                         <field name="loading_service_id"/>
                                        <field name="loading_profitability_id"/>
+                                    </group>
+                                    <group>
                                     </group>
                               
                                 </group>
@@ -183,15 +183,15 @@
                                    <group col="2">
                                         <field name="comments_type_pre_carriage"/>
                                         <field name="forecast_from_pre_carriage"/>
-                                        <field name="forecast_unitl_pre_carriage"/>
                                         <field name="price_validity_f_carriage"/>
                                         <field name="price_validity_u_carriage"/>
-                                        <field name="distance"/>
-                                    </group>
-                                    <group>
+                                        <field name="forecast_unitl_pre_carriage"/>
                                         <field name="pre_carriage_service_id"/>
                                        <field name="civil_work_profitability_id"/>
+                                    </group>
+                                    <group>
                                        <field name="pre_carriage_pickup_id"/>
+                                        <field name="distance"/>
                                        <field name="pre_carriage_delivery_id"/>
                                     </group>
                                 </group>
@@ -202,13 +202,13 @@
                                    <group col="2">
                                         <field name="comments_type_unload_termina"/>
                                         <field name="forecast_from_unload_termina"/>
-                                        <field name="forecast_unitl_unload_termina"/>
                                         <field name="price_validity_f_un_ter"/>
                                         <field name="price_validity_u_un_ter"/>
-                                    </group>
-                                    <group>
+                                        <field name="forecast_unitl_unload_termina"/>
                                         <field name="unload_termina_service_id"/>
                                        <field name="unload_termina_profitability_id"/>
+                                    </group>
+                                    <group>
                                        <field name="unload_terminal_id"/>
                                     </group>
                                 </group>
@@ -224,10 +224,10 @@
                                         <field name="price_validity_f_export"/>
                                         <field name="price_validity_u_export"/>
                                         <field name="forecast_unitl_export"/>
-                                    </group>
-                                    <group>
                                         <field name="export_service_id"/>
                                        <field name="export_profitability_id"/>
+                                    </group>
+                                    <group>
                                     </group>
                                 </group>
                             </page>
@@ -241,11 +241,11 @@
                                         <field name="price_validity_u_cus_ex"/>
                                         <field name="pre_carriage_service_id"/>
                                         <field name="pre_carriage_profitability_id"/>
+                                    </group>
+                                    <group>
                                         <field name="exporter"/>
                                         <field name="importer"/>
                                         <field name="hs_position_id"/>
-                                    </group>
-                                    <group>
                                         <field name="items_level_id"/>
                                        <field name="regime_id"/>
                                        <field name="regime_number_id"/>
@@ -266,10 +266,10 @@
                                         <field name="price_validity_f_terminal"/>
                                         <field name="price_validity_u_terminal"/>
                                         <field name="forecast_unitl_terminal"/>
-                                    </group>
-                                    <group>
                                         <field name="terminal_service_id"/>
                                        <field name="terminal_profitability_id"/>
+                                    </group>
+                                    <group>
                                     </group>
                                 </group>
                             </page>
@@ -281,10 +281,10 @@
                                         <field name="price_validity_f_terminal"/>
                                         <field name="price_validity_u_export"/>
                                         <field name="forecast_unitl_exp_agency"/>
-                                    </group>
-                                    <group>
                                         <field name="exp_agncy_service_id"/>
                                        <field name="exp_agency_profitability_id"/>
+                                    </group>
+                                    <group>
                                     </group>
                                 </group>
                             </page>
@@ -296,11 +296,11 @@
                                         <field name="forecast_unitl_load_trans"/>
                                         <field name="price_validity_f_main"/>
                                         <field name="price_validity_u_main"/>
+                                        <field name="load_trans_service_id"/>
+                                       <field name="load_trans_profitability_id"/>
                                         
                                     </group>
                                     <group>
-                                        <field name="load_trans_service_id"/>
-                                       <field name="load_trans_profitability_id"/>
                                     </group>
                                 </group>
                             </page>
@@ -313,10 +313,10 @@
                                         <field name="forecast_unitl_insurance_int"/>
                                         <field name="price_validity_f_insu_in"/>
                                         <field name="price_validity_u_insu_in"/>
-                                    </group>
-                                    <group>
                                         <field name="insurance_int_service_id"/>
                                        <field name="insurance_int_profitability_id"/>
+                                    </group>
+                                    <group>
                                        <field name="insurance_intid"/>
                                     </group>
                                 </group>
@@ -351,10 +351,10 @@
                                         <field name="forecast_unitl_upload_trans"/>
                                         <field name="price_validity_f_unloading"/>
                                         <field name="price_validity_u_unloading"/>
-                                    </group>
-                                    <group>
                                         <field name="upload_trans_service_id"/>
                                        <field name="upload_trans_profitability_id"/>
+                                    </group>
+                                    <group>
                                     </group>
                                 </group>
                             </page>
@@ -366,10 +366,10 @@
                                         <field name="forecast_unitl_imp_agency"/>
                                         <field name="price_validity_f_agency"/>
                                         <field name="price_validity_u_agency"/>
-                                    </group>
-                                    <group>
                                         <field name="imp_agency_service_id"/>
                                     <field name="imp_agency_profitability_id"/>
+                                    </group>
+                                    <group>
                                     </group>
                                 </group>
                             </page>
@@ -382,11 +382,11 @@
                                         <field name="forecast_unitl_imp_form"/>
                                         <field name="price_validity_f_fomra"/>
                                         <field name="price_validity_u_forma"/>
+                                        <field name="imp_form_service_id"/>
+                                       <field name="imp_form_profitability_id"/>
                                     
                                     </group>
                                     <group>
-                                        <field name="imp_form_service_id"/>
-                                       <field name="imp_form_profitability_id"/>
                                     </group>
                                 </group>
                             </page>
@@ -401,12 +401,12 @@
                                         <field name="price_validityu_imp_cus"/>
                                         <field name="import_customs_service_id"/>
                                         <field name="import_customs_profitability_id"/>
-                                        <field name="exporter_customs"/>
-                                        <field name="importer_customs"/>
-                                        <field name="hs_position_customs_id"/>
                                     </group>
                                     <group>
                                         <field name="items_level_customs_id"/>
+                                        <field name="exporter_customs"/>
+                                        <field name="importer_customs"/>
+                                        <field name="hs_position_customs_id"/>
                                        <field name="regime_customs_id"/>
                                        <field name="regime_number_customs_id"/>
                                        <field name="added_proceders_customs_id"/>
@@ -426,11 +426,11 @@
                                         <field name="forecast_unitl_term_exit"/>
                                         <field name="price_validity_f_exit"/>
                                         <field name="price_validity_u_exit"/>
+                                        <field name="term_exit_service_id"/>
+                                       <field name="term_exit_profitability_id"/>
                                     
                                     </group>
                                     <group>
-                                        <field name="term_exit_service_id"/>
-                                       <field name="term_exit_profitability_id"/>
                                     </group>
                                 </group>
                             </page>
@@ -443,10 +443,10 @@
                                         <field name="forecast_unitl_load_terminal"/>
                                         <field name="price_validity_f_f_ter"/>
                                         <field name="price_validity_u_f_ter"/>
-                                    </group>
-                                    <group>
                                         <field name="load_terminal_service_id"/>
                                        <field name="unload_termina_profitability_id"/>
+                                    </group>
+                                    <group>
                                        <field name="load_terminal_id"/>
                                     </group>
                                 </group>
@@ -461,11 +461,11 @@
                                         <field name="price_validity_f_deli"/>
                                         <field name="price_validity_u_deli"/>
                                         
-                                        <field name="distance"/>
-                                    </group>
-                                    <group>
                                         <field name="delivery_pickup_id"/>
                                        <field name="delivery_profitability_id"/>
+                                    </group>
+                                    <group>
+                                        <field name="distance"/>
                                        <field name="delivery_delivery_id"/>
                                        <field name="delivery_distance"/>
                                     </group>
@@ -480,11 +480,11 @@
                                         <field name="forecast_unitl_unload_site"/>
                                         <field name="price_validity_f_lo_si"/>
                                         <field name="price_validity_u_lo_si"/>
+                                        <field name="unload_site_service_id"/>
+                                       <field name="unload_site_profitability_id"/>
                                     
                                     </group>
                                     <group>
-                                        <field name="unload_site_service_id"/>
-                                       <field name="unload_site_profitability_id"/>
                                        <field name="unload_site_id"/>
                                     </group>
                                 </group>
@@ -498,10 +498,10 @@
                                         <field name="forecast_unitl_unlash"/>
                                         <field name="price_validity_f_unlashing"/>
                                         <field name="price_validity_u_unlashing"/>
-                                    </group>
-                                    <group>
                                         <field name="unlash_exit_service_id"/>
                                        <field name="unlash_profitability_id"/>
+                                    </group>
+                                    <group>
                                     </group>
                                 </group>
                             </page>
@@ -515,10 +515,10 @@
                                         <field name="forecast_unitl_strip"/>
                                         <field name="price_validity_f_strip"/>
                                         <field name="price_validity_u_strip"/>
-                                    </group>
-                                    <group>
                                         <field name="strip_service_id"/>
                                        <field name="strip_profitability_id"/>
+                                    </group>
+                                    <group>
                                     </group>
                                 </group>
                             </page>
@@ -530,11 +530,11 @@
                                         <field name="forecast_unitl_unpack"/>
                                         <field name="price_validity_f_unpack"/>
                                         <field name="price_validity_u_unpack"/>
+                                        <field name="unpack_service_id"/>
+                                       <field name="unpack_profitability_id"/>
                                     
                                     </group>
                                     <group>
-                                        <field name="unpack_service_id"/>
-                                       <field name="unpack_profitability_id"/>
                                     </group>
                                 </group>
                             </page>
@@ -546,10 +546,10 @@
                                         <field name="forecast_unitl_insurance_dom"/>
                                         <field name="price_validity_f_ins_do"/>
                                         <field name="price_validity_u_ins_do"/>
-                                    </group>
-                                    <group>
                                         <field name="insurance_dom_service_id"/>
                                         <field name="insurance_dom_profitability_id"/>
+                                    </group>
+                                    <group>
                                         <field name="insurancedom_id"/>
                                     </group>
                                 </group>
@@ -563,11 +563,11 @@
                                         <field name="forecast_unitl_domestic_haulage"/>
                                         <field name="price_validity_f_dom_ho"/>
                                         <field name="price_validity_u_dom_ho"/>
-                                        <field name="domestic_haulage_distance"/>
-                                    </group>
-                                    <group>
                                         <field name="domestic_haulage_service_id"/>
                                        <field name="domestic_haulage_profitability_id"/>
+                                    </group>
+                                    <group>
+                                        <field name="domestic_haulage_distance"/>
                                        <field name="domestic_haulage_delivery_id"/>
                                        <field name="domestic_haulage_distance"/>
                                     </group>
@@ -582,11 +582,11 @@
                                         <field name="forecast_unitl_trai_trac"/>
                                         <field name="price_validity_f_trailer"/>
                                         <field name="price_validity_u_trailer"/>
+                                        <field name="trai_trac_service_id"/>
+                                       <field name="trai_trac_profitability_id"/>
                                     
                                     </group>
                                     <group>
-                                        <field name="trai_trac_service_id"/>
-                                       <field name="trai_trac_profitability_id"/>
                                     </group>
                                 </group>
                             </page>
@@ -600,10 +600,10 @@
                                         <field name="price_validity_f_storage"/>
                                         <field name="price_validity_u_storage"/>
                                     
-                                    </group>
-                                    <group>
                                         <field name="storage_service_id"/>
                                        <field name="storage_profitability_id"/>
+                                    </group>
+                                    <group>
                                     </group>
                                 </group>
                             </page>
@@ -616,11 +616,11 @@
                                         <field name="forecast_unitl_lifting"/>
                                         <field name="price_validity_f_lifting"/>
                                         <field name="price_validity_u_lifting"/>
+                                        <field name="lifting_service_id"/>
+                                       <field name="lifting_profitability_id"/>
                                     
                                     </group>
                                     <group>
-                                        <field name="lifting_service_id"/>
-                                       <field name="lifting_profitability_id"/>
                                     </group>
                                 </group>
                             </page>
@@ -656,14 +656,14 @@
                                         <field name="price_validity_f_esc"/>
                                         <field name="price_validity_u_esc"/>
                                         
-                                        <field name="from_escort"/>
-                                        <field name="to_escort"/>
+                                        <field name="escort_service_id"/>
+                                       <field name="escort_profitability_id"/>
                                         
                                     </group>
                                     <group>
+                                        <field name="from_escort"/>
+                                        <field name="to_escort"/>
                                         <field name="distance_escort"/>
-                                        <field name="escort_service_id"/>
-                                       <field name="escort_profitability_id"/>
                                        <field name="top_length_escort"/>
                                        <field name="top_width_escort"/>
                                        <field name="top_height_escort"/>
@@ -681,11 +681,11 @@
                                         <field name="forecast_unitl_civil_work"/>
                                         <field name="price_validity_f_civil"/>
                                         <field name="price_validity_u_civil"/>
+                                        <field name="civil_work_service_id"/>
+                                       <field name="civil_work_profitability_id"/>
                                     
                                     </group>
                                     <group>
-                                        <field name="civil_work_service_id"/>
-                                       <field name="civil_work_profitability_id"/>
                                     </group>
                                 </group>
                             </page>
@@ -701,11 +701,11 @@
                                         <field name="price_validity_u_dom_cu"/>
                                         <field name="domestic_customs_service_id"/>
                                         <field name="domestic_customs_profitability_id"/>
+                                    </group>
+                                    <group>
                                         <field name="exporter_domestic"/>
                                         <field name="importer_domestic"/>
                                         <field name="hs_position_domestic_id"/>
-                                    </group>
-                                    <group>
                                         <field name="items_level_domestic_id"/>
                                        <field name="regime_domestic_id"/>
                                        <field name="regime_number_domestic_id"/>
@@ -727,11 +727,11 @@
                                         <field name="forecast_unitl_oth_cust"/>
                                         <field name="price_validity_f_cust"/>
                                         <field name="price_validity_u_cust"/>
+                                        <field name="oth_cust_service_id"/>
+                                       <field name="oth_cust_profitability_id"/>
                                     
                                     </group>
                                     <group>
-                                        <field name="oth_cust_service_id"/>
-                                       <field name="oth_cust_profitability_id"/>
                                     </group>
                                 </group>
                             </page>
@@ -744,11 +744,11 @@
                                         <field name="forecast_unitl_consult"/>
                                         <field name="price_validity_f_conss"/>
                                         <field name="price_validity_u_conss"/>
+                                        <field name="consult_service_id"/>
+                                       <field name="consult_profitability_id"/>
                                     
                                     </group>
                                     <group>
-                                        <field name="consult_service_id"/>
-                                       <field name="consult_profitability_id"/>
                                     </group>
                                 </group>
                             </page>
@@ -761,10 +761,10 @@
                                         <field name="forecast_unitl_studies"/>
                                         <field name="price_validity_f_studies"/>
                                         <field name="price_validity_u_studies"/>
-                                    </group>
-                                    <group>
                                         <field name="studies_service_id"/>
                                        <field name="studies_profitability_id"/>
+                                    </group>
+                                    <group>
                                     </group>
                                 </group>
                             </page>
@@ -804,10 +804,10 @@
                                         <field name="price_validity_f_ro_re"/>
                                         <field name="price_validity_u_ro_re"/>
                                         
-                                    </group>
-                                    <group>
                                         <field name="report_service_id"/>
                                        <field name="report_profitability_id"/>
+                                    </group>
+                                    <group>
                                        <field name="surevy_adress"/>
                                        
                                     </group>
@@ -822,11 +822,11 @@
                                         <field name="forecast_unitl_oth_req"/>
                                         <field name="price_validity_f_req"/>
                                         <field name="price_validity_u_req"/>
+                                        <field name="oth_req_service_id"/>
+                                       <field name="oth_req_profitability_id"/>
                                     
                                     </group>
                                     <group>
-                                        <field name="oth_req_service_id"/>
-                                       <field name="oth_req_profitability_id"/>
                                     </group>
                                 </group>
                             </page>
@@ -1863,7 +1863,7 @@
                                
                          <group class="oe_subtotal_footer oe_right" colspan="2" name="total_packaging">
                                                 
-                                                <field name="currency_id" invisible="1"/>
+                                                <!-- <field name="currency_id" invisible="1"/> -->
                                                 <div class="oe_subtotal_footer_separator oe_inline o_td_label">
                                                 <label for="total_cost_ht_dh"/>
                                                 </div>
@@ -1937,7 +1937,7 @@
                                                     <label for="total_sales_ht_usd"/>
                                                 </div>
                                                 <field name="total_sales_ht_usd" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
-                                                
+                                            
                                                 <div class="oe_subtotal_footer_separator oe_inline o_td_label">
                                                     <label for="total_net_sales_ht_usd"/>
                                                 </div>
@@ -1956,7 +1956,42 @@
                                                 
                         </group>
                         </page>
-                        
+                        <page string=" Σ Totaux en MAD">
+                        <group>
+                         <field name="taux_change_euro"/>
+                         <field name="taux_change_usd"/>
+                        </group>
+                         <group class="oe_subtotal_footer oe_right" colspan="2" name="total_packaging_usd">
+                                                
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                <label for="total_cost_ht_converted_dh"/>
+                                                </div>
+                                                <field name="total_cost_ht_converted_dh" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="total_sales_ht_converted_dh"/>
+                                                </div>
+                                                <field name="total_sales_ht_converted_dh" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="total_net_sales_ht_converted_dh"/>
+                                                </div>
+                                                <field name="total_net_sales_ht_converted_dh" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                                
+                                                
+                                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="total_profit_ht_converted_dh"/>
+                                                </div>
+                                                <field name="total_profit_ht_converted_dh" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/> 
+                                                
+                                                <!-- <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                                    <label for="profit_usd"/>
+                                                </div>
+                                                <field name="profit_usd" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary"/>
+                                                 -->
+                        </group>
+                        </page>
                         </notebook>
                     </sheet>
                 </form>

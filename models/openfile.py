@@ -143,6 +143,57 @@ class directoryorde(models.Model):
         return super(directoryorde, self).create(vals)
 
 
+    @api.onchange("pcf_number")
+    def onchange_pcf_number(self):
+            self.account_number = self.pcf_number.account_number
+            self.at_glance = self.pcf_number.at_glance
+            self.name_principal = self.pcf_number.name_principal
+            self.rc = self.pcf_number.rc
+            self.ice = self.pcf_number.ice
+            self.pic_detail = self.pcf_number.pic_detail
+            self.year_frequency = self.pcf_number.year_frequency
+            self.customer_ref = self.pcf_number.customer_ref
+            self.purchase_order = self.pcf_number.purchase_order
+            self.packaging = self.pcf_number.packaging
+            self.stuffing = self.pcf_number.stuffing
+            self.lsd = self.pcf_number.lsd
+            self.loading_on_track = self.pcf_number.loading_on_track
+            self.export_formalities = self.pcf_number.export_formalities
+            self.pre_carriage = self.pcf_number.pre_carriage
+            self.export_customs = self.pcf_number.export_customs
+            self.entry_formalities = self.pcf_number.entry_formalities
+            self.on_terminal = self.pcf_number.on_terminal
+            self.export_agency = self.pcf_number.export_agency
+            self.import_customs = self.pcf_number.import_customs
+            self.from_main_transport = self.pcf_number.from_main_transport
+            self.import_formalities = self.pcf_number.import_formalities
+            self.loading_main_transport = self.pcf_number.loading_main_transport
+            self.loading_from_term = self.pcf_number.loading_from_term
+            self.terminal_exit = self.pcf_number.terminal_exit
+            self.delivery = self.pcf_number.delivery
+            self.ulonading_site = self.pcf_number.ulonading_site
+            self.delivery = self.pcf_number.delivery
+            self.unlashing = self.pcf_number.unlashing
+            self.stripping = self.pcf_number.stripping
+            self.unpackaging = self.pcf_number.unpackaging
+            self.other = self.pcf_number.other
+            self.other_requests = self.pcf_number.other_requests
+            self.insurance_int = self.pcf_number.insurance_int
+            self.insurance_dom = self.pcf_number.insurance_dom
+            self.domestic_customs = self.pcf_number.domestic_customs
+            self.trailer_traction = self.pcf_number.trailer_traction
+            self.storage = self.pcf_number.storage
+            self.lifting = self.pcf_number.lifting
+            self.domestic = self.pcf_number.domestic
+            self.renting = self.pcf_number.renting
+            self.consulting = self.pcf_number.consulting
+            self.road_surevy = self.pcf_number.road_surevy
+            self.studies = self.pcf_number.studies
+            self.survey_report = self.pcf_number.survey_report
+            self.escort = self.pcf_number.escort
+            self.civil_work = self.pcf_number.civil_work
+            self.documents = self.pcf_number.documents
+
 class sector(models.Model):
 
     _name = 'sector.type'

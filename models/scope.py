@@ -773,7 +773,29 @@ class PackagingProfitability(models.Model):
     profit_dh = fields.Float(string='Profit en %', compute='_profit_dh_all')
     profit_euro = fields.Float(string='Profit en %', compute='_profit_euro_all')
     profit_usd = fields.Float(string='Profit en %', compute='_profit_usd_all')
+    taux_change_euro = fields.Float(string='Taux de change (Euro)', default=10.5)
+    taux_change_usd = fields.Float(string='Taux de change (USD)', default=9.8)
+    
+    ##### conversion Euro ####
+    cost_euro_converted = fields.Float(string='Cost HT Euro', compute='_euro_convertion')
+    sales_ht_euro_converted = fields.Float(string='Sales Ht Euro', compute='_euro_convertion')
+    total_net_sales_ht_converted_euro = fields.Float(string='Net Sales Euro', compute='_euro_convertion')
+    total_profit_ht_converted_euro = fields.Float(string='Profit Euro', compute='_euro_convertion')
+       
+##### conversion Usd ####
+    cost_usd_converted = fields.Float(string='Cost HT USD', compute='_usd_convertion')
+    sales_ht_usd_converted = fields.Float(string='Sales Ht USD', compute='_usd_convertion')
+    total_net_sales_ht_converted_usd = fields.Float(string='Net Sales USD', compute='_usd_convertion')
+    total_profit_ht_converted_usd = fields.Float(string='Profit USD', compute='_usd_convertion')
+    
+###### total #####
 
+    total_cost_ht_converted_dh = fields.Float(string='Σ Cost HT ', compute='_total_converted')
+    total_sales_ht_converted_dh = fields.Float(string='Σ Sales HT', compute='_total_converted')
+    total_net_sales_ht_converted_dh = fields.Float(string='Σ Net Sales HT', compute='_total_converted')
+    total_profit_ht_converted_dh = fields.Float(string='Σ Profit HT', compute='_total_converted')
+
+    
     def _total_packaging_all(self):
         for pack in self:
             total_cost_ht_dh = total_sales_ht_dh = total_net_sales_ht_dh = total_profit_ht_dh = profit_dh  = total_cost_ht_euro = total_sales_ht_euro = total_net_sales_ht_euro = total_profit_ht_euro = profit_euro  = total_cost_ht_usd = total_sales_ht_usd = total_net_sales_ht_usd = total_profit_ht_usd = profit_usd  = 0.0
@@ -793,10 +815,6 @@ class PackagingProfitability(models.Model):
                     total_sales_ht_usd += line.s_tot_sales_ht
                     total_net_sales_ht_usd += line.s_tot_net_sale_ht
                     total_profit_ht_usd += line.s_profit_ht
-                # if self.total_net_sales_ht != 0 and self.total_profit_ht != 0:
-                #     self.profit = self.total_profit_ht / self.total_net_sales_ht
-                # else:
-                #     self.profit = 0
             pack.update({
                 'total_cost_ht_dh': total_cost_ht_dh,
                 'total_sales_ht_dh': total_sales_ht_dh,
@@ -810,9 +828,6 @@ class PackagingProfitability(models.Model):
                 'total_sales_ht_usd': total_sales_ht_usd,
                 'total_net_sales_ht_usd': total_net_sales_ht_usd,
                 'total_profit_ht_usd': total_profit_ht_usd,
-                
-                # 'profit': pack.profit, 
-
             })
 
     @api.depends('total_net_sales_ht_dh', 'total_profit_ht_dh')
@@ -838,6 +853,31 @@ class PackagingProfitability(models.Model):
                 record.profit_usd = record.total_profit_ht_usd / record.total_net_sales_ht_usd
             else:
                 record.profit_usd = 0
+    
+    @api.depends('total_cost_ht_euro', 'total_sales_ht_euro', 'total_net_sales_ht_euro', 'total_profit_ht_euro')
+    def _euro_convertion(self):
+        for record in self:
+            record.cost_euro_converted = record.total_cost_ht_euro * record.taux_change_euro
+            record.sales_ht_euro_converted = record.total_sales_ht_euro * record.taux_change_euro
+            record.total_net_sales_ht_converted_euro = record.total_net_sales_ht_euro * record.taux_change_euro
+            record.total_profit_ht_converted_euro = record.total_profit_ht_euro * record.taux_change_euro
+    
+    @api.depends('total_cost_ht_usd', 'total_sales_ht_usd', 'total_net_sales_ht_usd', 'total_profit_ht_usd')
+    def _usd_convertion(self):
+        for record in self:
+            record.cost_usd_converted = record.total_cost_ht_usd * record.taux_change_usd
+            record.sales_ht_usd_converted = record.total_sales_ht_usd * record.taux_change_usd
+            record.total_net_sales_ht_converted_usd = record.total_net_sales_ht_usd * record.taux_change_usd
+            record.total_profit_ht_converted_usd = record.total_profit_ht_usd * record.taux_change_usd
+    
+
+    @api.depends('total_cost_ht_dh', 'total_sales_ht_dh', 'total_net_sales_ht_dh', 'total_profit_ht_dh', 'cost_euro_converted', 'sales_ht_euro_converted', 'total_net_sales_ht_converted_euro', 'total_profit_ht_converted_euro', 'cost_usd_converted', 'sales_ht_usd_converted', 'total_net_sales_ht_converted_usd', 'total_profit_ht_converted_usd')
+    def _total_converted(self):
+        for record in self:
+            record.total_cost_ht_converted_dh = record.total_cost_ht_dh + record.cost_euro_converted + record.cost_usd_converted
+            record.total_sales_ht_converted_dh = record.total_sales_ht_dh + record.sales_ht_euro_converted + record.sales_ht_usd_converted
+            record.total_net_sales_ht_converted_dh = record.total_net_sales_ht_dh + record.total_net_sales_ht_converted_euro + record.total_net_sales_ht_converted_usd
+            record.total_profit_ht_converted_dh = record.total_profit_ht_dh + record.total_profit_ht_converted_euro + record.total_profit_ht_converted_usd
     
 class PackagingDepartment(models.Model):
 
@@ -1274,7 +1314,9 @@ class PackagingAmount(models.Model):
             ], string='ATC', default='no')
     packaging_section = fields.Many2one('packaging.section', string='Section')
     suppliers = fields.Many2one('res.partner', string='Suppliers')
-
+    # taux_change_euro = fields.Float(string='Taux de change (Euro)', related="packaging_section.taux_change_euro")
+    # taux_change_usd = fields.Float(string='Taux de change (Usd)', related="packaging_section.taux_change_usd")
+    
     def _amount_in_packaging_all(self):
         for pack in self:
             cost_rate_ht_monet = qty = sale_rate_ht = net_sale_rate = profit_ht = s_tot_sales_ht = s_tot_cost_ht = s_tot_net_sale_ht = s_profit_ht = 0.0 
