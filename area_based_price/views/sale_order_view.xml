@@ -1,0 +1,51 @@
+<odoo>
+    <record id="view_order_form_area" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//tree/field[@name='product_uom']" position="after">
+                <field name="area_based" invisible="1"/>
+                <field name="width" attrs="{'readonly': [('area_based', '=', False)]}"/>
+                <field name="height" attrs="{'readonly': [('area_based', '=', False)]}"/>
+                <field name="area"/>
+                <field name="price_unit_pi" attrs="{'readonly': [('area_based', '=', False)]}"/>
+            </xpath>
+
+            
+            <xpath expr="//field[@name='order_line']/tree/field[@name='price_unit']" position="after">
+         	 <field name="price_unit_stored" invisible="1" force_save="1"/>
+            </xpath>
+            
+            
+            <xpath expr="//tree/field[@name='product_uom']" position="replace">
+            </xpath>
+
+            <xpath expr="//tree/field[@name='name']" position="after">
+                <field name="product_uom" string="UdM" invisible="0"/>
+            </xpath>
+
+            <xpath expr="//field[@name='order_line']/form//field[@name='price_unit']" position="after">
+             	 <field name="price_unit_stored" force_save="1"/>
+                <field name="area_based" invisible="1"/>
+                <field name="width"
+                       attrs="{'readonly': [('area_based', '=', False)]}"
+                />
+                <field name="height"
+                       attrs="{'readonly': [('area_based', '=', False)]}"
+                />
+                
+                <field name="price_unit_pi"
+                       attrs="{'readonly': [('area_based', '=', False)]}"
+                />
+            </xpath>
+            
+           <xpath expr="//field[@name='order_line']/tree/field[@name='price_unit']" position="attributes">
+                <attribute name="invisible">0</attribute>
+            </xpath>
+            
+
+        </field>
+    </record>
+</odoo>

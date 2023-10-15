@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="web.address_layout">
+            <t t-set="colclass" t-value="('col-md-5' if report_type == 'html' else 'col-5') + ' ml-auto'"/>
+            <t t-if="address">
+                <div class="address row">
+                    <t t-if="information_block">
+                        <t t-set="colclass" t-value="'col-5 offset-1'"/>
+                        <div name="information_block" class="col-6">
+                            <t t-raw="information_block"/>
+                        </div>
+                    </t>
+                    <div name="address" t-att-class="colclass">
+                        <t t-raw="address"/>
+                    </div>
+                </div>
+            </t>
+        </template>
+        <!--
+                <delete id="sale.report_invoice_document_inherit_sale" model="ir.ui.view"/>
+        -->
+        <template id="report_invoice_document_inht" inherit_id="account.report_invoice_document">
+            <xpath expr="//div[@class='page']" position="attributes">
+                <attribute name="style">font-size: 12px;</attribute>
+            </xpath>
+
+            <xpath expr="//div[@class='page']//h2" position="attributes">
+                <attribute name="style">font-size: 16px;</attribute>
+            </xpath>
+
+            <xpath expr="//address" position="replace">
+                <t t-set="information_block">
+                    <strong>Vendu à :</strong>
+                    <div t-field="o.partner_id"
+                         t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
+                    <p t-if="o.partner_id.vat"><t t-esc="o.company_id.country_id.vat_label or 'Tax ID'"/>:
+                        <span t-field="o.partner_id.vat"/>
+                    </p>
+
+                    <br/>
+
+                    <strong>Envoyé à :</strong>
+                    <div t-field="o.partner_shipping_id"
+                         t-options='{"widget": "contact", "fields": ["address", "name", "phone"],
+				"no_marker": True, "phone_icons": True}'/>
+                </t>
+
+
+                <t>
+                    <strong>Vendu par :</strong>
+                    <div t-field="o.company_id.partner_id"
+                         t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}'/>
+                    <p t-if="o.company_id.gst">
+                        GST:
+                        <span t-field="o.company_id.gst"/>
+                        ---
+                        PST:
+                        <span t-field="o.company_id.pst"/>
+                    </p>
+                </t>
+
+            </xpath>
+
+            <xpath expr="//table" position="before">
+                <t t-set="areac" t-value="any([l.area for l in o.invoice_line_ids])"/>
+            </xpath>
+
+            <xpath expr="//table[@name='invoice_line_table']//thead[1]//tr[1]/th[3]" position="after">
+                <th t-if="areac" class="text-right">Width</th>
+                <th t-if="areac" class="text-right">Height</th>
+                <th t-if="areac" class="text-right">Area</th>
+            </xpath>
+
+            <xpath expr="//table[@name='invoice_line_table']//td[2]" position="after">
+                <td t-if="areac" class="text-right" name="width">
+                    <span class="text-nowrap" t-field="line.width" t-options='{"widget": "float", "precision": 2}'/>
+                </td>
+                <td t-if="areac" class="text-right" name="height">
+                    <span class="text-nowrap" t-field="line.height" t-options='{"widget": "float", "precision": 2}'/>
+                </td>
+                <td t-if="areac" class="text-right" name="area">
+                    <span class="text-nowrap" t-field="line.area" t-options='{"widget": "float", "precision": 2}'/>
+                    <span t-if="line.area" t-field="line.product_uom_id"
+                          groups="uom.group_uom"/>
+                </td>
+            </xpath>
+
+            <xpath expr="//table[@name='invoice_line_table']//td[2]" position="replace">
+                <td class="text-right" name='quantity'>
+                    <span t-field="line.quantity" t-options='{"widget": "float", "precision": 2}'/>
+                    <span t-if="not line.area" t-field="line.product_uom_id" groups="uom.group_uom"/>
+                </td>
+            </xpath>
+
+            <xpath expr="//table[@name='invoice_line_table']//td[6]" position="replace">
+                <td class="text-right o_price_total">
+                    <span class="text-nowrap" t-options='{"widget": "float", "precision": 2}'
+                          t-field="line.price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
+                    <span class="text-nowrap" t-options='{"widget": "float", "precision": 2}' t-field="line.price_total"
+                          groups="account.group_show_line_subtotals_tax_included"/>
+                </td>
+            </xpath>
+
+            <xpath expr="//p[@name='payment_term']" position="attributes">
+                <attribute name='style'>font-size: 12px;"</attribute>
+            </xpath>
+
+
+            <xpath expr="//th[@name='th_taxes']" position="attributes">
+                <attribute name="style">display: none;</attribute>
+            </xpath>
+
+            <xpath expr="//tbody[@class='invoice_tbody']/t[@t-foreach='lines']//td[8]" position="attributes">
+                <attribute name="style">display: none;</attribute>
+            </xpath>
+
+        </template>
+    </data>
+</odoo>

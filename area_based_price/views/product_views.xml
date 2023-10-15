@@ -1,0 +1,14 @@
+<odoo>
+    <record id="product_product_area_based_inherit" model="ir.ui.view">
+        <field name="name">product.product.area_based.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='type']" position="before">
+                <field name="area_based_price"/>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

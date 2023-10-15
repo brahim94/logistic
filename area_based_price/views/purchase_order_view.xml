@@ -1,0 +1,34 @@
+<odoo>
+    <record id="view_purchase_form_area" model="ir.ui.view">
+        <field name="name">purchase.order.form</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//tree/field[@name='product_uom']" position="after">
+                <field name="area_based" invisible="1"/>
+                <field name="width" attrs="{'readonly': [('area_based', '=', False)]}"/>
+                <field name="height" attrs="{'readonly': [ ('area_based', '=', False)]}"/>
+                <field name="area"/>
+                <field name="price_unit_pi" attrs="{'readonly': [('area_based', '=', False)]}"/>
+            </xpath>
+
+
+            <xpath expr="//field[@name='order_line']/tree/field[@name='price_unit']" position="after">
+         	 <field name="price_unit_stored" force_save="1" invisible="1"/>
+            </xpath>
+   <!--         
+           <xpath expr="//field[@name='order_line']/tree/field[@name='price_unit']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+    -->        
+            <xpath expr="//tree/field[@name='product_uom']" position="replace">
+            </xpath>
+
+            <xpath expr="//tree/field[@name='name']" position="after">
+                <field name="product_uom" string="UdM" invisible="0"/>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

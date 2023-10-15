@@ -1,0 +1,277 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* area_based_price
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-07 17:57+0000\n"
+"PO-Revision-Date: 2020-10-07 17:57+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: area_based_price
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_invoice_document_inht
+msgid ""
+"---\n"
+"                        PST:"
+msgstr ""
+"---\n"
+"                        TVQ:"
+
+#. module: area_based_price
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_invoice_document_inht
+msgid ""
+"<br/>\n"
+"\n"
+"                    <strong>Sent to:</strong>"
+msgstr ""
+"<br/>\n"
+"\n"
+"                    <strong>Envoyé à:</strong>"
+
+#. module: area_based_price
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_saleorder_document_inht
+msgid ""
+"<br/>\n"
+"                        PST:"
+msgstr ""
+
+#. module: area_based_price
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_saleorder_document_inht
+msgid "<span>Disc.%</span>"
+msgstr "<span>Rem.%</span>"
+
+#. module: area_based_price
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_purchaseorder_document_inht
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_saleorder_document_inht
+msgid "<strong class=\"mr16\">Subtotal</strong>"
+msgstr "<strong class=\"mr16\">Sous-total</strong>"
+
+#. module: area_based_price
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_purchaseorder_document_inht
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_purchasequotation_inht
+msgid "<strong style=\"font-size: 11px;\">Send to:</strong>"
+msgstr "<strong style=\"font-size: 11px;\">Envoyé à:</strong>"
+
+#. module: area_based_price
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_purchaseorder_document_inht
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_purchasequotation_inht
+msgid "<strong style=\"font-size: 11px;\">Sold by:</strong>"
+msgstr "<strong style=\"font-size: 11px;\">Vendu par:</strong>"
+
+#. module: area_based_price
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_saleorder_document_inht
+msgid "<strong style=\"font-size: 12px;\">Sent to:</strong>"
+msgstr "<strong style=\"font-size: 12px;\">Envoyé à:</strong>"
+
+#. module: area_based_price
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_saleorder_document_inht
+msgid "<strong style=\"font-size: 12px;\">Sold by:</strong>"
+msgstr "<strong style=\"font-size: 12px;\">Vendu par:</strong>"
+
+#. module: area_based_price
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_saleorder_document_inht
+msgid "<strong style=\"font-size: 12px;\">Sold to:</strong>"
+msgstr "<strong style=\"font-size: 12px;\">Vendu à:</strong>"
+
+#. module: area_based_price
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_purchaseorder_document_inht
+msgid "<strong>Amount</strong>"
+msgstr "<strong>Montant</strong>"
+
+#. module: area_based_price
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_purchaseorder_document_inht
+msgid "<strong>Date Req.</strong>"
+msgstr "<strong>Date Demandée.</strong>"
+
+#. module: area_based_price
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_purchaseorder_document_inht
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_purchasequotation_inht
+msgid "<strong>Description</strong>"
+msgstr ""
+
+#. module: area_based_price
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_purchasequotation_inht
+msgid "<strong>Expected Date</strong>"
+msgstr "<strong>Date prévue</strong>"
+
+#. module: area_based_price
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_purchaseorder_document_inht
+msgid "<strong>Order Date:</strong>"
+msgstr "<strong>Date de commande:</strong>"
+
+#. module: area_based_price
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_purchaseorder_document_inht
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_purchasequotation_inht
+msgid "<strong>Qty</strong>"
+msgstr "<strong>Qté</strong>"
+
+#. module: area_based_price
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_invoice_document_inht
+msgid "<strong>Sold by :</strong>"
+msgstr "<strong>Vendu par:</strong>"
+
+#. module: area_based_price
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_invoice_document_inht
+msgid "<strong>Sold to :</strong>"
+msgstr "<strong>Vendu à :</strong>"
+
+#. module: area_based_price
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_purchaseorder_document_inht
+msgid "<strong>Unit Price</strong>"
+msgstr "<strong>Prix unitaire</strong>"
+
+#. module: area_based_price
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_saleorder_document_inht
+msgid "Amount"
+msgstr "Montant"
+
+#. module: area_based_price
+#: model:ir.model.fields,field_description:area_based_price.field_account_move_line__area
+#: model:ir.model.fields,field_description:area_based_price.field_purchase_order_line__area
+#: model:ir.model.fields,field_description:area_based_price.field_sale_order_line__area
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_invoice_document_inht
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_purchaseorder_document_inht
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_purchasequotation_inht
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_saleorder_document_inht
+msgid "Area"
+msgstr "Surface (pi²)"
+
+#. module: area_based_price
+#: model:ir.model.fields,field_description:area_based_price.field_account_move_line__area_based
+#: model:ir.model.fields,field_description:area_based_price.field_product_product__area_based_price
+#: model:ir.model.fields,field_description:area_based_price.field_product_template__area_based_price
+#: model:ir.model.fields,field_description:area_based_price.field_purchase_order_line__area_based
+#: model:ir.model.fields,field_description:area_based_price.field_sale_order_line__area_based
+msgid "Area Based Price"
+msgstr "Surface (pi²)"
+
+#. module: area_based_price
+#: model:ir.model,name:area_based_price.model_res_company
+msgid "Companies"
+msgstr "Sociétés"
+
+#. module: area_based_price
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_saleorder_document_inht
+msgid "Description"
+msgstr ""
+
+#. module: area_based_price
+#: model:ir.model.fields,field_description:area_based_price.field_res_company__gst
+msgid "GST"
+msgstr "TVQ"
+
+#. module: area_based_price
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_invoice_document_inht
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_saleorder_document_inht
+msgid "GST:"
+msgstr ""
+
+#. module: area_based_price
+#: model:ir.model.fields,field_description:area_based_price.field_account_move_line__height
+#: model:ir.model.fields,field_description:area_based_price.field_purchase_order_line__height
+#: model:ir.model.fields,field_description:area_based_price.field_sale_order_line__height
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_invoice_document_inht
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_purchaseorder_document_inht
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_purchasequotation_inht
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_saleorder_document_inht
+msgid "Height"
+msgstr "Hauteur (po)"
+
+#. module: area_based_price
+#: model:ir.model,name:area_based_price.model_account_move_line
+msgid "Journal Item"
+msgstr "Écriture comptable"
+
+#. module: area_based_price
+#: code:addons/addons/area_based_price/models/invoice.py:0
+#: code:addons/addons/area_based_price/models/purchase.py:0
+#: code:addons/addons/area_based_price/models/sale.py:0
+#: code:addons/area_based_price/models/invoice.py:0
+#: code:addons/area_based_price/models/purchase.py:0
+#: code:addons/area_based_price/models/sale.py:0
+#, python-format
+msgid "Negative value is not possible!"
+msgstr ""
+
+#. module: area_based_price
+#: model:ir.model.fields,field_description:area_based_price.field_res_company__pst
+msgid "PST"
+msgstr "TVQ"
+
+#. module: area_based_price
+#: model:ir.model.fields,field_description:area_based_price.field_purchase_order_line__price_unit_pi
+#: model:ir.model.fields,field_description:area_based_price.field_sale_order_line__price_unit_pi
+msgid "Price (PI²)"
+msgstr "Prix (PI²)"
+
+#. module: area_based_price
+#: model:ir.model,name:area_based_price.model_product_template
+msgid "Product Template"
+msgstr "Modèle de produit"
+
+#. module: area_based_price
+#: model:ir.model,name:area_based_price.model_purchase_order
+msgid "Purchase Order"
+msgstr "Commande fournisseur"
+
+#. module: area_based_price
+#: model:ir.model,name:area_based_price.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "Ligne de commande d'achat"
+
+#. module: area_based_price
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_saleorder_document_inht
+msgid "Quantity"
+msgstr "Quantité"
+
+#. module: area_based_price
+#: model:ir.model,name:area_based_price.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Ligne de bons de commande"
+
+#. module: area_based_price
+#: model:ir.model.fields,field_description:area_based_price.field_purchase_order__amount_by_group
+msgid "Tax amount by group"
+msgstr "Montant de la taxe par groupe"
+
+#. module: area_based_price
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_saleorder_document_inht
+msgid "Total Price"
+msgstr "Prix total"
+
+#. module: area_based_price
+#: model_terms:ir.ui.view,arch_db:area_based_price.view_account_invoice_form_area
+#: model_terms:ir.ui.view,arch_db:area_based_price.view_order_form_area
+#: model_terms:ir.ui.view,arch_db:area_based_price.view_purchase_form_area
+msgid "UdM"
+msgstr ""
+
+#. module: area_based_price
+#: model:ir.model.fields,field_description:area_based_price.field_purchase_order_line__price_unit_stored
+#: model:ir.model.fields,field_description:area_based_price.field_sale_order_line__price_unit_stored
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_saleorder_document_inht
+msgid "Unit Price"
+msgstr "Prix unitaire"
+
+#. module: area_based_price
+#: model:ir.model.fields,field_description:area_based_price.field_account_move_line__width
+#: model:ir.model.fields,field_description:area_based_price.field_purchase_order_line__width
+#: model:ir.model.fields,field_description:area_based_price.field_sale_order_line__width
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_invoice_document_inht
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_purchaseorder_document_inht
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_purchasequotation_inht
+#: model_terms:ir.ui.view,arch_db:area_based_price.report_saleorder_document_inht
+msgid "Width"
+msgstr "Largeur (po)"
+
+#. module: area_based_price
+#: model:ir.model.fields,help:area_based_price.field_purchase_order__amount_by_group
+msgid "type: [(name, amount, base, formated amount, formated base)]"
+msgstr ""

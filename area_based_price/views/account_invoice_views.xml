@@ -1,0 +1,33 @@
+<odoo>
+
+    <record id="view_account_invoice_form_area" model="ir.ui.view">
+        <field name="name">account.invoice.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+        
+            <xpath expr="//tree/field[@name='product_uom_id']" position="after">
+                <field name="area_based" invisible="1"/>
+                <field name="width" attrs="{'invisible': [('area_based', '=', False)]}"/>
+                <field name="height" attrs="{'invisible': [('area_based', '=', False)]}"/>
+                <field name="area"/>
+            </xpath>
+
+            <xpath expr="//tree/field[@name='product_uom_id']" position="replace">
+            </xpath>
+
+            <xpath expr="//tree/field[@name='name']" position="after">
+                <field name="product_uom_id" string="UdM" invisible="0"/>
+            </xpath>
+
+            <xpath expr="//field[@name='line_ids']/tree/field[@name='quantity']" position="after">
+                <field name="height" invisible="1"/>
+                <field name="area" invisible="1"/>
+                <field name="width" invisible="1"/>
+            </xpath>
+
+
+        </field>
+    </record>
+    
+</odoo>
